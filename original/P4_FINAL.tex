@@ -1,0 +1,1308 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\numberwithin{equation}{section}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2.2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\C}{\mathcal C}
+\newcommand{\D}{\mathcal D}
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Patt}{\mathsf P}
+\newcommand{\hseq}{h_{\mathrm{seq}}}
+\newcommand{\hpat}{h_{\mathrm{pat}}^{*}}
+\newcommand{\hinv}{h_{\mathrm{inv}}}
+\newcommand{\htop}{h_{\mathrm{top}}}
+\newcommand{\Bor}{\mathrm{Bor}}
+\newcommand{\clop}{\mathrm{clop}}
+\newcommand{\lang}{\mathrm{lang}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
+
+\title{Sparse-Time Complexity of Invariant Control Languages}
+\author{Ziqing Ding}
+\address{School of Mathematical Sciences, Nanjing Normal University,
+Nanjing 210023, China}
+\date{}
+\subjclass[2020]{93C55, 37B10, 37B40, 94A17}
+\keywords{invariance entropy, invariant partition, sequence entropy,
+maximal pattern complexity, symbolic control, minimax equality}
+
+\begin{document}
+
+\begin{abstract}
+We study sparse observations of admissible name languages associated with
+invariant partitions of deterministic control systems. For every countable
+family of nonempty finite-alphabet pattern systems, one increasing coordinate
+sequence simultaneously attains their maximal-pattern entropy rates. A
+coordinate-deletion argument removes the need for shift invariance. This
+yields a minimax identity at a fixed sampling period for any nonempty class
+of invariant partitions with countably many languages up to relabeling.
+We also realize every one-sided subshift as a compact matching-control
+system. Kawan's exact-containment invariance entropy of this system equals
+the topological entropy of the subshift, and its period-one sequence and maximal-pattern infima over all
+Borel invariant partitions equal the corresponding coordinate rates.
+The Thue--Morse subshift consequently gives zero invariance entropy and
+period-one pattern infimum $\log 2$. We give a direct binary construction of
+an attaining sparse schedule. Finally, allowing all sampling periods makes
+the unrestricted Borel pattern infimum collapse to Kawan's invariance
+entropy, which explains the role of the fixed-period formulation.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Ordinary entropy measures exponential complexity along consecutive times.
+A zero value does not imply that observations made far apart are simple:
+a system may have subexponentially many long orbit names and still realize
+exponentially many patterns on well-chosen sets of observation times.
+Sequence entropy fixes one increasing sequence of times, whereas maximal
+pattern entropy optimizes over finite sets of a prescribed cardinality.
+The normalization is by the number of observations. Thus these notions
+examine information that an elapsed-time entropy rate can miss.
+
+The topological sequence entropy of Goodman \cite{Goodman1974} and the
+maximal pattern complexity of Kamae and Zamboni
+\cite{KamaeZamboniWords2002,KamaeZamboniSystems2002} provide the dynamical
+background. Huang and Ye \cite[Theorem~2.1]{HuangYe2009} proved that, for
+each fixed finite open cover of a compact invertible system, maximal
+pattern entropy is an attained supremum of sequence entropies. They also
+proved its measurable-partition counterpart. Their paper develops much
+more than this attainment statement: its combinatorial lemmas relate
+pattern growth to independence and to intrinsic sequence-entropy tuples.
+The input relevant here is precisely the attained-supremum theorem and
+its long-block construction.
+
+The measure-theoretic study of sequence entropy and subsequence generators
+includes Hulse's earlier work \cite{Hulse1982}. A measurable attainment
+theorem is given by Huang, Maass and Ye
+\cite[Theorem~2.3]{HuangMaassYe2004}. The existence of a common
+sequence, by itself, is not a novelty claim of this paper. Nor are arbitrary
+sets of finite-alphabet sequences new objects: such pattern sets occur,
+for example, in Kamae's study of uniform complexity \cite{KamaeUniform2009}.
+Our combinatorial statement concerns the individual maximal counting rates
+of an arbitrary countable family of such sets, without a common ambient
+transformation or mixing assumptions.
+
+The control-theoretic question is different from fixing an observation
+partition of one dynamical system. For a controlled-invariant compact set
+$Q$, a finite invariant partition assigns a safe control block to each
+atom. Iterating this rule generates admissible atom names, while retaining
+safety at all intervening times. Kawan's invariant-cover framework recovers
+his exact-containment invariance entropy by minimizing consecutive-name entropy over
+Borel invariant partitions and sampling periods
+\cite[Definitions~2.8--2.9 and Theorem~2.3]{Kawan2013}.
+In the terminology of Yao \cite[Section~2]{Yao2026}, this exact-containment
+quantity is called \emph{strict invariance entropy}; the neighborhood-based
+\emph{ordinary invariance entropy} there is Kawan's \emph{outer invariance
+entropy} \cite[Definition~2.3]{Kawan2013}. We retain Kawan's notation
+$h_{\mathrm{inv}}$ throughout.
+We ask what happens when the same admissible languages are observed only
+on selected block coordinates.
+
+Passing from a fixed strategy to an infimum over strategies creates a
+quantifier problem. A maximizing observation sequence for one invariant
+partition may be unsuitable for another. An identity of the form
+$\sup_A\inf_{\mathcal C}=\inf_{\mathcal C}\sup_A$ therefore needs a common
+attainment argument. There is a second issue: the natural name systems
+are one-sided and their shift maps need not be onto. Translating a
+maximizing coordinate set to later times can then lose information.
+The coordinate-deletion estimate below handles this issue without a
+surjectivity assumption.
+
+The results form the following chain.
+\begin{enumerate}[label=\textup{(\Alph*)}]
+\item \emph{Simultaneous entropy-rate attainment.}
+For nonempty sets $\Omega_j\subset E_j^{\mathbb N_0}$ over finite
+alphabets and a fixed scale $\tau>0$, there exists one increasing sequence
+$A$ such that
+\begin{align*}
+ h_{\mathrm{seq}}^A(\Omega_j;\tau)
+ =h_{\mathrm{pat}}^*(\Omega_j;\tau)\qquad(j\ge1).
+\end{align*}
+The proof revisits each member infinitely often. At each stage it deletes
+the already passed coordinates of a maximizing finite set and chooses
+its size large enough to dilute the previous observations.
+
+\item \emph{A fixed-period minimax identity.}
+For a nonempty class $\mathfrak C$ of period-$\tau$ Borel invariant
+partitions having at most countably many admissible languages up to
+alphabet relabeling,
+\begin{align*}
+ \max_A\inf_{\mathcal C\in\mathfrak C}
+ h_{\mathrm{seq}}^A(\mathcal C;Q)
+ =\inf_{\mathcal C\in\mathfrak C}h_{\mathrm{pat}}^*(\mathcal C;Q).
+\end{align*}
+The maximum is attained by a sequence which attains every individual
+partition rate. A compact metric state constraint and a countable control
+alphabet give a useful sufficient condition for the clopen class.
+
+\item \emph{Exact control realization.}
+Every nonempty one-sided subshift $Y$ over a finite alphabet admits a
+compact matching-control realization with
+$r_{\mathrm{inv}}(N,Y)=\#\mathcal L_N(Y)$ and
+$h_{\mathrm{inv}}(Y)=h_{\mathrm{top}}(Y)$.
+For every period-one Borel invariant partition, its finite-prefix name
+system factors onto $Y$ through the assigned control labels. The
+first-coordinate cylinder partition attains the resulting lower bounds
+for all finite pattern counts. This computes the Borel and clopen
+sequence and pattern infima, without a countability hypothesis.
+
+\item \emph{Strict separation at period one.}
+For the Thue--Morse realization,
+\begin{align*}
+ 0=h_{\mathrm{inv}}(Y)
+ <\log2=\inf_{\mathcal C\in\mathfrak C_{\mathrm{Bor}}(Y,1)}
+ h_{\mathrm{pat}}^*(\mathcal C;Y).
+\end{align*}
+The explicit schedule $a_i=4^{i-1}-1$ realizes all binary patterns on
+every initial segment. Both the zero consecutive-time rate and this
+sparse-time calculation are proved directly.
+\end{enumerate}
+
+The elementary symbolic matching mechanism should not itself be regarded
+as new. For comparison, Yao \cite[Theorem~3.1 and Proposition~4.5]{Yao2026}
+uses exact symbolic agreement in a continuous-time construction separating
+strict safety from neighborhood-based invariance. Our result concerns a
+different optimization: the period-one name languages of \emph{every}
+Borel invariant partition and their exact projection onto an arbitrary
+one-sided subshift. The Thue--Morse symbolic input is classical; its
+role here is to give a fully computed example of the control-language
+infimum.
+
+The contribution is thus a simultaneous counting argument coupled with an
+exact realization of sparse invariant-control languages. The proofs are
+elementary extensions of established entropy methods. We do not claim an
+unrestricted Borel minimax theorem for general control systems. We also
+do not identify a fixed-period sparse rate with a minimum communication
+rate per elapsed time. In fact, Proposition~\ref{prop:all-period-collapse} shows that
+minimizing the pattern rate over all periods recovers Kawan's invariance
+entropy. Fixing the sampling period is essential for the separation above.
+
+Section~\ref{sec:background} recalls the entropy background.
+Section~\ref{sec:control} constructs the admissible name systems.
+Sections~\ref{sec:comb} and \ref{sec:minimax} prove (A) and (B).
+Sections~\ref{sec:realization} and \ref{sec:thue-morse} prove (C) and (D).
+Section~\ref{sec:comparison} explains the all-period collapse and the
+remaining limitations.
+
+\section{Entropy background and the control interface}\label{sec:background}
+
+Write $\mathbb N=\{1,2,\ldots\}$ and $\mathbb N_0=\{0,1,2,\ldots\}$.
+All logarithms in this paper are natural. For a finite open cover
+$\mathcal V$ of a compact space, let $N(\mathcal V)$ be the minimum
+cardinality of a subcover. The join of finitely many covers consists of
+all intersections of one member from each cover, with empty intersections
+removed. For a continuous map $T:Z\to Z$ and a finite open cover
+$\mathcal V$, ordinary cover entropy is
+\begin{align*}
+ h_{\mathrm{top}}(T,\mathcal V)
+ =\lim_{n\to\infty}\frac1n\log N\left(
+ \bigvee_{i=0}^{n-1}T^{-i}\mathcal V\right).
+\end{align*}
+Submultiplicativity of cover numbers gives this limit. Taking the
+supremum over finite open covers defines $h_{\mathrm{top}}(T)$.
+For $A=(a_i)_{i\ge1}$ with $0\le a_1<a_2<\cdots$, set
+\begin{align*}
+ h_{\mathrm{top}}^A(T,\mathcal V)
+ &=\limsup_{n\to\infty}\frac1n\log N\left(
+     \bigvee_{i=1}^nT^{-a_i}\mathcal V\right),\\
+ p_{Z,\mathcal V}^*(n)
+ &=\max_{\substack{F\subset\mathbb N_0\\\#F=n}}
+    N\left(\bigvee_{i\in F}T^{-i}\mathcal V\right),\\
+ h_{\mathrm{top}}^*(T,\mathcal V)
+ &=\lim_{n\to\infty}\frac1n\log p_{Z,\mathcal V}^*(n).
+\end{align*}
+The sequence in the last line is subadditive before division by $n$;
+the arbitrary sequence in the first line need not have that property.
+This is why a limit and a limsup appear in different definitions.
+
+Huang--Ye's Theorem~2.1(1) states, under their convention that $T$ is a
+homeomorphism of a compact metric space, that
+\begin{equation}\label{eq:HY-background}
+ h_{\mathrm{top}}^*(T,\mathcal V)
+ =\max_A h_{\mathrm{top}}^A(T,\mathcal V).
+\end{equation}
+Its proof selects long nearly maximizing time sets and separates them
+by translations. Surjectivity preserves the cover number under a common
+translation. The previous sets contribute a vanishing fraction of the
+selected observations. For a non-surjective map the translation step
+need not preserve cover numbers; our proof uses deletion instead.
+
+If $\mathcal V$ is a clopen partition, the join count is exactly the
+number of names seen on the selected coordinates. An arbitrary open
+cover may have overlaps, so its minimum subcover count must not be
+replaced by the number of nonempty intersections. Similarly, the
+measurable version of \eqref{eq:HY-background} uses Shannon entropy
+$H_\mu(\alpha)=-\sum_{D\in\alpha}\mu(D)\log\mu(D)$, not the logarithm
+of a support cardinality. Our language counts use the latter quantity.
+Theorem~\ref{thm:A} is a counting statement, not a measurable
+common-sequence theorem.
+
+For a finite-alphabet subshift $Y$, the first-coordinate cylinders give
+one particular clopen partition. Its coordinate sequence rate is a
+cover-level quantity. Unlike ordinary topological entropy, sequence
+entropy need not be computed by a generating partition: replacing
+one-coordinate observations by fixed-length windows can change the
+normalized sparse rate. We therefore keep the subscript
+``$\mathrm{coord}$'' in the realization theorem and do not silently
+identify this rate with the supremum over all open covers.
+
+Kawan's Chapter~2 supplies the other interface. Definition~2.2 defines
+invariance entropy from finite-horizon spanning controls.
+Definitions~2.8 and 2.9 introduce invariant covers and their admissible
+word entropies. Proposition~2.21 proves word-count submultiplicativity;
+Proposition~2.22 bounds invariance entropy by invariant-cover entropy.
+Lemma~2.3 disjointizes a cover without increasing its name entropy.
+It does \emph{not} turn arbitrary nonmeasurable sets into Borel sets.
+Borel measurability in Theorem~2.3 comes from the safe sets associated
+with finitely many spanning controls and their successive differences.
+The theorem takes an infimum over sampling periods as well as
+partitions. We provide the discrete-time safe-set argument in
+Section~\ref{sec:comparison}, where its application to pattern rates is
+also made explicit.
+
+\section{Control systems and invariant name languages}\label{sec:control}
+
+Kawan's invariance entropy and consecutive-name partition entropy are measured in nats
+per physical time unit; the sparse-time normalizations are specified
+separately below.  Let $X$ be a
+metrizable space, let $U$ be a nonempty control set, and suppose that
+$f_u:=f(\,\cdot\,,u):X\to X$ is continuous for every $u\in U$.  For a finite
+control word $\omega=(\omega_0,\ldots,\omega_{N-1})\in U^N$, set
+\begin{align*}
+ \varphi(0,x,\omega)=x,
+ \qquad
+ \varphi(n+1,x,\omega)
+ =f\bigl(\varphi(n,x,\omega),\omega_n\bigr)
+ \quad(0\le n<N).
+\end{align*}
+A nonempty compact set $Q\subset X$ is \emph{controlled invariant} if every
+$x\in Q$ admits an infinite control whose complete forward trajectory stays in
+$Q$.
+
+For $N\in\N$, let $r_{\rm inv}(N,Q)$ be the least cardinality of a set
+$S\subset U^N$ such that for every $x\in Q$ some $\omega\in S$ satisfies
+\begin{align*}
+ \varphi(n,x,\omega)\in Q\qquad(0\le n\le N).
+\end{align*}
+If no finite such set exists, put $r_{\rm inv}(N,Q)=+\infty$.  The
+discrete-time invariance entropy is
+\begin{equation}\label{eq:hinv-definition}
+ \hinv(Q)=\limsup_{N\to\infty}\frac1N\log r_{\rm inv}(N,Q).
+\end{equation}
+Throughout, the admissible control space is the full sequence space
+$\mathcal U=U^{\Nzero}$; equivalently one may use Kawan's two-sided full
+control space and retain its nonnegative coordinates.  Every finite word
+therefore extends to an admissible infinite control, and finite-horizon
+dependence identifies the preceding spanning number with Kawan's.  Thus
+\eqref{eq:hinv-definition} is Kawan's definition with the logarithm converted
+from base two to base $e$; see \cite[Definition~2.2, p.~44]{Kawan2013}.
+
+Fix a sampling period $\tau\in\N$.  A \emph{finite invariant cover} of $Q$
+with period $\tau$ is a triple $\C=(\Acal,\tau,\nu)$, where $\Acal$ is a finite
+cover of $Q$ and $\nu(D)\in U^\tau$ is assigned to each $D\in\Acal$, such that
+\begin{equation}\label{eq:invariant-cover}
+ \varphi(s,x,\nu(D))\in Q
+ \qquad(x\in D,\ 0\le s\le\tau).
+\end{equation}
+This is the discrete-time specialization of Kawan's Definition~2.8
+\cite[p.~79]{Kawan2013}.  An \emph{invariant partition} is an invariant cover
+whose underlying family is a finite Borel partition of $Q$ into nonempty
+atoms.  It is \emph{clopen} if its atoms are clopen in $Q$.  We write
+\begin{align*}
+ \mathfrak C_{\Bor}(Q,\tau)&=\bigl\{\text{finite Borel invariant partitions of
+ }Q\text{ of period }\tau\bigr\},\\
+ \mathfrak C_{\clop}(Q,\tau)&=\bigl\{\C\in\mathfrak C_{\Bor}(Q,\tau):
+ \C\text{ is clopen}\bigr\},\\
+ \mathfrak C_{\Bor}(Q)&=\bigcup_{\tau\in\N}\mathfrak C_{\Bor}(Q,\tau).
+\end{align*}
+We use the extended-value convention $\inf\varnothing=+\infty$.
+
+Let $\C=(\{D_i:i\in I_\C\},\tau,\nu)$ be an invariant partition, with
+$I_\C$ a finite nonempty alphabet.  For
+$a=(a_0,\ldots,a_{N-1})\in I_\C^N$, concatenate the assigned blocks in that
+order.  The word $a$ is \emph{admissible} if some $x\in D_{a_0}$ follows this
+concatenated control and satisfies
+\begin{equation}\label{eq:admissible-word}
+ \varphi(j\tau,x,\nu(D_{a_0})\cdots\nu(D_{a_{N-1}}))
+ \in D_{a_j}\qquad(0\le j<N).
+\end{equation}
+The set of such words is $W_N(\C;Q)$.  These are the partition words of
+Kawan's Definition~2.9 \cite[pp.~79--80]{Kawan2013}.
+
+\begin{lemma}[Safety, suffixes, and right extension]\label{lem:safety}
+Let $\C$ be an invariant partition.
+\begin{enumerate}
+\item A witness for $a\in W_N(\C;Q)$ remains in $Q$ at every physical time
+from $0$ through $N\tau$ under the concatenated blocks.
+\item Every prefix and every suffix of an admissible word is admissible.
+\item Every $a\in W_N(\C;Q)$ has a right extension in
+$W_{N+1}(\C;Q)$.  In particular, every finite admissible word has an
+infinite right extension.
+\item For $M,N\in\N$,
+\begin{equation}\label{eq:word-submult}
+ \#W_{M+N}(\C;Q)
+ \le \#W_M(\C;Q)\,\#W_N(\C;Q).
+\end{equation}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+On block $j$, condition \eqref{eq:invariant-cover}, applied to the state in
+$D_{a_j}$, keeps the trajectory in $Q$ throughout the next $\tau$ steps.
+Induction proves (i).  Prefixes are immediate.  A suffix beginning at block
+$j$ is witnessed by the state at time $j\tau$, which proves (ii).
+
+At time $N\tau$ the terminal state belongs to a unique atom $D_b$.
+Appending $b$ and its assigned block gives an admissible word of length
+$N+1$, proving (iii) without compactness.  Finally, an admissible word of
+length $M+N$ is determined injectively by its length-$M$ prefix and
+length-$N$ suffix.  Part (ii) places these in $W_M$ and $W_N$, respectively,
+and gives \eqref{eq:word-submult}.
+\end{proof}
+
+Define the finite-prefix name system
+\begin{equation}\label{eq:name-system}
+ \Sigma_\C=\bigl\{a\in I_\C^{\Nzero}:a|_{[0,N-1]}\in W_N(\C;Q)
+ \text{ for every }N\in\N\bigr\}.
+\end{equation}
+We give $I_\C$ the discrete topology and $\Sigma_\C$ the subspace topology
+from $I_\C^{\Nzero}$.  Its complement is a union of cylinders determined by
+forbidden finite prefixes, so $\Sigma_\C$ is closed.
+Lemma~\ref{lem:safety}(iii) shows that every word in $W_N$ is the initial
+word of some element of $\Sigma_\C$.  Lemma~\ref{lem:safety}(ii) shows
+$\sigma(\Sigma_\C)\subset\Sigma_\C$; surjectivity need not hold.  For Borel
+atoms, an element of $\Sigma_\C$ need not have one common state witness for
+all its prefixes.  Our definitions use only finite projections and do not
+assume such a witness.
+
+There is a useful concrete description of $\Sigma_\C$. The feedback
+block map and its consecutive atom names also appear in the numerical
+framework of \cite[Section~2]{TomarKawanZamani2022}. Define
+\begin{align*}
+ T_\C(x)=\varphi(\tau,x,\nu(D_i))\quad\text{if }x\in D_i,
+\end{align*}
+and its atom itinerary $\iota_\C(x)$ by
+$(\iota_\C(x))_j=i$ if $T_\C^j(x)\in D_i$.
+Each branch of $T_\C$ is continuous, and $T_\C$ is Borel measurable;
+it need not be continuous when the atoms are merely Borel. Every finite
+admissible word is the prefix of the actual itinerary of its witness.
+Conversely every actual itinerary has admissible prefixes. It follows that
+\begin{equation}\label{eq:itinerary-closure}
+ \Sigma_\C=\overline{\iota_\C(Q)}.
+\end{equation}
+Indeed, each prefix cylinder meeting $\Sigma_\C$ meets
+$\iota_\C(Q)$, which proves density, and all actual itineraries belong
+to the closed set $\Sigma_\C$.
+
+\begin{remark}[Infinite witnesses]\label{rem:witness}
+If the atoms are clopen, $T_\C$ and $\iota_\C$ are continuous.
+Compactness of $Q$ makes $\iota_\C(Q)$ closed, so every element of
+$\Sigma_\C$ has a common state witness. Equivalently, the sets of witnesses
+for its finite prefixes are nested nonempty compact sets.
+
+This conclusion can fail for a Borel partition even in a compact
+continuous system with one control. Take $Q=X=[0,1]$,
+$f(x)=\min\{2x,1\}$, $D_0=(0,1/2)$ and $D_1=Q\setminus D_0$.
+Both atoms receive the unique control, so the partition is invariant.
+For every $N$, the point $x_N=2^{-N-1}$ witnesses the word $0^N$:
+for $0\le j<N$, $f^j(x_N)=2^{j-N-1}\in(0,1/2)$.
+Thus $0^\infty\in\Sigma_\C$. No point witnesses this infinite name:
+zero is outside $D_0$, and every positive point eventually leaves $D_0$.
+\end{remark}
+
+For a nonempty finite $F\subset\Nzero$, put
+\begin{equation}\label{eq:control-pattern-count}
+ \Patt_\C(F)=\#\{a|_F:a\in\Sigma_\C\}.
+\end{equation}
+Equivalently, if $m=\max F$, this is the number of projections of
+$W_{m+1}(\C;Q)$ onto $F$.  Thus a counted pattern always has a finite witness
+that remains in $Q$ also between the selected block times.
+
+Let
+\begin{align*}
+ \mathscr S=\{A=(a_n)_{n\ge1}:0\le a_1<a_2<\cdots, a_n\in\Nzero\}.
+\end{align*}
+Define
+\begin{align}
+ p_\C^*(n)&=\max_{\substack{F\subset\Nzero\\\#F=n}}\Patt_\C(F),
+ \label{eq:pstar-control}\\
+ \hpat(\C;Q)&=\lim_{n\to\infty}\frac1{n\tau}\log p_\C^*(n),
+ \label{eq:hpat-control}\\
+ \hseq^A(\C;Q)&=\limsup_{n\to\infty}\frac1{n\tau}
+ \log\Patt_\C(\{a_1,\ldots,a_n\}).
+ \label{eq:hseq-control}
+\end{align}
+The existence of the limit in \eqref{eq:hpat-control} follows from
+Lemma~\ref{lem:pattern-submult} below.  Although there are infinitely many
+$n$-element subsets of $\Nzero$, the maximum in \eqref{eq:pstar-control}
+exists: its possible values form a nonempty subset of
+$\{1,\ldots,(\#I_\C)^n\}$.
+
+The entries of $A$ are \emph{block indices}; the corresponding physical
+observation times are $\tau A=(\tau a_n)_{n\ge1}$.  The normalization in
+\eqref{eq:hseq-control} is $n\tau$, not the elapsed horizon $a_n\tau$.
+For fixed $\tau$, $A\mapsto\tau A$ is a bijection between block-index
+schedules and physical schedules contained in $\tau\Nzero$.  If sampling
+periods vary, the same block-index sequence represents different physical
+schedules.
+
+The ordinary consecutive-name entropy is
+\begin{equation}\label{eq:ordinary-partition-entropy}
+ h(\C;Q)=\lim_{N\to\infty}\frac1{N\tau}\log\#W_N(\C;Q),
+\end{equation}
+whose limit exists by \eqref{eq:word-submult} and Fekete's lemma.
+
+\section{Simultaneous attainment for pattern systems}\label{sec:comb}
+
+A \emph{finite-alphabet pattern system} is a nonempty set
+$\Omega\subset E^{\Nzero}$ with $E$ finite and nonempty.  No topology or
+shift invariance is imposed.  For finite $F\subset\Nzero$, write
+\begin{align*}
+ \Patt_\Omega(F)=\#\{x|_F:x\in\Omega\},
+ \qquad
+ p_\Omega^*(n)=
+ \max_{\substack{F\subset\Nzero\\\#F=n}}\Patt_\Omega(F).
+\end{align*}
+With a fixed scale $\tau>0$, define
+\begin{align*}
+ \hpat(\Omega;\tau)&=\lim_{n\to\infty}
+       \frac1{n\tau}\log p_\Omega^*(n),\\
+ \hseq^A(\Omega;\tau)&=\limsup_{n\to\infty}
+       \frac1{n\tau}\log
+       \Patt_\Omega(\{a_1,\ldots,a_n\}).
+\end{align*}
+The maximum exists: its possible values form a nonempty subset of the finite
+integer set $\{1,\ldots,(\#E)^n\}$.
+
+We use $\Patt_\Omega(\varnothing)=1$ when needed.
+Taking the product-topology closure of $\Omega$ changes none of its
+finite projections: a cylinder meeting $\overline\Omega$ already meets
+$\Omega$. Thus dispensing with closedness is only a matter of
+formulation. The absence of shift invariance, in contrast, matters to the
+placement of the coordinate sets.
+
+\begin{lemma}[Pattern submultiplicativity and deletion]\label{lem:pattern-submult}
+Let $\Omega\subset E^{\Nzero}$ be a pattern system and $q=\#E$.
+For $m,n\in\N$ and finite $B\subset F\subset\Nzero$,
+\begin{align}
+ p_\Omega^*(m+n)&\le p_\Omega^*(m)p_\Omega^*(n),
+ \label{eq:pattern-submult}\\
+ \Patt_\Omega(F)&\le q^{\#(F\setminus B)}\Patt_\Omega(B).
+ \label{eq:deletion} 
+\end{align}
+If $B\subset G$, then $\Patt_\Omega(B)\le\Patt_\Omega(G)$.
+Consequently,
+\begin{equation}\label{eq:fekete-pstar}
+ \hpat(\Omega;\tau)
+ =\inf_{n\ge1}\frac1{n\tau}\log p_\Omega^*(n),
+ \qquad
+ \log p_\Omega^*(n)\ge n\tau\hpat(\Omega;\tau).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Split any $(m+n)$-element set into disjoint subsets of sizes $m$ and $n$.
+Restriction sends a pattern on the union injectively to the pair of its two
+restrictions, proving \eqref{eq:pattern-submult}.  Restriction from $F$ to
+$B$ has fibers of cardinality at most $q^{\#(F\setminus B)}$, which proves
+\eqref{eq:deletion}.  If $B\subset G$, every pattern on $B$ extends to a
+pattern on $G$ using the same element of $\Omega$, giving monotonicity.
+Fekete's lemma applied to $\log p_\Omega^*(n)$ proves
+\eqref{eq:fekete-pstar}.
+\end{proof}
+
+For comparison, let $\Omega=\{0^\infty,10^\infty\}$. This set is a
+closed one-sided subshift, but
+$\Patt_\Omega(\{0\})=2$ and $\Patt_\Omega(\{m\})=1$ for $m\ge1$.
+One cannot simply translate a maximizing set. Deleting a finite initial
+interval has a different advantage: the number of lost coordinates is
+bounded independently of the size of the maximizing set. Inequality
+\eqref{eq:deletion} turns this bound into a controlled information loss.
+
+\begin{theorem}[Simultaneous attainment]\label{thm:A}
+Fix $\tau>0$.  For every countable family
+$(\Omega_j)_{j\ge1}$ of finite-alphabet pattern systems, there is one
+$A\in\mathscr S$ such that
+\begin{equation}\label{eq:simultaneous-attainment}
+ \hseq^A(\Omega_j;\tau)=\hpat(\Omega_j;\tau)
+ \qquad(j\ge1).
+\end{equation}
+Thus the maximal-pattern entropy rate of each system is attained along the same
+sequence.  No closedness, compactness, shift invariance, shift surjectivity, or
+backward extension is required.
+\end{theorem}
+
+\begin{proof}
+Let $E_j$ be the alphabet of $\Omega_j$, put $q_j=\#E_j$ and
+$h_j^*=\hpat(\Omega_j;\tau)$.  For every $A$ and $n$,
+\begin{align*}
+ \Patt_{\Omega_j}(\{a_1,\ldots,a_n\})\le p_{\Omega_j}^*(n),
+\end{align*}
+so \eqref{eq:fekete-pstar} gives
+$\hseq^A(\Omega_j;\tau)\le h_j^*$.
+
+Choose an enumeration of stages
+\begin{align*}
+ (j_k)_{k\ge1}=(1;\ 1,2;\ 1,2,3;\ 1,2,3,4;\ldots),
+\end{align*}
+where semicolons only separate finite groups. Every positive integer
+occurs infinitely often. Choose $\eta_k>0$ with $\eta_k\to0$.  We recursively
+construct nonempty finite sets $B_k$, each lying strictly to the right of all
+previous ones.  Put
+\begin{align*}
+ G_{k-1}=\bigcup_{i<k}B_i,
+ \qquad r_{k-1}=\#G_{k-1},
+ \qquad M_{k-1}=\max G_{k-1},
+\end{align*}
+with $r_0=0$ and $M_0=-1$.
+
+If $h_{j_k}^*>0$, choose $n_k$ so large that
+\begin{equation}\label{eq:explicit-losses}
+ n_k>M_{k-1}+1,
+ \qquad
+ \frac{(M_{k-1}+1)\log q_{j_k}}{n_k\tau}<\eta_k,
+ \qquad
+ \frac{r_{k-1}}{n_k}<\eta_k.
+\end{equation}
+The quantities on the numerators are fixed before $n_k$ is chosen,
+so these requirements can be satisfied even if the previously selected
+coordinates are extremely far apart. Notice that $M_{k-1}+1$ bounds the
+number of \emph{possible} old positions, whereas $r_{k-1}$ counts the
+positions actually selected. The former controls deletion; the latter
+controls dilution by historical observations. No uniform bound on $q_j$
+or on the coordinate gaps is required. Choose an
+$n_k$-element $F_k$ attaining $p_{\Omega_{j_k}}^*(n_k)$ and set
+\begin{align*}
+ B_k=F_k\cap\{M_{k-1}+1,M_{k-1}+2,\ldots\}.
+\end{align*}
+At most $M_{k-1}+1$ coordinates are deleted, and the first condition in
+\eqref{eq:explicit-losses} makes $B_k$ nonempty.  If $h_{j_k}^*=0$, set
+$B_k=\{M_{k-1}+1\}$.
+
+Let $A$ be the increasing enumeration of $\bigcup_{k\ge1}B_k$.  Fix $j$
+with $h_j^*>0$ and restrict to the infinitely many stages with $j_k=j$.
+Write $b_k=\#B_k$ and $R_k=r_{k-1}+b_k=\#G_k$; then $G_k$ consists of the
+first $R_k$ entries of $A$.  By deletion, \eqref{eq:fekete-pstar}, and
+monotonicity,
+\begin{align}
+ \log\Patt_{\Omega_j}(G_k)
+ &\ge \log\Patt_{\Omega_j}(B_k)\notag\\
+ &\ge \log p_{\Omega_j}^*(n_k)-(M_{k-1}+1)\log q_j\notag\\
+ &\ge n_k\tau h_j^*-(M_{k-1}+1)\log q_j.
+ \label{eq:endpoint-numerator}
+\end{align}
+Also $R_k\le r_{k-1}+n_k$.  At all sufficiently late such stages the last
+line of \eqref{eq:endpoint-numerator} is positive.  Dividing by $R_k\tau$
+and using \eqref{eq:explicit-losses} yields the explicit endpoint estimate
+\begin{equation}\label{eq:endpoint-bound}
+ \frac1{R_k\tau}\log\Patt_{\Omega_j}(G_k)
+ >\frac{h_j^*-\eta_k}{1+\eta_k}.
+\end{equation}
+For a fixed $j$, the indices $k$ with $j_k=j$ tend to infinity, hence
+$\eta_k\to0$ along those stages. Since every $B_i$ is nonempty,
+$R_k\ge k\to\infty$. The limsup along these
+endpoints is at least $h_j^*$, proving the lower
+bound.  If $h_j^*=0$, the universal upper bound and nonnegativity give
+equality for every $A$.  This proves \eqref{eq:simultaneous-attainment} for
+all $j$.
+\end{proof}
+
+\begin{remark}[What is attained]\label{rem:attainment}
+The theorem asserts equality of limsup rates. It does not assert a common
+subsequence of endpoints on which every system is simultaneously close
+to its maximal rate. The good endpoints used for different $j$ can be
+different. Nor does it assert convergence of the normalized counts.
+For example, take $\tau=1$, let $B\subset\Nzero$ and its complement both be infinite,
+and let $\Omega_B$ consist of all binary sequences supported on $B$.
+For any schedule, the two normalized logarithmic counts for $\Omega_B$
+and $\Omega_{\Nzero\setminus B}$ add to $\log2$ at every $n$, although
+both maximal-pattern rates are $\log2$. They cannot both converge to
+$\log2$. The two limsups, however, can both equal $\log2$.
+
+Exact finite-level maximization is also a stronger and generally false
+requirement. Put
+\begin{align*}
+ \Omega=\{0x:x\in\{0,1\}^{\Nzero}\}\cup\{10^\infty,20^\infty\}
+ \subset\{0,1,2\}^{\Nzero}.
+\end{align*}
+The unique maximizing singleton is $\{0\}$, with three patterns.
+For a three-element set containing zero there are six patterns, whereas
+any three positive coordinates realize eight patterns. No increasing
+sequence maximizes the counts at both levels $n=1$ and $n=3$.
+\end{remark}
+
+\begin{corollary}[Fixed-language attainment]\label{cor:fixed}
+For every finite-alphabet pattern system $\Omega$ and every $\tau>0$,
+\begin{equation}\label{eq:fixed-attainment}
+ \hpat(\Omega;\tau)=\max_{A\in\mathscr S}\hseq^A(\Omega;\tau).
+\end{equation}
+The same identity holds for every finite Borel invariant partition $\C$ after
+putting $\Omega=\Sigma_\C$.
+\end{corollary}
+
+\section{A language-quotient minimax theorem}\label{sec:minimax}
+
+Fix a compact controlled-invariant set $Q$ and one period $\tau\in\N$.
+For two invariant partitions $\C$ and $\D$ of this period, write
+$\C\sim_{\lang}\D$ if there is a bijection
+$\pi:I_\C\to I_\D$ such that, for every $N\in\N$,
+\begin{equation}\label{eq:language-equivalence}
+ \pi^N(W_N(\C;Q))=W_N(\D;Q),
+\end{equation}
+where $\pi^N$ acts coordinatewise.  This is \emph{language equivalence}.
+Identity, inverse, and composition of the alphabet bijections show that
+$\sim_{\lang}$ is an equivalence relation.  If $F\subset\Nzero$ is finite and
+$m=\max F$, then \eqref{eq:language-equivalence} at length $m+1$, followed by
+projection onto $F$, gives a bijection between the two $F$-pattern sets.
+Thus language-equivalent partitions have identical finite-coordinate pattern
+counts and identical sequence and maximal-pattern complexities.
+
+For a nonempty class $\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$, set
+\begin{align}
+ H_{\rm pat}^*(Q;\mathfrak C)
+ &=\inf_{\C\in\mathfrak C}\hpat(\C;Q),
+ \label{eq:system-pattern}\\
+ H_{\rm seq}^A(Q;\mathfrak C)
+ &=\inf_{\C\in\mathfrak C}\hseq^A(\C;Q).
+ \label{eq:system-sequence}
+\end{align}
+Every individual rate is nonnegative and finite, and because the class is nonempty both
+infima are finite; no uniform bound on the numbers of atoms is needed.
+
+The elementary minimax inequality gives only
+\begin{align*}
+ \sup_A\inf_{\C\in\mathfrak C}\hseq^A(\C;Q)
+ \le\inf_{\C\in\mathfrak C}\sup_A\hseq^A(\C;Q)
+ =H_{\rm pat}^*(Q;\mathfrak C).
+\end{align*}
+Separate maximizing schedules for separate partitions do not give the
+opposite inequality. For instance, a two-by-two array with zero diagonal
+and unit off-diagonal has maximum row minimum zero and minimum column
+maximum one. The next theorem avoids this logical obstruction by
+attaining every individual rate at one schedule.
+
+\begin{theorem}[Minimax over countably many language types]\label{thm:B}
+Let $\varnothing\ne\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$ and suppose
+that the quotient $\mathfrak C/{\sim_{\lang}}$ is finite or countable.  There
+is one $A\in\mathscr S$ such that
+\begin{equation}\label{eq:pointwise-class-attainment}
+ \hseq^A(\C;Q)=\hpat(\C;Q)
+ \qquad(\C\in\mathfrak C).
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:minimax}
+ \max_{B\in\mathscr S}\inf_{\C\in\mathfrak C}
+ \hseq^B(\C;Q)
+ =\inf_{\C\in\mathfrak C}\hpat(\C;Q).
+\end{equation}
+The outer maximum is attained; the partition infimum need not be attained.
+\end{theorem}
+
+\begin{proof}
+Choose one representative $\C_j$ of each language-equivalence class.
+Enumerate the representatives, repeating them periodically when the quotient
+is finite, and apply Theorem~\ref{thm:A} to the resulting countable family
+$\Sigma_{\C_j}$, using the common scale $\tau$.  The resulting $A$ gives equality for each
+representative.  Language equivalence preserves all finite pattern counts, so
+it gives \eqref{eq:pointwise-class-attainment} for every $\C\in\mathfrak C$.
+Taking the infimum over $\C$ gives equality at this $A$.
+
+For any $B\in\mathscr S$, Corollary~\ref{cor:fixed} gives
+$\hseq^B(\C;Q)\le\hpat(\C;Q)$ for every $\C$.  Taking first the infimum over
+$\C$ and then the supremum over $B$ proves the reverse minimax inequality and
+hence \eqref{eq:minimax}.  If the pattern infimum is zero, the pointwise upper
+bound and nonnegativity in fact give
+$\inf_{\C\in\mathfrak C}\hseq^B(\C;Q)=0$ for every $B\in\mathscr S$, without
+any countability assumption.
+\end{proof}
+
+The hypothesis concerns the symbolic behavior generated on $Q$, not the
+names of controls used to present a strategy.  It identifies alphabet renumberings and strategies with the same
+admissible language after such a renumbering. It does not merge distinct
+atoms merely because their assigned controls agree.  It is therefore closer to an intrinsic
+statement about the chosen partition class, although it remains relative to
+that class and to the fixed period.
+
+\begin{proposition}[A verifiable clopen sufficient condition]
+\label{prop:digital}
+Assume that $Q$ is compact metrizable and that the control alphabet $U$ is
+countable.  Then
+$\mathfrak C_{\clop}(Q,\tau)$ is countable.  Hence, if this class is nonempty,
+Theorem~\ref{thm:B} applies to it.  In particular this holds when $U$ is a
+finite digital alphabet.
+\end{proposition}
+
+\begin{proof}
+A compact metrizable space has a countable base.  Every clopen subset is
+compact and hence is a finite union of basic open sets contained in it.  Thus
+$Q$ has only countably many clopen subsets and only countably many finite
+clopen partitions.  Since $\tau$ is finite, $U^\tau$ is countable.  A finite
+partition admits only countably many block assignments.  The invariant assignments form a
+subcollection.
+\end{proof}
+
+Theorem~\ref{thm:B} fixes $\tau$.  It does not produce one common
+physical-time schedule for partitions of different periods and proves no
+minimax identity over $\mathfrak C_{\Bor}(Q)$.
+
+\begin{example}[A purely combinatorial uncountable obstruction]
+\label{ex:uncountable}
+For every infinite $B\subset\Nzero$, let
+\begin{align*}
+ \Omega_B=\{x\in\{0,1\}^{\Nzero}:\supp(x)\subset B\}.
+\end{align*}
+At scale $\tau=1$,
+\begin{align*}
+ \Patt_{\Omega_B}(F)=2^{\#(F\cap B)},
+ \qquad \hpat(\Omega_B;1)=\log2.
+\end{align*}
+For $A=(a_i)\in\mathscr S$,
+\begin{align*}
+ \hseq^A(\Omega_B;1)
+ =\log2\cdot\limsup_{n\to\infty}
+ \frac{\#(B\cap\{a_1,\ldots,a_n\})}{n}.
+\end{align*}
+If $\Nzero\setminus\{a_i:i\ge1\}$ is infinite, choose an infinite $B$ in that
+complement.  Otherwise choose $B=\{a_{k^2}:k\ge1\}$.  In either case the
+displayed upper density is zero.  Therefore
+\begin{equation}\label{eq:abstract-obstruction}
+ \sup_{A\in\mathscr S}
+ \inf_{\substack{B\subset\Nzero\\B\text{ infinite}}}
+ \hseq^A(\Omega_B;1)=0
+ <\log2
+ =\inf_{\substack{B\subset\Nzero\\B\text{ infinite}}}
+ \hpat(\Omega_B;1).
+\end{equation}
+This proves only that minimax exchange is not a formal consequence of
+pointwise attainment for arbitrary uncountable pattern families.  Every
+invariant-partition name system satisfies
+$\sigma(\Sigma_\C)\subset\Sigma_\C$ by suffix closure.  In contrast,
+$\sigma(\Omega_B)\subset\Omega_B$ forces $k-1\in B$ whenever
+$k\in B\setminus\{0\}$; an infinite such $B$ must equal $\Nzero$.  Hence the
+proper sparse sets producing \eqref{eq:abstract-obstruction} cannot occur as
+these autonomous control name systems.  The equation is not a deterministic
+control counterexample and yields no failure statement for the unrestricted
+Borel invariant-partition class.
+\end{example}
+
+\section{Realizing one-sided subshifts as safety systems}\label{sec:realization}
+
+Let $E$ be a finite nonempty discrete alphabet and let
+$\varnothing\ne Y\subset E^{\Nzero}$ be closed with $\sigma(Y)\subset Y$.
+Write
+\begin{align*}
+ \Lcal_N(Y)=\{y_0\cdots y_{N-1}:y\in Y\},
+ \qquad
+ P_Y(F)=\#\{y|_F:y\in Y\}.
+\end{align*}
+The coordinate complexities are
+\begin{align*}
+ h_{\rm seq,coord}^A(Y)
+ &=\limsup_{n\to\infty}\frac1n
+   \log P_Y(\{a_1,\ldots,a_n\}),\\
+ h_{\rm pat,coord}^*(Y)
+ &=\lim_{n\to\infty}\frac1n
+   \log\max_{\substack{F\subset\Nzero\\\#F=n}}P_Y(F).
+\end{align*}
+
+Adjoin an isolated cemetery point and give
+$X=Y\sqcup\{\dagger\}$ the topological disjoint-union topology.  Put $U=E$
+and define
+\begin{equation}\label{eq:matching-control}
+ f(y,u)=
+ \begin{cases}
+   \sigma y,&y_0=u,\\
+   \dagger,&y_0\ne u,
+ \end{cases}
+ \qquad
+ f(\dagger,u)=\dagger.
+\end{equation}
+
+\begin{theorem}[Symbolic-to-control realization]\label{thm:C}
+For the matching-control system \eqref{eq:matching-control}:
+\begin{enumerate}
+\item $X$ is compact metrizable, $f:X\times U\to X$ is continuous, and $Y$
+is a compact controlled-invariant set.
+\item For every $N\in\N$,
+\begin{equation}\label{eq:rinv-language}
+ r_{\rm inv}(N,Y)=\#\Lcal_N(Y),
+\end{equation}
+and therefore
+\begin{equation}\label{eq:hinv-htop}
+ \hinv(Y)=\htop(Y,\sigma)
+ =\lim_{N\to\infty}\frac1N\log\#\Lcal_N(Y).
+\end{equation}
+\item At period one identify $U^1$ with $U$.  If
+$\C=(\{D_i:i\in I_\C\},1,\nu)\in\mathfrak C_{\Bor}(Y,1)$, set
+$\lambda_\C(i)=\nu(D_i)\in E$.  Then every atom satisfies
+\begin{equation}\label{eq:atom-cylinder}
+ D_i\subset[\lambda_\C(i)]_Y
+ :=\{y\in Y:y_0=\lambda_\C(i)\}.
+\end{equation}
+Moreover, the one-block label map
+\begin{equation}\label{eq:label-factor}
+ \Lambda_\C:\Sigma_\C\longrightarrow Y,
+ \qquad (a_j)_{j\ge0}\longmapsto(\lambda_\C(a_j))_{j\ge0},
+\end{equation}
+is a continuous, onto, shift-commuting map.
+\item For every $A\in\mathscr S$,
+\begin{align}
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hseq^A(\C;Y)
+ =h_{\rm seq,coord}^A(Y),
+ \label{eq:seq-realization}\\
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hpat(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hpat(\C;Y)
+ =h_{\rm pat,coord}^*(Y),
+ \label{eq:pat-realization}\\
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}h(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}h(\C;Y)
+ =\htop(Y,\sigma).
+ \label{eq:ordinary-realization}
+\end{align}
+Every Borel and clopen infimum in
+\eqref{eq:seq-realization}--\eqref{eq:ordinary-realization} is attained by
+the same first-coordinate cylinder partition.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The space $X$ is the union of the two clopen compact sets $Y$ and
+$\{\dagger\}$, hence is compact metrizable.  For fixed $u\in E$, the sets
+$[u]_Y$, $Y\setminus[u]_Y$, and $\{\dagger\}$ are clopen; on them $f_u$ is,
+respectively, the shift or a constant.  Thus $f_u$ is continuous.  Since $U$
+is finite discrete, $f$ is jointly continuous.  Choosing $u=y_0$ sends $y$
+to $\sigma y\in Y$, proving controlled invariance.
+
+A direct induction gives
+\begin{equation}\label{eq:safe-iff-match}
+ \varphi(n,y,\omega)\in Y\ (0\le n\le N)
+ \quad\Longleftrightarrow\quad
+ \omega_j=y_j\ (0\le j<N).
+\end{equation}
+Indeed, after $j$ matches the state is $\sigma^j y$, whereas a mismatch enters
+$\dagger$ permanently.  Hence a length-$N$ control word is safe from at
+least one state of $Y$ exactly when it belongs to $\Lcal_N(Y)$, and then it
+safely covers precisely its nonempty prefix cylinder.  Distinct language
+words give disjoint cylinders. More explicitly:
+
+\emph{Lower bound.} For each $w\in\Lcal_N(Y)$ choose $y^w\in Y$
+with prefix $w$. If $S\subset U^N$ spans $Y$, some member of $S$ is safe
+from $y^w$. By \eqref{eq:safe-iff-match} that member must equal $w$.
+Thus $\Lcal_N(Y)\subset S$, and
+$r_{\rm inv}(N,Y)\ge\#\Lcal_N(Y)$.
+
+\emph{Upper bound.} Take $S=\Lcal_N(Y)$. For any $y\in Y$, its
+prefix $y_0\cdots y_{N-1}$ belongs to $S$ and is safe through time $N$
+by \eqref{eq:safe-iff-match}. Hence
+$r_{\rm inv}(N,Y)\le\#\Lcal_N(Y)$.
+This proves \eqref{eq:rinv-language}.  The language counts are
+submultiplicative, so their normalized logarithms converge.
+
+For completeness, this limit is the usual topological entropy even when
+$\sigma|_Y$ is not onto.  The join of the first-coordinate cylinder cover
+through times $0,\ldots,N-1$ has exactly $\#\Lcal_N(Y)$ nonempty atoms.
+Conversely, given a finite open cover of compact $Y$, the partition into
+cylinders of some fixed length $m$ refines that cover; its $N$-fold dynamical join is
+then refined by the length-$(N+m-1)$ cylinders.  Taking exponential rates proves
+\eqref{eq:hinv-htop}.
+
+Let $\C=(\{D_i:i\in I_\C\},1,\nu)$ be a Borel invariant partition.  If
+$D_i$ contained $y$ with $y_0\ne\lambda_\C(i)$, its assigned control would send $y$ to
+$\dagger\notin Y$, contradicting safety.  This proves
+\eqref{eq:atom-cylinder}.
+
+Take $a=(a_j)_{j\ge0}\in\Sigma_\C$ and put $z_j=\lambda_\C(a_j)$.  For each
+$N$, choose a witness $y^{(N)}$ for the first $N$ symbols of $a$.  Induction
+using matching controls and \eqref{eq:atom-cylinder} gives
+$y^{(N)}_j=\lambda_\C(a_j)=z_j$ for $0\le j<N$.  Hence
+$y^{(N)}\to z$ in the product topology; since $Y$ is closed, $z\in Y$.  Thus
+$\Lambda_\C$ is well defined, and it is continuous: the preimage of a cylinder in $E^{\Nzero}$ is a finite
+union of cylinders in $I_\C^{\Nzero}$, restricted to $\Sigma_\C$.
+It is shift commuting because
+$(\Lambda_\C(\sigma a))_j=\lambda_\C(a_{j+1})
+=(\sigma\Lambda_\C(a))_j$.  Given $y\in Y$, let $a_j$ be the unique index with
+$\sigma^j y\in D_{a_j}$.  Its assigned label is $y_j$, and $y$ witnesses
+every finite prefix of this atom itinerary.  Thus \eqref{eq:label-factor} is onto.  Here each prefix witness $y^{(N)}$ may be different. Its first $N$
+\emph{control labels} nevertheless equal those of $z$, so convergence to
+$z\in Y$ follows. This does not prove that $z$ follows the original atom
+name $a$; its orbit may meet different atoms with the same labels.
+Thus neither shift surjectivity nor a common atom-name witness is used.
+
+For every finite $F$, the coordinate projection of $\Lambda_\C$ is onto, so
+\begin{equation}\label{eq:partition-dominates-coordinate}
+ \Patt_\C(F)\ge P_Y(F).
+\end{equation}
+It follows that every Borel, and hence every clopen, invariant partition has
+sequence, maximal-pattern, and consecutive-name entropy at least the
+corresponding coordinate quantity.
+
+Let $E_Y=\{e\in E:[e]_Y\ne\varnothing\}$ and define
+\begin{align*}
+\C_0=(\{D_e=[e]_Y:e\in E_Y\},1,\nu_0),
+ \qquad \nu_0(D_e)=e.
+\end{align*}
+This is a clopen invariant partition.  Under the symbol identification,
+$W_N(\C_0;Y)=\Lcal_N(Y)$ and $\Sigma_{\C_0}=Y$; the latter follows from
+closedness of $Y$.  Equality holds in \eqref{eq:partition-dominates-coordinate}
+for every $F$.  Thus $\C_0$ attains all the lower bounds, proving
+\eqref{eq:seq-realization}--\eqref{eq:ordinary-realization}.
+\end{proof}
+
+\section{A strict Thue--Morse separation}\label{sec:thue-morse}
+
+Let $\vartheta(0)=01$, $\vartheta(1)=10$, and let
+\begin{align*}
+ \mathbf t=\lim_{r\to\infty}\vartheta^r(0)
+ =0110100110010110\cdots.
+\end{align*}
+Equivalently, $t_n=s_2(n)\pmod2$, where $s_2(n)$ is the number of ones in
+the binary expansion of $n$.  Let
+\begin{equation}\label{eq:thue-morse-shift}
+ Y=\overline{\{\sigma^m\mathbf t:m\ge0\}}
+ \subset\{0,1\}^{\Nzero}.
+\end{equation}
+This is the one-sided Thue--Morse orbit closure.  Its full maximal pattern
+complexity is classical \cite{KamaeZamboniWords2002,KamaeZamboniSystems2002}; the next
+proof is included to make both rates used in the control corollary explicit.
+
+\begin{proposition}[Exact symbolic rates]\label{prop:thue-morse}
+For every $N\ge1$,
+\begin{equation}\label{eq:TM-linear}
+ \#\Lcal_N(Y)\le8N.
+\end{equation}
+Hence $\htop(Y)=0$.  On the single schedule
+\begin{equation}\label{eq:TM-schedule}
+ A_{\rm TM}=(a_i)_{i\ge1},
+ \qquad a_i=4^{i-1}-1,
+\end{equation}
+one has, for every $k\ge1$,
+\begin{equation}\label{eq:TM-full-pattern}
+ P_Y(\{a_1,\ldots,a_k\})=2^k.
+\end{equation}
+The chosen coordinate set contains zero.  Since a cylinder is clopen, its
+patterns in the orbit closure are exactly the patterns obtained along shifts
+of $\mathbf t$; thus this calculation also matches the anchored word-pattern
+convention of \cite{KamaeZamboniWords2002}.  Consequently
+\begin{equation}\label{eq:TM-complexities}
+ h_{\rm seq,coord}^{A_{\rm TM}}(Y)
+ =h_{\rm pat,coord}^*(Y)=\log2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+A finite word is in $\Lcal_N(Y)$ exactly when it occurs as a factor of
+$\mathbf t$: one direction follows from the orbit, and the other from
+convergence in a prefix cylinder.  Choose $\ell=\lceil\log_2N\rceil$.  The
+identity $\mathbf t=\vartheta^\ell(\mathbf t)$ decomposes $\mathbf t$ into
+aligned supertiles of length $2^\ell$.  Since $N\le2^\ell$, every length-$N$
+factor is contained in $\vartheta^\ell(ab)$ for an adjacent two-letter factor
+$ab$.  There are at most four choices for $ab$ and at most $2^\ell$ starting
+offsets in the first supertile.  Therefore
+$\#\Lcal_N(Y)\le4\,2^\ell\le8N$, proving zero topological entropy.
+
+Fix $k\ge1$ and
+$\varepsilon=(\varepsilon_0,\ldots,\varepsilon_{k-1})\in\{0,1\}^k$.
+Put
+\begin{align*}
+ r=\#\{0\le i<k:\varepsilon_i=0\},
+ \qquad
+ q=\sum_{\substack{0\le i<k\\\varepsilon_i=0}}4^i
+ +(r\bmod2)4^k.
+\end{align*}
+Only even binary positions occur in this sum.  The binary digit sum of $q$ is
+$r+(r\bmod2)$, which is even, so $t_q=0$.  If $\varepsilon_i=1$, bit $2i$
+of $q$ is zero, and adding $4^i=2^{2i}$ changes the digit-sum parity.  If
+$\varepsilon_i=0$, bit $2i$ is one and bit $2i+1$ is zero; adding $2^{2i}$
+replaces these two bits by zero and one without a further carry, so the parity
+is unchanged.  In both cases
+\begin{equation}\label{eq:TM-digit-identity}
+ t_{q+4^i}=\varepsilon_i\qquad(0\le i<k).
+\end{equation}
+The extra bit at position $2k$ only corrects the initial parity of $q$.
+For $i<k$, a carry stops at the empty odd position $2i+1$, which is
+strictly below $2k$. The parity correction therefore interferes with
+none of these tests. Each addition $q+4^i$ is performed separately;
+we are not adding all the $4^i$'s successively to one integer.
+
+Set $n=q+1$. Since $a_{i+1}=4^i-1$,
+\begin{align*}
+ (\sigma^n\mathbf t)_{a_{i+1}}
+ =t_{q+4^i}=\varepsilon_i.
+\end{align*}
+Thus every binary $k$-pattern occurs on the first $k$ members of
+$A_{\rm TM}$, proving \eqref{eq:TM-full-pattern}.  The binary alphabet gives
+the reverse upper bound $p_Y^*(k)\le2^k$, and
+\eqref{eq:TM-complexities} follows.
+\end{proof}
+
+\begin{corollary}[Zero invariance entropy, full binary sparse-time complexity]
+\label{cor:separation}
+Apply the matching-control construction \eqref{eq:matching-control} to the
+Thue--Morse subshift \eqref{eq:thue-morse-shift}.  Then
+\begin{equation}\label{eq:strict-control-separation}
+ \hinv(Y)=0
+ <\log2
+ =\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hpat(\C;Y)
+ =\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hpat(\C;Y).
+\end{equation}
+Moreover, the explicit schedule $A_{\rm TM}$ satisfies
+\begin{align}
+ \max_{A\in\mathscr S}\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}
+ \hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hseq^{A_{\rm TM}}(\C;Y)
+ =\log2,
+ \label{eq:TM-Borel-sequence}\\
+ \max_{A\in\mathscr S}\inf_{\C\in\mathfrak C_{\clop}(Y,1)}
+ \hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hseq^{A_{\rm TM}}(\C;Y)
+ =\log2.
+ \label{eq:TM-clopen-sequence}
+\end{align}
+\end{corollary}
+
+\begin{proof}
+Combine Theorem~\ref{thm:C} with Proposition~\ref{prop:thue-morse}.  For any
+schedule the binary coordinate complexity is at most $\log2$, while
+$A_{\rm TM}$ attains $\log2$.  Equations
+\eqref{eq:seq-realization}--\eqref{eq:pat-realization} give the Borel and
+clopen infima.
+\end{proof}
+
+Corollary~\ref{cor:separation} is a deterministic control-system statement,
+not merely a symbolic analogy.  It also shows that the new sparse-time
+invariant-language infimum cannot in general be identified with Kawan's
+invariance entropy.
+
+\section{Comparison, all periods, and limitations}\label{sec:comparison}
+
+\subsection{Comparison with Kawan's invariance entropy}
+For every invariant partition, consecutive coordinates are one permissible
+choice in the maximal-pattern count. Therefore
+\begin{equation}\label{eq:ordinary-pattern-one-sided}
+ h(\C;Q)\le\hpat(\C;Q)\le\frac{\log\#I_\C}{\tau}.
+\end{equation}
+Kawan's Theorem~2.3, with natural logarithms, gives
+\begin{equation}\label{eq:kawan-characterization}
+ \hinv(Q)=\inf_{\C\in\mathfrak C_{\Bor}(Q)}h(\C;Q).
+\end{equation}
+Its hypotheses are satisfied by the full-control discrete-time systems
+used here: $X$ is metrizable, each controlled map is continuous, and
+$Q$ is nonempty, compact and controlled invariant.
+The period in this formula is allowed to vary.
+
+For clarity, the relevant argument can be given directly. Spanning
+families concatenate, so
+$r_{\rm inv}(m+n,Q)\le r_{\rm inv}(m,Q)r_{\rm inv}(n,Q)$ when the
+right-hand side is finite. Moreover $r_{\rm inv}(n,Q)$ is nondecreasing.
+If any finite-horizon spanning number is finite, then $r_{\rm inv}(1,Q)$
+is finite, all of them are finite by concatenation, and Fekete's lemma
+gives a limit in \eqref{eq:hinv-definition}. If none is finite, that
+limit equals $+\infty$.
+
+Let $S_N=\{\omega^1,\ldots,\omega^m\}$ be a minimal finite
+$N$-step spanning family. Its safe sets are
+\begin{align*}
+ K_i=Q\cap\bigcap_{s=1}^{N}
+       \{x\in X:\varphi(s,x,\omega^i)\in Q\}.
+\end{align*}
+They are closed in $Q$, since finite control compositions are continuous
+and $Q$ is closed. They cover $Q$. Set
+$D_1=K_1$ and $D_i=K_i\setminus\bigcup_{j<i}K_j$, discard empty sets,
+and assign $\omega^i$ to $D_i$. This gives a Borel invariant partition
+$\C_N$ of period $N$ with at most $m$ atoms. This is the measurable
+construction underlying Kawan's Theorem~2.3; Lemma~2.3 alone only
+provides disjointization. The safe sets are already closed before
+that lemma is applied.
+
+For the other inequality in \eqref{eq:kawan-characterization}, all
+admissible $k$-block words of any $\C$ form a spanning family after their
+assigned controls are concatenated. Indeed, from each initial state the
+feedback rule selects one such admissible word. Consequently
+$r_{\rm inv}(k\tau,Q)\le\#W_k(\C;Q)$, and taking limits gives
+$\hinv(Q)\le h(\C;Q)$. The reverse inequality follows from
+$h(\C_N;Q)\le N^{-1}\log r_{\rm inv}(N,Q)$ and $N\to\infty$.
+If no finite spanning family exists, no finite invariant partition exists,
+and both sides are $+\infty$.
+
+Thus, for every nonempty fixed-period subclass
+$\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$, the general comparison is
+\begin{equation}\label{eq:three-quantities}
+ \hinv(Q)
+ \le\inf_{\C\in\mathfrak C}h(\C;Q)
+ \le\inf_{\C\in\mathfrak C}\hpat(\C;Q).
+\end{equation}
+The minimax theorem concerns the last quantity. The Thue--Morse
+realization proves that it can strictly exceed $\hinv(Q)$.
+
+\subsection{Why the unrestricted all-period infimum collapses}
+There is a natural candidate for an all-period Borel quantity,
+\begin{align*}
+ H_{\rm pat,all}^{*,\Bor}(Q)
+ :=\inf_{\tau\in\N}\inf_{\C\in\mathfrak C_{\Bor}(Q,\tau)}
+       \hpat(\C;Q).
+\end{align*}
+The following proposition records the consequence of Kawan's spanning
+construction for this all-period quantity.
+
+\begin{proposition}[All-period collapse]\label{prop:all-period-collapse}
+In the full-control discrete-time setting of Section~\ref{sec:control}, every
+nonempty compact controlled-invariant set $Q$ satisfies
+\begin{equation}\label{eq:all-period-collapse}
+ H_{\rm pat,all}^{*,\Bor}(Q)=\hinv(Q).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The lower bound follows from
+\eqref{eq:three-quantities}. For the upper bound use the same
+$\C_N$ just constructed. Since its alphabet has at most
+$r_{\rm inv}(N,Q)$ symbols, every pattern on $k$ coordinates has at most
+$r_{\rm inv}(N,Q)^k$ possibilities. Hence
+\begin{align*}
+ H_{\rm pat,all}^{*,\Bor}(Q)
+ \le\hpat(\C_N;Q)
+ \le\frac{\log r_{\rm inv}(N,Q)}{N}.
+\end{align*}
+Let $N\to\infty$. The infinite-entropy case was already covered by
+nonexistence of finite invariant partitions. This proves
+\eqref{eq:all-period-collapse}.
+\end{proof}
+
+For the matching-control Thue--Morse example, the collapse is particularly
+visible. At period $N$, the length-$N$ cylinder partition with its matching
+control blocks is clopen, has at most $8N$ atoms and has pattern rate at
+most $N^{-1}\log(8N)$. Thus even the all-period clopen infimum is zero
+in this example, while the period-one Borel infimum is $\log2$.
+Changing the sampling period changes which information is packed into
+one observed symbol and the cost assigned to that symbol.
+
+\subsection{Countability, trajectories, and physical time}
+The countability hypothesis in Theorem~\ref{thm:B} is used exactly when
+one representative language from each class is listed and assigned
+infinitely many construction stages. Compact metrizability gives
+countably many clopen sets; it does not give countably many Borel sets
+or Borel name languages. No approximation theorem allowing that
+substitution is proved here. Example~\ref{ex:uncountable} rules out a
+formal uncountable extension for arbitrary pattern sets, but its
+non-shift-invariant examples do not settle the unrestricted autonomous
+control problem. Theorem~\ref{thm:C} bypasses countability in its specific
+realization by exhibiting a least language under the label projections.
+Whether a useful general Borel minimax theorem can be established beyond
+countably many language types remains outside the present results.
+
+The patterns count admissible language projections. Every finite pattern
+has a finite trajectory witness which stays safe between observations.
+An infinite point in the completed Borel name system may have only
+separate finite-prefix witnesses, as Remark~\ref{rem:witness} shows.
+This distinction cannot be removed by compactness alone when the atoms
+are not closed. The factor in Theorem~\ref{thm:C} is a factor of compact
+\emph{name systems}; it is not a continuous factor defined by an arbitrary
+Borel feedback map on the original state space.
+
+For one fixed $\tau$, $A$ denotes block indices and $\tau A$ denotes
+physical observation times. The normalization $n\tau$ charges one block
+length per observation and disregards the lengths of the gaps. A common
+block-index sequence for different periods would represent different
+physical schedules. Theorem~\ref{thm:A} could be applied to countably many
+languages with different positive normalizing constants by rescaling
+each equality, but that would not solve the distinct physical-time
+minimax problem. Formula~\eqref{eq:all-period-collapse} is an infimum
+identity and makes no common-schedule assertion.
+
+Finally, if one safe control block works for every point of $Q$, the
+one-atom invariant partition makes all three fixed-period infima zero
+for any class containing it. On a connected $Q$, every finite clopen
+partition has one atom. The full clopen class is therefore either empty
+or has zero pattern infimum, while Borel strategies can remain
+nontrivial. These observations explain both the usefulness and the
+limits of the clopen sufficient condition. The nontrivial separation
+studied here records the richness of safe symbolic instructions at a
+specified sampling period, despite a zero asymptotic count per elapsed
+time.
+
+\begin{thebibliography}{99}
+
+\bibitem{Goodman1974}
+T.~N.~T. Goodman,
+Topological sequence entropy,
+\emph{Proc. London Math. Soc.} (3) \textbf{29} (1974), 331--350,
+\doi{10.1112/plms/s3-29.2.331}.
+
+\bibitem{HuangMaassYe2004}
+W.~Huang, A.~Maass and X.~Ye,
+Sequence entropy pairs and complexity pairs for a measure,
+\emph{Ann. Inst. Fourier (Grenoble)} \textbf{54} (2004), 1005--1028,
+\doi{10.5802/aif.2041}.
+
+\bibitem{HuangYe2009}
+W.~Huang and X.~Ye,
+Combinatorial lemmas and applications to dynamics,
+\emph{Adv. Math.} \textbf{220} (2009), 1689--1716,
+\doi{10.1016/j.aim.2008.11.009}.
+
+\bibitem{Hulse1982}
+P.~Hulse,
+Sequence entropy and subsequence generators,
+\emph{J. London Math. Soc.} (2) \textbf{26} (1982), 441--450,
+\doi{10.1112/jlms/s2-26.3.441}.
+
+\bibitem{KamaeUniform2009}
+T.~Kamae,
+Uniform sets and complexity,
+\emph{Discrete Math.} \textbf{309} (2009), 3738--3747,
+\doi{10.1016/j.disc.2008.10.001}.
+
+\bibitem{KamaeZamboniWords2002}
+T.~Kamae and L.~Zamboni,
+Sequence entropy and the maximal pattern complexity of infinite words,
+\emph{Ergodic Theory Dynam. Systems} \textbf{22} (2002), 1191--1199,
+\doi{10.1017/S014338570200055X}.
+
+\bibitem{KamaeZamboniSystems2002}
+T.~Kamae and L.~Zamboni,
+Maximal pattern complexity for discrete systems,
+\emph{Ergodic Theory Dynam. Systems} \textbf{22} (2002), 1201--1214,
+\doi{10.1017/S0143385702000585}.
+
+\bibitem{Kawan2013}
+C.~Kawan,
+\emph{Invariance Entropy for Deterministic Control Systems: An Introduction},
+Lecture Notes in Mathematics, vol.~2089, Springer, Cham, 2013,
+\doi{10.1007/978-3-319-01288-9}.
+
+\bibitem{TomarKawanZamani2022}
+M.~S. Tomar, C.~Kawan and M.~Zamani,
+Numerical over-approximation of invariance entropy via finite abstractions,
+\emph{Systems Control Lett.} \textbf{170} (2022), article~105395,
+\doi{10.1016/j.sysconle.2022.105395}.
+
+\bibitem{Yao2026}
+S.~Yao,
+Invariance entropy in the dust,
+arXiv:2607.02279v1 (2026),
+\doi{10.48550/arXiv.2607.02279}.
+
+\end{thebibliography}
+
+\end{document}
