@@ -1,6 +1,6 @@
 # P4 当前研究状态
 
-更新：2026-10-02。目标仍为形成足以面向 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica 的重大数学贡献；没有成功承诺。
+更新：2026-10-03（Asia/Shanghai）。目标仍为形成足以面向 Annals of Mathematics、Inventiones Mathematicae、Journal of the American Mathematical Society、Acta Mathematica 的重大数学贡献；没有成功承诺。
 
 唯一原稿：[`original/P4_FINAL.tex`](original/P4_FINAL.tex)，SHA-256：
 
@@ -10,15 +10,22 @@ c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed
 
 基线提交：`c8691f194ec301760e044c2f41f0385a776a689f`，已原样回读核对。原稿不修改。无其他项目写入或冻结方向恢复。
 
-当前研究记录：[`upgrade/R01/RESEARCH.md`](upgrade/R01/RESEARCH.md)。
+当前研究记录：[`upgrade/R02/RESEARCH.md`](upgrade/R02/RESEARCH.md)。R02 的恢复提交为 `9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b`；启动时 main 无后续进展。R01 全部历史保留。
 
-实际结果：
+已有结果及本轮复核：
 
 - 原稿 A、B 主等式、C、Thue–Morse 显式序列和全周期坍缩的数学推导已重新核验。
 - B 的附句“分割下确界未必达到”错误：固定周期模式熵整数对数量化，非空策略类的该下确界必达到。完整独立推导已保存；量化 / 增长本身已有文献。
 - 完成共同紧致、联合连续自治控制系统中紧致 clopen 策略族的严格 minimax 反例。它否定紧致近似方法；不是全部 Borel / 有限控制集反例。显式混合反馈在同一系统中实现零模式熵。
 - 新反例原创性未核实；Huang–Ye、Kawan、Kamae–Zamboni 的关键原文仍有获取 / 精确引用缺口。不能称为全书 / 全文文献核验完成。
 
-候选判断：只比较两条。增长分类被既有研究覆盖，排除；全部 Borel 的内在 minimax 问题仍未解决，紧致策略近似方法已被反例否定，尚无四大分量证据。目前零条路线通过重大贡献立项，暂停整篇重写。
+R02 实际新增：
 
-下一入口：[`upgrade/R01/NEXT_COMMAND.md`](upgrade/R01/NEXT_COMMAND.md)。只允许在原候选一中做一次有限控制、全部安全选择器及混合反馈的有边界诊断，并补齐直接文献 / 原创性核查。没有新结构机制时应暂停，不补第三路线、不降低目标。
+- 证明有限控制下同控制块原子合并的精确化简：反馈轨道不变，名字映射满射且不增加任何有限模式数；全部下确界可限制到至多 `|U|^τ` 个标签的 Borel 安全选择器。
+- 完成四个控制的联合连续系统：`h_inv(Q)=0`，周期一全部 Borel 模式下确界为 `log 2`，全类数值极小极大等式成立；但没有一条采样序列逐策略达到每个 Borel 策略各自的最大模式熵。四标签子族各自为 `log 4`，每条固定序列都有成员降到不超过 `log 2`。全部 Borel 混合反馈已纳入精确下界。
+- 该语言束同时表明有限控制、合并后有限标签不能推出可数语言类型；点态乘积空间中的 Borel 安全选择器类也不自动紧致。
+- 新边界构造的原创性未认证。Tomar 与 Gao 的相关作者稿正文已直接补核；Huang–Ye、Kawan 专著、Kamae–Zamboni 关键全文仍未取得，不能宣称文献缺口已补齐。
+
+候选判断：没有新增路线。增长分类继续排除；一般全部 Borel 的**数值**极小极大问题未决定。R02 排除“逐策略共同达到”作为一般证明桥梁，没有获得解决数值问题或支撑重大后果的新机制。建议暂停当前四大升级路线及整篇重写；不意味着 P4 永远不能升级，不改成普通期刊任务。
+
+下一入口：[`upgrade/R02/NEXT_COMMAND.md`](upgrade/R02/NEXT_COMMAND.md)。仅复核已有边界结果和补核关键原文；无作用于一般数值等式的新证据时保持暂停，不自动开 R03、不补第三路线。
