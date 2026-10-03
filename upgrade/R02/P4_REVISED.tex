@@ -1,0 +1,724 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage{enumitem,microtype,xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\numberwithin{equation}{section}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2.2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\K}{\mathcal K}
+\newcommand{\Ssafe}{\mathscr S}
+\newcommand{\Patt}{\mathsf P}
+\newcommand{\hpat}{h^{*}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
+
+\title[Sparse sampling and Borel refinements]{Sparse Sampling and Borel Refinements of Closed Covers}
+\author{Ziqing Ding}
+\address{School of Mathematical Sciences, Nanjing Normal University,
+Nanjing 210023, China}
+\date{October 3, 2026}
+\subjclass[2020]{37B10, 37B40, 93C55}
+\keywords{sequence entropy, Borel partition, closed cover, symbolic dynamics,
+safe feedback, maximal pattern entropy}
+
+\begin{document}
+\begin{abstract}
+Let $T$ be conjugate to a positive power of a mixing one-sided shift of
+finite type, and let $\K$ be a finite closed cover of its state space.
+We prove that, along every increasing sequence whose successive gaps tend
+to infinity, the minimum combinatorial sequence entropy over all finite
+Borel partitions refining $\K$ is $\log N(\K)$, where $N(\K)$ is the
+minimum size of a subcover. The same partition attains this value for all
+such sequences and minimizes maximal pattern entropy. The sampling sequence
+is fixed before the Borel partition is chosen. The proof uses the
+nonmeager atoms of a partition, openness of the shift, and finite-type
+concatenation. Applied to safe control blocks with a common successor, the
+result gives an exact fixed-period minimax formula over all legal Borel
+feedbacks, including arbitrary Borel mixtures and atom refinements.
+A six-control system with two possible successors at each state has
+minimum safe-cover size three but full-feedback minimax value $\log 2$.
+Thus the cover formula need not survive feedback-dependent successors,
+even with clopen safety domains and continuous open branches.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+For a finite partition observed along an orbit, one can count the names
+seen at a prescribed sparse set of times. Two choices then arise: the
+sampling sequence and the observation partition. When observations must
+refine a given cover, it is natural to ask whether a single sequence,
+chosen before the partition, detects the least possible complexity.
+For Borel partitions this is not a finite-window question: the atoms need
+not contain open sets, and the partition may depend on the entire state.
+
+This paper determines that optimization for finite closed covers of
+mixing shifts of finite type. If $r$ is the minimum size of a subcover,
+then every sequence with gaps tending to infinity gives a lower bound
+$\log r$ for \emph{every} finite Borel refinement. An ordered difference
+partition of a minimum subcover attains the bound. In particular, the
+sequence $(0,1,4,9,\ldots)$ can be specified in advance. The theorem is
+about a common minimum threshold; it does not assert that this sequence
+maximizes the entropy of each individual partition.
+
+The distinction between a cover and its refining partitions is essential.
+Romagnoli \cite{Romagnoli2007} computed, on the two-sided full shift over
+$q>2$ symbols, a clopen cover with consecutive-time cover entropy
+$\log(q/(q-1))$ and minimum consecutive-time entropy $\log 2$ among its
+clopen refinements. The cover excludes the current symbol. Our result
+allows all Borel refinements, uses prescribed sparse times, and applies
+to arbitrary finite closed covers of mixing finite-type shifts. We spell
+out the corresponding sparse cover--partition gap in
+Corollary~\ref{cor:covergap}. This does not settle the consecutive-time
+Borel refinement question discussed in \cite{Romagnoli2007}.
+
+Common sampling and independence already have substantial precedents.
+Huang, Maass, and Ye \cite[Theorem~2.3]{HMY2004} identify the attained
+supremum of measure sequence entropies of a fixed partition. More
+particularly, their Lemma~3.3 and Theorem~3.5 give conditions on a
+measurable cover under which there is \emph{one} sampling sequence with a
+strictly positive lower bound for the measure sequence entropies of
+\emph{all} its finite measurable refinements. Hence a common positive
+threshold over Borel refinements, without further qualification, is not
+the contribution asserted here. Their bound uses an invariant measure
+and a sequence obtained from that cover; it is not the exact
+combinatorial value $\log N(\K)$ for every prescribed sequence with
+diverging gaps. The measure-cover quantities and their relation to
+independence are developed further by Kerr and Li
+\cite[Section~4 of the author version]{KL2009}.
+
+Li \cite[Theorem~2]{Li2002} characterizes topological weak mixing by
+sequence-entropy attainment for each regular open cover, with the
+sequence chosen for that cover. Huang and Ye
+\cite[Theorem~2.1]{HY2009} prove attainment of maximal pattern entropy by
+sequence entropy for a fixed open cover, as well as a measurable
+counterpart. Independence of finite patterns is part of the established
+framework of Kerr and Li \cite{KL2007}. We use the elementary
+finite-type form of this independence and give its proof. The additional
+step here is to pass from nonmeager Borel atoms to actual orbit patterns
+on every prescribed sequence with diverging gaps, and to convert
+closed-cover refinement into an exact cardinality optimization. Neither
+independence itself nor a new general variational principle is claimed.
+
+There is also a control interpretation. A safe feedback assigns a
+finite control block to each state and repeats this assignment at a
+fixed period. If all legal blocks have the same endpoint map, feedback
+does not alter the state dynamics at block boundaries, but may choose
+among overlapping safety domains in any Borel fashion. Theorem~\ref{thm:control}
+computes the full-feedback minimax value as $\log r/\tau$, without
+restricting feedbacks to continuous or finite-window rules. A positive
+example has overlapping safety domains and no nonconstant control-letter
+projection forced by every feedback. Finally, we give an exact example
+in which feedback changes the successor: the same cover number is three,
+while the full-class minimax value is $\log 2$. This is a boundary of the
+cover formula, not a counterexample to minimax equality itself.
+
+\section{Counting entropy and the closed-cover theorem}
+
+Let $Q$ be a nonempty compact metric space and let $T:Q\to Q$ be a Borel
+map. For a finite Borel partition $\alpha$ of $Q$ and a finite
+$F\subset\Nzero$, put
+\[
+ \Patt_\alpha(F)=
+ \left|\left\{(\alpha(T^k x))_{k\in F}:x\in Q\right\}\right|,
+\]
+where $\alpha(y)$ denotes the atom containing $y$ and empty atoms are
+discarded. Thus $\Patt_\alpha(F)$ is the number of nonempty atoms in
+$\bigvee_{k\in F}T^{-k}\alpha$. For a strictly increasing sequence
+$A=(a_i)_{i\ge1}$ in $\Nzero$, define
+\begin{align}
+ h_A(T,\alpha)&=\limsup_{n\to\infty}\frac1n
+       \log\Patt_\alpha(\{a_1,\ldots,a_n\}),\label{eq:seq}\\
+ p_\alpha^*(n)&=\max_{\substack{F\subset\Nzero\\ |F|=n}}
+                    \Patt_\alpha(F),
+ &\hpat(T,\alpha)&=\lim_{n\to\infty}\frac1n\log p_\alpha^*(n).
+ \label{eq:pat}
+\end{align}
+All logarithms are natural. These are combinatorial counting quantities;
+for Borel atoms they are not Shannon entropies of an invariant measure.
+The maximum in \eqref{eq:pat} exists because the counts are integers
+between $1$ and $|\alpha|^n$. Splitting a window into two parts gives
+$p_\alpha^*(n+m)\le p_\alpha^*(n)p_\alpha^*(m)$. Subadditivity proves the
+existence of the limit, and $h_A(T,\alpha)\le\hpat(T,\alpha)$.
+No invertibility or continuity of the observation is used here.
+
+Let $\K=(K_w)_{w\in W}$ be a finite closed cover of $Q$, and write
+\[
+ r=N(\K)=\min\{|I|:I\subset W,\ \bigcup_{w\in I}K_w=Q\}.
+\]
+The set $\mathcal B(\K)$ consists of all finite Borel partitions refining
+$\K$: each atom must be contained in at least one $K_w$. Equivalently,
+one may first consider all Borel maps $s:Q\to W$ with $x\in K_{s(x)}$,
+and then allow arbitrary finite Borel refinements of their fibers.
+
+Let $H$ be a primitive finite $0$--$1$ matrix, with vertex set $V$, and
+let
+\[
+ Y_H=\{y\in V^{\Nzero}:H_{y_jy_{j+1}}=1\text{ for all }j\ge0\}.
+\]
+Primitivity means that all sufficiently large powers of $H$ have strictly
+positive entries. Write $\sigma$ for the one-sided shift.
+
+\begin{theorem}\label{thm:cover}
+Suppose $T:Q\to Q$ is topologically conjugate to $\sigma^p:Y_H\to Y_H$
+for some primitive $H$ and integer $p\ge1$. Let $\K$ be any finite closed
+cover of $Q$. For every strictly increasing $A=(a_i)$ satisfying
+\begin{equation}\label{eq:gaps}
+ a_{i+1}-a_i\longrightarrow\infty,
+\end{equation}
+one has
+\begin{equation}\label{eq:coverformula}
+ \min_{\alpha\in\mathcal B(\K)} h_A(T,\alpha)
+ =\min_{\alpha\in\mathcal B(\K)}\hpat(T,\alpha)
+ =\log r.
+\end{equation}
+An ordered difference partition of any minimum subcover attains both
+minima, simultaneously for every $A$ satisfying \eqref{eq:gaps}.
+Consequently,
+\begin{equation}\label{eq:coverminimax}
+ \max_A\inf_{\alpha\in\mathcal B(\K)}h_A(T,\alpha)=\log r,
+\end{equation}
+where the maximum ranges over all strictly increasing infinite sequences
+and is attained, for example, by $a_i=(i-1)^2$.
+\end{theorem}
+
+The order of quantifiers is part of the assertion. Every $A$ satisfying
+\eqref{eq:gaps} works for every allowed partition, although the finite
+initial segment discarded in the proof can depend on that partition.
+The proof does not interchange an infimum over partitions with a
+finite-window limit.
+
+\subsection{A category and concatenation lemma}
+
+We use meagerness relative to $Q$. A Borel set has the Baire property,
+so a nonmeager Borel set is comeager in some nonempty open set. Indeed,
+the sets differing from open sets by meager sets form a sigma-algebra:
+for complements, the additional difference is contained in the
+nowhere dense boundary of an open set. A compact metric space is a
+Baire space. In particular, a nonempty open set cannot be covered by
+countably many nowhere dense sets, as is also seen by choosing nested
+nonempty open sets with closures avoiding those sets and diameters
+tending to zero.
+
+If $F:Q\to Q$ is continuous and open, preimages of meager sets are
+meager. For a closed nowhere dense $N$, the closed set $F^{-1}N$ has
+empty interior: otherwise the image of a nonempty open subset would be
+a nonempty open subset of $N$. Passing to countable unions proves the
+assertion.
+
+\begin{lemma}\label{lem:glue}
+Under the dynamical assumptions of Theorem~\ref{thm:cover}, $T$ is
+continuous, open, and onto. Given finitely many nonempty cylinder sets
+$C_1,\ldots,C_q$ in symbolic coordinates, there is an integer $b\ge1$
+such that, for every $k\ge1$, every $t_1,\ldots,t_k\in\{1,\ldots,q\}$,
+and all $0\le n_1<\cdots<n_k$ with $n_{j+1}-n_j\ge b$,
+\[
+ \bigcap_{j=1}^k T^{-n_j}C_{t_j}
+\]
+is nonempty and open.
+\end{lemma}
+\begin{proof}
+Work on $Y_H$ through the conjugacy. The image under $\sigma$ of a
+prefix cylinder of length at least two is the cylinder obtained by
+removing its first symbol. The image of a one-symbol cylinder is the
+union of the permitted successor cylinders. Hence $\sigma$ is open.
+Every vertex has a predecessor, so every infinite path has a predecessor;
+thus $\sigma$ is onto. These properties pass to powers and conjugates.
+
+Choose within each $C_j$ a nonempty prefix cylinder, and extend their
+defining words, if necessary, to a common length $\ell$. Choose $N$ with
+$H^n>0$ for every $n\ge N$, and then choose $b$ with
+$pb-\ell+1\ge N$. Place the word for $C_{t_j}$ at coordinate $pn_j$.
+Between the end of one placed word and the start of the next there are
+$p(n_{j+1}-n_j)-\ell+1$ edges to fill. Primitivity supplies a path of
+that length between any two endpoint vertices. Predecessors fill the
+finite segment before the first placed word, and successors provide an
+infinite continuation after the last. This constructs an actual point
+in the intersection. The intersection is open because it is a finite
+intersection of preimages of open sets under continuous maps.
+\end{proof}
+
+\begin{lemma}\label{lem:borel}
+Under the same assumptions, let $\alpha$ be a finite Borel partition
+with $q$ nonmeager atoms. For every $A$ satisfying \eqref{eq:gaps} there
+exists $m\ge1$ such that
+\begin{equation}\label{eq:categorycount}
+ \Patt_\alpha(\{a_1,\ldots,a_n\})\ge q^{n-m+1}\qquad(n\ge m).
+\end{equation}
+In particular $h_A(T,\alpha)\ge\log q$.
+\end{lemma}
+\begin{proof}
+List the nonmeager atoms as $D_1,\ldots,D_q$. The Baire property
+provides a nonempty cylinder $C_j$ for which $C_j\setminus D_j$ is
+meager. Let $b$ be supplied by Lemma~\ref{lem:glue}, and choose $m$ so
+that $a_{i+1}-a_i\ge b$ for all $i\ge m$.
+
+Fix $n\ge m$ and any target labels $t_m,\ldots,t_n$. The set
+\[
+ G=\bigcap_{i=m}^n T^{-a_i}C_{t_i}
+\]
+is nonempty and open. Each power $T^{a_i}$ is continuous and open, so
+\[
+ \bigcup_{i=m}^n T^{-a_i}(C_{t_i}\setminus D_{t_i})
+\]
+is meager and cannot cover $G$. A point outside this union realizes
+all the specified atoms at the sampled times. Distinct target label
+strings give distinct patterns; restriction from the full window to
+this tail is onto. This proves \eqref{eq:categorycount}. Dividing its
+logarithm by $n$ and taking a limit inferior proves the asserted bound.
+\end{proof}
+
+\subsection{Proof of the exact formula}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cover}]
+Let $\alpha\in\mathcal B(\K)$. Assign to each atom $D$ one index
+$w(D)$ with $D\subset K_{w(D)}$. Let $J$ be the set of indices assigned
+to the nonmeager atoms. If the closed sets $(K_w)_{w\in J}$ did not
+cover $Q$, their complement would be a nonempty open set covered by
+the finitely many meager atoms of $\alpha$, which is impossible.
+Thus $|J|\ge r$, and the number $q$ of nonmeager atoms is at least $r$.
+Lemma~\ref{lem:borel} gives
+\[
+ h_A(T,\alpha)\ge\log q\ge\log r
+\]
+for every $A$ satisfying \eqref{eq:gaps}. Closedness of the cover
+members is used precisely in this passage from category to a full cover.
+
+Choose a minimum subcover $K_{w_1},\ldots,K_{w_r}$, and set
+\begin{equation}\label{eq:ordered}
+ E_j=K_{w_j}\setminus\bigcup_{k<j}K_{w_k},\qquad
+ \alpha_0=\{E_1,\ldots,E_r\}.
+\end{equation}
+Every $E_j$ is Borel and is nonempty, since a minimum subcover has no
+redundant member. The partition refines $\K$ and has $r$ atoms. Hence
+$\Patt_{\alpha_0}(F)\le r^{|F|}$ for all finite $F$, giving
+$h_A(T,\alpha_0)\le\hpat(T,\alpha_0)\le\log r$ for every $A$.
+The established lower bound and $\hpat\ge h_A$ yield
+\eqref{eq:coverformula} and simultaneous attainment.
+For arbitrary $A$, the partition $\alpha_0$ bounds the inner infimum
+in \eqref{eq:coverminimax} by $\log r$. Any $A$ satisfying
+\eqref{eq:gaps} gives the reverse bound and attains the maximum.
+\end{proof}
+
+\section{A cover--partition gap at prescribed sparse times}
+
+For any finite cover $\K$ define its combinatorial sequence entropy by
+\[
+ h_A(T,\K)=\limsup_{n\to\infty}\frac1n
+ \log N\left(\bigvee_{i=1}^n T^{-a_i}\K\right).
+\]
+For a partition this is \eqref{eq:seq}. For overlapping sets, covering
+each finite orbit window need not correspond to one fixed refining
+partition used at every time.
+
+\begin{corollary}\label{cor:covergap}
+Let $q\ge3$, $Q=\{0,\ldots,q-1\}^{\Nzero}$, $T=\sigma$, and
+\[
+ K_j=\{x:x_0\ne j\}\quad(0\le j<q),\qquad \K=(K_j)_{j=0}^{q-1}.
+\]
+For every increasing infinite $A$,
+\begin{equation}\label{eq:covervalue}
+ h_A(\sigma,\K)=\log\frac q{q-1}.
+\end{equation}
+For every such $A$ with diverging successive gaps,
+\begin{equation}\label{eq:refvalue}
+ \min_{\alpha\in\mathcal B(\K)}h_A(\sigma,\alpha)=\log2
+ >h_A(\sigma,\K).
+\end{equation}
+\end{corollary}
+\begin{proof}
+The cover has no single member equal to $Q$, and any two distinct
+members cover $Q$. Thus $r=2$, and \eqref{eq:refvalue} follows from
+Theorem~\ref{thm:cover} once \eqref{eq:covervalue} is proved.
+
+For a window $F$ of size $n$, the full shift has all $q^n$ possible
+input vectors. Each member of the joined cover specifies one excluded
+letter at each coordinate, and covers $(q-1)^n$ of these vectors.
+Consequently the minimum number $c(n)$ of such boxes is at least
+$(q/(q-1))^n$. For completeness, the following elementary probabilistic
+covering bound gives the matching exponent. Choose $R$ excluded-letter
+vectors independently and uniformly from the $q^n$ possibilities. A
+fixed input vector is left uncovered with probability at most
+\[
+ \left(1-\left(\frac{q-1}{q}\right)^n\right)^R
+ \le \exp\left(-R\left(\frac{q-1}{q}\right)^n\right).
+\]
+Taking
+$R=\left\lceil(q/(q-1))^n(n\log q+1)\right\rceil$ makes the sum of
+these probabilities over all input vectors smaller than one. Some
+choice therefore covers every vector. We have proved
+\[
+ \left(\frac q{q-1}\right)^n\le c(n)
+ \le\left\lceil\left(\frac q{q-1}\right)^n(n\log q+1)\right\rceil.
+\]
+The count depends only on $n$, not on the positions of the sampled
+coordinates, so its exponential rate proves \eqref{eq:covervalue}.
+\end{proof}
+
+The excluded-letter cover and its covering exponent are already present
+in Romagnoli \cite{Romagnoli2007}; the calculation above is included to
+identify the sparse-time quantity without an external dependency.
+The consequence of Theorem~\ref{thm:cover} is the exact minimum over
+\emph{all Borel} refinements for a sequence fixed in advance. It does not
+assert that every Borel refinement has consecutive-time entropy at least
+$\log2$, or that every sampling sequence gives that lower bound.
+
+\section{Fixed-period safe feedbacks with a common successor}
+
+Let $X$ be a compact metric space, $U$ a nonempty finite control set, and
+$f_u:X\to X$ continuous for every $u\in U$. Let $Q\subset X$ be a
+nonempty compact controlled-invariant set: at each $x\in Q$ at least
+one control keeps the next state in $Q$. All infinite control strings
+are allowed. Fix an integer period $\tau\ge1$ once and for all, and put
+$W=U^\tau$. For $w=(u_0,\ldots,u_{\tau-1})$ write
+\[
+ \varphi(0,x,w)=x,\qquad
+ \varphi(j,x,w)=f_{u_{j-1}}\circ\cdots\circ f_{u_0}(x),
+\]
+and define
+\begin{equation}\label{eq:safe}
+ K_w=\{x\in Q:\varphi(j,x,w)\in Q\ (0\le j\le\tau)\},
+ \qquad g_w(x)=\varphi(\tau,x,w).
+\end{equation}
+The $K_w$ are closed and cover $Q$. The coverage follows by choosing
+legal single-step controls successively for the fixed finite horizon.
+
+The class $\Ssafe_\tau$ consists of \emph{all} Borel selectors $s:Q\to W$
+such that $x\in K_{s(x)}$. Its closed-loop block map is
+$T_s(x)=g_{s(x)}(x)$. All Borel mixtures of legal selectors belong to
+$\Ssafe_\tau$. No continuity or dependence on finitely many coordinates
+is imposed. A selector is used without an additional clock, register,
+or feedback memory.
+
+For a finite window $F$, let
+\[
+ \Patt_s(F)=\left|\{(s(T_s^k x))_{k\in F}:x\in Q\}\right|.
+\]
+Define $h_A(s)$ and $\hpat(s)$ from these counts as in
+\eqref{eq:seq}--\eqref{eq:pat}, but dividing by $n\tau$ rather than
+$n$. Thus normalization is per sampled control block, divided by its
+fixed length; it is \emph{not} division by elapsed time $\tau a_n$.
+Put
+\begin{equation}\label{eq:LM}
+ L_\tau=\sup_A\inf_{s\in\Ssafe_\tau}h_A(s),\qquad
+ M_\tau=\inf_{s\in\Ssafe_\tau}\hpat(s).
+\end{equation}
+Always $L_\tau\le M_\tau$.
+
+The counts use actual closed-loop trajectories. If instead one takes
+the closure of their one-sided name set, the finite patterns are
+unchanged: a cylinder specifying finitely many coordinates is open, so
+if it meets that closure, it meets the original name set. Taking a name
+closure therefore introduces no extra finite-window witnesses.
+
+\begin{lemma}\label{lem:merge}
+The infima in \eqref{eq:LM}, and the inner infimum at any fixed $A$, are
+unchanged if one allows every finite Borel safe partition with a
+control block assigned to each atom, and counts atom names rather than
+control-block names.
+\end{lemma}
+\begin{proof}
+Merge all atoms assigned the same block. Their finite union is Borel
+and remains inside that block's safety domain. The resulting selector
+has exactly the same closed-loop state map. The map from original atom
+names to block names is coordinatewise and onto the actual block-name
+patterns, so every block-pattern count is no larger than the original
+atom-pattern count. Conversely, the nonempty fibers of any legal
+selector form a legal finite Borel safe partition whose atom and
+block counts agree. Both directions of the infimum equality follow.
+\end{proof}
+
+\begin{theorem}\label{thm:control}
+Assume in addition that there is a map $T:Q\to Q$ such that
+\begin{equation}\label{eq:common}
+ g_w(x)=T(x)\qquad\text{for every }w\in W\text{ and every }x\in K_w,
+\end{equation}
+and that $T$ is conjugate to $\sigma^p$ on a mixing one-sided shift of
+finite type. With $r=N((K_w)_{w\in W})$, for every $A$ satisfying
+\eqref{eq:gaps} one has
+\begin{equation}\label{eq:controlformula}
+ \min_{s\in\Ssafe_\tau}h_A(s)
+ =\min_{s\in\Ssafe_\tau}\hpat(s)
+ =L_\tau=M_\tau=\frac{\log r}{\tau}.
+\end{equation}
+The maximum defining $L_\tau$ is attained by every such $A$, and an
+ordered minimum-subcover selector attains all the indicated minima.
+The same assertions hold over all finite Borel safe partitions and
+their arbitrary finite Borel refinements.
+\end{theorem}
+\begin{proof}
+For every legal selector, \eqref{eq:common} gives $T_s=T$ pointwise.
+Its fibers form a finite Borel refinement of $(K_w)_{w\in W}$.
+Theorem~\ref{thm:cover}, with normalization by $\tau$, gives the lower
+bound at every $A$ with diverging gaps. If $w_1,\ldots,w_r$ form a
+minimum subcover, define $s_0(x)=w_j$ on the sets $E_j$ of
+\eqref{eq:ordered}. This is Borel and legal at every point. Each selected
+block stays in $Q$ at its intermediate times by \eqref{eq:safe}, and
+the endpoint again lies in $Q$, so recursion gives an infinite safe
+closed-loop orbit for every initial state. The selector uses only $r$
+blocks and thus gives the upper bound for every window and every
+sampling sequence. This proves attainment, \eqref{eq:controlformula},
+and the outer maximum. Lemma~\ref{lem:merge} proves the last assertion.
+\end{proof}
+
+The standard safe-partition framework is described by Kawan
+\cite[Chapter~2]{Kawan2013}. His minimization over control periods in
+invariance entropy is a different optimization. Here $\tau$ is fixed,
+intermediate safety is retained, and the exact value comes from the
+additional common-successor and finite-type hypotheses.
+
+\subsection{A positive overlapping example at period two}
+
+Take
+\[
+ Q=\{0,1,2\}^{\Nzero},\quad X=Q\sqcup\{\dagger\},\quad
+ U=\{0,1,2\},\quad\tau=2,
+\]
+where the isolated point $\dagger$ lies outside $Q$. Define
+\[
+ f_u(x)=
+ \begin{cases}\sigma x,&x\in Q,\ x_0\ne u,\\
+ \dagger,&x\in Q,\ x_0=u,\end{cases}
+ \qquad f_u(\dagger)=\dagger.
+\]
+Each $f_u$ is continuous since the cases are clopen. For $w=(a,b)$,
+\[
+ K_{(a,b)}=\{x:x_0\ne a,\ x_1\ne b\},\qquad
+ g_{(a,b)}|_{K_{(a,b)}}=\sigma^2.
+\]
+All nine control blocks are available to Borel feedbacks, and each
+state permits four of them. A safety domain covers four of the nine
+two-symbol input blocks, so two domains cannot cover $Q$. The three
+diagonal blocks $(0,0),(1,1),(2,2)$ do cover $Q$, since some symbol
+differs from both $x_0$ and $x_1$. Hence $r=3$, and
+\[
+ L_2=M_2=\frac{\log3}{2}.
+\]
+An attaining selector is
+\[
+ c(x)=\min(\{0,1,2\}\setminus\{x_0,x_1\}),\qquad
+ s_0(x)=(c(x),c(x)).
+\]
+It is clopen and legal everywhere. Its actual block-boundary states
+are $\sigma^{2k}x$. To prescribe any sequence of diagonal labels, use
+successive input blocks $11$, $00$, and $01$ for the desired labels
+$0$, $1$, and $2$, respectively. Therefore its actual name set is the
+full shift on these three blocks. The lower bound, however, holds for
+every legal Borel rule using any of the nine blocks.
+
+This example does not preassign a nonconstant common control-letter
+observation to every feedback. More precisely, suppose a map
+$\rho:U^2\to V'$ and an observation $F:Q\to V'$ satisfy
+$\rho(s(x))=F(x)$ for every legal Borel selector and every $x$.
+Any two blocks $(a,b)$ and $(a',b')$ are colegal at a state beginning
+with $ij$, where $i\notin\{a,a'\}$ and $j\notin\{b,b'\}$.
+A legal baseline selector may be changed at this single state to use
+either block, while remaining Borel and legal. Hence their $\rho$
+values agree. All pairs of blocks are colegal somewhere, so $\rho$
+is constant. This rules out this particular forced-letter explanation;
+it makes no claim about every possible dynamical factor.
+
+\section{A feedback-dependent boundary with an exact full-class value}
+
+The common-successor assumption cannot be removed solely because each
+branch is continuous and open. We give a system with individual
+prefix cylinders as safety domains and compute its full-class value.
+
+Let $Q=\{0,1\}^{\Nzero}$, let $\mathcal C=\{0,10,11\}$ be a set of
+finite words, and take $U=\mathcal C\times\{0,1\}$ and $\tau=1$.
+For $e\in\{0,1\}$ let $P_e$ add $e$ modulo two to every coordinate.
+On $X=Q\sqcup\{\dagger\}$ define
+\begin{equation}\label{eq:boundarysystem}
+ f_{(c,e)}(x)=
+ \begin{cases}P_e\sigma x,&x\in[c],\\
+ \dagger,&x\in Q\setminus[c],\end{cases}
+ \qquad f_{(c,e)}(\dagger)=\dagger.
+\end{equation}
+The cylinders $[0],[10],[11]$ are disjoint and cover $Q$. Each state
+has exactly two legal controls with different successors. The global
+maps $f_{(c,e)}$ are continuous, and their legal restrictions are open.
+The safety domains are $K_{(c,e)}=[c]$, and $r=3$.
+
+\begin{proposition}\label{prop:boundary}
+For the system \eqref{eq:boundarysystem}, over all legal Borel feedbacks
+and arbitrary Borel mixtures,
+\begin{equation}\label{eq:boundaryvalue}
+ \min_s h_{A_0}(s)=\min_s\hpat(s)=
+ \max_A\inf_s h_A(s)=\log2<\log r,
+ \qquad A_0=(0,1,2,\ldots).
+\end{equation}
+There is one clopen legal feedback $s_{\mathrm f}$ satisfying
+$h_A(s_{\mathrm f})=\log2$ for every increasing infinite $A$.
+The same full-class values hold if arbitrary finite Borel atom
+refinements are allowed.
+\end{proposition}
+\begin{proof}
+Let $c(x)$ be the unique member of $\mathcal C$ with $x\in[c(x)]$,
+and set
+\[
+ s_{\mathrm f}(x)=(c(x),x_1),\qquad
+ T_{\mathrm f}x=P_{x_1}\sigma x.
+\]
+This is a clopen selector, legal at every state. Its four nonempty
+initial control fibers, for labels $(0,0),(0,1),(10,0),(11,1)$, are
+$[00],[01],[10],[11]$, respectively. For all $n\ge1$, direct induction
+gives
+\begin{equation}\label{eq:fliporbit}
+ T_{\mathrm f}^n x=P_{x_n}\sigma^n x,
+ \qquad s_{\mathrm f}(T_{\mathrm f}^n x)
+        =(0,x_{n+1}\mathbin\oplus x_n),
+\end{equation}
+where $\oplus$ is addition modulo two. In the induction step the
+chosen flip is $x_{n+1}\oplus x_n$; it cancels the previous flip and
+leaves $P_{x_{n+1}}\sigma^{n+1}x$. The first coordinate is always zero
+after time zero, which also proves all-time safety.
+
+For every finite nonempty window $F$, with $n=|F|$, one has
+\begin{equation}\label{eq:flipcount}
+ \Patt_{s_{\mathrm f}}(F)=
+ \begin{cases}2^n,&0\notin F,\\2^{n+1},&0\in F.\end{cases}
+\end{equation}
+The four initial labels and two later labels give the upper bounds.
+To prove the lower bounds, prescribe any of the four initial labels
+if $0\in F$, thereby fixing $(x_0,x_1)$; if $0\notin F$, set
+$x_0=x_1=0$. At positive sampled times prescribe the desired second
+components $d_k$, and put $d_k=0$ at the other positive times.
+Recursively set $x_{k+1}=x_k\oplus d_k$ for every $k\ge1$.
+This constructs a full state in $Q$ whose actual trajectory under the
+same selector has the required sampled controls by
+\eqref{eq:fliporbit}. Thus all counted patterns are realized by true
+infinite closed-loop trajectories. Equation~\eqref{eq:flipcount}
+implies $h_A(s_{\mathrm f})=\hpat(s_{\mathrm f})=\log2$ for every $A$.
+
+For the opposite bound fix any legal Borel selector $s$. If its first
+$n$ actual controls from $x$ are $(c_k,e_k)$, let
+$E_0=0$ and $E_k=e_0\oplus\cdots\oplus e_{k-1}$. Since shifts commute
+with flips,
+\[
+ T_s^k x=P_{E_k}\sigma^k x.
+\]
+Let $b(c)$ be the first bit of the word $c$. Safety at time $k$ gives
+\begin{equation}\label{eq:decode}
+ x_k=b(c_k)\oplus E_k\qquad(0\le k<n).
+\end{equation}
+Thus one actual length-$n$ control word determines at most one input
+prefix of length $n$. Every binary input prefix has an extension in
+$Q$, and the feedback is defined and safe on every such extension.
+Distinct prefixes must yield distinct actual control words. Hence
+\[
+ \Patt_s(\{0,\ldots,n-1\})\ge2^n
+\]
+for every $n$ and every legal $s$. This proves $h_{A_0}(s)\ge\log2$
+and $\hpat(s)\ge\log2$. Combining these inequalities with
+$s_{\mathrm f}$ proves \eqref{eq:boundaryvalue}, including attainment.
+Lemma~\ref{lem:merge} handles atom refinements.
+\end{proof}
+
+The obstruction has a precise orbit interpretation. In this example
+$T_{\mathrm f}(Q)=[0]$: for the reverse inclusion, given $y\in[0]$,
+take $x=0y$. Therefore neither $[10]$ nor $[11]$ is visited at a
+positive time. The initial fibers with those labels are nonmeager,
+but their labels cannot be freely concatenated in the future.
+The map $T_{\mathrm f}$ is itself continuous and open, as follows by
+restricting to the four clopen two-symbol cylinders. It is not onto
+$Q$.
+
+Even preservation of meager preimages does not repair this problem.
+For any selector $s$ and any $n$, the value of $T_s^n x$ is either
+$\sigma^n x$ or $P_1\sigma^n x$. Hence, for a meager set $N$,
+\[
+ (T_s^n)^{-1}N\subset
+ (\sigma^n)^{-1}N\ \cup\ (P_1\sigma^n)^{-1}N
+\]
+is meager. What fails is the nonempty open intersection used in
+Lemma~\ref{lem:glue} for the \emph{selected} dynamics. Also, the
+same $s_{\mathrm f}$ gives
+\[
+ \inf_s h_A(s)\le\log2=\log r-\log(3/2)
+ \quad\text{for every }A.
+\]
+The failure of the cover formula is therefore a uniform numerical
+gap over all samplings, rather than a failure at one finite window.
+It does not refute $L_\tau=M_\tau$: equality holds in this very example.
+Nor does the proof determine the inner infimum for every other fixed
+sampling sequence.
+
+\section{Scope of the conclusions}
+
+The exact closed-cover formula combines three specific features:
+closed safety constraints force enough nonmeager labels, an open common
+map preserves category under preimages, and finite-type concatenation
+realizes every finite choice of those labels at sufficiently separated
+times. This makes a prescribed divergent-gap sequence work for an
+uncountable family of Borel observations without a countable
+approximation argument. The ordered subcover gives an actual minimizer,
+so no assumption about attainment of an abstract infimum is needed.
+
+The control application retains every legal Borel selector, but has a
+substantial dynamical restriction: legal blocks share their endpoint.
+The six-control example identifies a failure of extending the cover
+number formula to changing successors. Its exact value uses an explicit
+normalizing feedback and input-prefix decoding; it does not supply a
+theory for arbitrary feedback-dependent branches. The equality
+$L_\tau=M_\tau$ for general finite-control, fixed-period systems over
+the full Borel class remains undecided by these results. No conclusion
+about simultaneous attainment of each feedback's individual maximal
+pattern entropy follows from the common minimum threshold proved here.
+
+\begin{thebibliography}{99}
+
+\bibitem{HMY2004}
+Huang, W., Maass, A., \& Ye, X. (2004).
+Sequence entropy pairs and complexity pairs for a measure.
+\emph{Annales de l'Institut Fourier, 54}(4), 1005--1028.
+\doi{10.5802/aif.2041}.
+
+\bibitem{HY2009}
+Huang, W., \& Ye, X. (2009).
+Combinatorial lemmas and applications to dynamics.
+\emph{Advances in Mathematics, 220}(6), 1689--1716.
+\doi{10.1016/j.aim.2008.11.009}.
+
+\bibitem{Kawan2013}
+Kawan, C. (2013).
+\emph{Invariance entropy for deterministic control systems: An introduction}
+(Lecture Notes in Mathematics, Vol.~2089). Springer.
+\doi{10.1007/978-3-319-01288-9}.
+
+\bibitem{KL2007}
+Kerr, D., \& Li, H. (2007).
+Independence in topological and C*-dynamics.
+\emph{Mathematische Annalen, 338}, 869--926.
+\doi{10.1007/s00208-007-0097-z}.
+Author version: \href{https://arxiv.org/abs/math/0603585v4}{arXiv:math/0603585v4}.
+
+\bibitem{KL2009}
+Kerr, D., \& Li, H. (2009).
+Combinatorial independence in measurable dynamics.
+\emph{Journal of Functional Analysis, 256}(5), 1341--1386.
+\doi{10.1016/j.jfa.2008.12.014}.
+Author version: \href{https://arxiv.org/abs/0705.3424v1}{arXiv:0705.3424v1}.
+
+\bibitem{Li2002}
+Li, S. (2002).
+Topological sequence entropy and topologically weak mixing.
+\emph{Bulletin of the Australian Mathematical Society, 66}(2), 207--211.
+\doi{10.1017/S0004972700040053}.
+
+\bibitem{Romagnoli2007}
+Romagnoli, P.-P. (2007).
+A remark on the topological entropies of covers and partitions.
+\emph{Studia Mathematica, 182}(3), 273--281.
+\doi{10.4064/sm182-3-6}.
+
+\end{thebibliography}
+\end{document}
