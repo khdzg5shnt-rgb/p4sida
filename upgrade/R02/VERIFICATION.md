@@ -2724,3 +2724,74 @@ Kerr, D., & Li, H. (2009). Combinatorial independence in measurable dynamics. *J
 `c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed`。
 
 提交前校验全文、相对链接、原文前缀和保留指纹；有实际更新才提交。提交后按实际 SHA 全量取回**十份文件**（六份新增/修改，四份保留；PDF 按二进制取回核对），逐字节核验，并检查 main、父提交及树。未来提交 SHA 不写进自身。只处理 P4，不开 R03、不恢复增长分类、不改其他项目，原稿保持原样。
+
+## 21. 2026-10-04（北京时间）Topology and its Applications 投稿准备：材料已备，保留明确缺项
+
+**第 1–20 节全部 209,151 字节原样保留。** 本轮从 `f89c9455f8075dc0a1a6bd9df512b10f19984ac9` 恢复；开始时 main 与之相同，递归树十份文件无后续结果，也无适用 AGENTS.md。全文读取 CURRENT、R02 NEXT_COMMAND、P4_REVISED.tex 和本文件第 20 节；第 20 节之后没有已有正文。十份文件按固定 SHA 完整取回并与本地及 Git blob 对照，原稿 SHA-256 不变。本轮依照用户授权只做投稿准备，不新增数学尝试、不重新评价期刊档位、不向第三方发送。
+
+### 21.1 实际交付与状态
+
+新增：
+
+- [COVER_LETTER_DRAFT.md](COVER_LETTER_DRAFT.md)：英文投稿信，具体陈述问题、精确闭覆盖公式、预设渐疏采样、全 Borel 量词、HMY/Romagnoli 对照、共同后继控制应用及六控制边界。投稿日期与邮箱待填，没有虚构优先权、编辑推荐、重大突破或录用预期；没有提前写独投/作者批准等未知承诺。
+- [AUTHOR_DECLARATIONS_DRAFT.md](AUTHOR_DECLARATIONS_DRAFT.md)：沿用署名和单位，集中列出未知事实，给如实的 AI 稿件准备与研究用途英文草稿。资助/利益冲突不默认“无”；人工核查与责任表述尚待作者确认。
+- [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md)：精简材料表、作者缺项、已核刊规和未完成的专属指南核对。
+
+候选 TeX/PDF **未改动**。现有数学正文无需为了投稿准备而增厚；邮箱及依赖作者事实的声明不能通过占位或猜测伪装完成。此次检查未发现需要修改的具体数学错误或等价先行结果；这不是重新进行全篇数学认证或排重。
+
+**裁决：可以进入作者审阅和信息补齐，尚不能标为可直接提交。** 剩余项是明确的作者事实及尚未读到的专属刊规，不是新发现的数学障碍。材料完成不等于录用或外审通过。
+
+### 21.2 官方来源、实际读取范围与获取边界
+
+以下均为 2026-10-04（北京时间）访问；网页没有稳定版次号，不将“今天抓取”写成“今天更新政策”。本轮没有新增数学文献。
+
+1. Elsevier. (n.d.). *Guide for authors: Topology and its Applications*. https://www.sciencedirect.com/journal/topology-and-its-applications/publish/guide-for-authors
+   - **访问限制如实保留：** 搜索可检索到本刊当前官方条款，但全文直达返回 403；普通 HTTP 获取的 195 字节响应只是不可用提示，不是指南正文。旧 Elsevier 路径也未取得完整指南。没有用 2004 年编辑网页、他刊指南、论文成品或搜索未命中代替当前完整要求。
+   - 实际读取的官方检索正文条款：**Abstract**（上限 250 词）、**Keywords**（1–7 个英文词条）、**Title page**（通讯作者邮箱须在标题页）、**Declaration of competing interests**（披露相关财务及个人关系）、**Declaration of generative AI and AI-assisted technologies in the manuscript preparation process**（声明标题，详细要求由下一项官方政策核对）。这些属于可核实片段，不声称已读全指南。
+   - 尚未取得完整证据：初投 LaTeX/格式规则、引文排序、匿名方式、highlights 或独立声明文件是否必需、数据/贡献字段要求。**没有认定本刊实行自由格式，也没有反向认定必须改成 elsarticle。** 当前保留 amsart 和一致的七条书目，待页面恢复或新增官方材料后只补核这些项目。不循环既有失败入口。
+2. Elsevier. (n.d.). *Generative AI policies for journals*. https://www.elsevier.com/about/policies-and-standards/generative-ai-policies-for-journals
+   - 实际读取 **For authors / Responsible use / Disclosure / Use of AI tools in research methods**。当前政策容许有人工监督的辅助用途，并要求披露；研究过程的用途应在方法说明中交代，工具/版本据实记录。作者核查与责任不能由工具代为承诺。本轮准备两类用途的草稿，避免把论证探索、候选证明和文献比较写成仅语法检查。本文无图像，不额外启动图像流程。
+3. Elsevier. (n.d.). *Publishing ethics*. https://www.elsevier.com/about/policies-and-standards/publishing-ethics
+   - 实际读取 **Duties of Authors**，特别是 **Reporting standards / Originality / Multiple, redundant or concurrent publication / Authorship / Declaration of competing interests**。据此把最终署名、作者同意、其他发表/在审情况、资助及利益关系保留为作者事实；没有把仓库公开自动等同于期刊发表，也没有代作者声称没有另刊在审。
+4. Elsevier. (n.d.). *Topology and its Applications*. https://shop.elsevier.com/journals/topology-and-its-applications/0166-8641
+   - 官方范围含拓扑动力学，支持投稿信的主题适配说明。这里只核对范围，没有使用期刊指标、分区或录用概率作新判断。
+
+上述政策用于本次材料，不新增为论文数学参考文献。没有联系编辑、打开投稿表单或提交声明。
+
+### 21.3 必要适配判断与风险检查
+
+| 项目 | 当前证据与处理 |
+| --- | --- |
+| 题名和主线 | Sparse Sampling and Borel Refinements of Closed Covers 保留。Theorems 2.1、4.2 及 Proposition 5.1 不改，投稿信没有扩大假设、数值或策略类。 |
+| 摘要/关键词 | 原摘要源文以空白分词为 175 项（包括数学标记，未将此当作出版社精确词数算法），显著低于已核 250 词上限；六个英文关键词在 1–7 范围内。无需压缩或删改。 |
+| 文献与书目 | 七个正文引用键与七个书目键一一匹配；沿用已核 APA/DOI、KL 作者版定位。没有用未读正式版替代实际已读版本。引用排序是否需改，留待专属指南完整证据。 |
+| 增量说明 | 投稿信明确承认 HMY 已有共同正测度阈值，把增量限定为规定动力类中的精确计数值及所有预设渐疏 A；Romagnoli 对照不变，不声称解决其连续采样问题。 |
+| 控制边界 | 全部合法 Borel 反馈、任意 Borel 混合及固定周期共同后继应用保留。六控制例只排除覆盖公式直接推广；一般数值等式仍未决定。 |
+| 作者信息 | Ziqing Ding 及 School of Mathematical Sciences, Nanjing Normal University, Nanjing 210023, China 从原稿/候选稿沿用。邮箱未有确认来源，不从姓名推测或抓取同名者资料。 |
+| 声明 | 未知资助/利益冲突不填“无”；本轮授权准备材料不等于作者已读全文或同意实际提交。AI 工具不列为作者，人工责任句仅为条件草稿。 |
+| PDF | 对应文件九页、A4、未加密；本轮查看首尾页，标题、摘要、公式、书目与单位可读，沿用第 20 节全部九页检查。没有内容修改，所以不重新生成时间戳不同但无实质改变的 PDF。 |
+
+数学主张未修改，风险检查集中在投稿材料中的量词、归属、适用边界和作者事实。没有以新润色掩盖数学问题；也没有把没有发现问题说成“经过外部审查”。
+
+候选文件指纹保持：
+
+- `P4_REVISED.tex`：33,121 字节；SHA-256 `d4618c95e4637b8e10c06c09d193fdb605aaaf88ab54defef1bd5593dde182c4`。
+- `P4_REVISED.pdf`：325,300 字节；SHA-256 `5d82a0c26acdc975ee22bc11908b1e69407d224af72b0aa21d2275d891301b76`。
+
+### 21.4 集中缺项与下一次完成条件
+
+**作者信息单独集中列出：** 通讯邮箱；资助或明确无专项资助；利益冲突或明确无冲突；最终署名、全文及引用审阅、同意投稿和相关发表/在审状态；AI 实际使用与作者核查范围、可从记录确认的模型/版本。姓名和单位沿用，仅有变化时更正，不重复索取已确认字段。
+
+**刊规缺口单独列出：** 尚未取得指南全文中关于初投格式、引用、匿名及附件/字段的条款。已核片段不覆盖这些项目，不能因检索没看到便认为无要求。当前也不擅自把 highlights、ORCID、数据声明、图文摘要或推荐审稿人设为必需。后续有实际访问条件/官方原文后定向补核即可，不另起无界搜索任务。
+
+收到真实信息并补核剩余官方要求后，才把适用声明和邮箱写入最终稿、作必要格式适配并重编译检查；删除草稿占位符，然后可以判断是否具备进入投稿操作的条件。**本轮及 NEXT_COMMAND 都不授权发送。** 没有要求作者补齐 2002b，也没有将文献缺口转成新投稿障碍。
+
+### 21.5 保留与提交核验
+
+本轮新增三份投稿准备文件，修改 CURRENT、README、R02 NEXT_COMMAND，并仅向本文件末尾追加本节，共七份新增/修改文件。原稿、R01 两份文件、R02 RESEARCH、候选 TeX/PDF 六份文件，以及 VERIFICATION 原有 209,151 字节保持原样。原稿 SHA-256 仍为：
+
+`c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed`。
+
+提交前核对全文、相对链接、保留内容与候选 PDF；提交后按实际 SHA 全文取回七份新增/修改文件，并取回六份保留文件对照（二进制 PDF 使用 base64 还原对应字节），核对 main、父提交和树。提交 SHA 以实际工具回读结果为准，不预写未来 SHA。
+
+一般全 Borel 数值问题与 √2、Ω、m₂、第 19 节循环类继续暂停，未决定状态及旧区间不变。2002b 未取得、未核实，获取继续关闭，不索取、不循环、不替代。只处理 P4，不开 R03、不恢复增长分类、不改其他项目。
