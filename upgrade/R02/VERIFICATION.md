@@ -266,3 +266,201 @@ Le, A. N., Pavlov, R., & Schlortt, C. (2025). *On subshifts with low maximal pat
 ## 9. 保存及回读约定
 
 提交前检查相对链接、文本完整性与保留文件指纹；提交后按实际提交 SHA 回读本文件、三份状态/入口文件以及全部原样保留文件，并核对 `main`。提交 SHA 与实际回读结果在交付时给出，不将未来提交 SHA 写进自身。
+
+## 10. 2026-10-03 正式原文增量：恢复 8903b72，仍保持暂停
+
+本节是最新证据；第 7、8 节的文献未取得状态保留为上轮历史，不再代表下列四份来源的当前状态。本轮启动及写入前，`main` 都为 `8903b7200ff3599ef9ee14580cd668b68ee85786`，无后续实质进展；递归核对完整 Git tree，未发现 `AGENTS.md`。全文读取 CURRENT、本文件及 NEXT_COMMAND，按实际依赖回查 R01/R02 RESEARCH 和原稿。仅更新本文件及三份状态/入口文件，保留原稿与研究历史，不开 R03。
+
+### 10.1 文件身份、完整性及实际阅读范围
+
+盘点现有 14 份附件的首页/书目，优先读取以下四份。作者、题名、DOI、出版排版及首末页相符，连续出版页码未发现缺页。关键公式另作页面渲染核查，文件已上传不是正文已核验的依据。
+
+| 用户文件 | 实际身份、版本和页码 | 已读范围及重点证明 |
+| --- | --- | --- |
+| `senquce (1).pdf` | Huang–Ye (2009)，*Combinatorial lemmas and applications to dynamics*，*Advances in Mathematics, 220*(6), 1689–1716；正式版，DOI `10.1016/j.aim.2008.11.009`；28 页连续。 | 全文读取；审查系统/覆盖定义、Theorem 2.1(1) 完整证明及 Lemma 5.1、Corollary 5.3、Theorems 5.4、5.5、5.9 的相关组合论证。不是对其所有元组理论及外部引理重新独立证明。 |
+| `控制系统书.pdf` | Kawan (2013)，*Invariance entropy for deterministic control systems: An introduction*，LNM 2089，Springer，DOI `10.1007/978-3-319-01288-9`；PDF 共 290 页，目录、正文及末尾索引存在。 | 前置识别页及第 2 章全文，出版 pp. 43–87＝PDF 第 66–110 页，连续完整；重点审查 Definitions 2.1–2.3、2.8–2.9，Propositions 2.20–2.22，Lemma 2.3、Theorem 2.3 及数据率证明。不称全书证明已审完。 |
+| `maximal-pattern-complexity-for-discrete-systems.pdf` | Kamae–Zamboni (2002a)，*ETDS, 22*(4), 1201–1214；Cambridge 正式 14 页版，DOI `10.1017/S0143385702000585`；不同于此前 21 页“to appear”稿。 | 全文读取；窗口/单词定义，§4 旧 Toeplitz 论证，§5 Theorem 5 闭集编码构造与证明，§6 Theorem 6 Tribonacci 数制证明。没有据此认证它所引用的 2002b 证明。 |
+| `maximal-pattern-complexity-for-toeplitz-words.pdf` | Gjini–Kamae–Tan–Xue (2006)，*ETDS, 26*(4), 1073–1086；Cambridge 正式 14 页版，DOI `10.1017/S0143385706000150`；页码连续。 | 全文读取；重点审查 §2 Theorem 1、Corollary 1、Lemma 2 替代证明和 §3 满模式 Toeplitz 例子。未将全部分类结论当 P4 的依赖。 |
+
+本次实际文件的 SHA-256（按上表顺序）：
+
+```text
+Huang–Ye 2009  03caefc1d87fe4be513211cdc6542a2cd74a48e806e538c70b0068545812c9f5
+Kawan 2013     c68fe56fc0c76324bcb34a5c878c13d659741bc966a81e12f62cd3fb50c957b6
+KZ 2002a       46d57d30ceac77ace75672a4174003e354b7b6d260c92610c032bf5f895dbbe7
+GKTX 2006      182782065d5d7cf9fb38a4cbc43e2fb191950f5c1925b8b817f48f92319aa020
+```
+
+APA 书目采用 7.1 中已逐项核对的作者、卷期页和 DOI；现在这四项都有上述实际原文证据。Kawan 第 2 章独立 DOI 为 [10.1007/978-3-319-01288-9_2](https://doi.org/10.1007/978-3-319-01288-9_2)。未把 PDF 下载日期当成出版日期。
+
+### 10.2 Huang–Ye：单覆盖达到及整数对数量化
+
+**证据和量词。** pp. 1690–1693（PDF 第 2–5 页）给定义及 Theorem 2.1。一般 t.d.s. 约定为紧致度量空间上的 homeomorphism；对每个固定有限开覆盖 $\mathcal U$，Theorem 2.1(1) 给
+$h^*_{\rm top}(T,\mathcal U)=\sup_A h^A_{\rm top}(T,\mathcal U)$，且该覆盖有一个达到序列。它是“每个覆盖各有一个序列”，没有控制选择器下确界的交换、全类统一阈值或逐策略共同达到结论。Borel 状态反馈产生的闭环未必连续，不能直接称为该 t.d.s.；须在适用的名字移位系统上使用结论。
+
+**平移索引的完整补齐。** p. 1693 印出 $r_k=\max D_{k-1}+1$，不足以保证平移窗口有序且不重叠。定理可以直接修复：取近最大化窗口 $D_k$，$|D_k|=n_k$，令
+$N_k=\sum_{i\le k}n_i$，使 $n_k/N_k\to1$ 且
+$n_k^{-1}\log N(\bigvee_{t\in D_k}T^{-t}\mathcal U)\to h^*_{\rm top}(T,\mathcal U)$。
+改取
+
+$$
+r_1=0,\qquad r_k=1+\max_{i<k}\max(D_i+r_i).
+$$
+
+令 $A$ 为各平移窗口并集的递增枚举，则前 $N_k$ 个位置恰为前 $k$ 块。覆盖细化及 homeomorphism 下最小子覆盖数的平移不变性给
+
+$$
+\frac1{N_k}\log N\!\left(\bigvee_{t\in A[1:N_k]}T^{-t}\mathcal U\right)
+\ge\frac{n_k}{N_k}\frac1{n_k}
+\log N\!\left(\bigvee_{t\in D_k}T^{-t}\mathcal U\right)\longrightarrow h^*_{\rm top}(T,\mathcal U).
+$$
+
+反向由最大窗口定义成立，证明完毕。这只补齐一个覆盖的串接；不外推到非满射语言，也不产生全选择器机制。原稿 A 的坐标删除论证保留，不修改原稿。
+
+**量化的直接依据。** pp. 1709–1713（PDF 第 21–25 页）的有限模式组合证明给固定 clopen 分割 $h^*=\log j$（Theorem 5.4）。Theorem 5.5 明确用一侧子移位 $X\subset\{1,\ldots,m\}^{\mathbb N}$，给 $h^*(X)=\log j$，$1\le j\le m$；其有限坐标证明不需要逆移位，不能因导言的 homeomorphism 约定而漏掉这个表述。
+
+用于安全选择器的名字闭包，并作 R02 同控制块合并后，
+
+$$
+h_*(s)\in\{\log j/\tau:1\le j\le |U|^\tau\}.
+$$
+
+所以非空全类的模式下确界达到。这补齐 R01 修正的 2009 正式原文依据；量化是已知定理，不另开增长路线。Theorem 5.9 的熵保持符号合并尚须控制实现接口，见 10.5。
+
+### 10.3 Kawan：Borel 分割表示仍跨周期
+
+Definitions 2.1–2.3（pp. 44–48）及 2.8–2.9（pp. 79–80；PDF 第 102–103 页）约定拓扑时间不变系统、可拼接控制、有限 invariant cover 及合法名字。指定控制须在整个 $[0,\tau]$ 保持安全，覆盖不要求开集。这里的覆盖熵按**连续**控制周期名字计数；离散信息率为 $\log_2$，P4 自然对数需乘 $\log2$。原稿已注明这个换算。
+
+Propositions 2.20–2.22（pp. 79–81）以 spanning 控制拼接证明覆盖存在性、名字次乘性及
+$h_{\rm inv}(Q)\le h(C;Q)\le\log\#\mathcal A/\tau$。
+Lemma 2.3（pp. 81–82）按
+$\widetilde A_j=A_j\setminus\bigcup_{i<j}A_i$
+使覆盖互不相交，保留相应控制，所得合法名字包含于原名字；空片可删。这不是 R02 合并原分割中**同一控制块**的片：R02 后一种操作保持闭环轨道逐点不变，还给所有采样窗口的符号因子。两者不能写成字面同一引理，但因子计数本身也是基本事实，不支持重大新理论归属。
+
+Theorem 2.3（pp. 82–83；PDF 第 105–106 页）给
+
+$$
+h_{\rm inv}(Q)=\inf_{C=(\mathcal A,\tau,v)}h(C;Q),
+$$
+
+$\mathcal A$ 可为 Borel 分割，**$\tau$ 也参与优化**。原文允许只考虑任意给定 $\tau_0$ 的整数倍，不是固定为一个 $\tau_0$。证明取 $\tau_k=k\tau_0$ 的最小 spanning 集（大小 $n_k$），以全程安全的 $G_\delta$ 片及有序差集构造 Borel 分割，再用
+
+$$
+h_{\rm inv}(Q)\le h(C_k;Q)\le\frac{\log n_k}{k\tau_0}\longrightarrow h_{\rm inv}(Q).
+$$
+
+这支持原稿所引用的已知跨周期表示，不解决固定周期模式 minimax。§2.4 的强不变性/开覆盖反馈熵（pp. 68–78）及 §2.5 数据率证明（pp. 83–87）同样没有把连续名字熵替换成固定周期模式熵，或对全部 Borel 反馈给共同采样阈值。第 2 章已全文读到，没有发现这里所需的交换机制。
+
+### 10.4 2002a 的实际覆盖及 2006 Toeplitz 修正
+
+**2002a 的覆盖。** pp. 1201–1203 定义含 0 的窗口和单词在所有非负平移处的模式；单词与其轨道闭包的有限模式相同，但这不把任意非传递语言束变成一条单词的轨道闭包。
+
+Theorem 5，pp. 1208–1209（PDF 第 8–9 页），是“对**每个**无理旋转角，**存在**闭集 $S\subset[0,1)$，使 Lebesgue **几乎每个**初始点的二元编码对**每个** $k$ 有 $p_\alpha^*(k)=2^k$”。证明选择快速递减返回量 $\rho_i=\{q_i\theta\}$，以数位限制构造正测度闭集；每个目标模式的交集有正测度，再用遍历性及可数交集得到几乎处处结论。满模式增长的闭集/Borel 编码已经是已知现象。
+
+§6 Theorem 6（pp. 1209–1213）实际处理 Rauzy/**Tribonacci** 替换及二元因子，用该数制的进位实现全二元模式，同时普通块复杂度线性。这覆盖低普通复杂度/满模式复杂度和进位造模式的一般背景，不是 P4 的控制优化定理。
+
+正式 2002a 没有给出 Thue–Morse 定理或 P4 特定 $4^j$ 公式。原稿同时引用 2002a/2002b 且承认该复杂度是已知对象；现能确认 **2002a 单独不支持 Thue–Morse 精确归属**。2002b 是否支持或应改引另一原始来源，仍待正文核查。本文件第 5 节独立二进制证明不受出处缺口影响，不先猜缺失文章内容，不改原稿。
+
+**直接纠错证据。** GKTX p. 1075（PDF 第 3 页）明确指出 `[KZ2]` 的 simple Toeplitz 证明错误，其参考文献中该项是 2002a。旧 §4 Lemma 2/Theorem 4（pp. 1206–1208）不能继续视为未经修正的可靠证明。本轮没有独立锁定旧论证唯一错行，也不擅自说其所有引理陈述均假。
+
+**替代证明的完整核心。** GKTX Theorem 1、Corollary 1、Lemma 2（pp. 1076–1079；PDF 第 4–7 页）以常量模式补偿，证明二元 simple Toeplitz 对每个窗口 $F$ 有
+
+$$
+p_\alpha(F)-c_\alpha(F)+2\le2|F|,
+$$
+
+其中 $c$ 是常量词数。按 $k=|F|$ 归纳：$k=1$ 显然；$k=2$ 最多两个非常量词。合并 coding 开头同字母的层，写
+$\alpha=(\eta\triangleleft\zeta)\triangleleft\beta=\xi\triangleleft\beta$，
+$\eta,\zeta$ 的非孔字母分别全为 $a,b$，周期 $s,t$，合成周期 $r=st\ge4$。两种字母无限出现，尾词仍为 simple Toeplitz。
+
+若 $F$ 占模 $r$ 的 $\ell\ge2$ 个余类，记余类窗口 $F_i$、缩小窗口 $\overline F_i$ 和余类集合 $L$，置
+
+$$
+D=|\pi_{\{a,b\}}F_\xi(L)|-2\ell,\qquad c'=c(\pi_{\{a,b\}}F_\xi(L)).
+$$
+
+Theorem 1 通过“各余类全常量”与“恰一个余类非常量”的不相交分解，给
+
+$$
+p_\alpha(F)-c_\alpha(F)+2\le D-c'+2+\sum_i p_\alpha(F_i).
+$$
+
+Corollary 1 给 $p_\alpha(F_i)=p_\beta(\overline F_i)+2-c_\beta(\overline F_i)$；各子窗口严格小于 $k$，归纳使和式不超过 $2k$。
+
+为核实剩项，将 $L$ 按模 $s$ 分组为 $L_j$。每组投影除全 $a$ 词之外的模式数为
+$|L_j|+\mathbf1_{\{|L_j|\ge2\}}$。
+记 $1_a,1_b$ 表示两种常量词出现与否，则
+
+$$
+c'=1_a+1_b,\quad |\pi F_\xi(L)|\le1_a+\ell+\sum_j\mathbf1_{\{|L_j|\ge2\}},
+\quad D-c'+2\le2-1_b-\lceil\ell/2\rceil\le0
+$$
+
+（$\ell\ge3$）。若 $\ell=2$ 且分在两个模 $s$ 组，指示项和为零，仍成立；若同组，投影为 $\{aa,ab,ba\}$ 或 $\{aa,ab,ba,bb\}$，均有 $|\pi F_\xi(L)|-c'=2$，故 $D-c'+2=0$。
+
+若 $F$ 全在一个模 $r$ 余类，先利用 recurrence 平移使 $\min F=0$；Corollary 1 保持不变量：
+
+$$
+p_\alpha(F)-c_\alpha(F)+2=p_\beta(F/r)-c_\beta(F/r)+2.
+$$
+
+p. 1079 Case 2 印作反复除以同一 $r^e$；一般尾层周期可以变动，严谨写法是逐尾词重新分组取得 $r_0,r_1,\ldots$，累计除以 $R_e=\prod_{j<e}r_j\ge4^e$。若非零 $M=\max F$ 永远不进入多余类情形，就须对所有 $e$ 有 $R_e\mid M$，不可能。有限步后应用前一种情形，归纳完成。这补齐递归索引，不另声称发现正式新勘误。
+
+上界已审清。原文再用非最终周期词 $p_\alpha^*(k)\ge2k$ 得等号；该周期判别是 2002a Theorem 1 **引用 2002b** 的结果，其原始证明仍缺，不能称整条外部依赖链都独立核实。
+
+**P4 影响。** 稀疏支撑闭性/概率估计、Thue–Morse 进位不依赖旧 simple Toeplitz 证明或这个引用下界，R01/R02 既有数值不需修正。GKTX §3 Example 3（pp. 1084–1085）的满二元模式 Toeplitz 例子也不提供反馈优化，不恢复分类方向。
+
+### 10.5 一般数值问题及实际验证的控制实现接口
+
+记 $\mathscr S_\tau$ 为固定周期的**全部**合法 Borel 安全选择器，包含在任意 Borel 集上混合不同合法选择器。目标仍为
+
+$$
+L_\tau=\sup_A\inf_{s\in\mathscr S_\tau}h_A(s)\stackrel{?}{=}
+M_\tau=\inf_{s\in\mathscr S_\tau}h_*(s).
+$$
+
+恒有 $L_\tau\le M_\tau$，右边因量化而达到；最小策略存在不意味着它的有限模式被所有其他策略支配。反向至少需要诸如
+$\forall\varepsilon>0\ \exists A\ \forall s:\ h_A(s)\ge M_\tau-\varepsilon$。
+单覆盖定理只给 $\forall s\ \exists A_s$，跨周期表示不保持这个固定 $\tau$。
+
+**当轮验证一个决定性接口，给完整反例。** 新读 Huang–Ye Theorem 5.9(4) 保证熵保持的符号合并，但这不自动允许合并 R02 中不同控制块的原子。用原稿 C 已有的匹配控制机制作接口检验，不另加路线：
+
+$$
+Q=\{0,1\}^{\mathbb N_0}\cup\{2^\infty\},\quad
+X=Q\sqcup\{\dagger\},\quad U=\{0,1,2\},\quad\tau=1.
+$$
+
+定义 $f(x,u)=\sigma x$ 若 $u=x_0$，否则进入固定墓点。$Q$ 紧致，首字母柱集 clopen，故各控制映射连续；安全反馈必且只能为 $s(x)=x_0$，已覆盖全部 Borel 类。每个 $n$ 元窗口有 $2^n+1$ 个模式，$h_*(s)=\log2$。
+
+符号层把 $2$ 合入 $0$，因子恰为二元满移位，每个窗口有 $2^n$ 个模式，熵仍为 $\log2$。可是合并原子
+$E=\{x:x_0=0\}\cup\{2^\infty\}$
+没有共同安全控制：前一片只允许 0，后一片只允许 2，故
+$\bigcap_{x\in E}\{u:f(x,u)\in Q\}=\varnothing$。
+该熵保持因子不能实现为同一系统的合并安全分割，证明完毕。
+
+反例阻断的是**符号因子到控制实现**的接口，**不是全类数值缺口**：本例对每个 $A$ 都有 $h_A(s)=\log2$，两侧相等。R02 相同控制块合并仍合法；跨不同块不仅须找到共同安全控制，改变闭环也不能自动声称名字是旧语言的符号因子。原文合并机制未跨过核心障碍。
+
+| 对象 | 新原文实际覆盖与裁决 |
+| --- | --- |
+| 低普通熵、满模式熵及进位造模式 | 2002a/2006 已有背景现象；具体控制构造的精确历史排重仍未完，不认证重大原创性。 |
+| R02 同控制块合并 | 相邻的覆盖互不相交化/符号因子已有基本理论；不是字面同一操作，不获得可数选择器类。 |
+| 逐策略共同达到失败 | 单覆盖达到不给共同达到；R02 较强桥梁失败结果保留，不重复旧例核验。 |
+| 指定子类缺口 | 不转换为全类反例；任意合法 Borel 混合仍须纳入。 |
+| 四控制全类数值 | 仍为 $\log2=\log2$，指定子类才有 $\log2<\log4$。新增 Toeplitz 修正不影响该计算。 |
+| 一般固定周期全类数值问题 | 未取得统一阈值采样、全类严格缺口或重大结构后果；仍未决定，原候选一保持暂停。 |
+
+### 10.6 2002b 获取停点、版本及最终判断
+
+仍缺的准确来源：
+
+Kamae, T., & Zamboni, L. (2002b). Sequence entropy and the maximal pattern complexity of infinite words. *Ergodic Theory and Dynamical Systems, 22*(4), 1191–1199. https://doi.org/10.1017/S014338570200055X
+
+14 份附件身份盘点没有对应全文，2006 Toeplitz 文不能替代。新增有界合法查找中，Cambridge 题名/作者/DOI 相符但 PDF 入口仍转摘要；ResearchGate 对应条目仅请求全文，没有公开附件；Kamae 作者主页入口访问失败。未从摘要重建证明，不循环已失败入口。已在聊天中**单独一条消息**请求用户补找完整出版版（或可识别完整作者稿），说明用途为原始序列熵覆盖、历史归属及获取缺口；这不阻断本轮其余工作。进一步明确它还用于核对 2002a 所引周期判别的原始证明。
+
+另定位 Kamae–Salimov (2011)，*On maximal pattern complexity of some automatic words*，*ETDS, 31*(5), 1463–1470，DOI [10.1017/S0143385710000453](https://doi.org/10.1017/S0143385710000453) 的出版社书目；作者 PDF 入口未打开。仅是自动词归属待查线索，未读证明，不能说已支持 P4 的 Thue–Morse 公式，不因此增加路线。
+
+仅复查既有竞争的一手版本页：Le–Pavlov–Schlortt `arXiv:2508.13420` 仍为 2025-08-19 v1；Gao–Ma–Rong–Tran `arXiv:2310.05353` 仍列 2025-04-03 v3；Li–Ouyang `arXiv:2608.06103` 仍仅列 2026-08-06 v1。没有将版本号未变视作字节相同，没有重启增长分类或认证全部竞争证明。2025 加权文章仍只核对书目/首页，不能由摘要加路线。
+
+本轮修正的是**原文取得/阅读状态、索引写法及精确引用边界**；R02 数值不需修正。单覆盖串接、Toeplitz 递归补齐和符号合并控制实现接口反例都是实际增量，不是新的升级核心定理。没有跨过一般数值障碍的机制或四大级贡献重要性依据，继续暂停，不承诺成功、不降低目标。
+
+下一轮只补真正新增的 2002b 正文、精确纠错证据或作用于一般全类数值问题的具体机制；不重复已补核四份原文，不开 R03，不恢复增长分类，不加路线，不重写整篇。原稿 SHA-256 再核仍为 `c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed`；提交后按实际 SHA 回读四份更新文件及全部保留文件，未来提交 SHA 不写进自身。
