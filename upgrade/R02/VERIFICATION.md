@@ -7122,3 +7122,62 @@ $$
 本轮有真实完整新增证据，集中追加本节并更新CURRENT、README、NEXT_COMMAND。保留本节之前VERIFICATION全部531,404字节及九份原稿/候选稿/投稿材料/R01–R02历史文件。原稿SHA-256仍为c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed。提交后按实际SHA全文回读四份更新及九份保留文件，核对逐字节、历史前缀、原稿散列、父提交、树及main。
 
 本次有界实现尝试结束，任意Borel实现保持未决定，恢复暂停；NEXT_COMMAND不自动授权下一轮。只处理P4，不开R03、不恢复增长分类、不改其他项目、不改候选稿或投稿材料、不外发。其他暂停分支及2002b获取关闭安排保持。
+
+## 44. 2026-10-06（Asia/Shanghai）十篇四大论文的定向学习：机制与写法比较，数学状态不变
+
+### 44.1 授权、基线及阅读范围
+
+用户本次明确要求先学习十篇与P4方向相关的四大论文，为后续升级提供依据。本次不是第43节反馈实现的自动续攻，不修改候选稿、不开展投稿。已核最新main为8ab86501eed9e9f27d56c6694b5182fcb209e595，树7ebca933edc4cd2677f084633db8d0d85524b627；无后续成果。按最新CURRENT、NEXT_COMMAND、第42–43节及候选主线恢复实际问题，无适用新增AGENTS指令。用户此次十篇学习要求替代此前单次数学尝试至多新增三篇文献的阅读数量限制，但不重开数学接口。
+
+完整自有学习记录另存 [FOUR_MAJOR_STUDY.md](FOUR_MAJOR_STUDY.md)，包含逐篇贡献、实际精读的定理与证明页码、写作组织、P4适用限制、APA/DOI、合法全文入口和PDF指纹。实际取得十份完整、可解析的合法PDF，共414页；精读引言、相关主定理和指定核心证明，**不是414页全部逐页精读或全部证明独立复核**。作者版页码只绑定所读文件，不冒充期刊排版；仅读声明或部分证明的地方已明确标注。SWO容量公式、Voronoi移位关系及逆熵定理页面另作PDF渲染检查。
+
+### 44.2 十篇实际发表对象与针对性
+
+| 正式发表对象 | 期刊及卷年 | DOI | 学习接口 |
+|---|---|---|---|
+| Rudolph–Weiss, Entropy and mixing for amenable group actions | Annals 151 (2000) | 10.2307/121130 | 固定保测作用的分散采样熵估计、轨道转移条件 |
+| Boyle–Downarowicz, The entropy theory of symbolic extensions | Inventiones 156 (2004) | 10.1007/s00222-003-0335-2 | 熵约束刻画、SWO跨层编码与实际扩张构造 |
+| Hochman–Shmerkin, Local entropy averages and projections of fractal measures | Annals 175 (2012) | 10.4007/annals.2012.175.3.1 | 树态射纤维分解、局部熵平均与投影 |
+| Lind–Schmidt, Homoclinic points of algebraic Z^d-actions | JAMS 12 (1999) | 10.1090/S0894-0347-99-00306-9 | 可求和轨道修正与真实specification |
+| Kerr–Li, Entropy and the variational principle for actions of sofic groups | Inventiones 186 (2011) | 10.1007/s00222-011-0324-9 | 稳定微状态定义、经验测度抽取与变分原理 |
+| Chung–Li, Homoclinic groups, IE groups, and expansive algebraic actions | Inventiones 199 (2015) | 10.1007/s00222-014-0524-1 | 独立性的内在子群与因子结构 |
+| Seward, Krieger’s finite generator theorem for actions of countable groups I | Inventiones 215 (2019) | 10.1007/s00222-018-0826-9 | 互斥存储位置、可识别标记与实际解码 |
+| Seward, Positive entropy actions of countable groups factor onto Bernoulli shifts | JAMS 33 (2020) | 10.1090/jams/931 | 内部轨道排序、external past、相对独立性转移 |
+| Gutman–Tsukamoto, Embedding minimal dynamical systems into Hilbert cubes | Inventiones 221 (2020) | 10.1007/s00222-019-00942-w | 动力一致Voronoi标记与重叠编码资源分配 |
+| Hochman, On self-similar sets with overlaps and inverse theorems for entropy | Annals 180 (2014) | 10.4007/annals.2014.180.2.7 | 低增长的多尺度结构诊断与重叠后果 |
+
+三篇Annals、五篇Inventiones、两篇JAMS；没有为凑四刊均衡添加不相关Acta文章。它们是同方向或方法邻近原文，不是十篇已研究当前有限控制无记忆反馈minimax的论文。HMY、Huang–Ye及既有Kerr–Li直接背景不因此改换期刊身份，也不计入十篇四大。
+
+正式身份优先核对出版社记录、期刊版首页及作者机构发表目录；JAMS/931另核Crossref注册元数据，区分2019在线与2020卷年。Gutman–Tsukamoto所读文件有2015 arXiv水印及2018内部日期，两者如实保留，未称为2020出版社排版。未将作者版与正式版未经逐字校勘地声称相同。没有以摘要、目录或下载成功替代实际证明阅读。
+
+### 44.3 学到的机制及不可跳过的P4前提
+
+以下属于阅读后的研究判断，不是新增数学证明。
+
+1. 最接近第42–43节的比较对象是跨层兼容编码、同一分割的自我解码和动力一致标记。共同之处是实际证明信息存储位置、移位变化及解码规则相容，之后才计算熵或实现后果。P4普通截面已取得，难点仍是同一状态重新选码后必须等于原尾串。
+2. 符号扩张允许辅助系统，不等于原状态上的截面；可测生成元和Bernoulli因子允许零测例外，不等于全部初态；连续minimal固定动力学的marker property也不由任意Borel反馈安全性推出。不能把这些缺失前提作为默许假设，不能新增相位、状态或记忆。
+3. 统一采样的文献证明依赖固定作用、测度熵及轨道转移结构；可求和拼接依赖代数作用与尾和控制；投影与逆熵定理依赖具体局部熵/独立卷积结构。这些尚未对当前全部反馈核证，不能直接推成共同采样log2下界、真实回返或更低上界。
+4. 本组论文的写作把旧理论的精确缺项、跨越缺项的主定理、实际机制、后果及边界放在一条逻辑线上。某些论文针对自然系统类而非最一般问题，仍有明确结构价值。这是对这十篇的观察，不是期刊录用规则；不能靠模仿引言、增加日志或改写参数获得相同贡献。
+
+后续有明确研究授权时，建议先检查原状态是否提供可识别且动力一致的编码位置，再决定能否形成适用范围有意义的兼容性定理。这里只给出有比较对象的方向，没有构造该结构，没有重试普通截面或已失败最小相位入口，也没有把它写成已证条件定理。
+
+### 44.4 数学结论与贡献裁决
+
+第17节闭覆盖、全部Borel细化、预设渐疏采样的公式及共同后继应用、第18节适用边界不变。第42节Y满覆盖及低偶数投影熵不变；第43节字典序截面失败、全部阈值和小集合修复排除不变。任意非单调Borel的全域单步尾串实现仍未决定。
+
+本次没有执行新的证明尝试，保持
+$$
+\log(3/2)\le\ell_2\le\ell_2^A\le\log\rho,
+\qquad h_{A_2}(s_g)=\log\rho,
+\qquad M_1=\log2,
+\qquad \log(3/2)\le L_1\le\log2.
+$$
+ρ⁶=ρ⁵+ρ⁴+ρ+1。两类上界下降量为0，贪心最优性、下确界达到者及一般全Borel数值问题未决定。新增的是有原文定位的机制学习与适用条件判断，不是数学升级、原创性认证或一区/Top/四大资格认定。
+
+HMY已有共同正测度熵阈值归属保留。Pinheiro正式版未核实、Parry正文未读不变；2002b仍“未取得、未核实，获取关闭”，不索取、不循环、不替代。既有暂停分支、选刊、投稿准备及实际投稿继续暂停。
+
+### 44.5 保留、记录与核验
+
+新增FOUR_MAJOR_STUDY，追加本节并据实更新CURRENT、README、NEXT_COMMAND。十份文献全文仅临时阅读，仓库保存自己的学习记录及合法入口，不提交受版权保护的全文。没有修改候选TeX/PDF，因此不重复编译或重查无关数学。
+
+既有VERIFICATION第1–43节全部546,534字节及九份原稿/候选稿/投稿材料/R01–R02文件保留。原稿SHA-256仍为c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed。按真实新增提交，随后按实际SHA全文回读五份新增/更新及九份保留文件，核验逐字节、历史前缀、散列、父提交、树及main。只处理P4，不开R03、不恢复增长分类、不改其他项目、不外发材料；本次学习完成不自动授权下一轮数学续攻。
