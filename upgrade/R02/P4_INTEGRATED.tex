@@ -3878,7 +3878,8 @@ Every decreasing sequence of closed viable sets $K_j$ has one
 globally safe Borel selector preserving all $K_j$. If also
 $\intr_QK_j\ne\varnothing$ and $c(K_j)\to0$, this selector
 fails complete-branch growth at every positive fixed scale.
-No such sequence can have a finite intersection.
+No sequence satisfying these additional interior and component-scale
+conditions can have a finite intersection.
 \end{proposition}
 \begin{proof}
 On $K_j\setminus K_{j+1}$ choose the first original control
@@ -3901,7 +3902,9 @@ $\min\{\delta,6\}$, contradicting the component bound.
 Length zero gives the same contradiction. This is precisely the
 complete-branch growth obstruction, not an entropy counterexample.
 
-For the last assertion, let $F=\bigcap K_j$ be finite. Choose
+For the last assertion, impose the additional conditions just stated.
+Nested nonempty compactness makes $F=\bigcap K_j$ nonempty.
+Suppose that $F$ is finite. Choose
 a closed $\eta$-neighborhood of $F$ small enough that its
 nearest center is unique and every actual safe step staying in it
 has $g_u(p_j)=p_{j+1}$ for the corresponding centers. Such an

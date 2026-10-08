@@ -1,11 +1,17 @@
 # P4：稀疏采样、逆容量与安全反馈
 
+## 2026-10-09 最新完整稿审查
+
+审查开始main：9430b0604e8fbe14dc51353d1b3f2345697522c5。48页完整稿及核心证明、附录已重新阅读；核查范围内未发现需撤回主定理的错误。唯一稿件小修是Proposition E.2明确“非空内部和分量尺度趋零”的附加条件后，才排除有限交集。主定理、全部数值及暂停状态保持；编译、交叉引用和48页版面检查通过。
+
+详细记录见[VERIFICATION第66节](upgrade/R02/VERIFICATION.md)及[审查QA](upgrade/R02/FINAL_REVIEW_20261009.json)。这不是新数值突破、作者人工审阅或期刊档位认证，不启动研究或投稿。
+
 仓库khdzg5shnt-rgb/p4sida。**主要阅读版本为48页英文完整整合稿**，覆盖初稿主线、九页改版及截至第64节的主要完整数学成果；保留证明、非平凡例子、适用边界和未解问题。详细范围见整合说明。
 
 - [完整论文PDF](upgrade/R02/P4_INTEGRATED.pdf) / [TeX](upgrade/R02/P4_INTEGRATED.tex)
 - [整合范围与成果对应](upgrade/R02/INTEGRATION_NOTES.md)
 - [当前状态](CURRENT.md)
-- [完整核验及第65节整合记录](upgrade/R02/VERIFICATION.md)
+- [完整核验、第65节整合和第66节审查](upgrade/R02/VERIFICATION.md)
 - [后续安排](upgrade/R02/NEXT_COMMAND.md)
 - [十篇四大论文学习](upgrade/R02/FOUR_MAJOR_STUDY.md)
 - [原稿](original/P4_FINAL.tex)

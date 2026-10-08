@@ -1,0 +1,18 @@
+{
+  "project": "P4",
+  "pages": "48",
+  "errors": [],
+  "pdf_sha256": "729d3fce4a81acc1f8e59d0f84f04b3a29d937b18b2b7c21643c957e854e47bb",
+  "rendered_pages": 48,
+  "contact_sheets_visually_reviewed": true,
+  "text_outside_page": [],
+  "detailed_pages_visually_reviewed": [
+    46
+  ],
+  "baseline_main": "9430b0604e8fbe14dc51353d1b3f2345697522c5",
+  "baseline_tree": "4adedfc549a9d53731dda4b65296b1707340dc32",
+  "modified_proposition": "prop:nested-selector",
+  "main_results_changed": false,
+  "history_prefix_bytes": 912297,
+  "history_prefix_sha256": "6a8646cf7795d0dcd53150cb57381b98500ee3ae3985bfef29a577fa1583dc15"
+}
