@@ -1,0 +1,4397 @@
+{
+  "schema": "p4-content-coverage-v1",
+  "date": "2026-10-09",
+  "baseline_commit": "d420725f1c7053075a0fce65351edc78fcd0d615",
+  "baseline_tree": "03776e851df09278d664dcd8984166ed8adf0a0b",
+  "scope": "All accessible main-reachable commits and trees; all 67 verification dispositions; independent proof reconstruction of six restored result groups.",
+  "branches": [
+    "main"
+  ],
+  "commits": [
+    {
+      "sha": "d420725f1c7053075a0fce65351edc78fcd0d615",
+      "tree": "03776e851df09278d664dcd8984166ed8adf0a0b",
+      "message": "Review and revise complete P4 manuscript with proof audit and English restructuring",
+      "parents": [
+        "b544a2ceeb583208082c09b92bfeb2e497302968"
+      ]
+    },
+    {
+      "sha": "b544a2ceeb583208082c09b92bfeb2e497302968",
+      "tree": "f4ace0651943ec03889b0947dbe420f3c6f7c883",
+      "message": "Clarify appendix viability conditions and record final manuscript review",
+      "parents": [
+        "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      ]
+    },
+    {
+      "sha": "9430b0604e8fbe14dc51353d1b3f2345697522c5",
+      "tree": "4adedfc549a9d53731dda4b65296b1707340dc32",
+      "message": "R02: integrate original and completed upgrades into a full 48-page manuscript",
+      "parents": [
+        "daac235d4f2309bd04746b453f8fc1e6c803b586"
+      ]
+    },
+    {
+      "sha": "daac235d4f2309bd04746b453f8fc1e6c803b586",
+      "tree": "1adab700c386d51fbf1f8508b412528b58108786",
+      "message": "R02: prove gain-loss list contraction without any common nonstrict left budget",
+      "parents": [
+        "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232"
+      ]
+    },
+    {
+      "sha": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232",
+      "tree": "90ae67536842dccbc4664a88dc6237e1d58dbf87",
+      "message": "R02: prove cross-layer list contraction beyond strict common left weights",
+      "parents": [
+        "ab013ca6827135e69570f4d2e36f762b79cef26b"
+      ]
+    },
+    {
+      "sha": "ab013ca6827135e69570f4d2e36f762b79cef26b",
+      "tree": "2459ce240e63870c237447c0778647d3a609973b",
+      "message": "R02: prove finite-cylinder structural class with uniform list contraction",
+      "parents": [
+        "93d0087ba9c67f48a6754170d14adf09487b4d85"
+      ]
+    },
+    {
+      "sha": "93d0087ba9c67f48a6754170d14adf09487b4d85",
+      "tree": "dc46fbe010b4edde5a4bc2253bc66c1d7ae1a556",
+      "message": "R02: independently audit theorem 60.A and sharpen prior-work attribution",
+      "parents": [
+        "4ae3ba20053eac42fa2b4f51218cfeba96958922"
+      ]
+    },
+    {
+      "sha": "4ae3ba20053eac42fa2b4f51218cfeba96958922",
+      "tree": "5f848afa2346bd9291c641658a681be8ee6fb6bc",
+      "message": "R02: prove composite list-capacity threshold and strict separation",
+      "parents": [
+        "ec97d80a5c2932d2c91058e23896b2fa246567fa"
+      ]
+    },
+    {
+      "sha": "ec97d80a5c2932d2c91058e23896b2fa246567fa",
+      "tree": "11715b05ce93c0edab0ff29591e7a2ce39c96db3",
+      "message": "R02: prove three-branch affine critical boundary and delimit prior coverage",
+      "parents": [
+        "ad06c44e084ae5de2fb6af43dd409f8e1205192b"
+      ]
+    },
+    {
+      "sha": "ad06c44e084ae5de2fb6af43dd409f8e1205192b",
+      "tree": "a3b772ea81f6ff2d1522abe5b9b1fd0b2e35750e",
+      "message": "R02: record full-support scalarization attempt and exact unresolved steps",
+      "parents": [
+        "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8"
+      ]
+    },
+    {
+      "sha": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8",
+      "tree": "9b8d1649adb11c8374dfb878f5b477db9c24f1c4",
+      "message": "R02: exclude common bounded positive densities by inverse interval cycles",
+      "parents": [
+        "ed459b776549f4ac3aa6e35c6819b54acd0d1748"
+      ]
+    },
+    {
+      "sha": "ed459b776549f4ac3aa6e35c6819b54acd0d1748",
+      "tree": "f295e5bbdc0a77dae451bfc261b11eda12301c73",
+      "message": "R02: prove joint inverse-density threshold for all Borel feedbacks",
+      "parents": [
+        "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8"
+      ]
+    },
+    {
+      "sha": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8",
+      "tree": "b94684a79a97b308786bfd89990eb3b19724aaba",
+      "message": "R02: audit actual joint-density collision estimate and retain unresolved minimax",
+      "parents": [
+        "5c3bfef0ad601647618a7370386a3ef40a24f7dc"
+      ]
+    },
+    {
+      "sha": "5c3bfef0ad601647618a7370386a3ef40a24f7dc",
+      "tree": "0113e851ea586cc5e63a2efba986d9962767032b",
+      "message": "R02: prove all-depth Borel inverse-capacity saturation and record minimax boundary",
+      "parents": [
+        "3301b2a7363cf2a066a79b9e2e7d8fe82225a621"
+      ]
+    },
+    {
+      "sha": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621",
+      "tree": "8d7a19f9f0c8900f3c8ec0dd390aa6e125132bda",
+      "message": "R02: prove fixed even-sampling value for Section 52 example",
+      "parents": [
+        "5da2909a88340e418dd081d44136d5a4b8a72209"
+      ]
+    },
+    {
+      "sha": "5da2909a88340e418dd081d44136d5a4b8a72209",
+      "tree": "71bf85a0bce89d184f122e14d0da144b27c9340d",
+      "message": "R02: prove weighted inverse-capacity thresholds for all Borel feedbacks",
+      "parents": [
+        "ad54a1f1f866a7a547db5a20ee9901b9025de76d"
+      ]
+    },
+    {
+      "sha": "ad54a1f1f866a7a547db5a20ee9901b9025de76d",
+      "tree": "827e83e22eddb14b0d19e90380a40328b34974e3",
+      "message": "R02: record failed joint-threshold coverage estimate and restore pause",
+      "parents": [
+        "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0"
+      ]
+    },
+    {
+      "sha": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0",
+      "tree": "9fd9e321e5480f132df1a048c732daeda971ed85",
+      "message": "R02: test synchronous copy-class repair and record unresolved total coverage",
+      "parents": [
+        "b43b1affa666094eed5accda91fd4a4b5137288d"
+      ]
+    },
+    {
+      "sha": "b43b1affa666094eed5accda91fd4a4b5137288d",
+      "tree": "87b7610a4bcecd9a144fa668a35b40506ff08fd2",
+      "message": "R02: classify first-gap endpoints and disprove tail-swap compensation",
+      "parents": [
+        "b9b42a02587f95dfc18e00144a62da426f3cc9a3"
+      ]
+    },
+    {
+      "sha": "b9b42a02587f95dfc18e00144a62da426f3cc9a3",
+      "tree": "83909555661c487053835722e6abf47a10c6156b",
+      "message": "R02: prove central reduction and record unresolved all-phase interval coverage",
+      "parents": [
+        "920138acf371d79786e5a9e940295df72bc551b8"
+      ]
+    },
+    {
+      "sha": "920138acf371d79786e5a9e940295df72bc551b8",
+      "tree": "a9d9058634d21fe4693e059f83784afb566bab7a",
+      "message": "R02: verify all-phase compatibility and record unresolved kernel coverage",
+      "parents": [
+        "347afdd43a463b97a355ba0c7aa89b851cbaacce"
+      ]
+    },
+    {
+      "sha": "347afdd43a463b97a355ba0c7aa89b851cbaacce",
+      "tree": "ffec14ead777e760e8d7763085523918e2a06e75",
+      "message": "R02: verify first pruning layer and record unresolved kernel coverage",
+      "parents": [
+        "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f"
+      ]
+    },
+    {
+      "sha": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f",
+      "tree": "2eac359b4a4b391d5e0247e7267278cb737da16e",
+      "message": "R02: refute frozen-orbit extension using a Y-admissible cycle",
+      "parents": [
+        "79fbcdf846b8cd00394f62e8bc7b2b9177852121"
+      ]
+    },
+    {
+      "sha": "79fbcdf846b8cd00394f62e8bc7b2b9177852121",
+      "tree": "90a9980ce8299aba707626efad536c759f1c83f7",
+      "message": "R02: study ten major-journal papers on entropy and coding mechanisms",
+      "parents": [
+        "8ab86501eed9e9f27d56c6694b5182fcb209e595"
+      ]
+    },
+    {
+      "sha": "8ab86501eed9e9f27d56c6694b5182fcb209e595",
+      "tree": "7ebca933edc4cd2677f084633db8d0d85524b627",
+      "message": "R02 §43: refute lexicographic implementation and threshold repairs; retain full Borel gap",
+      "parents": [
+        "06db2ebf4191db7aa82924d73155624f12a99c0f"
+      ]
+    },
+    {
+      "sha": "06db2ebf4191db7aa82924d73155624f12a99c0f",
+      "tree": "fd6558d5c138ee58399b5dca853ee5ae641b9b85",
+      "message": "R02 §42: prove itinerary closure conversion and refute relaxed even-entropy bound",
+      "parents": [
+        "0d1d4ad9ac061f33f5debb43f657142837d1b64f"
+      ]
+    },
+    {
+      "sha": "0d1d4ad9ac061f33f5debb43f657142837d1b64f",
+      "tree": "f7f64de6e773acab1b994ee78d02910696706de4",
+      "message": "R02: check two-A inverse coalescence and preserve unresolved even-sampling optimization",
+      "parents": [
+        "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e"
+      ]
+    },
+    {
+      "sha": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e",
+      "tree": "353118018cd1a1ea3ca2bbbc98ec14f406eb8c46",
+      "message": "P4 R02: rule out selected high-core B1 feedback with actual return-code growth\n\nVerify the full period-one two-step dynamics, including odd-step B1 controls. Prove freely concatenated actual return codes force a growth rate above the greedy even entropy at every block length. Keep full-class numerical bounds unchanged and restore the bounded task to pause.",
+      "parents": [
+        "0464eccba97d8d361653f9dde5896dddf96d2907"
+      ]
+    },
+    {
+      "sha": "0464eccba97d8d361653f9dde5896dddf96d2907",
+      "tree": "7c1561f870d323bcfb78fa32ce47637458fd7b45",
+      "message": "P4 R02: determine greedy even entropy and rule out short B1 reset improvement\n\nProve actual realization of the growing block language for every Borel reset subset in the specified band. Determine greedy even entropy exactly; keep the full-class numerical bounds unchanged and restore the bounded task to pause.",
+      "parents": [
+        "f2a855a495f4c527bfc84283fc73ebb1751b6759"
+      ]
+    },
+    {
+      "sha": "f2a855a495f4c527bfc84283fc73ebb1751b6759",
+      "tree": "90b59b7d8caa59ecab88a97a615eae866737271b",
+      "message": "R02: bound actual even-sampling patterns and narrow the inner interval",
+      "parents": [
+        "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c"
+      ]
+    },
+    {
+      "sha": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c",
+      "tree": "b3913ed96601d043f112a01f835dec9b379e8538",
+      "message": "Record R02 low-pattern overlap attempt and exact limits; no numerical gain",
+      "parents": [
+        "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd"
+      ]
+    },
+    {
+      "sha": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd",
+      "tree": "6e9d8d1b4b8ba151d8c6a933aa07f79872902579",
+      "message": "R02: verify weighted actual pattern pairs and counterexample to uniform defect",
+      "parents": [
+        "2e098f70426b848a81998b74752e7255da3dd2d0"
+      ]
+    },
+    {
+      "sha": "2e098f70426b848a81998b74752e7255da3dd2d0",
+      "tree": "137dfaf06ebc03a55a365ae9ca13471895a16e5e",
+      "message": "R02: prove dense-sampling baseline and record unresolved full-feedback improvement",
+      "parents": [
+        "793f90460b3ecbb906527319a5d22d58be7f8504"
+      ]
+    },
+    {
+      "sha": "793f90460b3ecbb906527319a5d22d58be7f8504",
+      "tree": "d29882781d83d813a081cc3a41e3963a8cf3ea49",
+      "message": "R02: certify loss of interior in two-translation return refinement",
+      "parents": [
+        "0521ac848d358ad2b08298f25723b01f5d7d71f9"
+      ]
+    },
+    {
+      "sha": "0521ac848d358ad2b08298f25723b01f5d7d71f9",
+      "tree": "efe3b4365b0fc21240adcfdb9c1a9d9cf8bccbd5",
+      "message": "R02: exclude interior in an infinite inverse-tree viability kernel",
+      "parents": [
+        "dced2ee55fa3731421ae695d4b4be49c7ff9a0db"
+      ]
+    },
+    {
+      "sha": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db",
+      "tree": "7f2d95b0c3323af9ef0435f2c7a6112bbcbbf446",
+      "message": "R02: prove finite-limit obstruction for nested viable regions",
+      "parents": [
+        "d28dea3f0ea3635e5660e8321646317a5beb5472"
+      ]
+    },
+    {
+      "sha": "d28dea3f0ea3635e5660e8321646317a5beb5472",
+      "tree": "f9f750ef05833c09daa044804b6fa45c081466fc",
+      "message": "R02: test compatible fine invariant regions for one feedback\n\nProve Borel selection for nested viable closed regions and explicit fine absorbing regions at each separate scale.\nExclude nested full-space one-step absorption and exhibit a two-region selection conflict.\nKeep the single-feedback infinite-scale construction, per-feedback growth, true returns and minimax unresolved; preserve all manuscripts and history.",
+      "parents": [
+        "ce4626ab1916aa7482ff21499171e327fc019c1b"
+      ]
+    },
+    {
+      "sha": "ce4626ab1916aa7482ff21499171e327fc019c1b",
+      "tree": "faf566bb12d9757fa78178fc788373755b381183",
+      "message": "R02: audit spatial diagonalization for per-feedback growth\n\nProve the sharp closed-interval safety threshold and the comeager obstruction.\nVerify a disconnected invariant-region example that prevents convex-hull substitution.\nKeep per-feedback growth, true-return extraction, and minimax unresolved; preserve all manuscript and prior research files.",
+      "parents": [
+        "0ed7794300b162eb95b9b756cee62048e0e97439"
+      ]
+    },
+    {
+      "sha": "0ed7794300b162eb95b9b756cee62048e0e97439",
+      "tree": "3facf67fe8152fdd029accf2ce1bf9150f9a3a87",
+      "message": "R02: audit category-growth route and refute a feedback-uniform spatial scale\n\nPreserve the full Borel return-extraction and minimax problems as unresolved.\nAdd the dense-open affine transfer, conditional true-return argument, and an all-word-length safe feedback family.\nKeep the original manuscript, candidate, submission materials, and prior research unchanged.",
+      "parents": [
+        "1a98c3834b7186a39913c2b1d94999bb89c3871f"
+      ]
+    },
+    {
+      "sha": "1a98c3834b7186a39913c2b1d94999bb89c3871f",
+      "tree": "4268bd1836dbe1b003528e9990be7bbcc5fefdda",
+      "message": "R02: characterize real return closure and refute arbitrary-fold recurrence",
+      "parents": [
+        "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c"
+      ]
+    },
+    {
+      "sha": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c",
+      "tree": "890023b7af857ecef701b28b3ba879f0a9c847c9",
+      "message": "R02: prove universal real common coverage; leave return extraction open",
+      "parents": [
+        "7fcb8eb5b0430db9863a70607e34e049bbb14036"
+      ]
+    },
+    {
+      "sha": "7fcb8eb5b0430db9863a70607e34e049bbb14036",
+      "tree": "4315cc02f1385b967195707d602bfa5efeb71e2d",
+      "message": "R02: isolate the missing all-feedback return extraction\n\nProve that an actual two-branch Baire return certificate gives a feedback-independent factorial sampling threshold, with finite closed-loop concatenation and period-one normalization. Establish the precise category preliminaries and a legal Cantor-cut feedback that blocks convex-hull and finite-continuity shortcuts. Leave the universal certificate extraction and L1 equality unresolved; keep the numerical interval and publication assessment unchanged. Preserve sections 1-25, the original manuscript, candidate, submission materials, and all R01/R02 history.",
+      "parents": [
+        "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f"
+      ]
+    },
+    {
+      "sha": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f",
+      "tree": "2554df6ac4216e7293ac42acfc83e3bf02276872",
+      "message": "R02: prove a Borel phase obstruction for noninteger feedback coding\n\nComplete the selected alternating graph realization interface, including every finite endpoint repair. Reduce actual local feedback trajectories with incommensurate expansion scales to the known irrational-rotation two-coloring obstruction. Record the exact scope, directly checked source versions and errata, and the unresolved all-feedback sampling threshold. Keep the numerical bounds separate from this realization counterexample; no Q1 upgrade or general minimax claim. Preserve all earlier proofs, original manuscript, candidate, and submission drafts.",
+      "parents": [
+        "67109998bbffcb2b5b1d79de484c2331a4f91bff"
+      ]
+    },
+    {
+      "sha": "67109998bbffcb2b5b1d79de484c2331a4f91bff",
+      "tree": "180f98510e929d16b20590cbb02c9da136cfcd4c",
+      "message": "R02: prove expanding-control stability and exclude continuous common factors\n\nExtend the fixed-period all-Borel value proof to finite continuous control enlargements with uniform separation. Prove that a different expansion rate eliminates every nonconstant continuous common state factor at every fixed period, and record the folded-branch boundary. Keep the existing integer optimizer and classical geometric methods explicit; no claim of Q1 readiness or a general minimax resolution. Preserve the original, manuscript, submission drafts, and all prior evidence.",
+      "parents": [
+        "ca09a0a475ed79095b89253e11d0cee22721527b"
+      ]
+    },
+    {
+      "sha": "ca09a0a475ed79095b89253e11d0cee22721527b",
+      "tree": "2d953ec54805c6e33721ca93ee2bd8eb5749f060",
+      "message": "R02: prove the integer affine full-feedback values and assess stage-one limits\n\nAppend a complete fixed-period, all-Borel proof for redundant integer affine controls using actual absorbing feedback trajectories and uniform finite-window counts. Record the common mod-one factor and classic volume/coding limits, without claiming Q1 readiness or a general minimax resolution. Adopt the staged research goals, pause submission preparation, and preserve the manuscript, submission drafts, original, and all prior R01/R02 evidence.",
+      "parents": [
+        "454266d05e9f5f2901d8b13533b8556a5df55256"
+      ]
+    },
+    {
+      "sha": "454266d05e9f5f2901d8b13533b8556a5df55256",
+      "tree": "84caedfd5244d7d4dc7b64e277b869f34de26809",
+      "message": "R02: refine submission materials and record remaining author gaps\n\nVerify the journal's editable-source and numbered-citation requirements, clarify the cover letter's fixed-period full-Borel scope, and recover documented AI uses without inventing model versions or human author approval. Append verification section 22 and keep unconfirmed author information explicit. Preserve the manuscript, PDF, original, and research history; no submission or new mathematical claims.",
+      "parents": [
+        "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      ]
+    },
+    {
+      "sha": "337d9d29112cfd2b535c41a2dc63f3def6501848",
+      "tree": "feb64ac27551db93fbebb8aadd71a0c3d22f44d6",
+      "message": "R02: prepare Topology and its Applications submission materials\n\nAdd an English cover-letter draft, author-declaration draft, and concise submission checklist. Record verified official requirements and the remaining full-guide access gap without inventing author attestations. Preserve the nine-page manuscript, original, and R01/R02 history; no submission or new mathematical work.",
+      "parents": [
+        "f89c9455f8075dc0a1a6bd9df512b10f19984ac9"
+      ]
+    },
+    {
+      "sha": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9",
+      "tree": "18cad9be0de1d7d56c96bae6951d6be4e94fb2c8",
+      "message": "R02: assess closed-cover contribution and draft focused submission candidate\n\nClarify prior common-threshold results of Huang-Maass-Ye and Kerr-Li. Organize the complete closed-cover Borel sampling formula, fixed-period control application, and feedback-dependent boundary in a nine-page TeX/PDF candidate. Preserve the original and all R01/R02 history; keep general and paused problems unresolved.",
+      "parents": [
+        "0e0a22604365e44539fdf292edfe3e61a8f88d5b"
+      ]
+    },
+    {
+      "sha": "0e0a22604365e44539fdf292edfe3e61a8f88d5b",
+      "tree": "da8b794741764963a89fbeb959c83af445e8de34",
+      "message": "R02: verify cyclic permutation bounds and record unresolved Borel growth interface",
+      "parents": [
+        "bf46300344a99626f3a5ad0c0eea213a45a993b3"
+      ]
+    },
+    {
+      "sha": "bf46300344a99626f3a5ad0c0eea213a45a993b3",
+      "tree": "f2b4bad4c15ee5d87329f29fb2a655d0871d4cf6",
+      "message": "R02: audit independence sources and prove permutation counterexample values",
+      "parents": [
+        "5d0081680b4fca14e24f04dea9893d83e653e0a8"
+      ]
+    },
+    {
+      "sha": "5d0081680b4fca14e24f04dea9893d83e653e0a8",
+      "tree": "cd3987e9baa6db05ccfdcc02d10bde6d03d231dc",
+      "message": "Prove full Borel minimax for shared mixing finite-type dynamics",
+      "parents": [
+        "8404b785b5e37495e0fa3d19a5abd6ed474e93ad"
+      ]
+    },
+    {
+      "sha": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad",
+      "tree": "e33b938c10b86bd92ca7d68fec18f8d4460b5e4e",
+      "message": "Record failed canonical Omega feedback and phase consistency obstacles",
+      "parents": [
+        "35b70abbbe0bd3986566f3fa3e51753b6209f4c0"
+      ]
+    },
+    {
+      "sha": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0",
+      "tree": "7a29e18666b8df5648d4ff067dc3901e619aa194",
+      "message": "Record unresolved even-sampling optimization and safe-coding obstruction",
+      "parents": [
+        "ada04c8c42d20ea385675d6db2306ee38b637ac0"
+      ]
+    },
+    {
+      "sha": "ada04c8c42d20ea385675d6db2306ee38b637ac0",
+      "tree": "1ae0ace83a033bb9f3d305f4135d2e58b4637999",
+      "message": "Refute subexponential parity deletion for sqrt2 feedback and compute Fibonacci sampling rate",
+      "parents": [
+        "799cbfe317c05fd319dfbc0f2b1d334608f80eac"
+      ]
+    },
+    {
+      "sha": "799cbfe317c05fd319dfbc0f2b1d334608f80eac",
+      "tree": "79ee8f0aced83a9aa67c6f63f3099528e753e7bc",
+      "message": "Record phased P4 goals and refute invariant-measure sampling threshold for affine controls",
+      "parents": [
+        "149b1948072c6cf931744fac39f76f79a9d7529f"
+      ]
+    },
+    {
+      "sha": "149b1948072c6cf931744fac39f76f79a9d7529f",
+      "tree": "7c41d4ba7959c950d5fecee474b5ed9a6791dc8b",
+      "message": "Verify bounded orbit pasting and refute fixed-sampling entropy stability",
+      "parents": [
+        "8c2e28bff84ca241018bf19b1747e438cfb0a151"
+      ]
+    },
+    {
+      "sha": "8c2e28bff84ca241018bf19b1747e438cfb0a151",
+      "tree": "7a58d53704b901f66caa4700cf7d22c8f1e32fd6",
+      "message": "Close R02 2002b acquisition and record unresolved dependencies",
+      "parents": [
+        "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f"
+      ]
+    },
+    {
+      "sha": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f",
+      "tree": "6b184b15d3f8c8a79f9fe2c3be3e4db3c75515af",
+      "message": "Verify R02 final sources and control-realization boundary",
+      "parents": [
+        "8903b7200ff3599ef9ee14580cd668b68ee85786"
+      ]
+    },
+    {
+      "sha": "8903b7200ff3599ef9ee14580cd668b68ee85786",
+      "tree": "c868fd3f0ad7052b3224ac9e64ae762b2518c6eb",
+      "message": "Verify R02 stop-point proofs and primary-source gaps",
+      "parents": [
+        "23ed9c0e4b4168904eab11c14a4b9c7eeedad030"
+      ]
+    },
+    {
+      "sha": "23ed9c0e4b4168904eab11c14a4b9c7eeedad030",
+      "tree": "f5748591cb4af3c88fa2056e57decd4d2c4aca37",
+      "message": "R02: prove finite-control limits of simultaneous strategy attainment",
+      "parents": [
+        "9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b"
+      ]
+    },
+    {
+      "sha": "9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b",
+      "tree": "b92bd0a6a1f44afe904631d1f3bbf484727f9840",
+      "message": "Audit P4 and prove limits of compact strategy minimax",
+      "parents": [
+        "c8691f194ec301760e044c2f41f0385a776a689f"
+      ]
+    },
+    {
+      "sha": "c8691f194ec301760e044c2f41f0385a776a689f",
+      "tree": "08b1c32604ce77ea8702d4f22225a7358925f0f0",
+      "message": "Preserve the exact P4 manuscript baseline",
+      "parents": []
+    }
+  ],
+  "history_tree_reads": [
+    {
+      "commit": "d420725f1c7053075a0fce65351edc78fcd0d615",
+      "tree": "03776e851df09278d664dcd8984166ed8adf0a0b",
+      "file_count": 21,
+      "truncated": false
+    },
+    {
+      "commit": "b544a2ceeb583208082c09b92bfeb2e497302968",
+      "tree": "f4ace0651943ec03889b0947dbe420f3c6f7c883",
+      "file_count": 18,
+      "truncated": false
+    },
+    {
+      "commit": "9430b0604e8fbe14dc51353d1b3f2345697522c5",
+      "tree": "4adedfc549a9d53731dda4b65296b1707340dc32",
+      "file_count": 17,
+      "truncated": false
+    },
+    {
+      "commit": "daac235d4f2309bd04746b453f8fc1e6c803b586",
+      "tree": "1adab700c386d51fbf1f8508b412528b58108786",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232",
+      "tree": "90ae67536842dccbc4664a88dc6237e1d58dbf87",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "ab013ca6827135e69570f4d2e36f762b79cef26b",
+      "tree": "2459ce240e63870c237447c0778647d3a609973b",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "93d0087ba9c67f48a6754170d14adf09487b4d85",
+      "tree": "dc46fbe010b4edde5a4bc2253bc66c1d7ae1a556",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "4ae3ba20053eac42fa2b4f51218cfeba96958922",
+      "tree": "5f848afa2346bd9291c641658a681be8ee6fb6bc",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "ec97d80a5c2932d2c91058e23896b2fa246567fa",
+      "tree": "11715b05ce93c0edab0ff29591e7a2ce39c96db3",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "ad06c44e084ae5de2fb6af43dd409f8e1205192b",
+      "tree": "a3b772ea81f6ff2d1522abe5b9b1fd0b2e35750e",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8",
+      "tree": "9b8d1649adb11c8374dfb878f5b477db9c24f1c4",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "ed459b776549f4ac3aa6e35c6819b54acd0d1748",
+      "tree": "f295e5bbdc0a77dae451bfc261b11eda12301c73",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8",
+      "tree": "b94684a79a97b308786bfd89990eb3b19724aaba",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "5c3bfef0ad601647618a7370386a3ef40a24f7dc",
+      "tree": "0113e851ea586cc5e63a2efba986d9962767032b",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621",
+      "tree": "8d7a19f9f0c8900f3c8ec0dd390aa6e125132bda",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "5da2909a88340e418dd081d44136d5a4b8a72209",
+      "tree": "71bf85a0bce89d184f122e14d0da144b27c9340d",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "ad54a1f1f866a7a547db5a20ee9901b9025de76d",
+      "tree": "827e83e22eddb14b0d19e90380a40328b34974e3",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0",
+      "tree": "9fd9e321e5480f132df1a048c732daeda971ed85",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "b43b1affa666094eed5accda91fd4a4b5137288d",
+      "tree": "87b7610a4bcecd9a144fa668a35b40506ff08fd2",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "b9b42a02587f95dfc18e00144a62da426f3cc9a3",
+      "tree": "83909555661c487053835722e6abf47a10c6156b",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "920138acf371d79786e5a9e940295df72bc551b8",
+      "tree": "a9d9058634d21fe4693e059f83784afb566bab7a",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "347afdd43a463b97a355ba0c7aa89b851cbaacce",
+      "tree": "ffec14ead777e760e8d7763085523918e2a06e75",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f",
+      "tree": "2eac359b4a4b391d5e0247e7267278cb737da16e",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "79fbcdf846b8cd00394f62e8bc7b2b9177852121",
+      "tree": "90a9980ce8299aba707626efad536c759f1c83f7",
+      "file_count": 14,
+      "truncated": false
+    },
+    {
+      "commit": "8ab86501eed9e9f27d56c6694b5182fcb209e595",
+      "tree": "7ebca933edc4cd2677f084633db8d0d85524b627",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "06db2ebf4191db7aa82924d73155624f12a99c0f",
+      "tree": "fd6558d5c138ee58399b5dca853ee5ae641b9b85",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "0d1d4ad9ac061f33f5debb43f657142837d1b64f",
+      "tree": "f7f64de6e773acab1b994ee78d02910696706de4",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e",
+      "tree": "353118018cd1a1ea3ca2bbbc98ec14f406eb8c46",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "0464eccba97d8d361653f9dde5896dddf96d2907",
+      "tree": "7c1561f870d323bcfb78fa32ce47637458fd7b45",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "f2a855a495f4c527bfc84283fc73ebb1751b6759",
+      "tree": "90b59b7d8caa59ecab88a97a615eae866737271b",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c",
+      "tree": "b3913ed96601d043f112a01f835dec9b379e8538",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd",
+      "tree": "6e9d8d1b4b8ba151d8c6a933aa07f79872902579",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "2e098f70426b848a81998b74752e7255da3dd2d0",
+      "tree": "137dfaf06ebc03a55a365ae9ca13471895a16e5e",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "793f90460b3ecbb906527319a5d22d58be7f8504",
+      "tree": "d29882781d83d813a081cc3a41e3963a8cf3ea49",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "0521ac848d358ad2b08298f25723b01f5d7d71f9",
+      "tree": "efe3b4365b0fc21240adcfdb9c1a9d9cf8bccbd5",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db",
+      "tree": "7f2d95b0c3323af9ef0435f2c7a6112bbcbbf446",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "d28dea3f0ea3635e5660e8321646317a5beb5472",
+      "tree": "f9f750ef05833c09daa044804b6fa45c081466fc",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "ce4626ab1916aa7482ff21499171e327fc019c1b",
+      "tree": "faf566bb12d9757fa78178fc788373755b381183",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "0ed7794300b162eb95b9b756cee62048e0e97439",
+      "tree": "3facf67fe8152fdd029accf2ce1bf9150f9a3a87",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "1a98c3834b7186a39913c2b1d94999bb89c3871f",
+      "tree": "4268bd1836dbe1b003528e9990be7bbcc5fefdda",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c",
+      "tree": "890023b7af857ecef701b28b3ba879f0a9c847c9",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "7fcb8eb5b0430db9863a70607e34e049bbb14036",
+      "tree": "4315cc02f1385b967195707d602bfa5efeb71e2d",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f",
+      "tree": "2554df6ac4216e7293ac42acfc83e3bf02276872",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "67109998bbffcb2b5b1d79de484c2331a4f91bff",
+      "tree": "180f98510e929d16b20590cbb02c9da136cfcd4c",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "ca09a0a475ed79095b89253e11d0cee22721527b",
+      "tree": "2d953ec54805c6e33721ca93ee2bd8eb5749f060",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "454266d05e9f5f2901d8b13533b8556a5df55256",
+      "tree": "84caedfd5244d7d4dc7b64e277b869f34de26809",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "337d9d29112cfd2b535c41a2dc63f3def6501848",
+      "tree": "feb64ac27551db93fbebb8aadd71a0c3d22f44d6",
+      "file_count": 13,
+      "truncated": false
+    },
+    {
+      "commit": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9",
+      "tree": "18cad9be0de1d7d56c96bae6951d6be4e94fb2c8",
+      "file_count": 10,
+      "truncated": false
+    },
+    {
+      "commit": "0e0a22604365e44539fdf292edfe3e61a8f88d5b",
+      "tree": "da8b794741764963a89fbeb959c83af445e8de34",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "bf46300344a99626f3a5ad0c0eea213a45a993b3",
+      "tree": "f2b4bad4c15ee5d87329f29fb2a655d0871d4cf6",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "5d0081680b4fca14e24f04dea9893d83e653e0a8",
+      "tree": "cd3987e9baa6db05ccfdcc02d10bde6d03d231dc",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad",
+      "tree": "e33b938c10b86bd92ca7d68fec18f8d4460b5e4e",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0",
+      "tree": "7a29e18666b8df5648d4ff067dc3901e619aa194",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "ada04c8c42d20ea385675d6db2306ee38b637ac0",
+      "tree": "1ae0ace83a033bb9f3d305f4135d2e58b4637999",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "799cbfe317c05fd319dfbc0f2b1d334608f80eac",
+      "tree": "79ee8f0aced83a9aa67c6f63f3099528e753e7bc",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "149b1948072c6cf931744fac39f76f79a9d7529f",
+      "tree": "7c41d4ba7959c950d5fecee474b5ed9a6791dc8b",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "8c2e28bff84ca241018bf19b1747e438cfb0a151",
+      "tree": "7a58d53704b901f66caa4700cf7d22c8f1e32fd6",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f",
+      "tree": "6b184b15d3f8c8a79f9fe2c3be3e4db3c75515af",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "8903b7200ff3599ef9ee14580cd668b68ee85786",
+      "tree": "c868fd3f0ad7052b3224ac9e64ae762b2518c6eb",
+      "file_count": 8,
+      "truncated": false
+    },
+    {
+      "commit": "23ed9c0e4b4168904eab11c14a4b9c7eeedad030",
+      "tree": "f5748591cb4af3c88fa2056e57decd4d2c4aca37",
+      "file_count": 7,
+      "truncated": false
+    },
+    {
+      "commit": "9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b",
+      "tree": "b92bd0a6a1f44afe904631d1f3bbf484727f9840",
+      "file_count": 5,
+      "truncated": false
+    },
+    {
+      "commit": "c8691f194ec301760e044c2f41f0385a776a689f",
+      "tree": "08b1c32604ce77ea8702d4f22225a7358925f0f0",
+      "file_count": 1,
+      "truncated": false
+    }
+  ],
+  "history_path_versions": {
+    "CURRENT.md": [
+      {
+        "sha": "919e733fa14ff9fec7d550415653db539048f354",
+        "bytes": 4539,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "d2936feeae23744f7b9906b14553f1eb0ca0f9f7",
+        "bytes": 4916,
+        "latest_occurrence": "b544a2ceeb583208082c09b92bfeb2e497302968"
+      },
+      {
+        "sha": "5aae1ceac505eebe78c3c39558f6abe0008a4064",
+        "bytes": 4215,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      },
+      {
+        "sha": "705ed0882ab3e707240672365ec86a953056dd90",
+        "bytes": 4917,
+        "latest_occurrence": "daac235d4f2309bd04746b453f8fc1e6c803b586"
+      },
+      {
+        "sha": "5243927dc6031c6385ad9f5b1b7b0b45d33231f4",
+        "bytes": 5285,
+        "latest_occurrence": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232"
+      },
+      {
+        "sha": "148052fb7acd7e8c0aa627dfc0a1345a4935b6f0",
+        "bytes": 5127,
+        "latest_occurrence": "ab013ca6827135e69570f4d2e36f762b79cef26b"
+      },
+      {
+        "sha": "a18f97d757576a44e8d8269e2c30155591431947",
+        "bytes": 4978,
+        "latest_occurrence": "93d0087ba9c67f48a6754170d14adf09487b4d85"
+      },
+      {
+        "sha": "3213f3db706db7de8e8ac1773fb45dc95de81fed",
+        "bytes": 4608,
+        "latest_occurrence": "4ae3ba20053eac42fa2b4f51218cfeba96958922"
+      },
+      {
+        "sha": "b56d58afa7c9766c1f0081f771cc9b8f6521cad5",
+        "bytes": 3910,
+        "latest_occurrence": "ec97d80a5c2932d2c91058e23896b2fa246567fa"
+      },
+      {
+        "sha": "c4fb2b3df68e8e2f3ba3a45cde1977efd0a0e7d7",
+        "bytes": 3919,
+        "latest_occurrence": "ad06c44e084ae5de2fb6af43dd409f8e1205192b"
+      },
+      {
+        "sha": "ea736b84e46d2f9cf3ef179b08b59b6bc8eaa467",
+        "bytes": 3690,
+        "latest_occurrence": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8"
+      },
+      {
+        "sha": "064c4d299934254993703277db199f2addc1a08c",
+        "bytes": 3911,
+        "latest_occurrence": "ed459b776549f4ac3aa6e35c6819b54acd0d1748"
+      },
+      {
+        "sha": "8c46aede56d007032ea968e927a2d74d5c278876",
+        "bytes": 3128,
+        "latest_occurrence": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8"
+      },
+      {
+        "sha": "836ac5685d2e051e1d2cc05a2c9cfe3ada957c47",
+        "bytes": 3862,
+        "latest_occurrence": "5c3bfef0ad601647618a7370386a3ef40a24f7dc"
+      },
+      {
+        "sha": "b1b85310f9c40ae7bca392852293366f6e5a0b98",
+        "bytes": 3495,
+        "latest_occurrence": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621"
+      },
+      {
+        "sha": "675ae4b7fb487af9674a10628fc21aec4a6ff82c",
+        "bytes": 3610,
+        "latest_occurrence": "5da2909a88340e418dd081d44136d5a4b8a72209"
+      },
+      {
+        "sha": "a7cee653e0cdc0982fc07ad18e79c1d1d1efd1c0",
+        "bytes": 2463,
+        "latest_occurrence": "ad54a1f1f866a7a547db5a20ee9901b9025de76d"
+      },
+      {
+        "sha": "2d7269299b81455f2e5738914bd1e986c1eabab6",
+        "bytes": 3362,
+        "latest_occurrence": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0"
+      },
+      {
+        "sha": "3d8b0570d06110b10477a649de9c1f7e49f5d793",
+        "bytes": 3632,
+        "latest_occurrence": "b43b1affa666094eed5accda91fd4a4b5137288d"
+      },
+      {
+        "sha": "15584fa3a0bca5f75c1b66d735ebdbdeb95d9f72",
+        "bytes": 3531,
+        "latest_occurrence": "b9b42a02587f95dfc18e00144a62da426f3cc9a3"
+      },
+      {
+        "sha": "6fde63a8669566ea2a237035fe18974f4b6a0c90",
+        "bytes": 3898,
+        "latest_occurrence": "920138acf371d79786e5a9e940295df72bc551b8"
+      },
+      {
+        "sha": "bbdae8a67f3b2bcfa8677307e48b83cdc8cdf164",
+        "bytes": 3926,
+        "latest_occurrence": "347afdd43a463b97a355ba0c7aa89b851cbaacce"
+      },
+      {
+        "sha": "1330bf561c8a101675f10e3fd14d8c531a962220",
+        "bytes": 4525,
+        "latest_occurrence": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f"
+      },
+      {
+        "sha": "f5be10b4581406db07cfab0f7affb7fbe9b8c5f5",
+        "bytes": 4587,
+        "latest_occurrence": "79fbcdf846b8cd00394f62e8bc7b2b9177852121"
+      },
+      {
+        "sha": "b42f0c8891d13b1a635777df2224612fd1d613bc",
+        "bytes": 3767,
+        "latest_occurrence": "8ab86501eed9e9f27d56c6694b5182fcb209e595"
+      },
+      {
+        "sha": "52482b2983f7f3703a0789df919922c2b64ff5e7",
+        "bytes": 3600,
+        "latest_occurrence": "06db2ebf4191db7aa82924d73155624f12a99c0f"
+      },
+      {
+        "sha": "53f108d1d35f1a1d6aa630d418c1f44906e6ebea",
+        "bytes": 3600,
+        "latest_occurrence": "0d1d4ad9ac061f33f5debb43f657142837d1b64f"
+      },
+      {
+        "sha": "f50d80957581005e6a982781f4fc03d6ce21764f",
+        "bytes": 3437,
+        "latest_occurrence": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e"
+      },
+      {
+        "sha": "91194f2b9dfad73a8a28300736ab27754448c773",
+        "bytes": 3715,
+        "latest_occurrence": "0464eccba97d8d361653f9dde5896dddf96d2907"
+      },
+      {
+        "sha": "8f7cc68bdfcbe35b30bdd1ad4154bdf809aecfae",
+        "bytes": 3481,
+        "latest_occurrence": "f2a855a495f4c527bfc84283fc73ebb1751b6759"
+      },
+      {
+        "sha": "d9bda29abe79cf0e5781b9215f76d497336ca53c",
+        "bytes": 3654,
+        "latest_occurrence": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c"
+      },
+      {
+        "sha": "4a8ba2332fea27341d97a45fddac557b06186c32",
+        "bytes": 4364,
+        "latest_occurrence": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd"
+      },
+      {
+        "sha": "cc59681037f3efb1537971e8e6e2942f5eb8a092",
+        "bytes": 4363,
+        "latest_occurrence": "2e098f70426b848a81998b74752e7255da3dd2d0"
+      },
+      {
+        "sha": "78d0cdda1cfd4e51c5a49d9b7f0c8c5f14c918f3",
+        "bytes": 4189,
+        "latest_occurrence": "793f90460b3ecbb906527319a5d22d58be7f8504"
+      },
+      {
+        "sha": "ae24b5ef4eab47922e017c9000bb75aac11d5436",
+        "bytes": 3859,
+        "latest_occurrence": "0521ac848d358ad2b08298f25723b01f5d7d71f9"
+      },
+      {
+        "sha": "55c05baa992e199a8c4bd6af8310467a22d644a7",
+        "bytes": 3910,
+        "latest_occurrence": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db"
+      },
+      {
+        "sha": "91a1de236c58d5644ab981b15bdd3105dbb20ef0",
+        "bytes": 4738,
+        "latest_occurrence": "d28dea3f0ea3635e5660e8321646317a5beb5472"
+      },
+      {
+        "sha": "baf68acca2ed3a398fcbc5f3aac1fc7cbcf784bd",
+        "bytes": 4528,
+        "latest_occurrence": "ce4626ab1916aa7482ff21499171e327fc019c1b"
+      },
+      {
+        "sha": "30cad34e8fe4e91607ef23df15871fec812ae771",
+        "bytes": 4865,
+        "latest_occurrence": "0ed7794300b162eb95b9b756cee62048e0e97439"
+      },
+      {
+        "sha": "ac8c2e04278a93ed5d25f1b48ef535f6bb7e54ff",
+        "bytes": 4496,
+        "latest_occurrence": "1a98c3834b7186a39913c2b1d94999bb89c3871f"
+      },
+      {
+        "sha": "a9f3d27e473cc371094f015b8a1acb7e6761bbf2",
+        "bytes": 4514,
+        "latest_occurrence": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c"
+      },
+      {
+        "sha": "3b41cc67fe05a1edb45e5c68f73624444dff1c11",
+        "bytes": 4578,
+        "latest_occurrence": "7fcb8eb5b0430db9863a70607e34e049bbb14036"
+      },
+      {
+        "sha": "bd77136a2fdfe8ba16dfaa0f55b26b25912f0cdd",
+        "bytes": 4731,
+        "latest_occurrence": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f"
+      },
+      {
+        "sha": "a62273340cafd890468324b6fcfbdb82a524a7d6",
+        "bytes": 4963,
+        "latest_occurrence": "67109998bbffcb2b5b1d79de484c2331a4f91bff"
+      },
+      {
+        "sha": "febfa18433a5bd7c330f0a2a0f155e82a0804fee",
+        "bytes": 4746,
+        "latest_occurrence": "ca09a0a475ed79095b89253e11d0cee22721527b"
+      },
+      {
+        "sha": "b504cc0c7e07379b440db69f77a4322de054d834",
+        "bytes": 7287,
+        "latest_occurrence": "454266d05e9f5f2901d8b13533b8556a5df55256"
+      },
+      {
+        "sha": "194afa309e37422e36be6aaa05cd6d782e085607",
+        "bytes": 6887,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      },
+      {
+        "sha": "7863255dfc3ba0024a1df2a8e6ef9b4c02223182",
+        "bytes": 5966,
+        "latest_occurrence": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9"
+      },
+      {
+        "sha": "a7666f32370cae8f58ab34443c032a1bf3445921",
+        "bytes": 5327,
+        "latest_occurrence": "0e0a22604365e44539fdf292edfe3e61a8f88d5b"
+      },
+      {
+        "sha": "593d0f962c2fcb75b46e1fb74388a53027d31ddf",
+        "bytes": 5326,
+        "latest_occurrence": "bf46300344a99626f3a5ad0c0eea213a45a993b3"
+      },
+      {
+        "sha": "dbe25e3728f15f968514f60762c236cea9e1ff14",
+        "bytes": 4780,
+        "latest_occurrence": "5d0081680b4fca14e24f04dea9893d83e653e0a8"
+      },
+      {
+        "sha": "13cdb298ee1fb11da93de81bd600216af09cf470",
+        "bytes": 3922,
+        "latest_occurrence": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad"
+      },
+      {
+        "sha": "49e4930362bc92661a487dffc9a82bc70ef3ce38",
+        "bytes": 3967,
+        "latest_occurrence": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0"
+      },
+      {
+        "sha": "3de8858d13be81ba5de3397e3ef7c6929ad6f551",
+        "bytes": 3973,
+        "latest_occurrence": "ada04c8c42d20ea385675d6db2306ee38b637ac0"
+      },
+      {
+        "sha": "a760c788995136b610afc1e9d14c3fdae29ffe8c",
+        "bytes": 4535,
+        "latest_occurrence": "799cbfe317c05fd319dfbc0f2b1d334608f80eac"
+      },
+      {
+        "sha": "033a69bb557ebc73385e9d181727c9a861f4f33a",
+        "bytes": 6516,
+        "latest_occurrence": "149b1948072c6cf931744fac39f76f79a9d7529f"
+      },
+      {
+        "sha": "962febd3c94d02af16207b7d15c636c36744af3d",
+        "bytes": 4827,
+        "latest_occurrence": "8c2e28bff84ca241018bf19b1747e438cfb0a151"
+      },
+      {
+        "sha": "bca47a9216a53c67a36d7632564e4f887d0501cf",
+        "bytes": 4252,
+        "latest_occurrence": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f"
+      },
+      {
+        "sha": "0241a705b62c029921afb50dcd1c63beb56950e1",
+        "bytes": 4284,
+        "latest_occurrence": "8903b7200ff3599ef9ee14580cd668b68ee85786"
+      },
+      {
+        "sha": "582e042ba93df740b73351602e3b9a60f19e1bbd",
+        "bytes": 3123,
+        "latest_occurrence": "23ed9c0e4b4168904eab11c14a4b9c7eeedad030"
+      },
+      {
+        "sha": "61358b91047d08d1952abe6a3adb1ef1cd34bee7",
+        "bytes": 1937,
+        "latest_occurrence": "9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b"
+      }
+    ],
+    "README.md": [
+      {
+        "sha": "bce8f1115833fa40364647c3a5b9d76f3999f6db",
+        "bytes": 2923,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "b5db4c2a93ad4dd29c86147dda4081b048ef6639",
+        "bytes": 3461,
+        "latest_occurrence": "b544a2ceeb583208082c09b92bfeb2e497302968"
+      },
+      {
+        "sha": "9f778ec5e1c15312496dd998c32e56df68b880cb",
+        "bytes": 2795,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      },
+      {
+        "sha": "2135b9a0b9345e86d61dffdcdfe52d33a8988e59",
+        "bytes": 3257,
+        "latest_occurrence": "daac235d4f2309bd04746b453f8fc1e6c803b586"
+      },
+      {
+        "sha": "fa06810daed59684ac6d918be58328992e79afb8",
+        "bytes": 3466,
+        "latest_occurrence": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232"
+      },
+      {
+        "sha": "abf5e32996d374dc4dd546dd4db147e74f09d84c",
+        "bytes": 3426,
+        "latest_occurrence": "ab013ca6827135e69570f4d2e36f762b79cef26b"
+      },
+      {
+        "sha": "d371d69656ad5e179b4990cb62e3eba3142e084e",
+        "bytes": 3434,
+        "latest_occurrence": "93d0087ba9c67f48a6754170d14adf09487b4d85"
+      },
+      {
+        "sha": "5e711dda61d5d270b826fddb05b981cea3554817",
+        "bytes": 2890,
+        "latest_occurrence": "4ae3ba20053eac42fa2b4f51218cfeba96958922"
+      },
+      {
+        "sha": "a633036743d1a29a5190db2e9c2a01b161eddc56",
+        "bytes": 2808,
+        "latest_occurrence": "ec97d80a5c2932d2c91058e23896b2fa246567fa"
+      },
+      {
+        "sha": "06f806c0b6fb79107a5b4bd4fea9263d4211daae",
+        "bytes": 3028,
+        "latest_occurrence": "ad06c44e084ae5de2fb6af43dd409f8e1205192b"
+      },
+      {
+        "sha": "0b20f7c42259488ade6aa5d110643d8aa3b754b0",
+        "bytes": 2861,
+        "latest_occurrence": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8"
+      },
+      {
+        "sha": "426cf09d2f806173d5f135ffb9b700016c4bebb7",
+        "bytes": 2785,
+        "latest_occurrence": "ed459b776549f4ac3aa6e35c6819b54acd0d1748"
+      },
+      {
+        "sha": "b0b03fefc42d26d9611c320a37561f1ebe25bc88",
+        "bytes": 2209,
+        "latest_occurrence": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8"
+      },
+      {
+        "sha": "2c6e8774772b0b1d01ff2f2eed35c1d87bae7889",
+        "bytes": 2790,
+        "latest_occurrence": "5c3bfef0ad601647618a7370386a3ef40a24f7dc"
+      },
+      {
+        "sha": "c5d96bc9cbea164eebf0b2c32fe962a2339ba43a",
+        "bytes": 2561,
+        "latest_occurrence": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621"
+      },
+      {
+        "sha": "77e6d9be84e2d5605961c06d6a24936e8a4db801",
+        "bytes": 2580,
+        "latest_occurrence": "5da2909a88340e418dd081d44136d5a4b8a72209"
+      },
+      {
+        "sha": "d935ea724d7c6601845a13e515731008e33f20fd",
+        "bytes": 2009,
+        "latest_occurrence": "ad54a1f1f866a7a547db5a20ee9901b9025de76d"
+      },
+      {
+        "sha": "eaa6a8f902c6fd64cbd73af3cfe136788c85b415",
+        "bytes": 2813,
+        "latest_occurrence": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0"
+      },
+      {
+        "sha": "2f0da17fc2f8b85b74c38f255942f0e4353f2e4f",
+        "bytes": 2929,
+        "latest_occurrence": "b43b1affa666094eed5accda91fd4a4b5137288d"
+      },
+      {
+        "sha": "c899421cf9bba774c25707ec7227b35d289d319b",
+        "bytes": 2883,
+        "latest_occurrence": "b9b42a02587f95dfc18e00144a62da426f3cc9a3"
+      },
+      {
+        "sha": "967735556384cfc28ac0c8f39a9efc48314c03c5",
+        "bytes": 2863,
+        "latest_occurrence": "920138acf371d79786e5a9e940295df72bc551b8"
+      },
+      {
+        "sha": "300112a93a26f4465f8465a0ad53872175759543",
+        "bytes": 3020,
+        "latest_occurrence": "347afdd43a463b97a355ba0c7aa89b851cbaacce"
+      },
+      {
+        "sha": "868bb38a6245a30aeb9bc42de9a218f8206bb0a2",
+        "bytes": 3262,
+        "latest_occurrence": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f"
+      },
+      {
+        "sha": "6871bb0feee6ae5679b5bec2514e8b0bd6de2b6e",
+        "bytes": 3652,
+        "latest_occurrence": "79fbcdf846b8cd00394f62e8bc7b2b9177852121"
+      },
+      {
+        "sha": "62a883ebe2774512f338b7b93454903b55008f78",
+        "bytes": 3329,
+        "latest_occurrence": "8ab86501eed9e9f27d56c6694b5182fcb209e595"
+      },
+      {
+        "sha": "7f017044f718f049473727440443ad0639a7000e",
+        "bytes": 3306,
+        "latest_occurrence": "06db2ebf4191db7aa82924d73155624f12a99c0f"
+      },
+      {
+        "sha": "be508ce36f26f15f18d728969d904da4ed115749",
+        "bytes": 3319,
+        "latest_occurrence": "0d1d4ad9ac061f33f5debb43f657142837d1b64f"
+      },
+      {
+        "sha": "6744687a6a0eea5f84e539ba769eeff7abedf7e3",
+        "bytes": 3358,
+        "latest_occurrence": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e"
+      },
+      {
+        "sha": "f8cbd4c690dfcb922e50a46ab8c97625448c0cbd",
+        "bytes": 3546,
+        "latest_occurrence": "0464eccba97d8d361653f9dde5896dddf96d2907"
+      },
+      {
+        "sha": "d0eb49345d7eabb0c8a03e2ea97518234416f49f",
+        "bytes": 3213,
+        "latest_occurrence": "f2a855a495f4c527bfc84283fc73ebb1751b6759"
+      },
+      {
+        "sha": "1e6d3cb08e7e60a5780883dbd571312e8897b463",
+        "bytes": 3183,
+        "latest_occurrence": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c"
+      },
+      {
+        "sha": "a48916c9049b3c0af854b32bbdf77e0e5d6ba63c",
+        "bytes": 3393,
+        "latest_occurrence": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd"
+      },
+      {
+        "sha": "00578bc33094413574320d8542f7a7b38c5d7c75",
+        "bytes": 3325,
+        "latest_occurrence": "2e098f70426b848a81998b74752e7255da3dd2d0"
+      },
+      {
+        "sha": "8f4a30bb282712ec3f119057ea23978e7fbe4111",
+        "bytes": 3149,
+        "latest_occurrence": "793f90460b3ecbb906527319a5d22d58be7f8504"
+      },
+      {
+        "sha": "e550d6042770e5427b29553140ce83388ff92738",
+        "bytes": 3092,
+        "latest_occurrence": "0521ac848d358ad2b08298f25723b01f5d7d71f9"
+      },
+      {
+        "sha": "fea6b93bc6b2b3e5ca493051928c432c798897cd",
+        "bytes": 3269,
+        "latest_occurrence": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db"
+      },
+      {
+        "sha": "f5381dfeb3dcec6d6196aaf877c018fc6f59be4f",
+        "bytes": 3468,
+        "latest_occurrence": "d28dea3f0ea3635e5660e8321646317a5beb5472"
+      },
+      {
+        "sha": "f4b7ff0224a4425fbdcab2c0087d54dee370c4b7",
+        "bytes": 3352,
+        "latest_occurrence": "ce4626ab1916aa7482ff21499171e327fc019c1b"
+      },
+      {
+        "sha": "68350b45a70c8a60b09552347333fb631821ab36",
+        "bytes": 3358,
+        "latest_occurrence": "0ed7794300b162eb95b9b756cee62048e0e97439"
+      },
+      {
+        "sha": "a3b930e93c5a03c5255bf038fa1397ba6e8bc71d",
+        "bytes": 3288,
+        "latest_occurrence": "1a98c3834b7186a39913c2b1d94999bb89c3871f"
+      },
+      {
+        "sha": "20af37a6caec321017254d8d6eee1f2ebb754572",
+        "bytes": 3391,
+        "latest_occurrence": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c"
+      },
+      {
+        "sha": "d807f5e972aa12f07c50eb1b47a61acb099cb035",
+        "bytes": 3174,
+        "latest_occurrence": "7fcb8eb5b0430db9863a70607e34e049bbb14036"
+      },
+      {
+        "sha": "7963fe5b85332ba91ada0b200a750154d209dc5a",
+        "bytes": 3309,
+        "latest_occurrence": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f"
+      },
+      {
+        "sha": "91215d1b74655edd0c31c4b8168903b47d0557d6",
+        "bytes": 3409,
+        "latest_occurrence": "67109998bbffcb2b5b1d79de484c2331a4f91bff"
+      },
+      {
+        "sha": "c6596ef4806f31bea106cd6da915ffe3112b3f3a",
+        "bytes": 3220,
+        "latest_occurrence": "ca09a0a475ed79095b89253e11d0cee22721527b"
+      },
+      {
+        "sha": "aac0d64103584672a6b974f6acb19ff5f6e597bc",
+        "bytes": 4779,
+        "latest_occurrence": "454266d05e9f5f2901d8b13533b8556a5df55256"
+      },
+      {
+        "sha": "6ae51fc445e2a1858c4b6cdc56d60d0e4e9b8b78",
+        "bytes": 4449,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      },
+      {
+        "sha": "b5c77283d04c1b670b449287de4b79807124a9c4",
+        "bytes": 3942,
+        "latest_occurrence": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9"
+      },
+      {
+        "sha": "6b34ce4aadc6ba60c5088387214e8b742177a2cc",
+        "bytes": 3795,
+        "latest_occurrence": "0e0a22604365e44539fdf292edfe3e61a8f88d5b"
+      },
+      {
+        "sha": "2ee3cee6078afc80c71ef463d7cd6533ae335ea4",
+        "bytes": 3652,
+        "latest_occurrence": "bf46300344a99626f3a5ad0c0eea213a45a993b3"
+      },
+      {
+        "sha": "1c033bb276a131d5aa91eadb8afee9d86919f0f8",
+        "bytes": 3397,
+        "latest_occurrence": "5d0081680b4fca14e24f04dea9893d83e653e0a8"
+      },
+      {
+        "sha": "0b56210bbdbf584a4a5d79b543fceff498e49031",
+        "bytes": 2767,
+        "latest_occurrence": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad"
+      },
+      {
+        "sha": "b0e95d7030461a5a2d4b6ee8f8bcf272414ec794",
+        "bytes": 2864,
+        "latest_occurrence": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0"
+      },
+      {
+        "sha": "3a88c01355019a1f3faf4ccc73d4075da6cdc31b",
+        "bytes": 2583,
+        "latest_occurrence": "ada04c8c42d20ea385675d6db2306ee38b637ac0"
+      },
+      {
+        "sha": "eaf907976b1429e1040f3c35b086cce709228735",
+        "bytes": 2629,
+        "latest_occurrence": "799cbfe317c05fd319dfbc0f2b1d334608f80eac"
+      },
+      {
+        "sha": "2c8699e9b0cc03f7ebd6938bf4d65dedd3d009db",
+        "bytes": 3329,
+        "latest_occurrence": "149b1948072c6cf931744fac39f76f79a9d7529f"
+      },
+      {
+        "sha": "7807ad4a8d10818700b156b53e38bdc33ddd9493",
+        "bytes": 2760,
+        "latest_occurrence": "8c2e28bff84ca241018bf19b1747e438cfb0a151"
+      },
+      {
+        "sha": "e62d398b343b5bc442fcf1f1dd254d74a8802430",
+        "bytes": 2255,
+        "latest_occurrence": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f"
+      },
+      {
+        "sha": "b11f2749f3e5f3d60caefd34e8a865b093c8418c",
+        "bytes": 2086,
+        "latest_occurrence": "8903b7200ff3599ef9ee14580cd668b68ee85786"
+      },
+      {
+        "sha": "b084c8d55a8edeb6c220bedfa884740fc1233946",
+        "bytes": 1734,
+        "latest_occurrence": "23ed9c0e4b4168904eab11c14a4b9c7eeedad030"
+      },
+      {
+        "sha": "6d1b58939396343ecaacfd938f1408fbd81a3f60",
+        "bytes": 1236,
+        "latest_occurrence": "9f9b32ce3f56e4e37c2e81f6b51a5fcbffb96d2b"
+      }
+    ],
+    "original/P4_FINAL.tex": [
+      {
+        "sha": "03564feac83b763fabb0d84a5cdb13afca6ca4a8",
+        "bytes": 58870,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R01/NEXT_COMMAND.md": [
+      {
+        "sha": "7022e2fd7b648b0e4ece7c3e846b9ee37a5ba9c7",
+        "bytes": 1642,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R01/RESEARCH.md": [
+      {
+        "sha": "033518287fdfbc8bf8cab588c1810afc6399bd90",
+        "bytes": 42662,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/AUTHOR_DECLARATIONS_DRAFT.md": [
+      {
+        "sha": "28a5daa0713b0dc46924e6af11669916729bedce",
+        "bytes": 6374,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "b6910a38e6045e13225929cf1bccfddbebd61133",
+        "bytes": 5267,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      }
+    ],
+    "upgrade/R02/COVER_LETTER_DRAFT.md": [
+      {
+        "sha": "57d728c41edffc8ce183b884b85fa55115a71183",
+        "bytes": 2976,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "03a05e90227bf788979b18974142e68a12ded312",
+        "bytes": 2792,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      }
+    ],
+    "upgrade/R02/FINAL_REVIEW_20261009.json": [
+      {
+        "sha": "7fd1224c7c809b3f387904d29b3c30f6138b0884",
+        "bytes": 624,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/FOUR_MAJOR_STUDY.md": [
+      {
+        "sha": "b7694e84a55697e8a4b637175fba5b096035d188",
+        "bytes": 18345,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/INTEGRATION_NOTES.md": [
+      {
+        "sha": "7ff5b79e3f934bf14f6c9acea13e49a96b9633fd",
+        "bytes": 8839,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "c1061e0c07d686edfc006b9a5df004df05ee663e",
+        "bytes": 8245,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      }
+    ],
+    "upgrade/R02/MANUSCRIPT_REVIEW.md": [
+      {
+        "sha": "3c6993073f12f4470bca079fad66a1d1b9e1de51",
+        "bytes": 30080,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/NEXT_COMMAND.md": [
+      {
+        "sha": "dbd228373731d853ba759b10752227194fdaf309",
+        "bytes": 3113,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "06f8ae7f505ea6af562dff503b61bab3f3601670",
+        "bytes": 4504,
+        "latest_occurrence": "b544a2ceeb583208082c09b92bfeb2e497302968"
+      },
+      {
+        "sha": "6239a30878ab980a2c6485dc735e3b5257c3ebd5",
+        "bytes": 3864,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      },
+      {
+        "sha": "68bd2b0eb69f71e8bd4c31841b73c5f0cd3c6d77",
+        "bytes": 5338,
+        "latest_occurrence": "daac235d4f2309bd04746b453f8fc1e6c803b586"
+      },
+      {
+        "sha": "64b703f9634fa3910153538da0b8774b77ef42a7",
+        "bytes": 4917,
+        "latest_occurrence": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232"
+      },
+      {
+        "sha": "c5d10260fe2eba266c9245e2f7374850399523f9",
+        "bytes": 4975,
+        "latest_occurrence": "ab013ca6827135e69570f4d2e36f762b79cef26b"
+      },
+      {
+        "sha": "746bd8cea2d8e2be60db4cdec08ba3b5186eea13",
+        "bytes": 4457,
+        "latest_occurrence": "93d0087ba9c67f48a6754170d14adf09487b4d85"
+      },
+      {
+        "sha": "6e7a6e91cbbcc28e898e91e83be6eac97147d7f4",
+        "bytes": 4973,
+        "latest_occurrence": "4ae3ba20053eac42fa2b4f51218cfeba96958922"
+      },
+      {
+        "sha": "4d2f7a69138997ffcaf0215bb78ff95c9508fff3",
+        "bytes": 4142,
+        "latest_occurrence": "ec97d80a5c2932d2c91058e23896b2fa246567fa"
+      },
+      {
+        "sha": "cb893ce0d368f8b179fc5e49eb5e759cf68d3a24",
+        "bytes": 4472,
+        "latest_occurrence": "ad06c44e084ae5de2fb6af43dd409f8e1205192b"
+      },
+      {
+        "sha": "16be6f6a5c32b46fbc14227a6b386651066f688a",
+        "bytes": 4354,
+        "latest_occurrence": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8"
+      },
+      {
+        "sha": "d752c1c262c12605ea2e80642f8acb33cdb78713",
+        "bytes": 4161,
+        "latest_occurrence": "ed459b776549f4ac3aa6e35c6819b54acd0d1748"
+      },
+      {
+        "sha": "9629acededc292e696bebcb8b29eb9f9846c42d0",
+        "bytes": 4271,
+        "latest_occurrence": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8"
+      },
+      {
+        "sha": "f9db7238ddef1dcba70929514b1d19b8db2fbb5d",
+        "bytes": 4470,
+        "latest_occurrence": "5c3bfef0ad601647618a7370386a3ef40a24f7dc"
+      },
+      {
+        "sha": "181f241a0705c5999270afc457097900db1928b6",
+        "bytes": 4271,
+        "latest_occurrence": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621"
+      },
+      {
+        "sha": "ff4b8bd8ff42a4676bb07c60a9cf0ffaacc3ad65",
+        "bytes": 3481,
+        "latest_occurrence": "5da2909a88340e418dd081d44136d5a4b8a72209"
+      },
+      {
+        "sha": "c9b5a07b2a60efdddbc32f7a580d1c0151e791dd",
+        "bytes": 3149,
+        "latest_occurrence": "ad54a1f1f866a7a547db5a20ee9901b9025de76d"
+      },
+      {
+        "sha": "234f801ddeaa23c82c4cf071ab2cd5fa311b3c4c",
+        "bytes": 4096,
+        "latest_occurrence": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0"
+      },
+      {
+        "sha": "02f3466805f945888804263c980ea1f9871ed209",
+        "bytes": 4161,
+        "latest_occurrence": "b43b1affa666094eed5accda91fd4a4b5137288d"
+      },
+      {
+        "sha": "c7389fe41d6d6b2cecd633e28f77b0de87f86bd1",
+        "bytes": 3812,
+        "latest_occurrence": "b9b42a02587f95dfc18e00144a62da426f3cc9a3"
+      },
+      {
+        "sha": "92c1002b2bebd1a7fc71f0adb39879939eb73ca6",
+        "bytes": 3554,
+        "latest_occurrence": "920138acf371d79786e5a9e940295df72bc551b8"
+      },
+      {
+        "sha": "fcba25f1d1811f375f7d34fb360f9dc39f7438da",
+        "bytes": 3528,
+        "latest_occurrence": "347afdd43a463b97a355ba0c7aa89b851cbaacce"
+      },
+      {
+        "sha": "52d2cf9cb0a69ce7159a11a4ece24e268b904875",
+        "bytes": 4298,
+        "latest_occurrence": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f"
+      },
+      {
+        "sha": "42282b2203b96fea9c2804a41268466325214332",
+        "bytes": 5456,
+        "latest_occurrence": "79fbcdf846b8cd00394f62e8bc7b2b9177852121"
+      },
+      {
+        "sha": "448d9abb6b82468bf1aa211a7bd28b4c00cb3785",
+        "bytes": 4237,
+        "latest_occurrence": "8ab86501eed9e9f27d56c6694b5182fcb209e595"
+      },
+      {
+        "sha": "aec37a9fb5e7fec1b8c2b858be04df0e1b6aa188",
+        "bytes": 4420,
+        "latest_occurrence": "06db2ebf4191db7aa82924d73155624f12a99c0f"
+      },
+      {
+        "sha": "a8034bc54041f603bd1c760f7578b19544381b88",
+        "bytes": 4467,
+        "latest_occurrence": "0d1d4ad9ac061f33f5debb43f657142837d1b64f"
+      },
+      {
+        "sha": "e729a875d3edc024a4d994aab06e5f630bafb5e6",
+        "bytes": 4083,
+        "latest_occurrence": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e"
+      },
+      {
+        "sha": "e639b59eced046d8abfe4a5d8942faf49b8f0f37",
+        "bytes": 4597,
+        "latest_occurrence": "0464eccba97d8d361653f9dde5896dddf96d2907"
+      },
+      {
+        "sha": "d0761ada2e094ac6323a94b6483e59331d1f7eb8",
+        "bytes": 4028,
+        "latest_occurrence": "f2a855a495f4c527bfc84283fc73ebb1751b6759"
+      },
+      {
+        "sha": "9ae6de92bacf270227627598d26635a8be987035",
+        "bytes": 3872,
+        "latest_occurrence": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c"
+      },
+      {
+        "sha": "dc620272915eb5212ea5ac79416c0ebfd433dbec",
+        "bytes": 4264,
+        "latest_occurrence": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd"
+      },
+      {
+        "sha": "6785f48617775802c6bb87c88f8b333f15d93d04",
+        "bytes": 4615,
+        "latest_occurrence": "2e098f70426b848a81998b74752e7255da3dd2d0"
+      },
+      {
+        "sha": "40cd666e8e2471fb76c7cde778d7ea0f8b4a245f",
+        "bytes": 4864,
+        "latest_occurrence": "793f90460b3ecbb906527319a5d22d58be7f8504"
+      },
+      {
+        "sha": "a36584ba6fc649a778e67586ca1420eaa89a9bf8",
+        "bytes": 4289,
+        "latest_occurrence": "0521ac848d358ad2b08298f25723b01f5d7d71f9"
+      },
+      {
+        "sha": "147015f7de25a783b9b76417f8d779152e820624",
+        "bytes": 4605,
+        "latest_occurrence": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db"
+      },
+      {
+        "sha": "c39d9259dfcadbb2d258e4a4e19b4d6250db5740",
+        "bytes": 5114,
+        "latest_occurrence": "d28dea3f0ea3635e5660e8321646317a5beb5472"
+      },
+      {
+        "sha": "626561b66839f79d5edea24bd48a47008dec4e34",
+        "bytes": 4780,
+        "latest_occurrence": "ce4626ab1916aa7482ff21499171e327fc019c1b"
+      },
+      {
+        "sha": "712f8462c563d5e547f84ad6883500a899b48ca5",
+        "bytes": 5086,
+        "latest_occurrence": "0ed7794300b162eb95b9b756cee62048e0e97439"
+      },
+      {
+        "sha": "1cd1805f8be9edf2bf0af330a2de8f1ea5c80758",
+        "bytes": 4432,
+        "latest_occurrence": "1a98c3834b7186a39913c2b1d94999bb89c3871f"
+      },
+      {
+        "sha": "d3b4f1797f711755e4fc210f862bbedf1ab7fe32",
+        "bytes": 4725,
+        "latest_occurrence": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c"
+      },
+      {
+        "sha": "aac75cd889963d4dcaae62ddfde7e59e58d5df8c",
+        "bytes": 4535,
+        "latest_occurrence": "7fcb8eb5b0430db9863a70607e34e049bbb14036"
+      },
+      {
+        "sha": "3d5498bcb560665119bb731c288d29c19b0655ce",
+        "bytes": 4151,
+        "latest_occurrence": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f"
+      },
+      {
+        "sha": "4cffed017bc05f5ebc732a04e470d65e7ca7056d",
+        "bytes": 4225,
+        "latest_occurrence": "67109998bbffcb2b5b1d79de484c2331a4f91bff"
+      },
+      {
+        "sha": "aa153ec57a027cce4c2f9d7d871ad0eddc6449a1",
+        "bytes": 3732,
+        "latest_occurrence": "ca09a0a475ed79095b89253e11d0cee22721527b"
+      },
+      {
+        "sha": "6f0191894bcde0f4eba70e922d95ee66b793231e",
+        "bytes": 4010,
+        "latest_occurrence": "454266d05e9f5f2901d8b13533b8556a5df55256"
+      },
+      {
+        "sha": "5cd8b41400b6e5599e62174da13b34addfa6dfec",
+        "bytes": 3760,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      },
+      {
+        "sha": "ce11fb9de5cf4a8aa068392d6a5917e52100c586",
+        "bytes": 4092,
+        "latest_occurrence": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9"
+      },
+      {
+        "sha": "eca428ad77a1245cba6f8e29f6157328ea27c571",
+        "bytes": 3831,
+        "latest_occurrence": "0e0a22604365e44539fdf292edfe3e61a8f88d5b"
+      },
+      {
+        "sha": "bb6d62954ecfc384c9ac14bfa90edf3ab5cf5f71",
+        "bytes": 3370,
+        "latest_occurrence": "bf46300344a99626f3a5ad0c0eea213a45a993b3"
+      },
+      {
+        "sha": "20ab903d9be9410582346a29c9c95240bfa95ca9",
+        "bytes": 4121,
+        "latest_occurrence": "5d0081680b4fca14e24f04dea9893d83e653e0a8"
+      },
+      {
+        "sha": "320a950a138eea8e14a50d39e08b27feed5f4ce8",
+        "bytes": 3454,
+        "latest_occurrence": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad"
+      },
+      {
+        "sha": "af349674fa38848c746945a4e8671478eae92333",
+        "bytes": 3553,
+        "latest_occurrence": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0"
+      },
+      {
+        "sha": "c188d83c1abc1f3c6af083ae9b6aac65b4bf3c41",
+        "bytes": 2834,
+        "latest_occurrence": "ada04c8c42d20ea385675d6db2306ee38b637ac0"
+      },
+      {
+        "sha": "2f7aab0ef8ca6385538121f21d3e382f8cd8e759",
+        "bytes": 3617,
+        "latest_occurrence": "799cbfe317c05fd319dfbc0f2b1d334608f80eac"
+      },
+      {
+        "sha": "e482675979b4b2089cb1b4b275ba79dc34313074",
+        "bytes": 3733,
+        "latest_occurrence": "149b1948072c6cf931744fac39f76f79a9d7529f"
+      },
+      {
+        "sha": "2bf507c4008579a0ffc85cb530d396901ddffdda",
+        "bytes": 3213,
+        "latest_occurrence": "8c2e28bff84ca241018bf19b1747e438cfb0a151"
+      },
+      {
+        "sha": "513accf3d68185d4d213975c20a24f987131c5eb",
+        "bytes": 3276,
+        "latest_occurrence": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f"
+      },
+      {
+        "sha": "4c990654a574c1f13b4087b5ab816dc8fd12bd60",
+        "bytes": 3005,
+        "latest_occurrence": "8903b7200ff3599ef9ee14580cd668b68ee85786"
+      },
+      {
+        "sha": "ffa58517434f8f4dc0ed1d55cd046274638db139",
+        "bytes": 2019,
+        "latest_occurrence": "23ed9c0e4b4168904eab11c14a4b9c7eeedad030"
+      }
+    ],
+    "upgrade/R02/P4_INTEGRATED.pdf": [
+      {
+        "sha": "8655f4395ecf60ae2854c6b8c36a9172af7601b4",
+        "bytes": 613579,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "bcaf9b2dc4c16129d7061928ac10690a06b53e4f",
+        "bytes": 613406,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      }
+    ],
+    "upgrade/R02/P4_INTEGRATED.tex": [
+      {
+        "sha": "70bf51242badf9d2dc2f6f13720a188952823b96",
+        "bytes": 179517,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "ff52495f279f62888ccbe0b48c811596f2324baa",
+        "bytes": 179351,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      }
+    ],
+    "upgrade/R02/P4_REVIEWED.pdf": [
+      {
+        "sha": "6a607e63ab17391442331ffacdc3d7eff2a45f65",
+        "bytes": 620503,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/P4_REVIEWED.tex": [
+      {
+        "sha": "68d7aef9510eb6f4e5b6be6c3480f0ef1443eff6",
+        "bytes": 176755,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/P4_REVISED.pdf": [
+      {
+        "sha": "3804d3b57cf55931a1fc351545510f1f4a3e392f",
+        "bytes": 325300,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/P4_REVISED.tex": [
+      {
+        "sha": "115347d4bd80ca385b441f28c9ae494243936ffe",
+        "bytes": 33121,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/RESEARCH.md": [
+      {
+        "sha": "b2213cae74ea803d254544e5099774f3ddf8be48",
+        "bytes": 29748,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      }
+    ],
+    "upgrade/R02/SUBMISSION_CHECKLIST.md": [
+      {
+        "sha": "bc63494a508e2a65fec805f7fb0597bab9e52c2f",
+        "bytes": 4386,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "54078bdda0df040b274baf1ced266b7e35ef8d41",
+        "bytes": 3514,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      }
+    ],
+    "upgrade/R02/VERIFICATION.md": [
+      {
+        "sha": "33fe8e97f08622234bdf23fd6d8d94c4821a99be",
+        "bytes": 923637,
+        "latest_occurrence": "d420725f1c7053075a0fce65351edc78fcd0d615"
+      },
+      {
+        "sha": "173ade3dd0c474991bcb67766b03a395af022d2c",
+        "bytes": 917253,
+        "latest_occurrence": "b544a2ceeb583208082c09b92bfeb2e497302968"
+      },
+      {
+        "sha": "929e896963de0f1ce8a367fe521a29d098d3582e",
+        "bytes": 912297,
+        "latest_occurrence": "9430b0604e8fbe14dc51353d1b3f2345697522c5"
+      },
+      {
+        "sha": "2c0630ef3708d47a1e276ae8797feb2fba0e1a8c",
+        "bytes": 904400,
+        "latest_occurrence": "daac235d4f2309bd04746b453f8fc1e6c803b586"
+      },
+      {
+        "sha": "9e8042d654f099797ead22466acb04e95d348079",
+        "bytes": 880103,
+        "latest_occurrence": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232"
+      },
+      {
+        "sha": "d42d14fd01ddca59158e7ebe1ae82c71e7629346",
+        "bytes": 857162,
+        "latest_occurrence": "ab013ca6827135e69570f4d2e36f762b79cef26b"
+      },
+      {
+        "sha": "b8e06d4d45220a7c8215962a3a7f6d146e4a95c0",
+        "bytes": 835864,
+        "latest_occurrence": "93d0087ba9c67f48a6754170d14adf09487b4d85"
+      },
+      {
+        "sha": "07fbd3b6d5168f5dc6a06a61cefe3be001287ba5",
+        "bytes": 811248,
+        "latest_occurrence": "4ae3ba20053eac42fa2b4f51218cfeba96958922"
+      },
+      {
+        "sha": "104c57fea276dcd3ef9ec270577907866e02021c",
+        "bytes": 785559,
+        "latest_occurrence": "ec97d80a5c2932d2c91058e23896b2fa246567fa"
+      },
+      {
+        "sha": "500db115f27bc0ef0c5fea05d73a1dc8412113d3",
+        "bytes": 767828,
+        "latest_occurrence": "ad06c44e084ae5de2fb6af43dd409f8e1205192b"
+      },
+      {
+        "sha": "9eb4643df8913c20fb6002ea70c02efe977cb731",
+        "bytes": 754142,
+        "latest_occurrence": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8"
+      },
+      {
+        "sha": "5c13a83d6d03abc96feecc4c7c548545b4ba755a",
+        "bytes": 740064,
+        "latest_occurrence": "ed459b776549f4ac3aa6e35c6819b54acd0d1748"
+      },
+      {
+        "sha": "8dc6012e729815ca73c4d52bc03fa87eb947c5d6",
+        "bytes": 717827,
+        "latest_occurrence": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8"
+      },
+      {
+        "sha": "2a3b4b26ed163f6209f32d10c276dc9ab117e189",
+        "bytes": 701776,
+        "latest_occurrence": "5c3bfef0ad601647618a7370386a3ef40a24f7dc"
+      },
+      {
+        "sha": "b39a6cef10264426d3d1d97b3d5c166f389b9a61",
+        "bytes": 676844,
+        "latest_occurrence": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621"
+      },
+      {
+        "sha": "ea665339850ff5a690638709d67071fc54f52918",
+        "bytes": 662520,
+        "latest_occurrence": "5da2909a88340e418dd081d44136d5a4b8a72209"
+      },
+      {
+        "sha": "4fcecd9b5d3133892856ef64c4e2eb22cfdad91d",
+        "bytes": 644002,
+        "latest_occurrence": "ad54a1f1f866a7a547db5a20ee9901b9025de76d"
+      },
+      {
+        "sha": "6348410b2c89c0a735f0b5040d191e528b9b792e",
+        "bytes": 637616,
+        "latest_occurrence": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0"
+      },
+      {
+        "sha": "271633675b4a931c16beff87fd80974786e3990e",
+        "bytes": 621615,
+        "latest_occurrence": "b43b1affa666094eed5accda91fd4a4b5137288d"
+      },
+      {
+        "sha": "54caafd0f660919203505fa0c683dbb8a31b7025",
+        "bytes": 606489,
+        "latest_occurrence": "b9b42a02587f95dfc18e00144a62da426f3cc9a3"
+      },
+      {
+        "sha": "26179e6832dafe99ca244200040d72f546dcfee5",
+        "bytes": 594160,
+        "latest_occurrence": "920138acf371d79786e5a9e940295df72bc551b8"
+      },
+      {
+        "sha": "116dd5fd9caf0f1bcd516674dfa236a1e474d45d",
+        "bytes": 581321,
+        "latest_occurrence": "347afdd43a463b97a355ba0c7aa89b851cbaacce"
+      },
+      {
+        "sha": "9097c381681d388af8a30c006f1ba7f481031614",
+        "bytes": 569176,
+        "latest_occurrence": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f"
+      },
+      {
+        "sha": "84d5faf72d90f8057e65871f7e8828744dd16053",
+        "bytes": 554178,
+        "latest_occurrence": "79fbcdf846b8cd00394f62e8bc7b2b9177852121"
+      },
+      {
+        "sha": "701e5db922ecb376c118e147ee41634a653cb998",
+        "bytes": 546534,
+        "latest_occurrence": "8ab86501eed9e9f27d56c6694b5182fcb209e595"
+      },
+      {
+        "sha": "5868169c656c754428bc74d6344de9c75444050a",
+        "bytes": 531404,
+        "latest_occurrence": "06db2ebf4191db7aa82924d73155624f12a99c0f"
+      },
+      {
+        "sha": "36d9120b479cf737a5e7fb31064362413155c4a7",
+        "bytes": 517372,
+        "latest_occurrence": "0d1d4ad9ac061f33f5debb43f657142837d1b64f"
+      },
+      {
+        "sha": "3bf6c551a3bc8d51df272382694bb7cb5c6cb211",
+        "bytes": 505449,
+        "latest_occurrence": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e"
+      },
+      {
+        "sha": "c998e46bc10d191f11fa86cce118e11995b42b7a",
+        "bytes": 492597,
+        "latest_occurrence": "0464eccba97d8d361653f9dde5896dddf96d2907"
+      },
+      {
+        "sha": "b2be027c3442ef16e0515c76dfe9699983ffd275",
+        "bytes": 479159,
+        "latest_occurrence": "f2a855a495f4c527bfc84283fc73ebb1751b6759"
+      },
+      {
+        "sha": "09b5f637b62cf83002ed30b6f1eb94e83ec3c3d6",
+        "bytes": 464641,
+        "latest_occurrence": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c"
+      },
+      {
+        "sha": "766fa06bbdb0847a26c3b5d074139fd497476978",
+        "bytes": 452212,
+        "latest_occurrence": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd"
+      },
+      {
+        "sha": "c6e00a9602ff2d27a387a049e1c65e62ae78d4c2",
+        "bytes": 438111,
+        "latest_occurrence": "2e098f70426b848a81998b74752e7255da3dd2d0"
+      },
+      {
+        "sha": "60df9826d09fe535984283ff90ab64b0831bc6a2",
+        "bytes": 421001,
+        "latest_occurrence": "793f90460b3ecbb906527319a5d22d58be7f8504"
+      },
+      {
+        "sha": "d11997f2c6d796f804f58b8484c7553ad9963ca2",
+        "bytes": 404481,
+        "latest_occurrence": "0521ac848d358ad2b08298f25723b01f5d7d71f9"
+      },
+      {
+        "sha": "4e33d8c3c4ee9ccc4ad06d0c74643a315755fa5b",
+        "bytes": 391937,
+        "latest_occurrence": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db"
+      },
+      {
+        "sha": "3401a0e95a2f63a2729ff0be642defe31a678d6e",
+        "bytes": 378822,
+        "latest_occurrence": "d28dea3f0ea3635e5660e8321646317a5beb5472"
+      },
+      {
+        "sha": "0f03a52a2cd02edb54cb7c2a5492f8eae729e0ab",
+        "bytes": 364610,
+        "latest_occurrence": "ce4626ab1916aa7482ff21499171e327fc019c1b"
+      },
+      {
+        "sha": "4307cc996f248f5a17b23ad9cb4ec56da3b10f47",
+        "bytes": 353111,
+        "latest_occurrence": "0ed7794300b162eb95b9b756cee62048e0e97439"
+      },
+      {
+        "sha": "9070f4ada09d0cce83e51c3c6fc86ba9201a21de",
+        "bytes": 333754,
+        "latest_occurrence": "1a98c3834b7186a39913c2b1d94999bb89c3871f"
+      },
+      {
+        "sha": "f68ff6b2101cb242608fad394db2fdda0d725065",
+        "bytes": 316889,
+        "latest_occurrence": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c"
+      },
+      {
+        "sha": "9d13842d22a49001f1b76b5c223ee8bb28006f1b",
+        "bytes": 299633,
+        "latest_occurrence": "7fcb8eb5b0430db9863a70607e34e049bbb14036"
+      },
+      {
+        "sha": "30f129758b0387d03da1e5df235e971216fa3a0c",
+        "bytes": 281776,
+        "latest_occurrence": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f"
+      },
+      {
+        "sha": "a645424992b281760d4e644bbfa75fe0314d6f54",
+        "bytes": 260353,
+        "latest_occurrence": "67109998bbffcb2b5b1d79de484c2331a4f91bff"
+      },
+      {
+        "sha": "fcb209624a7a164dabec6529c40b42235361e5b1",
+        "bytes": 244476,
+        "latest_occurrence": "ca09a0a475ed79095b89253e11d0cee22721527b"
+      },
+      {
+        "sha": "b4eb9fcdc9977c7959cc152c6748ad60b88de766",
+        "bytes": 224591,
+        "latest_occurrence": "454266d05e9f5f2901d8b13533b8556a5df55256"
+      },
+      {
+        "sha": "295d89d1779634054d2dfaa714e2a3f7f69a3a57",
+        "bytes": 218816,
+        "latest_occurrence": "337d9d29112cfd2b535c41a2dc63f3def6501848"
+      },
+      {
+        "sha": "3c190f0ec1eee7f75906c475dac609c562b5075b",
+        "bytes": 209151,
+        "latest_occurrence": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9"
+      },
+      {
+        "sha": "ec3413fe46e4c1e27528025dd4057a8104dbfa6f",
+        "bytes": 188940,
+        "latest_occurrence": "0e0a22604365e44539fdf292edfe3e61a8f88d5b"
+      },
+      {
+        "sha": "6e4c0230363e1fd5e8f12766c6b20144523c4164",
+        "bytes": 171450,
+        "latest_occurrence": "bf46300344a99626f3a5ad0c0eea213a45a993b3"
+      },
+      {
+        "sha": "f3f6c35026764f930dc9370988d687c48fef8ccc",
+        "bytes": 150658,
+        "latest_occurrence": "5d0081680b4fca14e24f04dea9893d83e653e0a8"
+      },
+      {
+        "sha": "f28c3e1b000387d737dbf4258a8caa20be8d745c",
+        "bytes": 126137,
+        "latest_occurrence": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad"
+      },
+      {
+        "sha": "894aadf1f99c0891161b69a2abebd09bcf7bd07f",
+        "bytes": 110725,
+        "latest_occurrence": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0"
+      },
+      {
+        "sha": "86af178ef1d3377a56e919d471246c0aaed53aa1",
+        "bytes": 95276,
+        "latest_occurrence": "ada04c8c42d20ea385675d6db2306ee38b637ac0"
+      },
+      {
+        "sha": "85ca6443111e44441ca9a7b8958f85be8164d8a3",
+        "bytes": 80825,
+        "latest_occurrence": "799cbfe317c05fd319dfbc0f2b1d334608f80eac"
+      },
+      {
+        "sha": "6df4ee016fe0a11f88abb215371f05db11a87519",
+        "bytes": 61651,
+        "latest_occurrence": "149b1948072c6cf931744fac39f76f79a9d7529f"
+      },
+      {
+        "sha": "6993af73e52c5c392a6e19918a61829a094cba62",
+        "bytes": 46657,
+        "latest_occurrence": "8c2e28bff84ca241018bf19b1747e438cfb0a151"
+      },
+      {
+        "sha": "4b7ecc9c4a0c83f8cfafe8ef79a3756f66b500b3",
+        "bytes": 40923,
+        "latest_occurrence": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f"
+      },
+      {
+        "sha": "c1f82c080a1775f383f993b978589e80bfefa9eb",
+        "bytes": 23411,
+        "latest_occurrence": "8903b7200ff3599ef9ee14580cd668b68ee85786"
+      }
+    ]
+  },
+  "deleted_historical_paths": [],
+  "verification_historical_prefix_checks": [
+    {
+      "commit": "d420725f1c7053075a0fce65351edc78fcd0d615",
+      "blob": "33fe8e97f08622234bdf23fd6d8d94c4821a99be",
+      "size": 923637,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "b544a2ceeb583208082c09b92bfeb2e497302968",
+      "blob": "173ade3dd0c474991bcb67766b03a395af022d2c",
+      "size": 917253,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "9430b0604e8fbe14dc51353d1b3f2345697522c5",
+      "blob": "929e896963de0f1ce8a367fe521a29d098d3582e",
+      "size": 912297,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "daac235d4f2309bd04746b453f8fc1e6c803b586",
+      "blob": "2c0630ef3708d47a1e276ae8797feb2fba0e1a8c",
+      "size": 904400,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "022b54f8e8ab1d2e5468f9bf8815e12b1a4c2232",
+      "blob": "9e8042d654f099797ead22466acb04e95d348079",
+      "size": 880103,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ab013ca6827135e69570f4d2e36f762b79cef26b",
+      "blob": "d42d14fd01ddca59158e7ebe1ae82c71e7629346",
+      "size": 857162,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "93d0087ba9c67f48a6754170d14adf09487b4d85",
+      "blob": "b8e06d4d45220a7c8215962a3a7f6d146e4a95c0",
+      "size": 835864,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "4ae3ba20053eac42fa2b4f51218cfeba96958922",
+      "blob": "07fbd3b6d5168f5dc6a06a61cefe3be001287ba5",
+      "size": 811248,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ec97d80a5c2932d2c91058e23896b2fa246567fa",
+      "blob": "104c57fea276dcd3ef9ec270577907866e02021c",
+      "size": 785559,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ad06c44e084ae5de2fb6af43dd409f8e1205192b",
+      "blob": "500db115f27bc0ef0c5fea05d73a1dc8412113d3",
+      "size": 767828,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "d42fb4a71b4c6fd04e416ec2ecc0cf502ede7ba8",
+      "blob": "9eb4643df8913c20fb6002ea70c02efe977cb731",
+      "size": 754142,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ed459b776549f4ac3aa6e35c6819b54acd0d1748",
+      "blob": "5c13a83d6d03abc96feecc4c7c548545b4ba755a",
+      "size": 740064,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "6ccf7c6c048bcff44c8b57d8c7a015630ad537b8",
+      "blob": "8dc6012e729815ca73c4d52bc03fa87eb947c5d6",
+      "size": 717827,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "5c3bfef0ad601647618a7370386a3ef40a24f7dc",
+      "blob": "2a3b4b26ed163f6209f32d10c276dc9ab117e189",
+      "size": 701776,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "3301b2a7363cf2a066a79b9e2e7d8fe82225a621",
+      "blob": "b39a6cef10264426d3d1d97b3d5c166f389b9a61",
+      "size": 676844,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "5da2909a88340e418dd081d44136d5a4b8a72209",
+      "blob": "ea665339850ff5a690638709d67071fc54f52918",
+      "size": 662520,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ad54a1f1f866a7a547db5a20ee9901b9025de76d",
+      "blob": "4fcecd9b5d3133892856ef64c4e2eb22cfdad91d",
+      "size": 644002,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "b7e2159f82f4c8de70829c1fe13db3ddb65da2b0",
+      "blob": "6348410b2c89c0a735f0b5040d191e528b9b792e",
+      "size": 637616,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "b43b1affa666094eed5accda91fd4a4b5137288d",
+      "blob": "271633675b4a931c16beff87fd80974786e3990e",
+      "size": 621615,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "b9b42a02587f95dfc18e00144a62da426f3cc9a3",
+      "blob": "54caafd0f660919203505fa0c683dbb8a31b7025",
+      "size": 606489,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "920138acf371d79786e5a9e940295df72bc551b8",
+      "blob": "26179e6832dafe99ca244200040d72f546dcfee5",
+      "size": 594160,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "347afdd43a463b97a355ba0c7aa89b851cbaacce",
+      "blob": "116dd5fd9caf0f1bcd516674dfa236a1e474d45d",
+      "size": 581321,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "472a9ceb7ddcbcccc4c0092a69827f5514b15b3f",
+      "blob": "9097c381681d388af8a30c006f1ba7f481031614",
+      "size": 569176,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "79fbcdf846b8cd00394f62e8bc7b2b9177852121",
+      "blob": "84d5faf72d90f8057e65871f7e8828744dd16053",
+      "size": 554178,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "8ab86501eed9e9f27d56c6694b5182fcb209e595",
+      "blob": "701e5db922ecb376c118e147ee41634a653cb998",
+      "size": 546534,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "06db2ebf4191db7aa82924d73155624f12a99c0f",
+      "blob": "5868169c656c754428bc74d6344de9c75444050a",
+      "size": 531404,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "0d1d4ad9ac061f33f5debb43f657142837d1b64f",
+      "blob": "36d9120b479cf737a5e7fb31064362413155c4a7",
+      "size": 517372,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "9f0a6e6bcbd3ad3b8a46d4a0b6bf134d2c24195e",
+      "blob": "3bf6c551a3bc8d51df272382694bb7cb5c6cb211",
+      "size": 505449,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "0464eccba97d8d361653f9dde5896dddf96d2907",
+      "blob": "c998e46bc10d191f11fa86cce118e11995b42b7a",
+      "size": 492597,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "f2a855a495f4c527bfc84283fc73ebb1751b6759",
+      "blob": "b2be027c3442ef16e0515c76dfe9699983ffd275",
+      "size": 479159,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "2fe5599416b53f7815c56044dc0dd03c5e4a6d1c",
+      "blob": "09b5f637b62cf83002ed30b6f1eb94e83ec3c3d6",
+      "size": 464641,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "a8f3da5ff6f18c8d07d9e977f1d81751e4e23ebd",
+      "blob": "766fa06bbdb0847a26c3b5d074139fd497476978",
+      "size": 452212,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "2e098f70426b848a81998b74752e7255da3dd2d0",
+      "blob": "c6e00a9602ff2d27a387a049e1c65e62ae78d4c2",
+      "size": 438111,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "793f90460b3ecbb906527319a5d22d58be7f8504",
+      "blob": "60df9826d09fe535984283ff90ab64b0831bc6a2",
+      "size": 421001,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "0521ac848d358ad2b08298f25723b01f5d7d71f9",
+      "blob": "d11997f2c6d796f804f58b8484c7553ad9963ca2",
+      "size": 404481,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "dced2ee55fa3731421ae695d4b4be49c7ff9a0db",
+      "blob": "4e33d8c3c4ee9ccc4ad06d0c74643a315755fa5b",
+      "size": 391937,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "d28dea3f0ea3635e5660e8321646317a5beb5472",
+      "blob": "3401a0e95a2f63a2729ff0be642defe31a678d6e",
+      "size": 378822,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ce4626ab1916aa7482ff21499171e327fc019c1b",
+      "blob": "0f03a52a2cd02edb54cb7c2a5492f8eae729e0ab",
+      "size": 364610,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "0ed7794300b162eb95b9b756cee62048e0e97439",
+      "blob": "4307cc996f248f5a17b23ad9cb4ec56da3b10f47",
+      "size": 353111,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "1a98c3834b7186a39913c2b1d94999bb89c3871f",
+      "blob": "9070f4ada09d0cce83e51c3c6fc86ba9201a21de",
+      "size": 333754,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "eb458b11d7eed11135ba9e4ec1ff90bb10e17f1c",
+      "blob": "f68ff6b2101cb242608fad394db2fdda0d725065",
+      "size": 316889,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "7fcb8eb5b0430db9863a70607e34e049bbb14036",
+      "blob": "9d13842d22a49001f1b76b5c223ee8bb28006f1b",
+      "size": 299633,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "96f308f18b19b93ef70b566ed5ce7f4435c6bd7f",
+      "blob": "30f129758b0387d03da1e5df235e971216fa3a0c",
+      "size": 281776,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "67109998bbffcb2b5b1d79de484c2331a4f91bff",
+      "blob": "a645424992b281760d4e644bbfa75fe0314d6f54",
+      "size": 260353,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ca09a0a475ed79095b89253e11d0cee22721527b",
+      "blob": "fcb209624a7a164dabec6529c40b42235361e5b1",
+      "size": 244476,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "454266d05e9f5f2901d8b13533b8556a5df55256",
+      "blob": "b4eb9fcdc9977c7959cc152c6748ad60b88de766",
+      "size": 224591,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "337d9d29112cfd2b535c41a2dc63f3def6501848",
+      "blob": "295d89d1779634054d2dfaa714e2a3f7f69a3a57",
+      "size": 218816,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "f89c9455f8075dc0a1a6bd9df512b10f19984ac9",
+      "blob": "3c190f0ec1eee7f75906c475dac609c562b5075b",
+      "size": 209151,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "0e0a22604365e44539fdf292edfe3e61a8f88d5b",
+      "blob": "ec3413fe46e4c1e27528025dd4057a8104dbfa6f",
+      "size": 188940,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "bf46300344a99626f3a5ad0c0eea213a45a993b3",
+      "blob": "6e4c0230363e1fd5e8f12766c6b20144523c4164",
+      "size": 171450,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "5d0081680b4fca14e24f04dea9893d83e653e0a8",
+      "blob": "f3f6c35026764f930dc9370988d687c48fef8ccc",
+      "size": 150658,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "8404b785b5e37495e0fa3d19a5abd6ed474e93ad",
+      "blob": "f28c3e1b000387d737dbf4258a8caa20be8d745c",
+      "size": 126137,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "35b70abbbe0bd3986566f3fa3e51753b6209f4c0",
+      "blob": "894aadf1f99c0891161b69a2abebd09bcf7bd07f",
+      "size": 110725,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "ada04c8c42d20ea385675d6db2306ee38b637ac0",
+      "blob": "86af178ef1d3377a56e919d471246c0aaed53aa1",
+      "size": 95276,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "799cbfe317c05fd319dfbc0f2b1d334608f80eac",
+      "blob": "85ca6443111e44441ca9a7b8958f85be8164d8a3",
+      "size": 80825,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "149b1948072c6cf931744fac39f76f79a9d7529f",
+      "blob": "6df4ee016fe0a11f88abb215371f05db11a87519",
+      "size": 61651,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "8c2e28bff84ca241018bf19b1747e438cfb0a151",
+      "blob": "6993af73e52c5c392a6e19918a61829a094cba62",
+      "size": 46657,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "3ad7d2fae076bfcc34fd2a9882919b5a06f4082f",
+      "blob": "4b7ecc9c4a0c83f8cfafe8ef79a3756f66b500b3",
+      "size": 40923,
+      "is_exact_current_prefix": true
+    },
+    {
+      "commit": "8903b7200ff3599ef9ee14580cd668b68ee85786",
+      "blob": "c1f82c080a1775f383f993b978589e80bfefa9eb",
+      "size": 23411,
+      "is_exact_current_prefix": true
+    }
+  ],
+  "verification_preserved_prefix": {
+    "bytes": 923637,
+    "sha256": "8d8b3940e4bc2bf73c78375f6144919914752782e83bf2fee66a9ce83b78aaf9"
+  },
+  "baseline_files": {
+    "CURRENT.md": {
+      "bytes": 4539,
+      "sha256": "8ade92ba6cf5c49d52806c808174a2025c1fc47a427a12351ab688da7d3ddbb5",
+      "git_blob": "919e733fa14ff9fec7d550415653db539048f354",
+      "base64_characters": 6052,
+      "full_bytes_match": true
+    },
+    "README.md": {
+      "bytes": 2923,
+      "sha256": "26de7f8670ac510ac347e12fe64ab7cda196e99454d12a75d7eb1448a8e9e90a",
+      "git_blob": "bce8f1115833fa40364647c3a5b9d76f3999f6db",
+      "base64_characters": 3900,
+      "full_bytes_match": true
+    },
+    "original/P4_FINAL.tex": {
+      "bytes": 58870,
+      "sha256": "c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed",
+      "git_blob": "03564feac83b763fabb0d84a5cdb13afca6ca4a8",
+      "base64_characters": 78496,
+      "full_bytes_match": true
+    },
+    "upgrade/R01/NEXT_COMMAND.md": {
+      "bytes": 1642,
+      "sha256": "216ac757c7bb6065d8d37d9184aa0838f6a1f3423eff0d1b9f32d9fe4330d71f",
+      "git_blob": "7022e2fd7b648b0e4ece7c3e846b9ee37a5ba9c7",
+      "base64_characters": 2192,
+      "full_bytes_match": true
+    },
+    "upgrade/R01/RESEARCH.md": {
+      "bytes": 42662,
+      "sha256": "dc20e869363fcc518eec8c0b46740e67342cdf92d9def6a8deb302697895f450",
+      "git_blob": "033518287fdfbc8bf8cab588c1810afc6399bd90",
+      "base64_characters": 56884,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/AUTHOR_DECLARATIONS_DRAFT.md": {
+      "bytes": 6374,
+      "sha256": "6a9534111361eed40554341e60f134c6c6e792b01ae9ff0d282440ebbfa6e1d7",
+      "git_blob": "28a5daa0713b0dc46924e6af11669916729bedce",
+      "base64_characters": 8500,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/COVER_LETTER_DRAFT.md": {
+      "bytes": 2976,
+      "sha256": "f198820c77e173e1bde46d193dcb4040fa063421a6f13425cc62ba485c36ba07",
+      "git_blob": "57d728c41edffc8ce183b884b85fa55115a71183",
+      "base64_characters": 3968,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/FINAL_REVIEW_20261009.json": {
+      "bytes": 624,
+      "sha256": "4f05053da0aa5482ce232cf32e146924b53ea2ba232394c19297cee46497c479",
+      "git_blob": "7fd1224c7c809b3f387904d29b3c30f6138b0884",
+      "base64_characters": 832,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/FOUR_MAJOR_STUDY.md": {
+      "bytes": 18345,
+      "sha256": "7c89f5571f1c5fe8adf3f0798838e7c1ab4872077d5d9e570a7fac05ebc93a62",
+      "git_blob": "b7694e84a55697e8a4b637175fba5b096035d188",
+      "base64_characters": 24460,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/INTEGRATION_NOTES.md": {
+      "bytes": 8839,
+      "sha256": "43fb851a00fc114db736f6a5a8cab03a4f2217c929378b4433fa124cd78d2c9b",
+      "git_blob": "7ff5b79e3f934bf14f6c9acea13e49a96b9633fd",
+      "base64_characters": 11788,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/MANUSCRIPT_REVIEW.md": {
+      "bytes": 30080,
+      "sha256": "dfba6fd84f15fe121d331cacb92ada6bf0c701f2ea94fa26bba34aa1b5a91e70",
+      "git_blob": "3c6993073f12f4470bca079fad66a1d1b9e1de51",
+      "base64_characters": 40108,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/NEXT_COMMAND.md": {
+      "bytes": 3113,
+      "sha256": "278f9d3fc995ed3166b48929c466ff582c4af27dd7f2031057a15264c575b98d",
+      "git_blob": "dbd228373731d853ba759b10752227194fdaf309",
+      "base64_characters": 4152,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_INTEGRATED.pdf": {
+      "bytes": 613579,
+      "sha256": "729d3fce4a81acc1f8e59d0f84f04b3a29d937b18b2b7c21643c957e854e47bb",
+      "git_blob": "8655f4395ecf60ae2854c6b8c36a9172af7601b4",
+      "base64_characters": 818108,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_INTEGRATED.tex": {
+      "bytes": 179517,
+      "sha256": "3658f4b85c58e2dcc05871a6116811aff0d12ef6598de81d6da0687f5034d6db",
+      "git_blob": "70bf51242badf9d2dc2f6f13720a188952823b96",
+      "base64_characters": 239356,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_REVIEWED.pdf": {
+      "bytes": 620503,
+      "sha256": "cec347c2591407642d69edbf30e6b5b14afbf5fb0a7cb6e374fb2b26dc6699fe",
+      "git_blob": "6a607e63ab17391442331ffacdc3d7eff2a45f65",
+      "base64_characters": 827340,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_REVIEWED.tex": {
+      "bytes": 176755,
+      "sha256": "f8e36d7a32a821402ddf38ba27b43aded861734e8540f1a15b3b011874319026",
+      "git_blob": "68d7aef9510eb6f4e5b6be6c3480f0ef1443eff6",
+      "base64_characters": 235676,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_REVISED.pdf": {
+      "bytes": 325300,
+      "sha256": "5d82a0c26acdc975ee22bc11908b1e69407d224af72b0aa21d2275d891301b76",
+      "git_blob": "3804d3b57cf55931a1fc351545510f1f4a3e392f",
+      "base64_characters": 433736,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/P4_REVISED.tex": {
+      "bytes": 33121,
+      "sha256": "d4618c95e4637b8e10c06c09d193fdb605aaaf88ab54defef1bd5593dde182c4",
+      "git_blob": "115347d4bd80ca385b441f28c9ae494243936ffe",
+      "base64_characters": 44164,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/RESEARCH.md": {
+      "bytes": 29748,
+      "sha256": "e4ddeb1cfd407a311e630aee24423eb7cee8c3690906f7f1671df57ef986b682",
+      "git_blob": "b2213cae74ea803d254544e5099774f3ddf8be48",
+      "base64_characters": 39664,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/SUBMISSION_CHECKLIST.md": {
+      "bytes": 4386,
+      "sha256": "4c1fcedfff2ade9fc35e2981f010d92b2577b742659666fcee11445e80c839c0",
+      "git_blob": "bc63494a508e2a65fec805f7fb0597bab9e52c2f",
+      "base64_characters": 5848,
+      "full_bytes_match": true
+    },
+    "upgrade/R02/VERIFICATION.md": {
+      "bytes": 923637,
+      "sha256": "8d8b3940e4bc2bf73c78375f6144919914752782e83bf2fee66a9ce83b78aaf9",
+      "git_blob": "33fe8e97f08622234bdf23fd6d8d94c4821a99be",
+      "base64_characters": 1231516,
+      "full_bytes_match": true
+    }
+  },
+  "original_source": {
+    "path": "original/P4_FINAL.tex",
+    "sha256": "c38552174b2fb0dee04ed56038952437f3e3ec3bd3725a5b1ace7812703f81ed",
+    "bytes": 58870,
+    "lines": 1308,
+    "recompiled_pages": 15
+  },
+  "original_results": [
+    {
+      "label": "lem:safety",
+      "topic": "Borel 安全集与可测构造",
+      "original_number": "3.1",
+      "original_page": 4,
+      "current_number": "2.1",
+      "current_page": 4,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "lem:pattern-submult",
+      "topic": "模式计数次乘性及删除估计",
+      "original_number": "4.1",
+      "original_page": 6,
+      "current_number": "11.1",
+      "current_page": 24,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "thm:A",
+      "topic": "可数模式系统同时达到",
+      "original_number": "4.2",
+      "original_page": 7,
+      "current_number": "11.2",
+      "current_page": 25,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "cor:fixed",
+      "topic": "单一名字语言达到",
+      "original_number": "4.4",
+      "original_page": 8,
+      "current_number": "11.4",
+      "current_page": 26,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "thm:B",
+      "topic": "可数语言商的 minimax",
+      "original_number": "5.1",
+      "original_page": 8,
+      "current_number": "12.1",
+      "current_page": 26,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "prop:digital",
+      "topic": "clopen 策略的可数性",
+      "original_number": "5.2",
+      "original_page": 9,
+      "current_number": "12.2",
+      "current_page": 27,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "thm:C",
+      "topic": "单边子移位的控制实现",
+      "original_number": "6.1",
+      "original_page": 10,
+      "current_number": "13.1",
+      "current_page": 28,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "prop:thue-morse",
+      "topic": "Thue–Morse 精确符号率",
+      "original_number": "7.1",
+      "original_page": 11,
+      "current_number": "14.1",
+      "current_page": 30,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "cor:separation",
+      "topic": "零 invariance entropy 与正固定周期模式率分离",
+      "original_number": "7.2",
+      "original_page": 12,
+      "current_number": "14.2",
+      "current_page": 30,
+      "complete_proof_retained": true
+    },
+    {
+      "label": "prop:all-period-collapse",
+      "topic": "全部周期优化坍缩",
+      "original_number": "8.1",
+      "original_page": 13,
+      "current_number": "15.1",
+      "current_page": 32,
+      "complete_proof_retained": true
+    }
+  ],
+  "original_label_destinations": {
+    "sec:intro": {
+      "number": "1",
+      "page": 2
+    },
+    "sec:background": {
+      "number": "15.1",
+      "page": 31
+    },
+    "eq:HY-background": {
+      "number": "15.1",
+      "page": 31
+    },
+    "sec:control": {
+      "number": "2",
+      "page": 4
+    },
+    "eq:hinv-definition": {
+      "number": "2.1",
+      "page": 4
+    },
+    "eq:invariant-cover": {
+      "number": "2.2",
+      "page": 4
+    },
+    "eq:admissible-word": {
+      "number": "2.3",
+      "page": 4
+    },
+    "lem:safety": {
+      "number": "2.1",
+      "page": 4
+    },
+    "eq:word-submult": {
+      "number": "2.4",
+      "page": 5
+    },
+    "eq:name-system": {
+      "number": "2.5",
+      "page": 5
+    },
+    "eq:itinerary-closure": {
+      "number": "2.6",
+      "page": 5
+    },
+    "rem:witness": {
+      "number": "2.2",
+      "page": 5
+    },
+    "eq:control-pattern-count": {
+      "number": "2.7",
+      "page": 5
+    },
+    "eq:pstar-control": {
+      "number": "2.8",
+      "page": 6
+    },
+    "eq:hpat-control": {
+      "number": "2.9",
+      "page": 6
+    },
+    "eq:hseq-control": {
+      "number": "2.10",
+      "page": 6
+    },
+    "eq:ordinary-partition-entropy": {
+      "number": "2.11",
+      "page": 6
+    },
+    "sec:comb": {
+      "number": "11",
+      "page": 24
+    },
+    "lem:pattern-submult": {
+      "number": "11.1",
+      "page": 24
+    },
+    "eq:pattern-submult": {
+      "number": "11.1",
+      "page": 24
+    },
+    "eq:deletion": {
+      "number": "11.2",
+      "page": 24
+    },
+    "eq:fekete-pstar": {
+      "number": "11.3",
+      "page": 24
+    },
+    "thm:A": {
+      "number": "11.2",
+      "page": 25
+    },
+    "eq:simultaneous-attainment": {
+      "number": "11.4",
+      "page": 25
+    },
+    "eq:explicit-losses": {
+      "number": "11.5",
+      "page": 25
+    },
+    "eq:endpoint-numerator": {
+      "number": "11.6",
+      "page": 25
+    },
+    "eq:endpoint-bound": {
+      "number": "11.7",
+      "page": 25
+    },
+    "rem:attainment": {
+      "number": "11.3",
+      "page": 26
+    },
+    "cor:fixed": {
+      "number": "11.4",
+      "page": 26
+    },
+    "eq:fixed-attainment": {
+      "number": "11.8",
+      "page": 26
+    },
+    "sec:minimax": {
+      "number": "12",
+      "page": 26
+    },
+    "eq:language-equivalence": {
+      "number": "12.1",
+      "page": 26
+    },
+    "eq:system-pattern": {
+      "number": "12.2",
+      "page": 26
+    },
+    "eq:system-sequence": {
+      "number": "12.3",
+      "page": 26
+    },
+    "thm:B": {
+      "number": "12.1",
+      "page": 26
+    },
+    "eq:pointwise-class-attainment": {
+      "number": "12.4",
+      "page": 26
+    },
+    "eq:minimax": {
+      "number": "12.5",
+      "page": 27
+    },
+    "prop:digital": {
+      "number": "12.2",
+      "page": 27
+    },
+    "ex:uncountable": {
+      "number": "12.3",
+      "page": 27
+    },
+    "eq:abstract-obstruction": {
+      "number": "12.6",
+      "page": 27
+    },
+    "sec:realization": {
+      "number": "13",
+      "page": 28
+    },
+    "eq:matching-control": {
+      "number": "13.1",
+      "page": 28
+    },
+    "thm:C": {
+      "number": "13.1",
+      "page": 28
+    },
+    "eq:rinv-language": {
+      "number": "13.2",
+      "page": 28
+    },
+    "eq:hinv-htop": {
+      "number": "13.3",
+      "page": 28
+    },
+    "eq:atom-cylinder": {
+      "number": "13.4",
+      "page": 28
+    },
+    "eq:label-factor": {
+      "number": "13.5",
+      "page": 28
+    },
+    "eq:seq-realization": {
+      "number": "13.6",
+      "page": 28
+    },
+    "eq:pat-realization": {
+      "number": "13.7",
+      "page": 28
+    },
+    "eq:ordinary-realization": {
+      "number": "13.8",
+      "page": 28
+    },
+    "eq:safe-iff-match": {
+      "number": "13.9",
+      "page": 29
+    },
+    "eq:partition-dominates-coordinate": {
+      "number": "13.10",
+      "page": 29
+    },
+    "sec:thue-morse": {
+      "number": "14",
+      "page": 29
+    },
+    "eq:thue-morse-shift": {
+      "number": "14.1",
+      "page": 30
+    },
+    "prop:thue-morse": {
+      "number": "14.1",
+      "page": 30
+    },
+    "eq:TM-linear": {
+      "number": "14.2",
+      "page": 30
+    },
+    "eq:TM-schedule": {
+      "number": "14.3",
+      "page": 30
+    },
+    "eq:TM-full-pattern": {
+      "number": "14.4",
+      "page": 30
+    },
+    "eq:TM-complexities": {
+      "number": "14.5",
+      "page": 30
+    },
+    "eq:TM-digit-identity": {
+      "number": "14.6",
+      "page": 30
+    },
+    "cor:separation": {
+      "number": "14.2",
+      "page": 30
+    },
+    "eq:strict-control-separation": {
+      "number": "14.7",
+      "page": 30
+    },
+    "eq:TM-Borel-sequence": {
+      "number": "14.8",
+      "page": 30
+    },
+    "eq:TM-clopen-sequence": {
+      "number": "14.9",
+      "page": 30
+    },
+    "sec:comparison": {
+      "number": "15",
+      "page": 31
+    },
+    "eq:ordinary-pattern-one-sided": {
+      "number": "15.2",
+      "page": 32
+    },
+    "eq:kawan-characterization": {
+      "number": "15.3",
+      "page": 32
+    },
+    "eq:three-quantities": {
+      "number": "15.4",
+      "page": 32
+    },
+    "prop:all-period-collapse": {
+      "number": "15.1",
+      "page": 32
+    },
+    "eq:all-period-collapse": {
+      "number": "15.5",
+      "page": 32
+    }
+  },
+  "previous_review_labels_retained": 179,
+  "complete_labels": {
+    "sec:intro": {
+      "number": "1",
+      "page": 2
+    },
+    "sec:control": {
+      "number": "2",
+      "page": 4
+    },
+    "eq:hinv-definition": {
+      "number": "2.1",
+      "page": 4
+    },
+    "eq:invariant-cover": {
+      "number": "2.2",
+      "page": 4
+    },
+    "eq:admissible-word": {
+      "number": "2.3",
+      "page": 4
+    },
+    "lem:safety": {
+      "number": "2.1",
+      "page": 4
+    },
+    "eq:word-submult": {
+      "number": "2.4",
+      "page": 5
+    },
+    "eq:name-system": {
+      "number": "2.5",
+      "page": 5
+    },
+    "eq:itinerary-closure": {
+      "number": "2.6",
+      "page": 5
+    },
+    "rem:witness": {
+      "number": "2.2",
+      "page": 5
+    },
+    "eq:control-pattern-count": {
+      "number": "2.7",
+      "page": 5
+    },
+    "eq:pstar-control": {
+      "number": "2.8",
+      "page": 6
+    },
+    "eq:hpat-control": {
+      "number": "2.9",
+      "page": 6
+    },
+    "eq:hseq-control": {
+      "number": "2.10",
+      "page": 6
+    },
+    "eq:ordinary-partition-entropy": {
+      "number": "2.11",
+      "page": 6
+    },
+    "sec:selectors": {
+      "number": "3",
+      "page": 6
+    },
+    "cc-eq:safe": {
+      "number": "3.1",
+      "page": 6
+    },
+    "cc-eq:LM": {
+      "number": "3.2",
+      "page": 6
+    },
+    "cc-lem:merge": {
+      "number": "3.1",
+      "page": 6
+    },
+    "sec:capacity": {
+      "number": "4",
+      "page": 7
+    },
+    "eq:cap-density": {
+      "number": "4.1",
+      "page": 7
+    },
+    "eq:cap-transfer": {
+      "number": "4.2",
+      "page": 7
+    },
+    "eq:cap-bn": {
+      "number": "4.3",
+      "page": 7
+    },
+    "eq:cap-exp": {
+      "number": "4.4",
+      "page": 7
+    },
+    "lem:fiber-cap": {
+      "number": "4.1",
+      "page": 7
+    },
+    "eq:fiber-mass": {
+      "number": "4.5",
+      "page": 7
+    },
+    "eq:HY-cube": {
+      "number": "4.6",
+      "page": 8
+    },
+    "eq:cap-intersect": {
+      "number": "4.7",
+      "page": 8
+    },
+    "thm:capacity-main": {
+      "number": "4.2",
+      "page": 8
+    },
+    "eq:cap-pattern": {
+      "number": "4.8",
+      "page": 9
+    },
+    "eq:cap-M": {
+      "number": "4.9",
+      "page": 9
+    },
+    "eq:cap-Theta": {
+      "number": "4.10",
+      "page": 9
+    },
+    "prop:weighted-sauer": {
+      "number": "4.3",
+      "page": 9
+    },
+    "eq:cap-weighted": {
+      "number": "4.11",
+      "page": 9
+    },
+    "eq:cap-alpha": {
+      "number": "4.12",
+      "page": 9
+    },
+    "subsec:smooth": {
+      "number": "4.4",
+      "page": 10
+    },
+    "eq:smooth-rho": {
+      "number": "4.13",
+      "page": 10
+    },
+    "subsec:product-example": {
+      "number": "4.5",
+      "page": 10
+    },
+    "sec:cylinder": {
+      "number": "5",
+      "page": 11
+    },
+    "eq:cyl-operator": {
+      "number": "5.1",
+      "page": 12
+    },
+    "eq:cyl-matrix": {
+      "number": "5.2",
+      "page": 12
+    },
+    "eq:cyl-fullnorm": {
+      "number": "5.3",
+      "page": 12
+    },
+    "eq:cyl-two": {
+      "number": "5.4",
+      "page": 12
+    },
+    "eq:weight-land": {
+      "number": "5.5",
+      "page": 12
+    },
+    "eq:weight-domains": {
+      "number": "5.6",
+      "page": 12
+    },
+    "eq:weight-count": {
+      "number": "5.7",
+      "page": 12
+    },
+    "thm:source-weight": {
+      "number": "5.1",
+      "page": 12
+    },
+    "eq:spread-relation": {
+      "number": "5.8",
+      "page": 13
+    },
+    "eq:spread-size": {
+      "number": "5.9",
+      "page": 14
+    },
+    "eq:spread-land": {
+      "number": "5.10",
+      "page": 14
+    },
+    "thm:spread": {
+      "number": "5.2",
+      "page": 14
+    },
+    "eq:spread-bound": {
+      "number": "5.11",
+      "page": 14
+    },
+    "sec:gainloss": {
+      "number": "6",
+      "page": 15
+    },
+    "eq:gain-relation": {
+      "number": "6.1",
+      "page": 15
+    },
+    "eq:gain-counts": {
+      "number": "6.2",
+      "page": 15
+    },
+    "eq:gain-margin": {
+      "number": "6.3",
+      "page": 15
+    },
+    "eq:gain-constants": {
+      "number": "6.4",
+      "page": 15
+    },
+    "thm:gainloss": {
+      "number": "6.1",
+      "page": 15
+    },
+    "eq:gain-bn": {
+      "number": "6.5",
+      "page": 15
+    },
+    "eq:gain-M": {
+      "number": "6.6",
+      "page": 15
+    },
+    "eq:gain-columns": {
+      "number": "6.7",
+      "page": 16
+    },
+    "eq:gain-identity": {
+      "number": "6.8",
+      "page": 16
+    },
+    "eq:gain-landing": {
+      "number": "6.9",
+      "page": 16
+    },
+    "eq:gain-pair": {
+      "number": "6.10",
+      "page": 16
+    },
+    "eq:gain-selector": {
+      "number": "6.11",
+      "page": 17
+    },
+    "eq:gain-example": {
+      "number": "6.12",
+      "page": 18
+    },
+    "cc-eq:seq": {
+      "number": "7.1",
+      "page": 18
+    },
+    "cc-eq:pat": {
+      "number": "7.2",
+      "page": 18
+    },
+    "cc-thm:cover": {
+      "number": "7.1",
+      "page": 19
+    },
+    "cc-eq:gaps": {
+      "number": "7.3",
+      "page": 19
+    },
+    "cc-eq:coverformula": {
+      "number": "7.4",
+      "page": 19
+    },
+    "cc-eq:coverminimax": {
+      "number": "7.5",
+      "page": 19
+    },
+    "cc-lem:glue": {
+      "number": "7.2",
+      "page": 19
+    },
+    "cc-lem:borel": {
+      "number": "7.3",
+      "page": 20
+    },
+    "cc-eq:categorycount": {
+      "number": "7.6",
+      "page": 20
+    },
+    "cc-eq:ordered": {
+      "number": "7.7",
+      "page": 20
+    },
+    "cc-cor:covergap": {
+      "number": "8.1",
+      "page": 21
+    },
+    "cc-eq:covervalue": {
+      "number": "8.1",
+      "page": 21
+    },
+    "cc-eq:refvalue": {
+      "number": "8.2",
+      "page": 21
+    },
+    "sec:common-successor": {
+      "number": "9",
+      "page": 21
+    },
+    "cc-thm:control": {
+      "number": "9.1",
+      "page": 21
+    },
+    "cc-eq:common": {
+      "number": "9.1",
+      "page": 21
+    },
+    "cc-eq:controlformula": {
+      "number": "9.2",
+      "page": 21
+    },
+    "cc-eq:boundarysystem": {
+      "number": "10.1",
+      "page": 23
+    },
+    "cc-prop:boundary": {
+      "number": "10.1",
+      "page": 23
+    },
+    "cc-eq:boundaryvalue": {
+      "number": "10.2",
+      "page": 23
+    },
+    "cc-eq:fliporbit": {
+      "number": "10.3",
+      "page": 23
+    },
+    "cc-eq:flipcount": {
+      "number": "10.4",
+      "page": 23
+    },
+    "cc-eq:decode": {
+      "number": "10.5",
+      "page": 23
+    },
+    "sec:comb": {
+      "number": "11",
+      "page": 24
+    },
+    "lem:pattern-submult": {
+      "number": "11.1",
+      "page": 24
+    },
+    "eq:pattern-submult": {
+      "number": "11.1",
+      "page": 24
+    },
+    "eq:deletion": {
+      "number": "11.2",
+      "page": 24
+    },
+    "eq:fekete-pstar": {
+      "number": "11.3",
+      "page": 24
+    },
+    "thm:A": {
+      "number": "11.2",
+      "page": 25
+    },
+    "eq:simultaneous-attainment": {
+      "number": "11.4",
+      "page": 25
+    },
+    "eq:explicit-losses": {
+      "number": "11.5",
+      "page": 25
+    },
+    "eq:endpoint-numerator": {
+      "number": "11.6",
+      "page": 25
+    },
+    "eq:endpoint-bound": {
+      "number": "11.7",
+      "page": 25
+    },
+    "rem:attainment": {
+      "number": "11.3",
+      "page": 26
+    },
+    "cor:fixed": {
+      "number": "11.4",
+      "page": 26
+    },
+    "eq:fixed-attainment": {
+      "number": "11.8",
+      "page": 26
+    },
+    "sec:minimax": {
+      "number": "12",
+      "page": 26
+    },
+    "eq:language-equivalence": {
+      "number": "12.1",
+      "page": 26
+    },
+    "eq:system-pattern": {
+      "number": "12.2",
+      "page": 26
+    },
+    "eq:system-sequence": {
+      "number": "12.3",
+      "page": 26
+    },
+    "thm:B": {
+      "number": "12.1",
+      "page": 26
+    },
+    "eq:pointwise-class-attainment": {
+      "number": "12.4",
+      "page": 26
+    },
+    "eq:minimax": {
+      "number": "12.5",
+      "page": 27
+    },
+    "prop:digital": {
+      "number": "12.2",
+      "page": 27
+    },
+    "ex:uncountable": {
+      "number": "12.3",
+      "page": 27
+    },
+    "eq:abstract-obstruction": {
+      "number": "12.6",
+      "page": 27
+    },
+    "sec:realization": {
+      "number": "13",
+      "page": 28
+    },
+    "eq:matching-control": {
+      "number": "13.1",
+      "page": 28
+    },
+    "thm:C": {
+      "number": "13.1",
+      "page": 28
+    },
+    "eq:rinv-language": {
+      "number": "13.2",
+      "page": 28
+    },
+    "eq:hinv-htop": {
+      "number": "13.3",
+      "page": 28
+    },
+    "eq:atom-cylinder": {
+      "number": "13.4",
+      "page": 28
+    },
+    "eq:label-factor": {
+      "number": "13.5",
+      "page": 28
+    },
+    "eq:seq-realization": {
+      "number": "13.6",
+      "page": 28
+    },
+    "eq:pat-realization": {
+      "number": "13.7",
+      "page": 28
+    },
+    "eq:ordinary-realization": {
+      "number": "13.8",
+      "page": 28
+    },
+    "eq:safe-iff-match": {
+      "number": "13.9",
+      "page": 29
+    },
+    "eq:partition-dominates-coordinate": {
+      "number": "13.10",
+      "page": 29
+    },
+    "sec:thue-morse": {
+      "number": "14",
+      "page": 29
+    },
+    "eq:thue-morse-shift": {
+      "number": "14.1",
+      "page": 30
+    },
+    "prop:thue-morse": {
+      "number": "14.1",
+      "page": 30
+    },
+    "eq:TM-linear": {
+      "number": "14.2",
+      "page": 30
+    },
+    "eq:TM-schedule": {
+      "number": "14.3",
+      "page": 30
+    },
+    "eq:TM-full-pattern": {
+      "number": "14.4",
+      "page": 30
+    },
+    "eq:TM-complexities": {
+      "number": "14.5",
+      "page": 30
+    },
+    "eq:TM-digit-identity": {
+      "number": "14.6",
+      "page": 30
+    },
+    "cor:separation": {
+      "number": "14.2",
+      "page": 30
+    },
+    "eq:strict-control-separation": {
+      "number": "14.7",
+      "page": 30
+    },
+    "eq:TM-Borel-sequence": {
+      "number": "14.8",
+      "page": 30
+    },
+    "eq:TM-clopen-sequence": {
+      "number": "14.9",
+      "page": 30
+    },
+    "sec:comparison": {
+      "number": "15",
+      "page": 31
+    },
+    "sec:background": {
+      "number": "15.1",
+      "page": 31
+    },
+    "eq:HY-background": {
+      "number": "15.1",
+      "page": 31
+    },
+    "eq:ordinary-pattern-one-sided": {
+      "number": "15.2",
+      "page": 32
+    },
+    "eq:kawan-characterization": {
+      "number": "15.3",
+      "page": 32
+    },
+    "eq:three-quantities": {
+      "number": "15.4",
+      "page": 32
+    },
+    "prop:all-period-collapse": {
+      "number": "15.1",
+      "page": 32
+    },
+    "eq:all-period-collapse": {
+      "number": "15.5",
+      "page": 32
+    },
+    "sec:affine": {
+      "number": "16",
+      "page": 34
+    },
+    "prop:integer": {
+      "number": "16.1",
+      "page": 34
+    },
+    "prop:bridge": {
+      "number": "16.2",
+      "page": 35
+    },
+    "prop:critical": {
+      "number": "16.3",
+      "page": 36
+    },
+    "subsec:four-affine": {
+      "number": "16.4",
+      "page": 36
+    },
+    "eq:four-L": {
+      "number": "16.1",
+      "page": 36
+    },
+    "prop:density-one": {
+      "number": "16.4",
+      "page": 37
+    },
+    "eq:rho": {
+      "number": "16.2",
+      "page": 37
+    },
+    "eq:four-even": {
+      "number": "16.3",
+      "page": 37
+    },
+    "sec:extensions": {
+      "number": "17",
+      "page": 37
+    },
+    "prop:extension": {
+      "number": "17.1",
+      "page": 37
+    },
+    "eq:global-expansion": {
+      "number": "17.1",
+      "page": 37
+    },
+    "prop:alternation": {
+      "number": "17.2",
+      "page": 39
+    },
+    "app:scope": {
+      "number": "18",
+      "page": 39
+    },
+    "app:greedy": {
+      "number": "A",
+      "page": 39
+    },
+    "eq:greedy-R": {
+      "number": "A.1",
+      "page": 40
+    },
+    "eq:greedy-forbidden": {
+      "number": "A.2",
+      "page": 40
+    },
+    "eq:greedy-H": {
+      "number": "A.3",
+      "page": 40
+    },
+    "eq:greedy-upper": {
+      "number": "A.4",
+      "page": 40
+    },
+    "eq:greedy-exact": {
+      "number": "A.5",
+      "page": 41
+    },
+    "app:finiteblock": {
+      "number": "B",
+      "page": 41
+    },
+    "eq:finiteblock": {
+      "number": "B.1",
+      "page": 41
+    },
+    "app:language": {
+      "number": "C",
+      "page": 42
+    },
+    "eq:closure-even": {
+      "number": "C.1",
+      "page": 42
+    },
+    "prop:abstract-low": {
+      "number": "C.1",
+      "page": 42
+    },
+    "eq:implementation": {
+      "number": "C.2",
+      "page": 43
+    },
+    "eq:kernel-H": {
+      "number": "C.3",
+      "page": 43
+    },
+    "eq:kernel-compact": {
+      "number": "C.4",
+      "page": 44
+    },
+    "eq:kernel-central": {
+      "number": "C.5",
+      "page": 44
+    },
+    "app:measure": {
+      "number": "D",
+      "page": 44
+    },
+    "prop:bounded-density": {
+      "number": "D.1",
+      "page": 44
+    },
+    "eq:density-iterate": {
+      "number": "D.1",
+      "page": 44
+    },
+    "app:returns": {
+      "number": "E",
+      "page": 46
+    },
+    "prop:return-certificate": {
+      "number": "E.1",
+      "page": 46
+    },
+    "prop:nested-selector": {
+      "number": "E.2",
+      "page": 46
+    },
+    "app:minimum": {
+      "number": "F",
+      "page": 47
+    },
+    "prop:quantization": {
+      "number": "F.1",
+      "page": 47
+    },
+    "cor:pattern-minimum": {
+      "number": "F.2",
+      "page": 48
+    },
+    "app:pointwise": {
+      "number": "G",
+      "page": 48
+    },
+    "lem:sparse-bundle": {
+      "number": "G.1",
+      "page": 48
+    },
+    "prop:compact-family": {
+      "number": "G.2",
+      "page": 49
+    },
+    "prop:finite-pointwise": {
+      "number": "G.3",
+      "page": 50
+    },
+    "app:capacity-boundaries": {
+      "number": "H",
+      "page": 51
+    },
+    "prop:shannon-boundary": {
+      "number": "H.1",
+      "page": 51
+    },
+    "prop:full-depth-saturation": {
+      "number": "H.2",
+      "page": 52
+    },
+    "ex:collision-boundary": {
+      "number": "H.3",
+      "page": 53
+    }
+  },
+  "verification_dispositions": [
+    {
+      "section": 1,
+      "title": "恢复、读取与保留范围",
+      "source_start_line": 9,
+      "status": "保留记录",
+      "destination_or_reason": "恢复与文件边界；无独立论文结论。"
+    },
+    {
+      "section": 2,
+      "title": "先固定对象，避免名字闭包与熵极限的隐含前提",
+      "source_start_line": 23,
+      "status": "已纳入",
+      "destination_or_reason": "正文 §§2–3：真实名字、闭包、极限和固定周期归一化。"
+    },
+    {
+      "section": 3,
+      "title": "同控制块原子合并：全部内层下确界精确不变",
+      "source_start_line": 63,
+      "status": "已纳入",
+      "destination_or_reason": "Lemma 3.1：合并同控制块原子，全部内层优化不变。"
+    },
+    {
+      "section": 4,
+      "title": "稀疏语言的独立重建及一个补写事实",
+      "source_start_line": 85,
+      "status": "本轮补入",
+      "destination_or_reason": "Lemma G.1：稀疏遗传语言、连续参数及每个固定 A 的几乎处处零率。"
+    },
+    {
+      "section": 5,
+      "title": "Thue–Morse 共同最大化坐标的算术核验",
+      "source_start_line": 122,
+      "status": "已纳入／补充",
+      "destination_or_reason": "Proposition 14.1 保留算术证明；四控制所需的任意 4 的幂子窗口补在 G.3。"
+    },
+    {
+      "section": 6,
+      "title": "四控制系统：全部 Borel 反馈的精确计算",
+      "source_start_line": 137,
+      "status": "本轮补入",
+      "destination_or_reason": "Proposition G.3：四个不同连续控制、全类 L₁=M₁=log2 与逐反馈共同达到失败。"
+    },
+    {
+      "section": 7,
+      "title": "文献新增核验、版本与实质缺口",
+      "source_start_line": 204,
+      "status": "保留记录",
+      "destination_or_reason": "文献版本与取得情况；实际核实的归属保留于正文与参考文献。"
+    },
+    {
+      "section": 8,
+      "title": "证明修正范围、候选判断及停止条件",
+      "source_start_line": 245,
+      "status": "已纳入／保留",
+      "destination_or_reason": "数学范围落实于 G.3；旧候选判断、排重停点作为历史记录保留。"
+    },
+    {
+      "section": 9,
+      "title": "保存及回读约定",
+      "source_start_line": 266,
+      "status": "保留记录",
+      "destination_or_reason": "保存及回读约定，不属于数学正文。"
+    },
+    {
+      "section": 10,
+      "title": "2026-10-03 正式原文增量：恢复 8903b72，仍保持暂停",
+      "source_start_line": 270,
+      "status": "本轮补入／保留",
+      "destination_or_reason": "已知整数量化及固定周期达到补在 F；不同物理控制的合并反例保留为方法边界，不替代 Lemma 3.1。"
+    },
+    {
+      "section": 11,
+      "title": "2026-10-03 R02 状态收尾：2002b 获取关闭，原候选一继续暂停",
+      "source_start_line": 468,
+      "status": "保留暂停",
+      "destination_or_reason": "2002b 未取得、未核实，获取关闭；未新增文献声明。"
+    },
+    {
+      "section": 12,
+      "title": "2026-10-03 有界新机制尝试：有限次轨道拼接不保住固定采样低熵",
+      "source_start_line": 508,
+      "status": "保留局部结果",
+      "destination_or_reason": "有限次真实轨道拼接保住最大模式下界、却不保住固定采样低熵的证明留档；不导出全反馈严格间隙。"
+    },
+    {
+      "section": 13,
+      "title": "2026-10-03 分阶段有界筛选：重叠仿射膨胀类的测度阈值接口失败",
+      "source_start_line": 732,
+      "status": "本轮补入",
+      "destination_or_reason": "H.1：重叠 β 系统 M₁=log2、L₁ 区间及全部不变名字测度的固定坐标 Shannon 障碍。"
+    },
+    {
+      "section": 14,
+      "title": "2026-10-03 固定 √2 仿射系统：两步编码删去奇数控制有指数信息损失",
+      "source_start_line": 1048,
+      "status": "保留局部结果",
+      "destination_or_reason": "另一个固定 √2 系统的贪心偶数 Fibonacci 编码和奇数信息损失留档；不是原 Q=[0,6] 的数值定理。"
+    },
+    {
+      "section": 15,
+      "title": "2026-10-03 偶数采样全反馈最优化：覆盖计数证书不足，反馈一致性仍有缺口",
+      "source_start_line": 1330,
+      "status": "保留未完成",
+      "destination_or_reason": "抽象 Ω 的低偶数熵覆盖证书没有实际一致反馈；不得作全类上界。"
+    },
+    {
+      "section": 16,
+      "title": "2026-10-03 Ω 的 Borel 反馈实现：最小偏移选码失败，任意相容截面仍未决定",
+      "source_start_line": 1605,
+      "status": "保留未完成",
+      "destination_or_reason": "Ω 最小偏移及相位选码失败；任意一致 Borel 截面仍未解决。"
+    },
+    {
+      "section": 17,
+      "title": "2026-10-03 阶段主目标重选：共同后继的混合有限型系统得到全 Borel 数值定理",
+      "source_start_line": 1840,
+      "status": "已纳入",
+      "destination_or_reason": "Theorems 7.1、9.1：闭覆盖和共同后继的全部 Borel 共同采样。"
+    },
+    {
+      "section": 18,
+      "title": "2026-10-03（UTC）第 17 节定向排重与有限置换后继：原覆盖数接口失败，同一反例的全类值为 log 2",
+      "source_start_line": 2156,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 10.1：置换后继、全类精确 log2 及覆盖数接口失败。"
+    },
+    {
+      "section": 19,
+      "title": "2026-10-03（UTC）循环字母置换：累计禁字计数得到基础值，闭环增长接口仍未完成",
+      "source_start_line": 2393,
+      "status": "保留局部结果",
+      "destination_or_reason": "循环字母置换的一般 q 基础计数与 M 基线留档；闭环共同采样接口未完成，不泛化 Proposition 10.1。"
+    },
+    {
+      "section": 20,
+      "title": "2026-10-03（UTC）投稿主线裁决：精确限定文献增量，形成九页独立候选稿",
+      "source_start_line": 2610,
+      "status": "已纳入／保留",
+      "destination_or_reason": "九页候选的完整数学主线迁入 §§7–10；投稿主线裁决、档位历史留档；HMY 已有贡献保留归属。"
+    },
+    {
+      "section": 21,
+      "title": "2026-10-04（北京时间）Topology and its Applications 投稿准备：材料已备，保留明确缺项",
+      "source_start_line": 2728,
+      "status": "保留材料",
+      "destination_or_reason": "投稿草稿保留原样；未投稿，旧稿材料不自动适配本稿。"
+    },
+    {
+      "section": 22,
+      "title": "2026-10-04（北京时间）投稿前补核：源文件与正文引文要求，作者事实仍待填",
+      "source_start_line": 2799,
+      "status": "保留材料",
+      "destination_or_reason": "格式核验和待填作者事实留档；没有代作者补责任承诺。"
+    },
+    {
+      "section": 23,
+      "title": "2026-10-04（UTC）第一阶段扩展：整数仿射吸收核心的全反馈精确值；尚不构成一区升级主贡献",
+      "source_start_line": 2843,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 16.1：整数吸收反馈、任意固定周期及所有 Borel 反馈的精确值。"
+    },
+    {
+      "section": 24,
+      "title": "2026-10-04（UTC）反馈相关核心：扩张控制扩充的精确值与连续共同因子的排除",
+      "source_start_line": 3056,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 17.1：扩张控制扩充和连续共同因子的准确排除范围。"
+    },
+    {
+      "section": 25,
+      "title": "2026-10-04（UTC）无整数达到者的续攻：双扩张交替编码的 Borel 相位障碍",
+      "source_start_line": 3243,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 17.2：交替开环语言的全域 Borel 相位障碍。"
+    },
+    {
+      "section": 26,
+      "title": "2026-10-04（UTC）非整数全反馈共同采样：真实回返证书的充分性已证，全类抽取仍未解",
+      "source_start_line": 3474,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "Proposition E.1 给出条件性真实回返证书；Cantor 切分诊断保留记录，不宣称所有反馈都有证书。"
+    },
+    {
+      "section": 27,
+      "title": "2026-10-04（UTC）全 Borel 真实回返抽取：共同覆盖已无条件证明，回返闭合仍未解决",
+      "source_start_line": 3691,
+      "status": "保留局部结果",
+      "destination_or_reason": "任意有限长度的完整实际分支共同覆盖、固定点下的一步闭合失败留档；回返抽取未解决。"
+    },
+    {
+      "section": 28,
+      "title": "2026-10-04（UTC）长度至少二的真实回返闭合：独立返程判据已证，全类选择仍未解",
+      "source_start_line": 3916,
+      "status": "保留局部结果",
+      "destination_or_reason": "两独立回返的判据、任意覆盖闭合的反例留档；E.1 只使用明确给定的实际证书。"
+    },
+    {
+      "section": 29,
+      "title": "2026-10-04（UTC）可复现双分支抽取：范畴增长入口已核证，系统统一空间尺度不成立",
+      "source_start_line": 4124,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "E.2 明确定义完整分支增长并保留条件边界；无反馈统一空间尺度的具体构造留档。"
+    },
+    {
+      "section": 30,
+      "title": "2026-10-04（Asia/Shanghai）逐反馈增长：缩小不变区间的对角拼接不成立，非凸拼接仍未完成",
+      "source_start_line": 4364,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "E.2 末段包含区间可行性的精确限制；非凸区域拼接反例留档，不被凸包结论取代。"
+    },
+    {
+      "section": 31,
+      "title": "2026-10-04（Asia/Shanghai）同一反馈的非凸区域列：嵌套选控已核证，逐尺度吸收构造不能无限兼容",
+      "source_start_line": 4522,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "Proposition E.2 给出同一 Borel 选择器；逐尺度吸收模板不具无限兼容性的构造留档。"
+    },
+    {
+      "section": 32,
+      "title": "2026-10-04（Asia/Shanghai）嵌套删孔与无限期可行核：二周期缩带失败，有限极限集合被排除",
+      "source_start_line": 4711,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "E.2 包含有限交集排除；特定二周期全期核计算保留记录，不排除所有无限链。"
+    },
+    {
+      "section": 33,
+      "title": "2026-10-05（Asia/Shanghai）无限逆树的邻域细化：完整回返容量不足，无限期内部消失",
+      "source_start_line": 4883,
+      "status": "保留局部结果",
+      "destination_or_reason": "窄带闭可行集、零测全期核及无限逆树的模板边界留档；不是所有回返或所有 Borel 反馈的排除。"
+    },
+    {
+      "section": 34,
+      "title": "2026-10-05（Asia/Shanghai）两种平移参与的无限回返：种子完整覆盖成立，Cantor柱细化的全期内部被排除",
+      "source_start_line": 5046,
+      "status": "保留局部结果",
+      "destination_or_reason": "两平移 Cantor 模板、完整种子覆盖和第九层零测边界留档；不泛化为全局不可能。"
+    },
+    {
+      "section": 35,
+      "title": "2026-10-05（Asia/Shanghai）直接数值续攻：稠密采样的全类精确基线已证，隔步真实纤维尚未给出严格改善",
+      "source_start_line": 5355,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 16.4：密度一采样的全类精确值 log(3/2)。"
+    },
+    {
+      "section": 36,
+      "title": "2026-10-05（Asia/Shanghai）实际模式对的加权计数：无条件正修正量被合法反馈反驳，严格共同下界仍未取得",
+      "source_start_line": 5616,
+      "status": "保留局部结果",
+      "destination_or_reason": "实际模式对的加权计数、无条件正缺额反例留档；全类严格偶数下界未得。"
+    },
+    {
+      "section": 37,
+      "title": "2026-10-05（Asia/Shanghai）低模式数续攻：完整逆覆盖的重叠不自动累乘，偶数采样严格下界仍未取得",
+      "source_start_line": 5840,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "Appendix B 保留完整有限块 inf 公式；空间重叠不能直接累乘的反例留档。"
+    },
+    {
+      "section": 38,
+      "title": "2026-10-05（UTC）固定偶数采样的实际反馈上界：内层区间缩小，但基线逼近族未构造",
+      "source_start_line": 5991,
+      "status": "已纳入",
+      "destination_or_reason": "§16.4 与 Appendix A：真实贪心偶数上界及原数值区间。"
+    },
+    {
+      "section": 39,
+      "title": "2026-10-06（Asia/Shanghai）短复位模板未能降低上界：实际块语言完整保留，贪心偶数熵确定",
+      "source_start_line": 6208,
+      "status": "已纳入",
+      "destination_or_reason": "Appendix A：匹配实际逆路径下界、精确 logρ 及短复位子类不改善；不写作全类最优。"
+    },
+    {
+      "section": 40,
+      "title": "2026-10-06（Asia/Shanghai）高位B1改变核心但未降低上界：新增真实返程码的增长严格超过贪心",
+      "source_start_line": 6369,
+      "status": "保留局部结果",
+      "destination_or_reason": "高位 B1 模板新增返程码的增长超过贪心，完整计算留档；不排除其他 B1 反馈。"
+    },
+    {
+      "section": 41,
+      "title": "2026-10-06（Asia/Shanghai）两A全Borel优化续攻：一步合流不能直接传递为偶数分叉，子类最优性仍未决定",
+      "source_start_line": 6542,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "§16.4 保留两 A 优化的准确不等式和未解状态；一步合流不能推出偶数分叉的反例留档。"
+    },
+    {
+      "section": 42,
+      "title": "2026-10-06（Asia/Shanghai）真实行程闭包转化完整成立；全区间覆盖的logρ偶数熵下界被十位块语言严格反驳",
+      "source_start_line": 6721,
+      "status": "已纳入",
+      "destination_or_reason": "C.1：真实行程闭包、十位语言的完整区间覆盖与较低偶数熵。"
+    },
+    {
+      "section": 43,
+      "title": "2026-10-06（Asia/Shanghai）第42节语言实现续攻：全语言字典序截面与全部阈值修复失败，任意Borel实现仍未决定",
+      "source_start_line": 6938,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "C.1 明确实际实现缺口；字典序与阈值修复的逐前缀失败计算留档。"
+    },
+    {
+      "section": 44,
+      "title": "2026-10-06（Asia/Shanghai）十篇四大论文的定向学习：机制与写法比较，数学状态不变",
+      "source_start_line": 7126,
+      "status": "保留学习记录",
+      "destination_or_reason": "FOUR_MAJOR_STUDY.md 十篇记录不变；只引用正文实际使用的相关来源。"
+    },
+    {
+      "section": 45,
+      "title": "2026-10-06（Asia/Shanghai）跨层兼容选控：Y内安全周期种子也可能无法延拓到强制前驱",
+      "source_start_line": 7185,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "C.2 明确强制前驱兼容要求；周期种子不能延拓的具体冲突留档。"
+    },
+    {
+      "section": 46,
+      "title": "2026-10-06（Asia/Shanghai）强制前驱兼容核：第一层满覆盖，极限覆盖裁决未完成",
+      "source_start_line": 7389,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "C.2 保留嵌套删选与极限核；第一层覆盖不等于极限覆盖，有限层核验留档。"
+    },
+    {
+      "section": 47,
+      "title": "2026-10-06（Asia/Shanghai）全部成员相位：兼容关系准确，极限覆盖仍未裁决",
+      "source_start_line": 7542,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "C.2 保留全相位前缀论证和正确兼容关系；局部相位枚举留档。"
+    },
+    {
+      "section": 48,
+      "title": "2026-10-06（Asia/Shanghai）中央区间约化成立；原纤维的局部损失可补偿，极限覆盖仍未裁决",
+      "source_start_line": 7698,
+      "status": "已纳入",
+      "destination_or_reason": "C.2：中央区间约化、相位可变的强制复制核。"
+    },
+    {
+      "section": 49,
+      "title": "2026-10-06（Asia/Shanghai）首次缺口的端点分类完整；末尾交换补偿被旧请求阻断，原核覆盖未裁决",
+      "source_start_line": 7903,
+      "status": "保留局部结果",
+      "destination_or_reason": "首缺口端点分类和尾交换被旧请求阻断的证明留档；不作为 H 覆盖结论。"
+    },
+    {
+      "section": 50,
+      "title": "全复制等价类的同步修正：旧强制值冻结规则失败，重算请求后有局部修复，总覆盖仍未完成",
+      "source_start_line": 8150,
+      "status": "保留局部结果",
+      "destination_or_reason": "复制等价类同步修正、冻结旧值失败及局部重算修复留档；总覆盖仍未完成。"
+    },
+    {
+      "section": 51,
+      "title": "全历史阈值联合处理的有界尝试：直接覆盖估计失败，总覆盖仍未决定",
+      "source_start_line": 8328,
+      "status": "保留未完成",
+      "destination_or_reason": "全历史阈值的直接覆盖估计失败；总覆盖未决定，正文 C.2/§18 如实保留边界。"
+    },
+    {
+      "section": 52,
+      "title": "主目标重选：加权逆纤维容量与全部 Borel 反馈的高阶模式阈值",
+      "source_start_line": 8403,
+      "status": "已纳入",
+      "destination_or_reason": "§4.3／Proposition 4.3：全 Borel 加权逆纤维计数与高阶阈值。"
+    },
+    {
+      "section": 53,
+      "title": "第52节新例：固定偶数采样的全部反馈精确值与强制子系统边界",
+      "source_start_line": 8641,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 16.2：保护逆分支、固定偶数采样全类精确 log3。"
+    },
+    {
+      "section": 54,
+      "title": "加权逆容量条件的共同采样边界：同一个 Borel 反馈的全深度逆容量饱和",
+      "source_start_line": 8836,
+      "status": "本轮补入",
+      "destination_or_reason": "Proposition H.2：同一个全域安全 Borel 反馈的全深度正测容量饱和。"
+    },
+    {
+      "section": 55,
+      "title": "实际采样模式与末状态密度的联合检验：碰撞统计量不足以统一认证支撑阈值",
+      "source_start_line": 9215,
+      "status": "本轮补入",
+      "destination_or_reason": "Example H.3：联合末状态密度、条件碰撞统计量与全部实际支撑的区别。"
+    },
+    {
+      "section": 56,
+      "title": "第52节独立贡献裁决与补强：末状态联合逆密度的全反馈阈值",
+      "source_start_line": 9420,
+      "status": "已纳入",
+      "destination_or_reason": "§§4.3–4.4：联合逆密度准则、光滑例和独立贡献的准确归属。"
+    },
+    {
+      "section": 57,
+      "title": "共同参考密度的标量化裁决：全部有界正 Borel 权重均被排除",
+      "source_start_line": 9702,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition D.1：排除所有有界且有正下界的 Borel 参考密度。"
+    },
+    {
+      "section": 58,
+      "title": "任意满支撑参考概率的标量化：已证转化与质量上界，决定性问题仍未解决",
+      "source_start_line": 9921,
+      "status": "已纳入／局部留档",
+      "destination_or_reason": "Appendix D 保留非原子 CDF／共同 Lipschitz 的准确转化；短区间质量上界留档，任意满支撑标量化未决定。"
+    },
+    {
+      "section": 59,
+      "title": "联合逆密度准则的临界边界：三个完整仿射分支的精确 M₁ 与非整数近临界例",
+      "source_start_line": 10092,
+      "status": "已纳入",
+      "destination_or_reason": "Proposition 16.3：临界三仿射支的精确 M₁ 和单步条件不能放宽的范围。"
+    },
+    {
+      "section": 60,
+      "title": "超出单步联合容量：逐时标签列表的复合逆容量与全反馈阈值",
+      "source_start_line": 10342,
+      "status": "已纳入",
+      "destination_or_reason": "Lemma 4.1、Theorem 4.2 与 §4.5：真实纤维、全部全域列表历史和复合逆容量。"
+    },
+    {
+      "section": 61,
+      "title": "第60节独立审查：主定理及分离通过，组合先行覆盖须进一步收紧",
+      "source_start_line": 10624,
+      "status": "已纳入",
+      "destination_or_reason": "§4.2 的 Kerr–Li/Huang–Ye 组合输入和 §4.5 的精确排除范围；审查记录保留。"
+    },
+    {
+      "section": 62,
+      "title": "源柱加权计数：可描述系统类的全反馈列表收缩与全参考概率分离",
+      "source_start_line": 10847,
+      "status": "已纳入",
+      "destination_or_reason": "§§5.1–5.2／Theorem 5.1：有限柱完整 L∞ 产品与原源权重。"
+    },
+    {
+      "section": 63,
+      "title": "原安全柱的跨层失配：共同严格左权重不存在时的全列表收缩",
+      "source_start_line": 11139,
+      "status": "已纳入",
+      "destination_or_reason": "§5.3／Theorem 5.2：跨层分散、两步收缩与不存在严格共同左权重。"
+    },
+    {
+      "section": 64,
+      "title": "大尾域的强制传播：允许增益列且无共同非严格左预算的全列表收缩",
+      "source_start_line": 11374,
+      "status": "已纳入",
+      "destination_or_reason": "§6／Theorem 6.1：增益列、损失补偿、全部列表历史和不存在共同非严格左预算。"
+    },
+    {
+      "section": 65,
+      "title": "原稿、九页改版与最新全反馈结构成果的完整英文整合",
+      "source_start_line": 11666,
+      "status": "保留整合版本",
+      "destination_or_reason": "P4_INTEGRATED.tex/pdf、INTEGRATION_NOTES.md 原样保留；本轮修正了其后续审阅稿的覆盖不足。"
+    },
+    {
+      "section": 66,
+      "title": "最新完整稿的独立阅读、必要小修与版本核验（2026-10-09）",
+      "source_start_line": 11713,
+      "status": "已纳入／保留",
+      "destination_or_reason": "E.2 的后续修正未回退；FINAL_REVIEW_20261009.json 保留原样。"
+    },
+    {
+      "section": 67,
+      "title": "P4 完整稿的数学、可读性和学术表达审查及实际修订（2026-10-09）",
+      "source_start_line": 11755,
+      "status": "保留审阅版本",
+      "destination_or_reason": "P4_REVIEWED.tex/pdf、MANUSCRIPT_REVIEW.md 原样保留；本轮新稿保留其全部 179 个标签。"
+    }
+  ],
+  "deliverables": {
+    "upgrade/R02/P4_COMPLETE_REVIEWED.tex": {
+      "sha256": "b697cdcbc79d12df41f5db4e1461c322d2ae8935ae68d60d11de7067cea9a125",
+      "bytes": 201917
+    },
+    "upgrade/R02/P4_COMPLETE_REVIEWED.pdf": {
+      "sha256": "c62861fa4218ce3d33fcd25392c447db879d8fb4fe63f0d66785c15fe47a51e0",
+      "bytes": 667643,
+      "pages": 54
+    }
+  },
+  "pdf_qa": {
+    "all_54_pages_visually_inspected": true,
+    "undefined_citations": 0,
+    "undefined_references": 0,
+    "overfull_boxes": 0,
+    "underfull_vboxes": 1,
+    "outside_page_blocks": 0,
+    "unique_labels": 190,
+    "bibliography_items": 12
+  },
+  "ai_disclosure_unchanged": true,
+  "not_claimed": [
+    "All local historical lemmas copied into the manuscript",
+    "A full-class strict L<M counterexample",
+    "All external chats or unreachable Git objects recovered",
+    "Author or external peer confirmation"
+  ]
+}
