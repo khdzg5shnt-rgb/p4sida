@@ -1,0 +1,3745 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage{enumitem,booktabs,longtable,array}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\numberwithin{equation}{section}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2.2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\C}{\mathcal C}
+\newcommand{\D}{\mathcal D}
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Patt}{\mathsf P}
+\newcommand{\hseq}{h_{\mathrm{seq}}}
+\newcommand{\hpat}{h^{*}}
+\newcommand{\hinv}{h_{\mathrm{inv}}}
+\newcommand{\htop}{h_{\mathrm{top}}}
+\newcommand{\Bor}{\mathrm{Bor}}
+\newcommand{\clop}{\mathrm{clop}}
+\newcommand{\lang}{\mathrm{lang}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
+
+
+\newcommand{\K}{\mathcal K}
+\newcommand{\Ssafe}{\mathcal S}
+\newcommand{\hstar}{h^*}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\opnorm}[1]{\left\|#1\right\|_{\infty\to\infty}}
+\newcommand{\esssup}{\operatorname*{ess\,sup}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Leb}{\operatorname{Leb}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\intr}{\operatorname{int}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\shift}{\sigma}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\ellA}{\ell_2^{A}}
+\newcommand{\eps}{\varepsilon}
+\allowdisplaybreaks[1]
+\hypersetup{pdftitle={Sparse Observations and Pattern Complexity of Safe Feedbacks},pdfauthor={Ziqing Ding}}
+\title[Sparse observations of safe feedbacks]{Sparse Observations and Pattern Complexity of Safe Feedbacks}
+\author{Ziqing Ding}
+\address{School of Mathematical Sciences, Nanjing Normal University,
+Nanjing 210023, China}
+\date{October 9, 2026}
+\subjclass[2020]{93C55, 37B10, 37B40, 94A17}
+\keywords{safe feedback, sequence entropy, maximal pattern entropy,
+Borel partition, inverse capacity, symbolic dynamics, matrix products}
+\begin{document}
+\begin{abstract}
+A safe state feedback generates a sequence of control instructions from
+each initial state. We study the growth of the number of patterns seen
+at selected times, with a fixed control period $\tau$. The main question
+is whether one observation sequence detects complexity uniformly over
+all safe Borel feedbacks. We answer it when all legal blocks have
+a common endpoint map conjugate to a power of a mixing one-sided shift
+of finite type. The minimum rate is $\log r/\tau$, where $r$ is the
+minimum number of block safety domains covering the state space, and
+every observation sequence with diverging gaps attains it. When controls
+have different successors, we bound the initial-state sets producing
+specified words by products of inverse-transfer operators. A contraction
+condition, combined with the finite covering lemma of Kerr and Li,
+determines the minimum maximal-pattern entropy; the observation times
+in this argument may depend on the feedback. A separate deletion
+argument gives common attaining sequences for countably many name
+languages. Symbolic and affine examples distinguish these conclusions
+from finite-horizon safe covering and from invariance entropy.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Consider a discrete-time control system and a compact set $Q$ in which
+the state must remain. A feedback chooses a control from the current
+state; the same rule is used at every subsequent step. Starting from
+different points of $Q$ produces different sequences of controls. We
+ask how few patterns these sequences can have when they are observed
+at selected times. The feedback is allowed to be Borel, so the question
+includes rules with irregular decision regions.
+
+A simple symbolic system illustrates the choice involved. Let
+$Q=\{0,1,2\}^{\Nzero}$. At a state $x$, either control different
+from $x_0$ is safe, and both safe controls send $x$ to the shift
+$\sigma x$. A feedback is therefore a Borel function $s$ satisfying
+$s(x)\ne x_0$. Its control sequence is
+\[
+ s(x),\ s(\sigma x),\ s(\sigma^2x),\ldots.
+\]
+The state orbit is already determined, but the observed labels depend
+on how $s$ resolves the overlaps of the three safety sets. Choosing
+$s(x)=1$ when $x_0=0$ and $s(x)=0$ otherwise uses two labels and
+realizes every binary pattern at any finite set of times. Can another
+Borel choice reduce this complexity? If the observation times are
+sufficiently far apart, our closed-cover theorem says that it cannot.
+We return to this system in Sections~\ref{sec:selectors}
+and~\ref{sec:closed-cover}.
+
+More generally, fix a control period $\tau$: the chosen instruction is
+a word of $\tau$ controls, all of whose intermediate states must stay
+in $Q$. Write $\Patt_s(F)$ for the number of control-block patterns
+produced by a feedback $s$ on a finite set $F$ of block indices. For
+an increasing sequence $A=(a_i)$, its sequence entropy is
+\[
+ h_A(s)=\limsup_{n\to\infty}\frac{1}{n\tau}
+       \log\Patt_s(\{a_1,\ldots,a_n\}).
+\]
+The normalization counts observations, each charged the block length
+$\tau$; it does not count the intervening gaps. Maximizing over
+$n$-element windows before taking the limit gives the maximal-pattern
+entropy $h^*(s)$. Section~\ref{sec:control} gives the definitions
+and the elementary limit argument.
+
+There are two orders in which to choose a feedback and an observation
+sequence:
+\[
+ L_\tau=\sup_A\inf_s h_A(s),\qquad
+ M_\tau=\inf_s h^*(s).
+\]
+For each fixed $s$, one has $h^*(s)=\max_A h_A(s)$
+(Corollary~\ref{cor:fixed}). Thus $M_\tau$ allows the observation
+sequence to be chosen after the feedback. For $L_\tau$, the sequence
+must be fixed first and give a lower bound for every safe feedback.
+The inequality $L_\tau\le M_\tau$ is immediate; the opposite
+inequality requires a way to choose observation times in common.
+
+Invariance entropy addresses a related question at consecutive times.
+It counts the smallest collection of control words that keeps every
+initial state safe for a finite horizon, and measures growth per
+elapsed time \cite{Kawan2013}. Such a collection can be chosen anew
+for each horizon. A feedback, by contrast, must make compatible choices
+whenever a trajectory returns to the same state. Sparse observations
+also retain information which a consecutive-time rate can miss. These
+differences matter even after optimization: the Thue--Morse realization
+in Section~\ref{sec:thue-morse} has invariance entropy zero and
+$L_1=M_1=\log2$. If the control period is allowed to vary, the
+infimum of the pattern rates returns to invariance entropy
+(Proposition~\ref{prop:all-period-collapse}).
+
+We approach the fixed-period problem in two ways. First suppose that
+every legal block has the same endpoint map $T$, and that $T$ is
+conjugate to a power of the shift on a mixing one-sided shift of finite
+type. Let $r$ be the minimum number of block safety domains covering
+$Q$. Corollary~\ref{cc-thm:control} gives
+\[
+ \inf_s h_A(s)=L_\tau=M_\tau=\frac{\log r}{\tau}
+ \quad\text{whenever }a_{i+1}-a_i\longrightarrow\infty.
+\]
+The upper bound uses an ordered minimum subcover. For the lower bound,
+any refining Borel partition has at least $r$ nonmeager atoms. Each of
+these atoms occupies most of some cylinder in the sense of Baire
+category. Mixing joins sufficiently separated cylinders, and openness
+of the shift allows the resulting orbit to avoid the meager exceptions.
+This proves the bound on one prescribed sequence, simultaneously for
+all Borel feedbacks.
+
+When the successor depends on the chosen control, this concatenation
+argument is no longer available. The second approach instead bounds
+the size of the sets of initial states producing specified control
+words. For a fixed list of $k-1$ allowed labels at each time, a product
+of safe inverse-transfer operators bounds the mass carried by all words
+in those lists. If these bounds decay exponentially, the actual names
+cannot be covered by few such list boxes. The finite covering lemma
+of Kerr and Li then supplies $k$ independent label choices on
+arbitrarily large sets of coordinates. Theorem~\ref{thm:capacity-main}
+deduces $h^*(s)\ge\log k/\tau$ for every feedback, and
+$M_\tau=\log r/\tau$ when $k=r$. The independent positions may
+depend on $s$, which is exactly the obstacle to computing $L_\tau$
+by the same proof.
+
+The combinatorial input is due to Kerr and Li
+\cite[Lemma~3.3]{KL2007}; it also follows from Huang and Ye's
+sharper estimates \cite[Lemma~4.1 and Remark~4.2]{HuangYe2009}.
+The application here is the estimate for feedback fibers, with the
+safety restrictions retained at every intermediate time. The reference
+probability need not be invariant. Two examples distinguish the product
+condition from simpler tests: separated density peaks defeat the scalar
+test for a fixed measure, and a three-coordinate matrix product contracts
+even though the single-step density test fails for every full-support
+reference probability. Appendix~\ref{sec:cylinder} explains the exact
+matrix reduction and gives a general sufficient condition using a
+common positive left weight.
+
+The closed-cover argument is related to Romagnoli's comparison of
+an excluded-letter cover with its clopen refinements
+\cite{Romagnoli2007}. Here the refinements may be Borel, and a
+sparse sequence is prescribed before the refinement is chosen.
+The measurable common-sequence results of Huang, Maass, and Ye
+\cite[Lemma~3.3 and Theorem~3.5]{HuangMaassYe2004} concern
+Shannon entropy relative to an invariant probability. Our counts
+include every realized pattern, even one supported on exceptional
+states. The broader sequence-entropy and independence framework is
+developed in \cite{Goodman1974,Hulse1982,KamaeZamboniSystems2002,
+KL2007,KL2009}.
+
+The common-sequence question returns in Section~\ref{sec:comb}:
+countably many name languages can share an attaining sequence even
+without shift invariance. Section~\ref{sec:comparison} then explains
+why fixing the control period is essential, using a forced symbolic
+feedback and the Thue--Morse system. The affine examples in
+Section~\ref{sec:affine} compare two ways to obtain a lower bound:
+expansion makes individual fibers small, whereas protected inverse
+branches realize all sampled words. Their difference remains visible
+in a four-branch system for which $M_1$ is known but $L_1$ is not.
+The appendices supply the finite combinatorial estimate, the matrix
+criterion, the longer counts for this affine system, and a counterexample
+to pointwise common attainment. Each can be read with the result in the
+main text that calls for it.
+
+\section{Safe feedbacks and their observed names}\label{sec:control}
+
+\subsection{The control rule}\label{sec:selectors}
+Let $X$ be a metrizable space and let $f_u:X\to X$ be continuous
+for each control $u\in U$. Initially $U$ is finite; when we later
+consider invariant partitions we also allow an arbitrary control set.
+For a word $w=(w_0,\ldots,w_{N-1})$, define
+\[
+ \varphi(0,x,w)=x,\qquad
+ \varphi(j+1,x,w)=f_{w_j}(\varphi(j,x,w)).
+\]
+Throughout, all control sequences in $U^{\Nzero}$ are admissible.
+Let $Q\subset X$ be nonempty, compact and \emph{controlled invariant}:
+from every $x\in Q$ some infinite control sequence stays in $Q$.
+We use $\N=\{1,2,\ldots\}$, $\Nzero=\{0,1,\ldots\}$ and
+natural logarithms.
+
+Fix $\tau\in\N$ and write $W=U^\tau$. The safety domain of a
+block $w$ and its endpoint map are
+\begin{equation}\label{cc-eq:safe}
+ K_w=\{x\in Q:\varphi(j,x,w)\in Q\ (0\le j\le\tau)\},
+ \qquad g_w(x)=\varphi(\tau,x,w).
+\end{equation}
+Each $K_w$ is closed. These sets cover $Q$, since a safe infinite
+control provides a safe first block. Their overlaps describe the
+choices available to a feedback.
+
+A \emph{safe feedback} is a Borel function $s:Q\to W$ such that
+$x\in K_{s(x)}$ for every $x\in Q$. Its block-boundary map is
+$T_s(x)=g_{s(x)}(x)$. This map is Borel and takes $Q$ into itself.
+Applying the same rule at successive states keeps the entire trajectory
+in $Q$, including the times between block boundaries. We denote the
+class of all these rules by $\Ssafe_\tau$. The rule uses the current
+state only: there is no additional clock or memory variable.
+Continuity, or dependence on finitely many coordinates, is not required.
+
+Sometimes we specify a finite block collection $W\subset U^\tau$
+whose safety domains cover $Q$. In that case $\Ssafe_\tau$ and its
+optimization values are relative to that collection. Unless such a
+restriction is stated, $W=U^\tau$.
+
+\subsection{Counting at selected times}
+Starting at $x$, the rule produces the infinite name
+$(s(T_s^jx))_{j\ge0}$. For a finite set $F\subset\Nzero$ put
+\[
+ \Patt_s(F)=\bigl|\{(s(T_s^jx))_{j\in F}:x\in Q\}\bigr|,
+ \qquad \Patt_s(\varnothing)=1.
+\]
+Thus a pattern is counted if it occurs on at least one complete safe
+trajectory. Write $\mathscr S$ for the strictly increasing infinite
+sequences in $\Nzero$. For $A=(a_i)\in\mathscr S$, set
+\[
+ h_A(s)=\limsup_{n\to\infty}\frac{\log\Patt_s(\{a_1,\ldots,a_n\})}{n\tau},
+ \qquad p_s^*(n)=\max_{|F|=n}\Patt_s(F),
+\]
+and
+\[
+ h^*(s)=\lim_{n\to\infty}\frac{\log p_s^*(n)}{n\tau}.
+\]
+The maximum exists because the possible counts are integers between
+$1$ and $|W|^n$. Splitting a window into parts of sizes $m,n$ gives
+$p_s^*(m+n)\le p_s^*(m)p_s^*(n)$, so Fekete's lemma gives the
+last limit. In particular $h_A(s)\le h^*(s)$.
+
+The index $a_i$ refers to the $a_i$th block, observed at physical
+time $\tau a_i$. For example, when $\tau=2$ and $A=(0,3,6,\ldots)$,
+the observations are made at times $0,6,12,\ldots$, but the denominator
+for $n$ observations is $2n$. This convention measures the diversity
+per observed instruction, with the block length accounted for.
+
+The two optimized quantities are
+\begin{equation}\label{cc-eq:LM}
+ L_\tau=\sup_{A\in\mathscr S}\inf_{s\in\Ssafe_\tau}h_A(s),
+ \qquad M_\tau=\inf_{s\in\Ssafe_\tau}h^*(s).
+\end{equation}
+They satisfy $L_\tau\le M_\tau$. If $r$ safety domains cover
+$Q$, selecting the first legal block in that ordered subcover is a
+Borel feedback using at most $r$ labels. It has at most $r^n$
+patterns on every $n$-element window. Hence
+\[
+ L_\tau\le M_\tau\le\frac{\log r}{\tau}.
+\]
+Our main results give conditions for this elementary upper bound to
+be sharp. The infimum defining $M_\tau$ is always attained:
+maximal-pattern rates have the form $\log m/\tau$ for integers
+$m$ (Appendix~\ref{app:minimum}).
+
+In the three-symbol system from the introduction, the legal domains
+are $K_u=\{x:x_0\ne u\}$ and $T_s=\sigma$ for every feedback.
+Illegal controls may be sent to an isolated fixed point $\dagger$
+outside $Q$; the resulting maps on $Q\sqcup\{\dagger\}$ are
+continuous. Two domains cover $Q$. The rule $s_0(x)=1$ on
+$[0]$ and $s_0(x)=0$ elsewhere has $\Patt_{s_0}(F)=2^{|F|}$:
+prescribe $x_j=0$ or $1$ to obtain, respectively, label $1$ or $0$
+at each $j\in F$. This verifies the upper value $\log2$ directly.
+The harder question is a lower bound valid for every Borel choice.
+The next section proves it on every sequence with diverging gaps.
+Here $[v]$ denotes the cylinder of sequences beginning with a word $v$;
+we use this notation in all subsequent shift examples.
+
+\subsection{Observing a partition instead of a control}
+A finite Borel partition may split the domain assigned to one block
+into several observed atoms. Assigning a safe block to each atom gives
+an invariant cover in the sense of \cite[Definition~2.8]{Kawan2013},
+with the underlying cover required to be a partition. We call this an
+\emph{invariant partition}. Its state map still applies the assigned
+block, but its atom names may distinguish trajectories that have the
+same control name. The following merging argument shows why this
+additional distinction does not change the infima.
+
+\begin{lemma}\label{cc-lem:merge}
+The infima in \eqref{cc-eq:LM}, and the inner infimum for each fixed
+$A$, are unchanged if finite Borel invariant partitions are allowed
+and atom names are counted.
+\end{lemma}
+\begin{proof}
+Merge the atoms assigned the same block. Their union is Borel and
+lies in that block's safety domain, so the merged partition defines
+the same state map. Projection of atom labels to block labels is onto
+every realized finite pattern set. It can only decrease counts.
+Conversely, the nonempty fibers of a selector are a finite invariant
+partition whose atom and block counts agree. Taking the two infima
+proves the assertion.
+\end{proof}
+
+\begin{example}[Observation labels and physical controls]\label{ex:physical-merge}
+Let $Q=\{0,1\}^{\Nzero}\cup\{2^\infty\}$. Control $u=x_0$
+sends $x$ to $\sigma x$ and every other control sends it to an
+isolated cemetery point. Safety forces $s(x)=x_0$. The $n$-position
+pattern count is $2^n+1$ for $n\ge1$. Renaming the observed label $2$ as $0$
+reduces it to $2^n$, with the same exponential rate. Yet no one
+physical control is safe on both $[0]$ and $\{2^\infty\}$.
+Such a renaming is an observation factor, not a merged safe feedback.
+Lemma~\ref{cc-lem:merge} merges only atoms assigned the same block.
+\end{example}
+
+
+\subsection{Finite-horizon covering}
+For later comparison, let $r_{\rm inv}(N,Q)$ be the least size of a
+finite set $S\subset U^N$ such that from every $x\in Q$ at least
+one word in $S$ stays safe through time $N$. Set this number to
+$+\infty$ if no finite spanning family exists. Invariance entropy is
+\begin{equation}\label{eq:hinv-definition}
+ \hinv(Q)=\limsup_{N\to\infty}\frac{\log r_{\rm inv}(N,Q)}{N}.
+\end{equation}
+This is the discrete-time definition in
+\cite[Definition~2.2]{Kawan2013}, with natural logarithms and the
+full control space $U^{\Nzero}$. The words actually produced by a
+feedback form a spanning family. Conversely, a spanning family by
+itself prescribes no consistent choice at later states. We will use
+this distinction both in computing examples and in comparing the
+two entropy notions in Section~\ref{sec:comparison}.
+
+\section{Common successors and a closed-cover formula}\label{sec:closed-cover}
+
+Suppose that every legal control block sends a state to the same
+successor $T(x)$. A feedback then chooses labels along a fixed orbit,
+just as in the excluded-letter example. Its label fibers form a Borel
+partition refining the safety cover. We first solve this partition
+problem on a mixing shift of finite type. The control conclusion will
+follow by applying the formula to the block safety domains.
+
+We use the counting convention of Section~\ref{sec:control} for a
+finite Borel partition $\alpha$ and a Borel map $T:Q\to Q$ on a
+nonempty compact metric space. In this notation
+\[
+ \Patt_\alpha(F)=\#\bigvee_{j\in F}T^{-j}\alpha
+\]
+counts nonempty atoms, or equivalently the realized $\alpha$-names
+on $F$. In the present partition problem the scale is one:
+\begin{align}
+ h_A(T,\alpha)&=\limsup_n\frac1n
+       \log\Patt_\alpha(\{a_1,\ldots,a_n\}),\label{cc-eq:seq}\\
+ p_\alpha^*(n)&=\max_{|F|=n}\Patt_\alpha(F),
+ &h^*(T,\alpha)&=\lim_n\frac1n\log p_\alpha^*(n).
+ \label{cc-eq:pat}
+\end{align}
+As before, submultiplicativity gives the last limit and
+$h_A(T,\alpha)\le h^*(T,\alpha)$. We restore the factor
+$1/\tau$ when applying the result to control blocks.
+
+Let $\K=(K_w)_{w\in W}$ be a finite closed cover of $Q$, and write
+\[
+ r=N(\K)=\min\{|I|:I\subset W,\ \bigcup_{w\in I}K_w=Q\}.
+\]
+The set $\mathcal B(\K)$ consists of all finite Borel partitions refining
+$\K$: each atom must be contained in at least one $K_w$. Equivalently,
+one may first consider all Borel maps $s:Q\to W$ with $x\in K_{s(x)}$,
+and then allow arbitrary finite Borel refinements of their fibers.
+
+Let $H$ be a primitive finite $0$--$1$ matrix, with vertex set $V$, and
+let
+\[
+ Y_H=\{y\in V^{\Nzero}:H_{y_jy_{j+1}}=1\text{ for all }j\ge0\}.
+\]
+Primitivity means that all sufficiently large powers of $H$ have strictly
+positive entries. Write $\sigma$ for the one-sided shift.
+
+\begin{theorem}[Closed covers of mixing shifts]\label{cc-thm:cover}
+Suppose $T:Q\to Q$ is topologically conjugate to $\sigma^p:Y_H\to Y_H$
+for some primitive $H$ and integer $p\ge1$. Let $\K$ be any finite closed
+cover of $Q$. For every strictly increasing $A=(a_i)$ satisfying
+\begin{equation}\label{cc-eq:gaps}
+ a_{i+1}-a_i\longrightarrow\infty,
+\end{equation}
+one has
+\begin{equation}\label{cc-eq:coverformula}
+ \min_{\alpha\in\mathcal B(\K)} h_A(T,\alpha)
+ =\min_{\alpha\in\mathcal B(\K)}\hpat(T,\alpha)
+ =\log r.
+\end{equation}
+An ordered difference partition of any minimum subcover attains both
+minima, simultaneously for every $A$ satisfying \eqref{cc-eq:gaps}.
+Consequently,
+\begin{equation}\label{cc-eq:coverminimax}
+ \max_A\inf_{\alpha\in\mathcal B(\K)}h_A(T,\alpha)=\log r,
+\end{equation}
+where the maximum ranges over all strictly increasing infinite sequences
+and is attained, for example, by $a_i=(i-1)^2$.
+\end{theorem}
+
+The lower bound has two ingredients. Closedness of the cover forces
+at least $r$ atoms of any refining partition to be nonmeager. Mixing
+then lets us prescribe any string of these atoms at sufficiently
+separated times. The separation threshold depends on the partition,
+but every sequence with diverging gaps eventually exceeds it. This is
+why one $A$ can be fixed before choosing the partition.
+
+\subsection{A category and concatenation lemma}
+
+All category statements are relative to $Q$. A nonmeager Borel set is
+comeager in some nonempty open set, since Borel sets have the Baire
+property. We will replace each of several nonmeager atoms by a cylinder
+on which it is comeager, join the cylinders, and then remove the bad
+sets. For that last step we need openness: if $F$ is continuous and
+open, the preimage of a closed nowhere dense set has empty interior.
+Consequently preimages of meager sets are meager.
+
+\begin{lemma}\label{cc-lem:glue}
+Under the dynamical assumptions of Theorem~\ref{cc-thm:cover}, $T$ is
+continuous, open, and onto. Given finitely many nonempty cylinder sets
+$C_1,\ldots,C_q$ in symbolic coordinates, there is an integer $b\ge1$
+such that, for every $k\ge1$, every $t_1,\ldots,t_k\in\{1,\ldots,q\}$,
+and all $0\le n_1<\cdots<n_k$ with $n_{j+1}-n_j\ge b$,
+\[
+ \bigcap_{j=1}^k T^{-n_j}C_{t_j}
+\]
+is nonempty and open.
+\end{lemma}
+\begin{proof}
+Work on $Y_H$ through the conjugacy. The image under $\sigma$ of a
+prefix cylinder of length at least two is the cylinder obtained by
+removing its first symbol. The image of a one-symbol cylinder is the
+union of the permitted successor cylinders. Hence $\sigma$ is open.
+Every vertex has a predecessor, so every infinite path has a predecessor;
+thus $\sigma$ is onto. These properties pass to powers and conjugates.
+
+Choose within each $C_j$ a nonempty prefix cylinder, and extend their
+defining words, if necessary, to a common length $\ell$. Choose $N$ with
+$H^n>0$ for every $n\ge N$, and then choose $b$ with
+$pb-\ell+1\ge N$. Place the word for $C_{t_j}$ at coordinate $pn_j$.
+Between the end of one placed word and the start of the next there are
+$p(n_{j+1}-n_j)-\ell+1$ edges to fill. Primitivity supplies a path of
+that length between any two endpoint vertices. Predecessors fill the
+finite segment before the first placed word, and successors provide an
+infinite continuation after the last. This constructs an actual point
+in the intersection. The intersection is open because it is a finite
+intersection of preimages of open sets under continuous maps.
+\end{proof}
+
+\begin{lemma}\label{cc-lem:borel}
+Under the same assumptions, let $\alpha$ be a finite Borel partition
+with $q$ nonmeager atoms. For every $A$ satisfying \eqref{cc-eq:gaps} there
+exists $m\ge1$ such that
+\begin{equation}\label{cc-eq:categorycount}
+ \Patt_\alpha(\{a_1,\ldots,a_n\})\ge q^{n-m+1}\qquad(n\ge m).
+\end{equation}
+In particular $h_A(T,\alpha)\ge\log q$.
+\end{lemma}
+\begin{proof}
+We first choose cylinders in which the selected atoms occupy a
+comeager set. We then join those cylinders along the prescribed times;
+the discarded subsets remain meager under pullback.
+
+List the nonmeager atoms as $D_1,\ldots,D_q$. The Baire property
+provides a nonempty cylinder $C_j$ for which $C_j\setminus D_j$ is
+meager. Let $b$ be supplied by Lemma~\ref{cc-lem:glue}, and choose $m$ so
+that $a_{i+1}-a_i\ge b$ for all $i\ge m$.
+
+Fix $n\ge m$ and any target labels $t_m,\ldots,t_n$. The set
+\[
+ G=\bigcap_{i=m}^n T^{-a_i}C_{t_i}
+\]
+is nonempty and open. Each power $T^{a_i}$ is continuous and open, so
+\[
+ \bigcup_{i=m}^n T^{-a_i}(C_{t_i}\setminus D_{t_i})
+\]
+is meager and cannot cover $G$. A point outside this union realizes
+all the specified atoms at the sampled times. Distinct target label
+strings give distinct patterns; restriction from the full window to
+this tail is onto. This proves \eqref{cc-eq:categorycount}. Dividing its
+logarithm by $n$ and taking a limit inferior proves the asserted bound.
+\end{proof}
+
+\subsection{Proof of the exact formula}
+
+\begin{proof}[Proof of Theorem~\ref{cc-thm:cover}]
+Let $\alpha\in\mathcal B(\K)$. Assign to each atom $D$ one index
+$w(D)$ with $D\subset K_{w(D)}$. Let $J$ be the set of indices assigned
+to the nonmeager atoms. If the closed sets $(K_w)_{w\in J}$ did not
+cover $Q$, their complement would be a nonempty open set covered by
+the finitely many meager atoms of $\alpha$, which is impossible.
+Thus $|J|\ge r$, and the number $q$ of nonmeager atoms is at least $r$.
+Lemma~\ref{cc-lem:borel} gives
+\[
+ h_A(T,\alpha)\ge\log q\ge\log r
+\]
+for every $A$ satisfying \eqref{cc-eq:gaps}. Closedness of the cover
+members is used precisely in this passage from category to a full cover.
+
+Choose a minimum subcover $K_{w_1},\ldots,K_{w_r}$, and set
+\begin{equation}\label{cc-eq:ordered}
+ E_j=K_{w_j}\setminus\bigcup_{k<j}K_{w_k},\qquad
+ \alpha_0=\{E_1,\ldots,E_r\}.
+\end{equation}
+Every $E_j$ is Borel and is nonempty, since a minimum subcover has no
+redundant member. The partition refines $\K$ and has $r$ atoms. Hence
+$\Patt_{\alpha_0}(F)\le r^{|F|}$ for all finite $F$, giving
+$h_A(T,\alpha_0)\le\hpat(T,\alpha_0)\le\log r$ for every $A$.
+The established lower bound and $\hpat\ge h_A$ yield
+\eqref{cc-eq:coverformula} and simultaneous attainment.
+For arbitrary $A$, the partition $\alpha_0$ bounds the inner infimum
+in \eqref{cc-eq:coverminimax} by $\log r$. Any $A$ satisfying
+\eqref{cc-eq:gaps} gives the reverse bound and attains the maximum.
+\end{proof}
+
+
+\subsection{An excluded-letter cover}
+
+For any finite cover $\K$ define its combinatorial sequence entropy by
+\[
+ h_A(T,\K)=\limsup_{n\to\infty}\frac1n
+ \log N\left(\bigvee_{i=1}^n T^{-a_i}\K\right).
+\]
+For a partition this is \eqref{cc-eq:seq}. For overlapping sets, covering
+each finite orbit window need not correspond to one fixed refining
+partition used at every time.
+
+\begin{corollary}\label{cc-cor:covergap}
+Let $q\ge3$, $Q=\{0,\ldots,q-1\}^{\Nzero}$, $T=\sigma$, and
+\[
+ K_j=\{x:x_0\ne j\}\quad(0\le j<q),\qquad \K=(K_j)_{j=0}^{q-1}.
+\]
+For every increasing infinite $A$,
+\begin{equation}\label{cc-eq:covervalue}
+ h_A(\sigma,\K)=\log\frac q{q-1}.
+\end{equation}
+For every such $A$ with diverging successive gaps,
+\begin{equation}\label{cc-eq:refvalue}
+ \min_{\alpha\in\mathcal B(\K)}h_A(\sigma,\alpha)=\log2
+ >h_A(\sigma,\K).
+\end{equation}
+\end{corollary}
+\begin{proof}
+The cover has no single member equal to $Q$, and any two distinct
+members cover $Q$. Thus $r=2$, and \eqref{cc-eq:refvalue} follows from
+Theorem~\ref{cc-thm:cover} once \eqref{cc-eq:covervalue} is proved.
+
+For a window $F$ of size $n$, the full shift has all $q^n$ possible
+input vectors. Each member of the joined cover specifies one excluded
+letter at each coordinate, and covers $(q-1)^n$ of these vectors.
+Consequently the minimum number $c(n)$ of such boxes is at least
+$(q/(q-1))^n$. For completeness, the following elementary probabilistic
+covering bound gives the matching exponent. Choose $R$ excluded-letter
+vectors independently and uniformly from the $q^n$ possibilities. A
+fixed input vector is left uncovered with probability at most
+\[
+ \left(1-\left(\frac{q-1}{q}\right)^n\right)^R
+ \le \exp\left(-R\left(\frac{q-1}{q}\right)^n\right).
+\]
+Taking
+$R=\left\lceil(q/(q-1))^n(n\log q+1)\right\rceil$ makes the sum of
+these probabilities over all input vectors smaller than one. Some
+choice therefore covers every vector. We have proved
+\[
+ \left(\frac q{q-1}\right)^n\le c(n)
+ \le\left\lceil\left(\frac q{q-1}\right)^n(n\log q+1)\right\rceil.
+\]
+The count depends only on $n$, not on the positions of the sampled
+coordinates, so its exponential rate proves \eqref{cc-eq:covervalue}.
+\end{proof}
+
+The excluded-letter cover and its covering exponent are already present
+in Romagnoli \cite{Romagnoli2007}; the calculation above is included to
+identify the sparse-time quantity without an external dependency.
+The consequence of Theorem~\ref{cc-thm:cover} is the exact minimum over
+\emph{all Borel} refinements for a sequence fixed in advance. It does not
+assert that every Borel refinement has consecutive-time entropy at least
+$\log2$, or that every sampling sequence gives that lower bound.
+
+
+\subsection{Application to safe feedbacks}\label{sec:common-successor}
+
+For a fixed period, the common-successor hypothesis identifies every
+feedback orbit with the same dynamical system. The preceding cover
+formula therefore applies to the control-label fibers.
+
+\begin{corollary}[Safe feedbacks with a common successor]\label{cc-thm:control}
+In the setting of Section~\ref{sec:selectors}, assume that there is
+a map $T:Q\to Q$ such that
+\begin{equation}\label{cc-eq:common}
+ g_w(x)=T(x)\qquad\text{for every }w\in W\text{ and every }x\in K_w,
+\end{equation}
+and that $T$ is conjugate to $\sigma^p$ on a mixing one-sided shift of
+finite type. With $r=N((K_w)_{w\in W})$, for every $A$ satisfying
+\eqref{cc-eq:gaps} one has
+\begin{equation}\label{cc-eq:controlformula}
+ \min_{s\in\Ssafe_\tau}h_A(s)
+ =\min_{s\in\Ssafe_\tau}\hpat(s)
+ =L_\tau=M_\tau=\frac{\log r}{\tau}.
+\end{equation}
+The maximum defining $L_\tau$ is attained by every such $A$, and an
+ordered minimum-subcover selector attains all the indicated minima.
+The same minimum and minimax values hold when all finite Borel safe
+partitions, including every finite Borel refinement, are allowed. Every
+refinement satisfies the stated lower bound; no upper bound for each
+individual refinement is asserted.
+\end{corollary}
+\begin{proof}
+For every legal selector, \eqref{cc-eq:common} gives $T_s=T$ pointwise.
+Its fibers form a finite Borel refinement of $(K_w)_{w\in W}$.
+Theorem~\ref{cc-thm:cover}, with normalization by $\tau$, gives the lower
+bound at every $A$ with diverging gaps. If $w_1,\ldots,w_r$ form a
+minimum subcover, define $s_0(x)=w_j$ on the sets $E_j$ of
+\eqref{cc-eq:ordered}. This is Borel and legal at every point. Each selected
+block stays in $Q$ at its intermediate times by \eqref{cc-eq:safe}, and
+the endpoint again lies in $Q$, so recursion gives an infinite safe
+closed-loop orbit for every initial state. The selector uses only $r$
+blocks and thus gives the upper bound for every window and every
+sampling sequence. This proves attainment, \eqref{cc-eq:controlformula},
+and the outer maximum. Lemma~\ref{cc-lem:merge} proves the last assertion.
+\end{proof}
+
+At period one this gives $L_1=M_1=\log2$ for the excluded-letter
+system from the introduction. At longer periods, the cover cardinality
+must be computed for whole blocks, as the following example shows.
+
+\subsubsection{An overlapping example at period two}
+
+Take
+\[
+ Q=\{0,1,2\}^{\Nzero},\quad X=Q\sqcup\{\dagger\},\quad
+ U=\{0,1,2\},\quad\tau=2,
+\]
+where the isolated point $\dagger$ lies outside $Q$. Define
+\[
+ f_u(x)=
+ \begin{cases}\sigma x,&x\in Q,\ x_0\ne u,\\
+ \dagger,&x\in Q,\ x_0=u,\end{cases}
+ \qquad f_u(\dagger)=\dagger.
+\]
+Each $f_u$ is continuous since the cases are clopen. For $w=(a,b)$,
+\[
+ K_{(a,b)}=\{x:x_0\ne a,\ x_1\ne b\},\qquad
+ g_{(a,b)}|_{K_{(a,b)}}=\sigma^2.
+\]
+All nine control blocks are available to Borel feedbacks, and each
+state permits four of them. A safety domain covers four of the nine
+two-symbol input blocks, so two domains cannot cover $Q$. The three
+diagonal blocks $(0,0),(1,1),(2,2)$ do cover $Q$, since some symbol
+differs from both $x_0$ and $x_1$. Hence $r=3$, and
+\[
+ L_2=M_2=\frac{\log3}{2}.
+\]
+An attaining selector is
+\[
+ c(x)=\min(\{0,1,2\}\setminus\{x_0,x_1\}),\qquad
+ s_0(x)=(c(x),c(x)).
+\]
+It is clopen and legal everywhere. Its actual block-boundary states
+are $\sigma^{2k}x$. To prescribe any sequence of diagonal labels, use
+successive input blocks $11$, $00$, and $01$ for the desired labels
+$0$, $1$, and $2$, respectively. Therefore its actual name set is the
+full shift on these three blocks. The lower bound, however, holds for
+every legal Borel rule using any of the nine blocks.
+
+The common object here is the state orbit; there need not be a
+nonconstant label observation shared by all feedbacks. To see this,
+suppose a map
+$\rho:U^2\to V'$ and an observation $F:Q\to V'$ satisfy
+$\rho(s(x))=F(x)$ for every legal Borel selector and every $x$.
+Any two blocks $(a,b)$ and $(a',b')$ are both legal at a state beginning
+with $ij$, where $i\notin\{a,a'\}$ and $j\notin\{b,b'\}$.
+A legal baseline selector may be changed at this single state to use
+either block, while remaining Borel and legal. Hence their $\rho$
+values agree. Every pair of blocks is legal together somewhere, so $\rho$
+is constant. Thus the argument uses refinements of an
+overlapping cover, rather than a label forced at each state.
+
+
+\subsection{Why the successor map matters}\label{sec:different}
+Changing the successor can prevent a region from being visited again.
+The minimum safety cover still counts that region, but its label may
+contribute only to the initial part of a name. The next example has
+$r=3$ and $L_1=M_1=\log2$. Thus continuity and openness of the
+individual branches do not replace the common-successor assumption.
+
+Let $Q=\{0,1\}^{\Nzero}$, let $\mathcal C=\{0,10,11\}$ be a set of
+finite words, and take $U=\mathcal C\times\{0,1\}$ and $\tau=1$.
+For $e\in\{0,1\}$ let $P_e$ add $e$ modulo two to every coordinate.
+On $X=Q\sqcup\{\dagger\}$ define
+\begin{equation}\label{cc-eq:boundarysystem}
+ f_{(c,e)}(x)=
+ \begin{cases}P_e\sigma x,&x\in[c],\\
+ \dagger,&x\in Q\setminus[c],\end{cases}
+ \qquad f_{(c,e)}(\dagger)=\dagger.
+\end{equation}
+The cylinders $[0],[10],[11]$ are disjoint and cover $Q$. Each state
+has exactly two legal controls with different successors. The global
+maps $f_{(c,e)}$ are continuous, and their legal restrictions are open.
+The safety domains are $K_{(c,e)}=[c]$, and $r=3$.
+
+\begin{proposition}\label{cc-prop:boundary}
+For the system \eqref{cc-eq:boundarysystem}, over all legal Borel feedbacks
+and arbitrary Borel mixtures,
+\begin{equation}\label{cc-eq:boundaryvalue}
+ \min_s h_{A_0}(s)=\min_s\hpat(s)=
+ \max_A\inf_s h_A(s)=\log2<\log r,
+ \qquad A_0=(0,1,2,\ldots).
+\end{equation}
+There is one clopen legal feedback $s_{\mathrm f}$ satisfying
+$h_A(s_{\mathrm f})=\log2$ for every increasing infinite $A$.
+The same full-class values hold if arbitrary finite Borel atom
+refinements are allowed.
+\end{proposition}
+\begin{proof}
+For the upper bound we choose the flip that makes the next first
+coordinate zero. After that first step only two labels remain. For
+the lower bound we recover the input prefix from any actual control
+word, whatever feedback produced it.
+
+Let $c(x)$ be the unique member of $\mathcal C$ with $x\in[c(x)]$,
+and set
+\[
+ s_{\mathrm f}(x)=(c(x),x_1),\qquad
+ T_{\mathrm f}x=P_{x_1}\sigma x.
+\]
+This is a clopen selector, legal at every state. Its four nonempty
+initial control fibers, for labels $(0,0),(0,1),(10,0),(11,1)$, are
+$[00],[01],[10],[11]$, respectively. For all $n\ge1$, direct induction
+gives
+\begin{equation}\label{cc-eq:fliporbit}
+ T_{\mathrm f}^n x=P_{x_n}\sigma^n x,
+ \qquad s_{\mathrm f}(T_{\mathrm f}^n x)
+        =(0,x_{n+1}\mathbin\oplus x_n),
+\end{equation}
+where $\oplus$ is addition modulo two. In the induction step the
+chosen flip is $x_{n+1}\oplus x_n$; it cancels the previous flip and
+leaves $P_{x_{n+1}}\sigma^{n+1}x$. The first coordinate is always zero
+after time zero, which also proves all-time safety.
+
+For every finite nonempty window $F$, with $n=|F|$, one has
+\begin{equation}\label{cc-eq:flipcount}
+ \Patt_{s_{\mathrm f}}(F)=
+ \begin{cases}2^n,&0\notin F,\\2^{n+1},&0\in F.\end{cases}
+\end{equation}
+The four initial labels and two later labels give the upper bounds.
+To prove the lower bounds, prescribe any of the four initial labels
+if $0\in F$, thereby fixing $(x_0,x_1)$; if $0\notin F$, set
+$x_0=x_1=0$. At positive sampled times prescribe the desired second
+components $d_k$, and put $d_k=0$ at the other positive times.
+Recursively set $x_{k+1}=x_k\oplus d_k$ for every $k\ge1$.
+This constructs a full state in $Q$ whose actual trajectory under the
+same selector has the required sampled controls by
+\eqref{cc-eq:fliporbit}. This realizes every prescribed pattern on
+an infinite closed-loop trajectory. Equation~\eqref{cc-eq:flipcount}
+implies $h_A(s_{\mathrm f})=\hpat(s_{\mathrm f})=\log2$ for every $A$.
+
+For the opposite bound fix any legal Borel selector $s$. If its first
+$n$ actual controls from $x$ are $(c_k,e_k)$, let
+$E_0=0$ and $E_k=e_0\oplus\cdots\oplus e_{k-1}$. Since shifts commute
+with flips,
+\[
+ T_s^k x=P_{E_k}\sigma^k x.
+\]
+Let $b(c)$ be the first bit of the word $c$. Safety at time $k$ gives
+\begin{equation}\label{cc-eq:decode}
+ x_k=b(c_k)\oplus E_k\qquad(0\le k<n).
+\end{equation}
+Thus one actual length-$n$ control word determines at most one input
+prefix of length $n$. Every binary input prefix has an extension in
+$Q$, and the feedback is defined and safe on every such extension.
+Distinct prefixes must yield distinct actual control words. Hence
+\[
+ \Patt_s(\{0,\ldots,n-1\})\ge2^n
+\]
+for every $n$ and every legal $s$. This proves $h_{A_0}(s)\ge\log2$
+and $\hpat(s)\ge\log2$. Combining these inequalities with
+$s_{\mathrm f}$ proves \eqref{cc-eq:boundaryvalue}, including attainment.
+Lemma~\ref{cc-lem:merge} handles atom refinements.
+\end{proof}
+
+The obstruction has a precise orbit interpretation. In this example
+$T_{\mathrm f}(Q)=[0]$: for the reverse inclusion, given $y\in[0]$,
+take $x=0y$. Therefore neither $[10]$ nor $[11]$ is visited at a
+positive time. The initial fibers with those labels are nonmeager,
+but their labels cannot be freely concatenated in the future.
+The map $T_{\mathrm f}$ is itself continuous and open, as follows by
+restricting to the four clopen two-symbol cylinders. It is not onto
+$Q$.
+
+Even preservation of meager preimages does not repair this problem.
+For any selector $s$ and any $n$, the value of $T_s^n x$ is either
+$\sigma^n x$ or $P_1\sigma^n x$. Hence, for a meager set $N$,
+\[
+ (T_s^n)^{-1}N\subset
+ (\sigma^n)^{-1}N\ \cup\ (P_1\sigma^n)^{-1}N
+\]
+is meager. What fails is the nonempty open intersection used in
+Lemma~\ref{cc-lem:glue} for the \emph{selected} dynamics. Also, the
+same $s_{\mathrm f}$ gives
+\[
+ \inf_s h_A(s)\le\log2=\log r-\log(3/2)
+ \quad\text{for every }A.
+\]
+Thus the deficit below $\log r$ persists for every sampling sequence,
+while $L_1=M_1$ still holds. The exact inner minimum at other fixed
+sequences is not determined by this calculation.
+
+
+
+
+\section{Inverse capacity when the feedback changes the orbit}\label{sec:capacity}
+
+The preceding example shows why the safety cover alone is insufficient
+when legal controls have different successors. We now use a reference
+measure to bound the size of the initial-state sets carrying control
+names. The measure is only a tool for counting; it need not be
+invariant under any feedback.
+
+The estimate concerns sets of initial states whose controls belong to
+prescribed lists of $k-1$ labels. If each such set has exponentially
+small mass, exponentially many lists are needed to cover the names of
+any feedback. A finite covering lemma then supplies a set of positions
+on which all choices of $k$ labels occur. The mass bound is uniform
+over feedbacks, but these positions can depend on the rule. This is
+why the argument determines $M_\tau$ without yet determining $L_\tau$.
+
+\subsection{Safe inverse-transfer operators}
+Fix a finite block set $W$ of size $q$ at period $\tau$, with
+closed safety domains $K_u$ covering $Q$ and continuous endpoint
+maps $g_u:K_u\to Q$, as in \eqref{cc-eq:safe}. All optimizations
+in this section use the Borel selectors with values in this $W$.
+Let $\mu$ be a full-support Borel probability on $Q$ and assume
+\begin{equation}\label{eq:cap-density}
+ \nu_u=(g_u)_*(\mu|_{K_u})\ll\mu,\qquad
+ \rho_u=\frac{d\nu_u}{d\mu}\in L^\infty(\mu).
+\end{equation}
+The function $\rho_u$ measures how much source mass the safe branch
+can send to a target region. To follow this mass through several
+branches, define $L_u$ by
+\begin{equation}\label{eq:cap-transfer}
+ \int hL_uf\,d\mu=\int_{K_u}h(g_ux)f(x)\,d\mu(x)
+ \quad(h,f\text{ bounded Borel}).
+\end{equation}
+Thus $L_uf$ is the density after pushing $f\mu$ through branch $u$
+and restricting the source to its safety domain. The signed
+pushforward is dominated in total variation by $\|f\|_\infty\nu_u$;
+its density exists and satisfies
+$|L_uf|\le\|f\|_\infty\rho_u$. Changing $f$ on a null set
+does not change the pushforward, so $L_u$ is a positive bounded
+operator on $L^\infty(\mu)$ and $L_u\one=\rho_u$.
+
+Fix $2\le k\le q$ and set $l=k-1$. A list box of length $n$
+is a product $S_0\times\cdots\times S_{n-1}$ with $S_j\subset W$
+and $|S_j|=l$: it allows any label in $S_j$ at time $j$.
+For one list $S$, let $A_S=\sum_{u\in S}L_u$. For example, two
+successive lists $S_0,S_1$ give
+\[
+ A_{S_1}A_{S_0}\one
+   =\sum_{u\in S_0,\ v\in S_1}L_vL_u\one.
+\]
+Each summand is the terminal density obtained by following one
+safe two-block path. A feedback uses only part of the source set
+available to each path. Pushing forward the initial states whose
+first two labels belong to these lists therefore gives a terminal
+density bounded by the displayed sum. Integrating gives an upper
+bound on their initial
+mass; since $\mu$ is a probability, the $L^\infty$ norm bounds that
+integral as well. We use this norm to estimate list boxes of any length:
+
+\begin{equation}\label{eq:cap-bn}
+ b_0=1,\qquad
+ b_n=\max_{|S_0|=\cdots=|S_{n-1}|=l}
+       \|A_{S_{n-1}}\cdots A_{S_0}\one\|_\infty.
+\end{equation}
+The first list acts on the right. A history in \eqref{eq:cap-bn}
+chooses one list at each time for the whole state space; it does not
+choose a different list at each target point. This distinction will
+matter in Section~\ref{subsec:product-example}.
+
+For a positive operator $P$, $\|P\|_{\infty\to\infty}
+=\|P\one\|_\infty$. Hence $b_{n+m}\le b_nb_m$. In particular,
+one strict bound $b_h<1$ controls all lengths: choose
+$b_h<\theta^h<1$ and put
+\begin{equation}\label{eq:cap-exp}
+ H=\max_{0\le j<h}b_j\theta^{-j},\qquad
+ b_n\le H\theta^n\quad(n\ge0).
+\end{equation}
+Indeed, write $n=ah+j$ and use submultiplicativity. The integer
+$h$ is a length used to verify the estimate; the control period
+remains $\tau$.
+
+A set of words $G\subset W^n$ has a \emph{$k$-valued cube projection}
+on $J\subset\{0,\ldots,n-1\}$ if, for some $V\subset W$ with
+$|V|=k$, its projection onto $J$ contains $V^J$. Thus every assignment
+of those $k$ labels to the positions in $J$ occurs in a word of $G$.
+The theorem produces such projections inside the actual feedback
+language, with a number of positions proportional to $n$.
+
+
+\begin{theorem}[Product inverse-capacity criterion]\label{thm:capacity-main}
+Assume \eqref{eq:cap-density}. If $b_h<1$ for some $h\ge1$, then
+there are $\alpha>0$ and $N$, depending only on the branches,
+$\mu,k$, such that, for every legal Borel feedback $s$ and every
+$n\ge N$, its actual length-$n$ names have a $k$-valued cube
+projection on at least $\alpha n$ coordinates. Consequently
+\begin{equation}\label{eq:cap-pattern}
+ p_s^*(m)\ge k^m\quad(m\ge1),\qquad
+ h^*(s)\ge\frac{\log k}{\tau}.
+\end{equation}
+The same lower bound holds for all finite Borel atom refinements.
+If $k=r\ge2$ is the minimum number of safety domains covering $Q$,
+then
+\begin{equation}\label{eq:cap-M}
+ M_\tau=\min_s h^*(s)=\frac{\log r}{\tau},
+\end{equation}
+both over unrefined selectors and over all finite Borel safe partitions.
+\end{theorem}
+
+\subsection{From actual fibers to list covers}
+For a fixed feedback, group initial states by their first $n$ controls:
+let
+\[
+ E_w(s)=\{x:s(T_s^jx)=w_j\ (0\le j<n)\},\qquad
+ F_n(s)=\{w\in W^n:E_w(s)\ne\varnothing\}.
+\]
+The sets $E_w(s)$ are the actual fibers. They are Borel, pairwise
+disjoint, and cover $Q$. A nonempty fiber is included even when it
+has measure zero.
+For $w=w_0\cdots w_{n-1}$ put
+$L_w=L_{w_{n-1}}\cdots L_{w_0}$ and
+$P_F=\sum_{w\in F}L_w$.
+
+\begin{lemma}[Actual-fiber capacity]\label{lem:fiber-cap}
+For every legal Borel feedback and every $n\ge1$,
+\begin{equation}\label{eq:fiber-mass}
+ 1\le\int P_{F_n(s)}\one\,d\mu.
+\end{equation}
+If $F_n(s)$ is covered by $t$ boxes
+$S^a_0\times\cdots\times S^a_{n-1}$ whose lists have size at
+most $l$, then $1\le t b_n$.
+\end{lemma}
+\begin{proof}
+Follow the mass in one fiber through its prescribed branches. Safety
+means that none is lost at a restriction to $K_{w_j}$. Dropping the
+fiber restriction at the start can only increase the resulting density.
+
+Fix a nonempty fiber $E_w$ and let $\eta_j$ be the pushforward
+of $\mu|_{E_w}$ after its first $j$ actual blocks. Set
+$f_0=\one_{E_w}$. We claim inductively that
+$\eta_j=f_j\mu$ and $f_{j+1}=L_{w_j}f_j$. Indeed,
+$\eta_j$ is concentrated on $K_{w_j}$, and for every bounded Borel $h$,
+\[
+ \int h\,d\eta_{j+1}
+ =\int_{K_{w_j}}h(g_{w_j}x)f_j(x)\,d\mu(x)
+ =\int hL_{w_j}f_j\,d\mu.
+\]
+The boundedness of each $L_u$ permits the induction. None of these
+restrictions removes mass, because all states in $E_w$ follow the
+specified safe word. Thus $\int L_w\one_{E_w}\,d\mu=\mu(E_w)$.
+Positivity gives $L_w\one_{E_w}\le L_w\one$; summing over the
+disjoint fibers proves \eqref{eq:fiber-mass}. The set $F_n(s)$ includes
+null but nonempty fibers as well.
+
+Complete every nonempty list to size $l$. Distributivity and positivity
+give
+\[
+ P_{F_n(s)}\one\le\sum_{a=1}^t
+ A_{S^a_{n-1}}\cdots A_{S^a_0}\one.
+\]
+Repeated boxes and overlaps only enlarge this upper bound. Unsafe
+words in a box are subject to the original safety gates in $L_u$.
+Integrating and using \eqref{eq:cap-bn} yields $1\le tb_n$.
+\end{proof}
+
+\subsection{The finite combinatorial input and its application}
+The preceding mass estimate gives a lower bound on the number of
+list boxes needed to cover the names. The finite covering lemma we
+will use is stated for a different kind of box: at each position it
+omits one letter from a fixed $k$-element alphabet. We compare these
+two covering numbers before applying the lemma.
+
+For $F\subset W^n$, let $C_l(F)$ be its minimum covering number by
+$l$-list boxes. For a $k$-element set $V\subset W$, let $C_V(F)$
+be the minimum number of boxes of the form
+\[
+ \prod_{j=0}^{n-1}(W\setminus\{v_j\}),\qquad v_j\in V,
+\]
+needed to cover $F$. This is a cover, since $k\ge2$.
+
+We use the following finite covering lemma. For every
+$k\ge2$ and $b>0$ there are $c>0$ and $N$ such that if
+$G\subset\{0,1,\ldots,k\}^n$, $n\ge N$, needs at least
+$e^{bn}$ boxes omitting one nonzero letter per coordinate, then some
+$J\subset\{0,\ldots,n-1\}$ with $|J|\ge cn$ has
+\begin{equation}\label{eq:HY-cube}
+ G|_J\supset\{1,\ldots,k\}^{J}.
+\end{equation}
+This is Kerr--Li's finite covering lemma
+\cite[Lemma~3.3]{KL2007}. Huang and Ye recover the same conclusion
+from their sharper estimates in \cite[Lemma~4.1 and Remark~4.2,
+pp.~1701--1705]{HuangYe2009}. Its constants depend only on $b,k$;
+its use here requires no dynamical assumptions on the closed loop.
+
+To pass from $C_l$ to one of the numbers $C_V$, choose a minimum
+omitted-letter cover for every $V$ and intersect all these covers. The intersections cover $F$, with at most
+$\prod_V C_V(F)$ members. In a nonempty intersection each coordinate
+contains at most $k-1$ letters: if it contained a $k$-set $V_0$, its
+factor from the $V_0$ cover would have omitted a letter of $V_0$.
+Hence
+\begin{equation}\label{eq:cap-intersect}
+ C_l(F)\le\prod_{V\in\binom Wk}C_V(F).
+\end{equation}
+For actual names Lemma~\ref{lem:fiber-cap} gives
+$C_l(F_n(s))\ge b_n^{-1}$. Under \eqref{eq:cap-exp}, for all
+sufficiently large $n$ this lower bound is at least
+$e^{\eta n/2}$, where $\eta=-\log\theta>0$. With
+$J_0=\binom qk$, \eqref{eq:cap-intersect} implies that some $V$
+satisfies
+\[
+ C_V(F_n(s))\ge e^{\eta n/(2J_0)}.
+\]
+Code the members of $V$ by $1,\ldots,k$ and all other letters by
+$0$. Omitted-letter boxes pull back exactly to the boxes defining
+$C_V$, so the coded set has precisely that covering number. Applying
+\eqref{eq:HY-cube} and undoing this coding yields
+$F_n(s)|_J\supset V^J$. No distinct members of $V$ were merged.
+
+\begin{proof}[Proof of Theorem~\ref{thm:capacity-main}]
+The preceding argument supplies $\alpha,N$ independent of $s$.
+Given $m$, choose $n$ so large that $\alpha n\ge m$ and retain
+$m$ of the independent positions. All $k^m$ patterns are actual
+feedback names, proving \eqref{eq:cap-pattern} with the prescribed
+normalization by $m\tau$.
+
+For $k=r$, choose a minimum subcover $K_{u_1},\ldots,K_{u_r}$ and
+select $u_j$ on $K_{u_j}\setminus\bigcup_{i<j}K_{u_i}$. This is a
+Borel state function, legal at every point. Each chosen block stays
+safe at its intermediate times and ends in $Q$; applying the same
+rule at the next state gives infinite safety. It uses $r$ labels and
+has at most $r^m$ patterns on any $m$ positions. This proves
+\eqref{eq:cap-M} and attainment. For a refined partition, projection
+to its physical control labels is onto the actual coarse patterns
+and preserves the dynamics. The lower bound therefore passes to
+every refinement, while the unrefined selector remains an available
+upper-bound witness in the enlarged class.
+\end{proof}
+
+The conclusion controls $M_\tau$. To control $L_\tau$ by this
+method, one would also need to choose the independent positions in
+common for all feedbacks. The covering lemma provides no such choice:
+its $J$ and $V$ may depend on both $s$ and $n$.
+
+\subsection{Single-step scalar and joint-density criteria}
+Define
+\begin{equation}\label{eq:cap-Theta}
+ \Theta_k=\left\|\max_{|S|=k-1}\sum_{u\in S}\rho_u\right\|_\infty.
+\end{equation}
+If $\Theta_k<1$, then $b_1=\Theta_k<1$ and
+Theorem~\ref{thm:capacity-main} applies. If the branch capacities obey
+$\mu(K_u\cap g_u^{-1}E)\le c_u\mu(E)$ for every Borel $E$,
+then $\rho_u\le c_u$ almost everywhere, and the sum of the largest
+$k-1$ of the $c_u$ bounds $\Theta_k$. Thus a scalar-capacity sum
+smaller than one is a sufficient special case. The order of taking
+the branch supremum and summing matters: joint densities may pass
+the test while the individual optimal scalar bounds do not.
+
+Appendix~\ref{app:weighted} gives a direct quantitative estimate in
+this single-step case. The strict inequality is essential:
+Proposition~\ref{prop:critical} gives systems with $r=3$,
+$\Theta_3\ge1$ arbitrarily close to one, and $M_1=\log2$.
+
+\subsection{The excluded-letter system with different successors}
+Return to the excluded-letter cover, but add the chosen control to
+every coordinate of the shifted state. The safety cover is unchanged;
+the trajectory now depends on the feedback. This gives a simple
+application of the capacity theorem and shows what information it
+leaves open.
+
+Let $q\ge3$, $G=\mathbb Z/q\mathbb Z$, and $Q=G^{\Nzero}$.
+Write $P_u$ for coordinatewise addition of $u$. On
+$X=Q\sqcup\{\dagger\}$ use the continuous controls
+\[
+ f_u(x)=P_u\sigma x\quad\text{if }x_0\ne u,
+ \qquad f_u(x)=\dagger\quad\text{otherwise},
+ \qquad f_u(\dagger)=\dagger.
+\]
+Their safety domains are the excluded-letter cylinders
+$K_u=\{x:x_0\ne u\}$, so the minimum cover cardinality is two.
+
+\begin{corollary}\label{cor:cyclic}
+For this system, at period one and over all legal Borel feedbacks
+and finite atom refinements,
+\[
+ M_1=\min_s h^*(s)=\log2,\qquad
+ \log\frac q{q-1}\le L_1\le\log2,\qquad
+ \hinv(Q)=\log\frac q{q-1}.
+\]
+There is a clopen feedback with $\Patt_s(F)=2^{|F|}$ for every
+finite window $F$.
+\end{corollary}
+\begin{proof}
+Use the uniform Bernoulli probability on $Q$. The safe inverse
+operator is
+\[
+ (L_uf)(y)=\frac1q\sum_{a\ne u}f(aP_{-u}y),
+ \qquad L_u\one=\frac{q-1}{q}\one.
+\]
+Products of any single-label lists therefore have norm
+$((q-1)/q)^n$. Theorem~\ref{thm:capacity-main}, with $k=r=2$,
+gives $M_1=\log2$.
+
+For a control word $w=(w_0,\ldots,w_{n-1})$ produced by $s$, put
+$E_k=\sum_{j<k}w_j$ and $v_k=w_k-E_k$, with arithmetic in $G$.
+The actual orbit satisfies $T_s^kx=P_{E_k}\sigma^kx$, so its
+initial fiber lies in
+\[
+ K(w)=\{x:x_k\ne v_k\ (0\le k<n)\}.
+\]
+This is also the complete open-loop safety domain of $w$.
+Each such domain contains exactly $(q-1)^n$ input prefixes.
+Every input prefix extends to a state with an infinite safe
+feedback trajectory; hence the actual length-$n$ word count is
+at least $(q/(q-1))^n$. Consecutive sampling gives the stated
+lower bound for $L_1$.
+
+Define $s_0(x)=1$ if $x_0=0$, and $s_0(x)=0$ otherwise.
+This is clopen and safe on all of $Q$. Given any infinite binary
+sequence $d$, let $E_k=\sum_{j<k}d_j$ and let $b_k=0$ when
+$d_k=1$, $b_k=1$ when $d_k=0$. The state with coordinates
+$x_k=b_k-E_k$ has current first coordinate $b_k$ at time $k$,
+by induction. Its feedback name is therefore $d$.
+This proves the finite-window equality and the upper bound for
+$L_1$ with the same feedback for every sampling sequence.
+
+The map $w\mapsto v$ is triangular and bijective: recover
+$w_k=v_k+E_k$, $E_{k+1}=2E_k+v_k$, starting with $E_0=0$.
+This requires no inverse of $2$, and includes even $q$.
+Thus the open-loop spanning number is the least number $c_q(n)$
+of boxes $\prod_{k<n}(G\setminus\{v_k\})$ covering $G^n$.
+Writing $p=((q-1)/q)^n$, the counting lower bound and the
+elementary random-cover upper bound give
+\[
+ p^{-1}\le c_q(n)\le
+ \left\lceil p^{-1}(n\log q+1)\right\rceil.
+\]
+Indeed, $t=\lceil p^{-1}(n\log q+1)\rceil$ independent uniform
+boxes leave some input uncovered with probability at most
+$q^n(1-p)^t\le q^ne^{-pt}\le e^{-1}<1$.
+A covering choice exists, and removal of repetitions can only
+decrease its size. Taking normalized logarithms proves the
+invariance-entropy formula. Lemma~\ref{cc-lem:merge} supplies
+the refinement statement.
+\end{proof}
+
+The safe spanning number is a lower bound for the actual feedback
+word count, not an upper bound. For example, when $q=3$, the
+three safe words $00,12,21$ cover all two-symbol inputs: their
+excluded vectors are $00,11,22$. The clopen rule
+$s(x)=\min(G\setminus\{x_0,x_1\})$ repeatedly selects the
+first control of a covering word and is safe everywhere.
+Starting from $x=(1,1,0,0,\ldots)$, however, it selects $0$
+and then $2$, giving the word $02$ outside that cover.
+The subsequent state is $2^\infty$ and all subsequent controls
+are $0$, so the witness has an infinite safe continuation.
+Its prefix fibers obey
+\[
+ H_s(uw)=s^{-1}(u)\cap(P_u\sigma)^{-1}H_s(w),
+ \qquad H_s(w)\subset K(w).
+\]
+These compatibility equations are absent from a separately
+chosen spanning family. The lower and upper bounds for $L_1$
+remain distinct; neither their equality nor a strict minimax
+gap is asserted for this cyclic system.
+
+
+\subsection{A smooth joint-density example}\label{subsec:smooth}
+The joint-density test can be sharper than taking a separate
+supremum for each branch: peaks at different target points need not
+add. On $Q=[0,1]$ take three full inverse branches with
+\begin{align}
+ l_u&=\frac{19u}{60},\qquad
+ \rho_u(y)=\frac{11}{30}+\frac7{30}
+            \cos(2\pi(y-u/3)),\label{eq:smooth-rho}\\
+ \psi_u(y)&=l_u+\frac{11}{30}y+
+ \frac7{60\pi}\big[\sin(2\pi(y-u/3))-\sin(-2\pi u/3)\big].
+ \nonumber
+\end{align}
+Here $g_u=\psi_u^{-1}$, for $u=0,1,2$.
+Their derivatives lie between $2/15$ and $3/5$, so the branches
+are strictly increasing and expanding in the forward direction.
+The closed safety intervals are
+$[0,22/60]$, $[19/60,41/60]$, and $[38/60,1]$.
+They cover $Q$ and each is needed: the middle interval alone covers
+the open gap between $22/60$ and $38/60$, while the two endpoints
+require the first and third intervals. Hence $r=3$.
+
+With Lebesgue probability, the densities are exactly
+$\psi'_u=\rho_u$. The three cosine terms sum to zero. The sum of
+two is the negative of the remaining cosine, whose maximum is one;
+therefore
+\[
+ \Theta_3=\frac{22}{30}+\frac7{30}=\frac{29}{30}<1.
+\]
+Each branch has optimal scalar bound $3/5$, since its continuous
+density reaches that value. The largest two scalar bounds sum to
+$6/5$. The joint criterion consequently gives $M_1=\log3$ although
+that Lebesgue scalar criterion fails.
+
+To place these interval branches in a continuous compact ambient
+system, take $X=[-1,2]$. Extend each $g_u$ to the left of its
+safety interval $[a_u,b_u]$ by $-\min\{a_u-x,1\}$ and to its
+right by $1+\min\{x-b_u,1\}$. At the endpoints these formulas
+match $0$ and $1$. Outside the closed safety interval the image
+lies outside $Q$, so this extension changes neither safety domains
+nor legal dynamics. The same construction applies to full monotone
+interval branches elsewhere in the paper.
+
+This example compares the two single-step tests for Lebesgue
+probability. The next example addresses a different question: can a
+product succeed when no choice of full-support reference probability
+makes the single-step test work?
+
+\subsection{Product contraction without a single-step reference test}
+\label{subsec:product-example}
+Single-step contraction can fail for every reference probability even
+when a short product contracts. In the following example, densities
+depend on one coordinate, so the product norm can be computed exactly.
+
+Let $Q=(\mathbb Z/3\mathbb Z)^{\Nzero}$, let $P_u$ add $u$
+to each coordinate, and use $g_u=P_u\sigma$ at period one. Put
+\[
+ K_0=[02]\cup[12]\cup[22],\quad K_1=[00]\cup[20],\quad
+ K_2=[01]\cup[10]\cup[11]\cup[12]\cup[21].
+\]
+The only overlap is $[12]$. The cylinders $[02],[00],[01]$
+require controls $0,1,2$, respectively, so $r=3$.
+On $[12]$, choosing $0$ or $2$ changes the successor's first
+letter from $2$ to $1$. Every Borel mixture on this entire overlap
+is allowed. Illegal controls go to an isolated fixed cemetery point;
+the resulting maps on $Q\sqcup\{\dagger\}$ are continuous.
+
+For fair Bernoulli probability, the operators leave first-coordinate
+functions invariant and have matrices $M_u/3$, where
+\[
+ M_0=\begin{pmatrix}0&0&0\\0&0&0\\1&1&1\end{pmatrix},\quad
+ M_1=\begin{pmatrix}0&0&0\\1&0&1\\0&0&0\end{pmatrix},\quad
+ M_2=\begin{pmatrix}1&1&1\\0&1&0\\0&1&0\end{pmatrix}.
+\]
+This follows from splitting the source measure by its first letter,
+and retaining exactly the allowed two-letter cylinders. For a
+positive product the full $L^\infty$ norm equals its norm on
+$\one$, whose entire orbit stays in this invariant space. Thus this
+finite representation computes the full product norms, not an
+approximation to arbitrary Borel functions.
+
+Let $A=M_0+M_1$, $B=M_0+M_2$, $C=M_1+M_2$.
+The vectors after two of these unnormalized factors are
+\[
+\begin{array}{ccc}
+(0,3,5)&(0,7,8)&(0,4,7)\\
+(5,2,7)&(8,1,9)&(7,3,10)\\
+(5,5,2)&(8,8,1)&(7,7,3).
+\end{array}
+\]
+They are coordinatewise dominated by one of the vectors in
+\[
+ V=\{(0,7,8),(7,3,10),(7,7,3),(8,1,9),(8,8,1)\}.
+\]
+For $v=(p,q',r')$,
+$Av=(0,p+r',p+q'+r')$,
+$Bv=(p+q'+r',q',p+2q'+r')$, and
+$Cv=(p+q'+r',p+q'+r',q')$.
+For the five vectors of $V$, their largest resulting coordinate is,
+respectively, $22,23,24,19,25$. Also $BCB\one=(17,8,25)$.
+Consequently $b_3=25/27<1$. Submultiplicativity, rather than an
+extrapolation from finite calculations, controls all lengths.
+Theorem~\ref{thm:capacity-main} gives $M_1=\log3$, and every
+unrefined feedback has that maximal-pattern rate. An explicit safe
+selector chooses $0$ if $x_1=2$, otherwise $1$ if $x_1=0$ and
+$x_0\ne1$, and otherwise $2$.
+
+On the three target first-letter cylinders the densities are
+$(0,0,1)$, $(0,2/3,1/3)$, and $(1,0,1/3)$.
+Hence $\Theta_3=4/3$. This failure persists under \emph{every}
+full-support probability $\nu$. If one of the safe branch measures
+has no bounded $\nu$-density, the single-step criterion already
+fails its prerequisites. Otherwise $g_0(K_0)\subset[2]$ and
+$g_1(K_1)\subset[1]$ give disjoint density supports. At most two
+densities are nonzero at a point, so their largest two sum to their
+total. Its integral is
+\[
+ \sum_{u=0}^2\nu(K_u)=1+\nu([12])>1.
+\]
+Thus $\Theta_3(\nu)>1$ for every such $\nu$, including singular
+or atomic probabilities. This excludes both original single-step
+tests, but not all possible changes of presentation or iteration.
+
+To compare global lists with state-dependent maximization, put
+\[
+ \Phi f=\max_{|S|=2}\sum_{u\in S}L_uf\qquad(f\ge0).
+\]
+On nonnegative functions the disjoint supports give
+$\Phi=\sum_uL_u$. Under fair measure its first-letter matrix is
+$\frac13\left(\begin{smallmatrix}1&1&1\\1&1&1\\1&2&1\end{smallmatrix}\right)$,
+with positive eigenvector
+$(1,1,(\sqrt{13}-1)/2)$ and eigenvalue
+$(3+\sqrt{13})/6>1$. Hence $\|\Phi^n\one\|_\infty$ grows,
+while every history of \emph{global} two-label lists decays.
+Maximization by state and composition cannot be interchanged.
+
+
+\section{Countable languages and common sampling}\label{sec:comb}
+
+The capacity theorem chooses good observation positions separately
+for each feedback. If only countably many name languages occur, they
+can be served in turn by one increasing sequence. The main point is
+to move on to later coordinates without translating a name language:
+translation can lose patterns for a one-sided system. We instead
+delete the old coordinates from a much larger maximizing window.
+
+\subsection{Simultaneous attainment for pattern systems}
+
+A \emph{finite-alphabet pattern system} is a nonempty set
+$\Omega\subset E^{\Nzero}$ with $E$ finite and nonempty.  No topology or
+shift invariance is imposed.  For finite $F\subset\Nzero$, write
+\begin{align*}
+ \Patt_\Omega(F)=\#\{x|_F:x\in\Omega\},
+ \qquad
+ p_\Omega^*(n)=
+ \max_{\substack{F\subset\Nzero\\\#F=n}}\Patt_\Omega(F).
+\end{align*}
+With a fixed scale $\tau>0$, define
+\begin{align*}
+ \hpat(\Omega;\tau)&=\lim_{n\to\infty}
+       \frac1{n\tau}\log p_\Omega^*(n),\\
+ \hseq^A(\Omega;\tau)&=\limsup_{n\to\infty}
+       \frac1{n\tau}\log
+       \Patt_\Omega(\{a_1,\ldots,a_n\}).
+\end{align*}
+The maximum exists: its possible values form a nonempty subset of the finite
+integer set $\{1,\ldots,(\#E)^n\}$.
+
+We use $\Patt_\Omega(\varnothing)=1$ when needed.
+Taking the product-topology closure of $\Omega$ changes none of its
+finite projections: a cylinder meeting $\overline\Omega$ already meets
+$\Omega$. Thus dispensing with closedness is only a matter of
+formulation. The absence of shift invariance, in contrast, matters to the
+placement of the coordinate sets.
+
+\begin{lemma}[Pattern submultiplicativity and deletion]\label{lem:pattern-submult}
+Let $\Omega\subset E^{\Nzero}$ be a pattern system and $q=\#E$.
+For $m,n\in\N$ and finite $B\subset F\subset\Nzero$,
+\begin{align}
+ p_\Omega^*(m+n)&\le p_\Omega^*(m)p_\Omega^*(n),
+ \label{eq:pattern-submult}\\
+ \Patt_\Omega(F)&\le q^{\#(F\setminus B)}\Patt_\Omega(B).
+ \label{eq:deletion} 
+\end{align}
+If $B\subset G$, then $\Patt_\Omega(B)\le\Patt_\Omega(G)$.
+Consequently,
+\begin{equation}\label{eq:fekete-pstar}
+ \hpat(\Omega;\tau)
+ =\inf_{n\ge1}\frac1{n\tau}\log p_\Omega^*(n),
+ \qquad
+ \log p_\Omega^*(n)\ge n\tau\hpat(\Omega;\tau).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Split any $(m+n)$-element set into disjoint subsets of sizes $m$ and $n$.
+Restriction sends a pattern on the union injectively to the pair of its two
+restrictions, proving \eqref{eq:pattern-submult}.  Restriction from $F$ to
+$B$ has fibers of cardinality at most $q^{\#(F\setminus B)}$, which proves
+\eqref{eq:deletion}.  If $B\subset G$, every pattern on $B$ extends to a
+pattern on $G$ using the same element of $\Omega$, giving monotonicity.
+Fekete's lemma applied to $\log p_\Omega^*(n)$ proves
+\eqref{eq:fekete-pstar}.
+\end{proof}
+
+For comparison, let $\Omega=\{0^\infty,10^\infty\}$. This set is a
+closed one-sided subshift, but
+$\Patt_\Omega(\{0\})=2$ and $\Patt_\Omega(\{m\})=1$ for $m\ge1$.
+One cannot simply translate a maximizing set. Deleting a finite initial
+interval has a different advantage: the number of lost coordinates is
+bounded independently of the size of the maximizing set. Inequality
+\eqref{eq:deletion} turns this bound into a controlled information loss.
+
+\begin{theorem}[Simultaneous attainment]\label{thm:A}
+Fix $\tau>0$.  For every countable family
+$(\Omega_j)_{j\ge1}$ of finite-alphabet pattern systems, there is one
+$A\in\mathscr S$ such that
+\begin{equation}\label{eq:simultaneous-attainment}
+ \hseq^A(\Omega_j;\tau)=\hpat(\Omega_j;\tau)
+ \qquad(j\ge1).
+\end{equation}
+The sets $\Omega_j$ may be arbitrary nonempty subsets of their
+finite-alphabet sequence spaces; shift invariance is not required.
+\end{theorem}
+
+\begin{proof}
+At each stage we choose a large maximizing window for one language
+and delete all positions preceding the end of the previous stage.
+There are two losses to control: the deleted coordinates, and the
+earlier observations still present in the denominator. Making the
+new window large controls both. Each language receives infinitely
+many stages, which suffices for its limsup.
+
+Let $E_j$ be the alphabet of $\Omega_j$, put $q_j=\#E_j$ and
+$h_j^*=\hpat(\Omega_j;\tau)$.  For every $A$ and $n$,
+\begin{align*}
+ \Patt_{\Omega_j}(\{a_1,\ldots,a_n\})\le p_{\Omega_j}^*(n),
+\end{align*}
+so \eqref{eq:fekete-pstar} gives
+$\hseq^A(\Omega_j;\tau)\le h_j^*$.
+
+Choose an enumeration of stages
+\begin{align*}
+ (j_k)_{k\ge1}=(1;\ 1,2;\ 1,2,3;\ 1,2,3,4;\ldots),
+\end{align*}
+where semicolons only separate finite groups. Every positive integer
+occurs infinitely often. Choose $\eta_k>0$ with $\eta_k\to0$.  We recursively
+construct nonempty finite sets $B_k$, each lying strictly to the right of all
+previous ones.  Put
+\begin{align*}
+ G_{k-1}=\bigcup_{i<k}B_i,
+ \qquad r_{k-1}=\#G_{k-1},
+ \qquad M_{k-1}=\max G_{k-1},
+\end{align*}
+with $r_0=0$ and $M_0=-1$.
+
+If $h_{j_k}^*>0$, choose $n_k$ so large that
+\begin{equation}\label{eq:explicit-losses}
+ n_k>M_{k-1}+1,
+ \qquad
+ \frac{(M_{k-1}+1)\log q_{j_k}}{n_k\tau}<\eta_k,
+ \qquad
+ \frac{r_{k-1}}{n_k}<\eta_k.
+\end{equation}
+Both $M_{k-1}$ and $r_{k-1}$ are fixed at this stage. The second
+inequality pays for deleting up to $M_{k-1}+1$ positions; the third
+makes the earlier $r_{k-1}$ observations negligible. Choose an
+$n_k$-element $F_k$ attaining $p_{\Omega_{j_k}}^*(n_k)$ and set
+\begin{align*}
+ B_k=F_k\cap\{M_{k-1}+1,M_{k-1}+2,\ldots\}.
+\end{align*}
+At most $M_{k-1}+1$ coordinates are deleted, and the first condition in
+\eqref{eq:explicit-losses} makes $B_k$ nonempty.  If $h_{j_k}^*=0$, set
+$B_k=\{M_{k-1}+1\}$.
+
+Let $A$ be the increasing enumeration of $\bigcup_{k\ge1}B_k$.  Fix $j$
+with $h_j^*>0$ and restrict to the infinitely many stages with $j_k=j$.
+Write $b_k=\#B_k$ and $R_k=r_{k-1}+b_k=\#G_k$; then $G_k$ consists of the
+first $R_k$ entries of $A$.  By deletion, \eqref{eq:fekete-pstar}, and
+monotonicity,
+\begin{align}
+ \log\Patt_{\Omega_j}(G_k)
+ &\ge \log\Patt_{\Omega_j}(B_k)\notag\\
+ &\ge \log p_{\Omega_j}^*(n_k)-(M_{k-1}+1)\log q_j\notag\\
+ &\ge n_k\tau h_j^*-(M_{k-1}+1)\log q_j.
+ \label{eq:endpoint-numerator}
+\end{align}
+Also $R_k\le r_{k-1}+n_k$.  At all sufficiently late such stages the last
+line of \eqref{eq:endpoint-numerator} is positive.  Dividing by $R_k\tau$
+and using \eqref{eq:explicit-losses} yields the explicit endpoint estimate
+\begin{equation}\label{eq:endpoint-bound}
+ \frac1{R_k\tau}\log\Patt_{\Omega_j}(G_k)
+ >\frac{h_j^*-\eta_k}{1+\eta_k}.
+\end{equation}
+For a fixed $j$, the indices $k$ with $j_k=j$ tend to infinity, hence
+$\eta_k\to0$ along those stages. Since every $B_i$ is nonempty,
+$R_k\ge k\to\infty$. The limsup along these
+endpoints is at least $h_j^*$, proving the lower
+bound.  If $h_j^*=0$, the universal upper bound and nonnegativity give
+equality for every $A$.  This proves \eqref{eq:simultaneous-attainment} for
+all $j$.
+\end{proof}
+
+\begin{remark}[What is attained]\label{rem:attainment}
+The theorem asserts equality of limsup rates. It does not assert a common
+subsequence of endpoints on which every system is simultaneously close
+to its maximal rate. The good endpoints used for different $j$ can be
+different. Nor does it assert convergence of the normalized counts.
+For example, take $\tau=1$, let $B\subset\Nzero$ and its complement both be infinite,
+and let $\Omega_B$ consist of all binary sequences supported on $B$.
+For any schedule, the two normalized logarithmic counts for $\Omega_B$
+and $\Omega_{\Nzero\setminus B}$ add to $\log2$ at every $n$, although
+both maximal-pattern rates are $\log2$. They cannot both converge to
+$\log2$. The two limsups, however, can both equal $\log2$.
+
+Exact finite-level maximization is also a stronger and generally false
+requirement. Put
+\begin{align*}
+ \Omega=\{0x:x\in\{0,1\}^{\Nzero}\}\cup\{10^\infty,20^\infty\}
+ \subset\{0,1,2\}^{\Nzero}.
+\end{align*}
+The unique maximizing singleton is $\{0\}$, with three patterns.
+For a three-element set containing zero there are six patterns, whereas
+any three positive coordinates realize eight patterns. No increasing
+sequence maximizes the counts at both levels $n=1$ and $n=3$.
+\end{remark}
+
+\subsection{Partition names}\label{sec:partition-names}
+To apply the preceding theorem to invariant partitions, use the atom
+itineraries introduced in Section~\ref{sec:control}. We now allow an
+arbitrary control set $U$; each partition still assigns only finitely
+many blocks. Write a finite invariant partition as
+$\C=(\{D_i:i\in I_\C\},\tau,\nu)$, with nonempty Borel atoms
+$D_i$ and assigned blocks $\nu(D_i)\in U^\tau$ satisfying
+\begin{equation}\label{eq:invariant-cover}
+ \varphi(j,x,\nu(D_i))\in Q
+       \qquad(x\in D_i,\ 0\le j\le\tau).
+\end{equation}
+Let $\mathfrak C_{\Bor}(Q,\tau)$ denote this class and
+$\mathfrak C_{\clop}(Q,\tau)$ its clopen subclass. For variable
+periods we use
+\[
+ \mathfrak C_{\Bor}(Q)=\bigcup_{\tau\ge1}\mathfrak C_{\Bor}(Q,\tau),
+ \qquad \inf\varnothing=+\infty.
+\]
+
+The state map is $T_\C x=\varphi(\tau,x,\nu(D_i))$ on $D_i$.
+Let $\iota_\C(x)$ be its atom itinerary and $W_N(\C;Q)$ the
+set of length-$N$ prefixes. Thus $a_0\cdots a_{N-1}$ belongs to
+$W_N(\C;Q)$ exactly when some $x\in Q$ satisfies
+\begin{equation}\label{eq:admissible-word}
+ \varphi(j\tau,x,\nu(D_{a_0})\cdots\nu(D_{a_{N-1}}))
+       \in D_{a_j}\qquad(0\le j<N).
+\end{equation}
+These are Kawan's admissible words \cite[Definition~2.9]{Kawan2013};
+the induced map is also used in \cite[Section~2]{TomarKawanZamani2022}.
+Condition~\eqref{eq:invariant-cover} ensures safety between successive
+block boundaries. After the last block the same rule supplies the next
+one, so every finite witness continues indefinitely. A suffix is
+witnessed by the state at its starting block. In particular,
+\begin{equation}\label{eq:word-submult}
+ |W_{M+N}(\C;Q)|\le |W_M(\C;Q)|\,|W_N(\C;Q)|.
+\end{equation}
+
+We shall sometimes use the compact name space
+\begin{equation}\label{eq:name-system}
+ \Sigma_\C=\{a\in I_\C^{\Nzero}:
+       a|_{[0,N-1]}\in W_N(\C;Q)\text{ for every }N\}.
+\end{equation}
+It is closed, and suffix closure gives
+$\sigma\Sigma_\C\subset\Sigma_\C$. The cylinder description yields
+\begin{equation}\label{eq:itinerary-closure}
+ \Sigma_\C=\overline{\iota_\C(Q)}.
+\end{equation}
+Every cylinder meeting this closure already contains an itinerary.
+Hence its finite patterns are exactly the actual patterns, and our
+earlier notation becomes
+\begin{align}
+ \Patt_\C(F)&=|\{a|_F:a\in\Sigma_\C\}|,
+       \label{eq:control-pattern-count}\\
+ p_\C^*(n)&=\max_{|F|=n}\Patt_\C(F),\label{eq:pstar-control}\\
+ h^*(\C;Q)&=h^*(\Sigma_\C;\tau),\label{eq:hpat-control}\\
+ h_{\rm seq}^A(\C;Q)&=h_{\rm seq}^A(\Sigma_\C;\tau).
+       \label{eq:hseq-control}
+\end{align}
+We also need the consecutive-name rate
+\begin{equation}\label{eq:ordinary-partition-entropy}
+ h(\C;Q)=\lim_N\frac{\log|W_N(\C;Q)|}{N\tau},
+\end{equation}
+whose limit follows from \eqref{eq:word-submult}.
+
+\begin{remark}[Infinite names in the closure]\label{rem:witness}
+For clopen atoms the maps $T_\C$ and $\iota_\C$ are continuous,
+so compactness gives $\Sigma_\C=\iota_\C(Q)$. With Borel atoms,
+some infinite names in the closure can lack a single state witness.
+For example, take $Q=[0,1]$, one control $f(x)=\min\{2x,1\}$,
+and atoms $D_0=(0,1/2)$, $D_1=Q\setminus D_0$. The state
+$2^{-N-1}$ realizes $0^N$, but $0^\infty$ has no witness:
+zero is not in $D_0$, and each positive point eventually leaves it.
+The finite counts in \eqref{eq:control-pattern-count} are nevertheless
+actual trajectory counts, by the cylinder argument above.
+\end{remark}
+
+\begin{corollary}[Fixed-language attainment]\label{cor:fixed}
+For every finite-alphabet pattern system $\Omega$ and every $\tau>0$,
+\begin{equation}\label{eq:fixed-attainment}
+ \hpat(\Omega;\tau)=\max_{A\in\mathscr S}\hseq^A(\Omega;\tau).
+\end{equation}
+The same identity holds for every finite Borel invariant partition $\C$ after
+putting $\Omega=\Sigma_\C$.
+\end{corollary}
+
+
+\subsection{Feedback classes with countably many languages}\label{sec:minimax}
+
+Fix a compact controlled-invariant set $Q$ and one period $\tau\in\N$.
+For two invariant partitions $\C$ and $\D$ of this period, write
+$\C\sim_{\lang}\D$ if there is a bijection
+$\pi:I_\C\to I_\D$ such that, for every $N\in\N$,
+\begin{equation}\label{eq:language-equivalence}
+ \pi^N(W_N(\C;Q))=W_N(\D;Q),
+\end{equation}
+where $\pi^N$ acts coordinatewise.  This is \emph{language equivalence}.
+Identity, inverse, and composition of the alphabet bijections show that
+$\sim_{\lang}$ is an equivalence relation.  If $F\subset\Nzero$ is nonempty and finite and
+$m=\max F$, then \eqref{eq:language-equivalence} at length $m+1$, followed by
+projection onto $F$, gives a bijection between the two $F$-pattern sets.
+Thus language-equivalent partitions have identical finite-coordinate pattern
+counts and identical sequence and maximal-pattern complexities.
+
+Fix a nonempty class $\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$.
+Every individual rate is nonnegative and finite, so its infimum over
+this class is finite even without a uniform bound on the numbers of atoms.
+
+The simultaneous-attainment theorem applies once there are only
+countably many such languages, up to renaming their letters. Taking
+infima along its common sequence gives the reverse of the elementary
+minimax inequality. This yields the following direct corollary.
+
+\begin{corollary}[Minimax over countably many language types]\label{thm:B}
+Let $\varnothing\ne\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$ and suppose
+that the quotient $\mathfrak C/{\sim_{\lang}}$ is finite or countable.  There
+is one $A\in\mathscr S$ such that
+\begin{equation}\label{eq:pointwise-class-attainment}
+ \hseq^A(\C;Q)=\hpat(\C;Q)
+ \qquad(\C\in\mathfrak C).
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:minimax}
+ \max_{B\in\mathscr S}\inf_{\C\in\mathfrak C}
+ \hseq^B(\C;Q)
+ =\inf_{\C\in\mathfrak C}\hpat(\C;Q).
+\end{equation}
+The outer maximum is attained. The pattern infimum and the inner infimum at the common attaining schedule are minima, by Corollary~\ref{cor:pattern-minimum}.
+\end{corollary}
+
+\begin{proof}
+Choose one representative $\C_j$ of each language-equivalence class.
+Enumerate the representatives, repeating them periodically when the quotient
+is finite, and apply Theorem~\ref{thm:A} to the resulting countable family
+$\Sigma_{\C_j}$, using the common scale $\tau$.  The resulting $A$ gives equality for each
+representative.  Language equivalence preserves all finite pattern counts, so
+it gives \eqref{eq:pointwise-class-attainment} for every $\C\in\mathfrak C$.
+Taking the infimum over $\C$ gives equality at this $A$.
+
+For any $B\in\mathscr S$, Corollary~\ref{cor:fixed} gives
+$\hseq^B(\C;Q)\le\hpat(\C;Q)$ for every $\C$.  Taking first the infimum over
+$\C$ and then the supremum over $B$ proves the reverse minimax inequality and
+hence \eqref{eq:minimax}.  If the pattern infimum is zero, the pointwise upper
+bound and nonnegativity in fact give
+$\inf_{\C\in\mathfrak C}\hseq^B(\C;Q)=0$ for every $B\in\mathscr S$, without
+any countability assumption.
+\end{proof}
+
+Language equivalence allows alphabet renumbering while preserving all
+finite pattern counts. It does not merge distinct atoms merely because
+their assigned controls agree. The countability assumption concerns
+the languages of the chosen partition class at the fixed period.
+
+\begin{proposition}[Countability of clopen feedbacks]
+\label{prop:digital}
+Assume that $Q$ is compact metrizable and that the control alphabet $U$ is
+countable.  Then
+$\mathfrak C_{\clop}(Q,\tau)$ is countable.  Hence, if this class is nonempty,
+Corollary~\ref{thm:B} applies to it.  In particular this holds when $U$ is a
+finite digital alphabet.
+\end{proposition}
+
+\begin{proof}
+A compact metrizable space has a countable base.  Every clopen subset is
+compact and hence is a finite union of basic open sets contained in it.  Thus
+$Q$ has only countably many clopen subsets and only countably many finite
+clopen partitions.  Since $\tau$ is finite, $U^\tau$ is countable.  A finite
+partition admits only countably many block assignments.  The invariant assignments form a
+subcollection.
+\end{proof}
+
+Corollary~\ref{thm:B} fixes $\tau$.  It does not produce one common
+physical-time schedule for partitions of different periods and proves no
+minimax identity over $\mathfrak C_{\Bor}(Q)$.
+
+
+
+The countability hypothesis has concrete limitations.
+Appendix~\ref{app:pointwise} develops the elementary obstruction
+of Example~\ref{ex:uncountable} into autonomous constructions.
+In particular, Proposition~\ref{prop:finite-pointwise}
+uses four distinct controls and has $L_1=M_1=\log2$, although no
+sequence attains every feedback's own maximal-pattern rate. It therefore
+separates pointwise common attainment from a common full-class minimum.
+
+
+\section{Comparison with classical and invariance entropy}\label{sec:comparison}
+
+A fixed-period pattern rate can be positive when invariance entropy
+vanishes. We first place the counts beside the usual entropy notions
+and explain what happens when the control period varies. A symbolic
+realization then gives an explicit separation at period one.
+
+\subsection{Classical entropy and sequence entropy}\label{sec:background}
+For a continuous map $T:Z\to Z$ of a compact metric space and a
+finite open cover $\mathcal V$, replace the name count by
+\[
+ c_{\mathcal V}(F)=N\left(\bigvee_{j\in F}T^{-j}\mathcal V\right),
+\]
+where $N$ denotes minimum subcover cardinality. Consecutive windows,
+prefixes of $A$, and maximizing $n$-element windows give, respectively,
+\begin{align*}
+ h_{\rm top}(T,\mathcal V)
+   &=\lim_n n^{-1}\log c_{\mathcal V}(\{0,\ldots,n-1\}),\\
+ h_{\rm top}^A(T,\mathcal V)
+   &=\limsup_n n^{-1}\log c_{\mathcal V}(\{a_1,\ldots,a_n\}),\\
+ h_{\rm top}^*(T,\mathcal V)
+   &=\lim_n n^{-1}\log\max_{|F|=n}c_{\mathcal V}(F).
+\end{align*}
+Submultiplicativity gives the first and third limits. Taking the
+supremum of the first over finite open covers defines
+$h_{\rm top}(T)$.
+
+For homeomorphisms, Huang and Ye prove
+\begin{equation}\label{eq:HY-background}
+ h_{\rm top}^*(T,\mathcal V)
+   =\max_A h_{\rm top}^A(T,\mathcal V)
+\end{equation}
+\cite[Theorem~2.1(1)]{HuangYe2009}. Their proof places successive
+maximizing windows farther to the right by translation. Surjectivity
+preserves cover counts under that translation. The deletion argument
+in Section~\ref{sec:comb} instead applies to arbitrary name sets,
+including those of non-surjective maps.
+
+For a clopen partition, $c_{\mathcal V}(F)$ is the number of
+nonempty atoms of the join, so it is precisely a name count. For an
+overlapping cover it is a minimum covering number, as illustrated
+by Corollary~\ref{cc-cor:covergap}. A further distinction is needed
+for measurable entropy: Shannon entropy weights the atoms by an
+invariant probability, whereas our counts retain every nonempty
+atom. Example~\ref{ex:periodic-support} shows that even a countable
+set of initial states can change the counting rate.
+
+On a subshift the coordinate partition gives the name counts used
+here. For ordinary entropy its consecutive joins refine every fixed
+cylinder partition without changing the exponential rate. Sparse
+observations behave differently: observing a window of several
+coordinates at each selected time can increase the rate per
+observation. Accordingly, we write ``$\mathrm{coord}$'' for the
+coordinate rates below; we do not take a supremum over open covers.
+
+\subsection{Comparison with Kawan's invariance entropy}
+For every invariant partition, consecutive coordinates are one permissible
+choice in the maximal-pattern count. Therefore
+\begin{equation}\label{eq:ordinary-pattern-one-sided}
+ h(\C;Q)\le\hpat(\C;Q)\le\frac{\log\#I_\C}{\tau}.
+\end{equation}
+Kawan's Theorem~2.3, with natural logarithms, gives
+\begin{equation}\label{eq:kawan-characterization}
+ \hinv(Q)=\inf_{\C\in\mathfrak C_{\Bor}(Q)}h(\C;Q).
+\end{equation}
+Its hypotheses are satisfied by the full-control discrete-time systems
+used here: $X$ is metrizable, each controlled map is continuous, and
+$Q$ is nonempty, compact and controlled invariant.
+The period in this formula is allowed to vary.
+
+The comparison uses two constructions: a spanning family gives a
+finite invariant partition, and the words of an invariant partition
+give spanning families at longer horizons. First, spanning families
+concatenate, so
+$r_{\rm inv}(m+n,Q)\le r_{\rm inv}(m,Q)r_{\rm inv}(n,Q)$ when the
+right-hand side is finite. Moreover $r_{\rm inv}(n,Q)$ is nondecreasing.
+If any finite-horizon spanning number is finite, then $r_{\rm inv}(1,Q)$
+is finite, all of them are finite by concatenation, and Fekete's lemma
+gives a limit in \eqref{eq:hinv-definition}. If none is finite, that
+limit equals $+\infty$.
+
+Let $S_N=\{\omega^1,\ldots,\omega^m\}$ be a minimal finite
+$N$-step spanning family. Its safe sets are
+\begin{align*}
+ K_i=Q\cap\bigcap_{s=1}^{N}
+       \{x\in X:\varphi(s,x,\omega^i)\in Q\}.
+\end{align*}
+They are closed in $Q$, since finite control compositions are continuous
+and $Q$ is closed. They cover $Q$. Set
+$D_1=K_1$ and $D_i=K_i\setminus\bigcup_{j<i}K_j$, discard empty sets,
+and assign $\omega^i$ to $D_i$. This gives a Borel invariant partition $\C_N$ of period $N$
+with at most $m$ atoms, using the spanning construction in Kawan's
+Theorem~2.3.
+
+For the other inequality in \eqref{eq:kawan-characterization}, all
+admissible $k$-block words of any $\C$ form a spanning family after their
+assigned controls are concatenated. Indeed, from each initial state the
+feedback rule selects one such admissible word. Consequently
+$r_{\rm inv}(k\tau,Q)\le\#W_k(\C;Q)$, and taking limits gives
+$\hinv(Q)\le h(\C;Q)$. The reverse inequality follows from
+$h(\C_N;Q)\le N^{-1}\log r_{\rm inv}(N,Q)$ and $N\to\infty$.
+If no finite spanning family exists, no finite invariant partition exists,
+and both sides are $+\infty$.
+
+Thus, for every nonempty fixed-period subclass
+$\mathfrak C\subset\mathfrak C_{\Bor}(Q,\tau)$, the general comparison is
+\begin{equation}\label{eq:three-quantities}
+ \hinv(Q)
+ \le\inf_{\C\in\mathfrak C}h(\C;Q)
+ \le\inf_{\C\in\mathfrak C}\hpat(\C;Q).
+\end{equation}
+The Thue--Morse realization below shows that the last quantity can
+strictly exceed $\hinv(Q)$.
+
+\subsection{Why the unrestricted all-period infimum collapses}
+Allowing the control period to vary gives the quantity
+\begin{align*}
+ H_{\rm pat,all}^{*,\Bor}(Q)
+ :=\inf_{\tau\in\N}\inf_{\C\in\mathfrak C_{\Bor}(Q,\tau)}
+       \hpat(\C;Q).
+\end{align*}
+Kawan's spanning construction gives the following direct consequence.
+The alphabet of an $N$-step partition already bounds every sampled
+count, regardless of the observation gaps.
+
+\begin{proposition}[All-period collapse]\label{prop:all-period-collapse}
+In the full-control discrete-time setting of Section~\ref{sec:control}, every
+nonempty compact controlled-invariant set $Q$ satisfies
+\begin{equation}\label{eq:all-period-collapse}
+ H_{\rm pat,all}^{*,\Bor}(Q)=\hinv(Q).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The lower bound follows from
+\eqref{eq:three-quantities}. For the upper bound use the same
+$\C_N$ just constructed. Since its alphabet has at most
+$r_{\rm inv}(N,Q)$ symbols, every pattern on $k$ coordinates has at most
+$r_{\rm inv}(N,Q)^k$ possibilities. Hence
+\begin{align*}
+ H_{\rm pat,all}^{*,\Bor}(Q)
+ \le\hpat(\C_N;Q)
+ \le\frac{\log r_{\rm inv}(N,Q)}{N}.
+\end{align*}
+Let $N\to\infty$. The infinite-entropy case was already covered by
+nonexistence of finite invariant partitions. This proves
+\eqref{eq:all-period-collapse}.
+\end{proof}
+
+The all-period identity does not produce a common physical observation
+sequence. A block index $a_i$ corresponds to time $\tau a_i$, which
+changes with $\tau$. It says only that packing longer control words
+into one observed symbol can lower the normalized pattern rate.
+
+\subsection{Symbolic safety realizations}\label{sec:realization}
+
+To transfer a difference between consecutive and sparse symbolic
+counts to a control problem, we force the safe control to equal the
+current state symbol. This leaves no choice of physical label, while
+still allowing arbitrary Borel refinements of its observation.
+
+\subsubsection{Matching the control to the current symbol}
+
+Let $E$ be a finite nonempty discrete alphabet and let
+$\varnothing\ne Y\subset E^{\Nzero}$ be closed with $\sigma(Y)\subset Y$.
+Write
+\begin{align*}
+ \Lcal_N(Y)=\{y_0\cdots y_{N-1}:y\in Y\},
+ \qquad
+ P_Y(F)=\#\{y|_F:y\in Y\}.
+\end{align*}
+The coordinate complexities are
+\begin{align*}
+ h_{\rm seq,coord}^A(Y)
+ &=\limsup_{n\to\infty}\frac1n
+   \log P_Y(\{a_1,\ldots,a_n\}),\\
+ h_{\rm pat,coord}^*(Y)
+ &=\lim_{n\to\infty}\frac1n
+   \log\max_{\substack{F\subset\Nzero\\\#F=n}}P_Y(F).
+\end{align*}
+
+Adjoin an isolated cemetery point and give
+$X=Y\sqcup\{\dagger\}$ the topological disjoint-union topology.  Put $U=E$
+and define
+\begin{equation}\label{eq:matching-control}
+ f(y,u)=
+ \begin{cases}
+   \sigma y,&y_0=u,\\
+   \dagger,&y_0\ne u,
+ \end{cases}
+ \qquad
+ f(\dagger,u)=\dagger.
+\end{equation}
+
+\begin{proposition}[Symbolic-to-control realization]\label{thm:C}
+The matching-control system \eqref{eq:matching-control} is continuous
+on compact metrizable $X$, and $Y$ is controlled invariant. Its
+finite-horizon spanning count is, for every $N\in\N$,
+\begin{equation}\label{eq:rinv-language}
+ r_{\rm inv}(N,Y)=\#\Lcal_N(Y),
+\end{equation}
+and therefore
+\begin{equation}\label{eq:hinv-htop}
+ \hinv(Y)=\htop(Y,\sigma)
+ =\lim_{N\to\infty}\frac1N\log\#\Lcal_N(Y).
+\end{equation}
+At period one identify $U^1$ with $U$. If
+$\C=(\{D_i:i\in I_\C\},1,\nu)\in\mathfrak C_{\Bor}(Y,1)$, set
+$\lambda_\C(i)=\nu(D_i)\in E$.  Then every atom satisfies
+\begin{equation}\label{eq:atom-cylinder}
+ D_i\subset[\lambda_\C(i)]_Y
+ :=\{y\in Y:y_0=\lambda_\C(i)\}.
+\end{equation}
+Moreover, the one-block label map
+\begin{equation}\label{eq:label-factor}
+ \Lambda_\C:\Sigma_\C\longrightarrow Y,
+ \qquad (a_j)_{j\ge0}\longmapsto(\lambda_\C(a_j))_{j\ge0},
+\end{equation}
+is a continuous, onto, shift-commuting map.
+Consequently, for every $A\in\mathscr S$,
+\begin{align}
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hseq^A(\C;Y)
+ =h_{\rm seq,coord}^A(Y),
+ \label{eq:seq-realization}\\
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hpat(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hpat(\C;Y)
+ =h_{\rm pat,coord}^*(Y),
+ \label{eq:pat-realization}\\
+ \inf_{\C\in\mathfrak C_{\Bor}(Y,1)}h(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}h(\C;Y)
+ =\htop(Y,\sigma).
+ \label{eq:ordinary-realization}
+\end{align}
+Every Borel and clopen infimum in
+\eqref{eq:seq-realization}--\eqref{eq:ordinary-realization} is attained by
+the same first-coordinate cylinder partition.
+\end{proposition}
+
+\begin{proof}
+Safety forces the control word to match the state prefix. This gives
+the spanning count directly. For a refined partition, we then project
+atom labels back to those forced controls, obtaining the lower bound
+for every finite observation window. The first-coordinate partition
+attains all these bounds.
+
+The space $X$ is the union of the two clopen compact sets $Y$ and
+$\{\dagger\}$, hence is compact metrizable.  For fixed $u\in E$, the sets
+$[u]_Y$, $Y\setminus[u]_Y$, and $\{\dagger\}$ are clopen; on them $f_u$ is,
+respectively, the shift or a constant.  Thus $f_u$ is continuous.  Since $U$
+is finite discrete, $f$ is jointly continuous.  Choosing $u=y_0$ sends $y$
+to $\sigma y\in Y$, proving controlled invariance.
+
+A direct induction gives
+\begin{equation}\label{eq:safe-iff-match}
+ \varphi(n,y,\omega)\in Y\ (0\le n\le N)
+ \quad\Longleftrightarrow\quad
+ \omega_j=y_j\ (0\le j<N).
+\end{equation}
+Indeed, after $j$ matches the state is $\sigma^j y$, whereas a mismatch enters
+$\dagger$ permanently.  Hence a length-$N$ control word is safe from at
+least one state of $Y$ exactly when it belongs to $\Lcal_N(Y)$, and then it
+safely covers precisely its nonempty prefix cylinder.  Distinct language
+words cover disjoint cylinders, and every such cylinder is nonempty.
+A spanning family must therefore contain every word of $\Lcal_N(Y)$;
+those words also suffice. This proves \eqref{eq:rinv-language}.  The language counts are
+submultiplicative, so their normalized logarithms converge.
+
+For completeness, this limit is the usual topological entropy even when
+$\sigma|_Y$ is not onto.  The join of the first-coordinate cylinder cover
+through times $0,\ldots,N-1$ has exactly $\#\Lcal_N(Y)$ nonempty atoms.
+Conversely, given a finite open cover of compact $Y$, the partition into
+cylinders of some fixed length $m$ refines that cover; its $N$-fold dynamical join is
+then refined by the length-$(N+m-1)$ cylinders.  Taking exponential rates proves
+\eqref{eq:hinv-htop}.
+
+Let $\C=(\{D_i:i\in I_\C\},1,\nu)$ be a Borel invariant partition.  If
+$D_i$ contained $y$ with $y_0\ne\lambda_\C(i)$, its assigned control would send $y$ to
+$\dagger\notin Y$, contradicting safety.  This proves
+\eqref{eq:atom-cylinder}.
+
+Take $a=(a_j)_{j\ge0}\in\Sigma_\C$ and put $z_j=\lambda_\C(a_j)$.  For each
+$N$, choose a witness $y^{(N)}$ for the first $N$ symbols of $a$.  Induction
+using matching controls and \eqref{eq:atom-cylinder} gives
+$y^{(N)}_j=\lambda_\C(a_j)=z_j$ for $0\le j<N$.  Hence
+$y^{(N)}\to z$ in the product topology; since $Y$ is closed, $z\in Y$.  Thus
+$\Lambda_\C$ is well defined, and it is continuous: the preimage of a cylinder in $E^{\Nzero}$ is a finite
+union of cylinders in $I_\C^{\Nzero}$, restricted to $\Sigma_\C$.
+It is shift commuting because
+$(\Lambda_\C(\sigma a))_j=\lambda_\C(a_{j+1})
+=(\sigma\Lambda_\C(a))_j$.  Given $y\in Y$, let $a_j$ be the unique index with
+$\sigma^j y\in D_{a_j}$.  Its assigned label is $y_j$, and $y$ witnesses
+every finite prefix of this atom itinerary.  Thus \eqref{eq:label-factor} is onto.  The factor maps compact name spaces: the limiting point $z$ need
+not follow the same Borel atom itinerary $a$. Only its forced control
+labels are used in the convergence argument.
+
+For every finite $F$, the coordinate projection of $\Lambda_\C$ is onto, so
+\begin{equation}\label{eq:partition-dominates-coordinate}
+ \Patt_\C(F)\ge P_Y(F).
+\end{equation}
+It follows that every Borel, and hence every clopen, invariant partition has
+sequence, maximal-pattern, and consecutive-name entropy at least the
+corresponding coordinate quantity.
+
+Let $E_Y=\{e\in E:[e]_Y\ne\varnothing\}$ and define
+\begin{align*}
+\C_0=(\{D_e=[e]_Y:e\in E_Y\},1,\nu_0),
+ \qquad \nu_0(D_e)=e.
+\end{align*}
+This is a clopen invariant partition.  Under the symbol identification,
+$W_N(\C_0;Y)=\Lcal_N(Y)$ and $\Sigma_{\C_0}=Y$; the latter follows from
+closedness of $Y$.  Equality holds in \eqref{eq:partition-dominates-coordinate}
+for every $F$.  Thus $\C_0$ attains all the lower bounds, proving
+\eqref{eq:seq-realization}--\eqref{eq:ordinary-realization}.
+\end{proof}
+
+
+\subsection{A Thue--Morse separation}\label{sec:thue-morse}
+
+Let $\vartheta(0)=01$, $\vartheta(1)=10$, and let
+\begin{align*}
+ \mathbf t=\lim_{r\to\infty}\vartheta^r(0)
+ =0110100110010110\cdots.
+\end{align*}
+Equivalently, $t_n=s_2(n)\pmod2$, where $s_2(n)$ is the number of ones in
+the binary expansion of $n$.  Let
+\begin{equation}\label{eq:thue-morse-shift}
+ Y=\overline{\{\sigma^m\mathbf t:m\ge0\}}
+ \subset\{0,1\}^{\Nzero}.
+\end{equation}
+This is the one-sided Thue--Morse orbit closure.  The following direct computation supplies both rates used below.
+
+\begin{proposition}[Exact symbolic rates]\label{prop:thue-morse}
+For every $N\ge1$,
+\begin{equation}\label{eq:TM-linear}
+ \#\Lcal_N(Y)\le8N.
+\end{equation}
+Hence $\htop(Y)=0$.  On the single schedule
+\begin{equation}\label{eq:TM-schedule}
+ A_{\rm TM}=(a_i)_{i\ge1},
+ \qquad a_i=4^{i-1}-1,
+\end{equation}
+one has, for every $k\ge1$,
+\begin{equation}\label{eq:TM-full-pattern}
+ P_Y(\{a_1,\ldots,a_k\})=2^k.
+\end{equation}
+The chosen coordinate set contains zero.  Since a cylinder is clopen, its
+patterns in the orbit closure are exactly the patterns obtained along shifts
+of $\mathbf t$; this calculation uses actual shifts of the fixed point.  Consequently
+\begin{equation}\label{eq:TM-complexities}
+ h_{\rm seq,coord}^{A_{\rm TM}}(Y)
+ =h_{\rm pat,coord}^*(Y)=\log2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+A finite word is in $\Lcal_N(Y)$ exactly when it occurs as a factor of
+$\mathbf t$: one direction follows from the orbit, and the other from
+convergence in a prefix cylinder.  Choose $\ell=\lceil\log_2N\rceil$.  The
+identity $\mathbf t=\vartheta^\ell(\mathbf t)$ decomposes $\mathbf t$ into
+aligned supertiles of length $2^\ell$.  Since $N\le2^\ell$, every length-$N$
+factor is contained in $\vartheta^\ell(ab)$ for an adjacent two-letter factor
+$ab$.  There are at most four choices for $ab$ and at most $2^\ell$ starting
+offsets in the first supertile.  Therefore
+$\#\Lcal_N(Y)\le4\,2^\ell\le8N$, proving zero topological entropy.
+
+For the sparse lower bound, we encode each prescribed bit at an even
+binary position. The intervening odd positions stop carries, while
+one higher bit adjusts the total parity.
+
+Fix $k\ge1$ and
+$\varepsilon=(\varepsilon_0,\ldots,\varepsilon_{k-1})\in\{0,1\}^k$.
+Put
+\begin{align*}
+ r=\#\{0\le i<k:\varepsilon_i=0\},
+ \qquad
+ q=\sum_{\substack{0\le i<k\\\varepsilon_i=0}}4^i
+ +(r\bmod2)4^k.
+\end{align*}
+Only even binary positions occur in this sum.  The binary digit sum of $q$ is
+$r+(r\bmod2)$, which is even, so $t_q=0$.  If $\varepsilon_i=1$, bit $2i$
+of $q$ is zero, and adding $4^i=2^{2i}$ changes the digit-sum parity.  If
+$\varepsilon_i=0$, bit $2i$ is one and bit $2i+1$ is zero; adding $2^{2i}$
+replaces these two bits by zero and one without a further carry, so the parity
+is unchanged.  In both cases
+\begin{equation}\label{eq:TM-digit-identity}
+ t_{q+4^i}=\varepsilon_i\qquad(0\le i<k).
+\end{equation}
+The extra bit at position $2k$ only corrects the initial parity of $q$.
+For $i<k$, a carry stops at the empty odd position $2i+1$, which is
+strictly below $2k$. The parity correction therefore interferes with
+none of these tests.
+
+Set $n=q+1$. Since $a_{i+1}=4^i-1$,
+\begin{align*}
+ (\sigma^n\mathbf t)_{a_{i+1}}
+ =t_{q+4^i}=\varepsilon_i.
+\end{align*}
+Thus every binary $k$-pattern occurs on the first $k$ members of
+$A_{\rm TM}$, proving \eqref{eq:TM-full-pattern}.  The binary alphabet gives
+the reverse upper bound $p_Y^*(k)\le2^k$, and
+\eqref{eq:TM-complexities} follows.
+\end{proof}
+
+\begin{corollary}[Zero invariance entropy, full binary sparse-time complexity]
+\label{cor:separation}
+Apply the matching-control construction \eqref{eq:matching-control} to the
+Thue--Morse subshift \eqref{eq:thue-morse-shift}.  Then
+\begin{equation}\label{eq:strict-control-separation}
+ \hinv(Y)=0
+ <\log2
+ =\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hpat(\C;Y)
+ =\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hpat(\C;Y).
+\end{equation}
+Moreover, the explicit schedule $A_{\rm TM}$ satisfies
+\begin{align}
+ \max_{A\in\mathscr S}\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}
+ \hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\Bor}(Y,1)}\hseq^{A_{\rm TM}}(\C;Y)
+ =\log2,
+ \label{eq:TM-Borel-sequence}\\
+ \max_{A\in\mathscr S}\inf_{\C\in\mathfrak C_{\clop}(Y,1)}
+ \hseq^A(\C;Y)
+ &=\inf_{\C\in\mathfrak C_{\clop}(Y,1)}\hseq^{A_{\rm TM}}(\C;Y)
+ =\log2.
+ \label{eq:TM-clopen-sequence}
+\end{align}
+\end{corollary}
+
+\begin{proof}
+Combine Proposition~\ref{thm:C} with Proposition~\ref{prop:thue-morse}.  For any
+schedule the binary coordinate complexity is at most $\log2$, while
+$A_{\rm TM}$ attains $\log2$.  Equations
+\eqref{eq:seq-realization}--\eqref{eq:pat-realization} give the Borel and
+clopen infima.
+\end{proof}
+
+The separation persists after minimization over all Borel invariant
+partitions at period one. It therefore distinguishes the fixed-period
+pattern infimum from invariance entropy.
+
+
+For the matching-control Thue--Morse example, the collapse is particularly
+visible. At period $N$, the length-$N$ cylinder partition with its matching
+control blocks is clopen, has at most $8N$ atoms and has pattern rate at
+most $N^{-1}\log(8N)$. Thus even the all-period clopen infimum is zero
+in this example, while the period-one Borel infimum is $\log2$.
+Changing the control period changes which information is packed into
+one observed symbol and the cost assigned to that symbol.
+
+\section{Affine examples and feedback consistency}\label{sec:affine}
+
+For expanding interval branches, a prescribed word can be followed
+only from a small set of initial states. Covering the interval therefore
+requires many words. The first example matches this volume bound by
+a feedback that eventually enters an invariant core. The second uses
+protected inverse branches to force every sampled word under every
+feedback. The four-branch example then separates what these arguments
+can establish: its maximal-pattern minimum is $\log2$, while its
+common-sampling value is still only bounded. We finish by showing why
+an efficient open-loop covering need not define a feedback.
+
+\subsection{Integer affine branches and an absorbing feedback}
+Let $m\ge2$, $D\ge m$ be integers, $R=D/(m-1)$,
+$Q=[0,R]$, and controls $u=0,\ldots,D$ act legally by $mx-u$.
+On $X=[-1,R+1]$ define the continuous ambient maps
+\[
+ f_u(x)=\max\{-1,\min\{R+1,mx-u\}\}.
+\]
+For $x\in Q$, this is in $Q$ exactly when $mx-u$ is in $Q$,
+and then truncation has no effect. The safety intervals
+$K_u=[u/m,(u+R)/m]$ cover $Q$. Fix any period $\tau\ge1$.
+
+\begin{proposition}\label{prop:integer}
+For this system, over all legal Borel block feedbacks and finite
+Borel atom refinements,
+\[
+ \min_s h_{(0,1,\ldots)}(s)=L_\tau=M_\tau=\log m.
+\]
+There is an actual Borel selector $s_\tau$ with
+$h_A(s_\tau)=h^*(s_\tau)=\log m$ for every infinite increasing
+$A$, although its absorption time has no uniform bound.
+\end{proposition}
+\begin{proof}
+Expansion gives the lower bound by making each word's initial-state
+fiber small. For the upper bound we construct a rule under which
+every state except the right endpoint eventually enters the usual
+$m$-digit core. Entry times are not uniformly bounded,
+so we count where the transition can occur among the observed times,
+rather than bounding the elapsed waiting time.
+
+For any actual length-$n$ block word, concatenate its controls into
+$w_0\cdots w_{n\tau-1}$. Safety gives
+\[
+ x_{n\tau}=m^{n\tau}x-\sum_{j=0}^{n\tau-1}
+                   w_jm^{n\tau-1-j}\in[0,R].
+\]
+Its initial-state fiber is contained in an interval of length
+$R/m^{n\tau}$, whether or not that fiber itself is an interval.
+These containing intervals cover $Q$, so there are at least
+$m^{n\tau}$ actual consecutive block words. This gives the
+full-class lower bound at the common sequence $(0,1,\ldots)$.
+
+Define the one-step rule $v(x)=\min\{D,\lfloor mx\rfloor\}$
+and $T(x)=mx-v(x)$. If $x<D/m$, the next state is in $[0,1)$;
+if $x\ge D/m$, it is $mx-D\in[0,R]$.
+The core $[0,1)$ is invariant and uses only
+$\Gamma=\{0,\ldots,m-1\}$. Both $0$ and $R$ are fixed;
+$D/m$ uses $D$ and goes to zero.
+For $x<R$, while $D$ is used the state is
+$R-m^j(R-x)$. Since $R-x>0$, eventually it is below $D/m$,
+then one transitional control $v<D$ sends it into the core.
+Only $R$ uses $D$ forever. The absorption times are unbounded
+as $x$ tends to $R$.
+
+From the current state define
+$s_\tau(x)=(v(x),v(Tx),\ldots,v(T^{\tau-1}x))$.
+It is Borel, each intermediate step is safe, and its actual endpoint
+map is $T^\tau$. Put $\mathcal B=\Gamma^\tau$,
+$b=m^\tau$, and $d_0=(D,\ldots,D)$.
+Its block names are contained in
+\[
+ \bigcup_{j\ge0}d_0^j\mathcal C_\tau\mathcal B^{\Nzero}
+ \ \cup\ \{d_0^\infty\},\qquad
+ |\mathcal C_\tau|\le D\frac{m^\tau-1}{m-1}=:C_\tau.
+\]
+The transitional block has some initial $D$'s, one control below
+$D$, and then core controls; this proves the stated count.
+For any window of $n$ block positions, an unobserved transition
+leaves just one of $n+1$ cuts between constant initial labels and
+core labels. A sampled transition has $n$ possible locations and
+at most $C_\tau$ labels. Thus
+\[
+ \Patt_{s_\tau}(F)\le[n+1+nC_\tau]m^{\tau n},\qquad |F|=n.
+\]
+There is no factor depending on the last observation time or on
+the unbounded absorption time.
+
+For the matching lower count prescribe any $n$ core blocks at the
+positions of $F$, fill all other one-step digits with zero, and let
+$x=\sum_{j\ge0}e_jm^{-j-1}<1$. There are only finitely many
+nonzero digits, so each remaining base-$m$ tail is smaller than one.
+Induction gives $\lfloor mT^jx\rfloor=e_j$ and shows that the
+rule generates the prescribed digits. Hence $\Patt_{s_\tau}(F)\ge m^{\tau n}$ for every
+window. The all-window bounds and the full-class consecutive lower
+bound prove the proposition, with minima actually attained.
+Control-label projection treats arbitrary atom refinements.
+\end{proof}
+
+When $m\ge3$ and $D=m$, the minimum one-step safe subcover has
+$r=m+1$, although $L_1=M_1=\log m$. Indeed, $m$ intervals of
+length $R/m$ could cover an interval of length $R$ only by abutting
+without positive-length overlap. Their left endpoints are multiples
+of $1/m$, so this would force their consecutive control differences
+to equal the noninteger $R=m/(m-1)$. All $m+1$ intervals are
+therefore needed. Although the legal branches have different
+successors, they share the state factor $x\mapsto e^{2\pi ix}$,
+with induced map $z\mapsto z^m$.
+
+\subsection{Protected inverse branches and common sampling}
+On $Q=[0,1]$, at period one, use
+\[
+ g_a(x)=\frac54x,\quad g_b(x)=\frac{20}3x-\frac{16}3,
+ \quad g_c(x)=20x-19,\quad g_d(x)=100x.
+\]
+Their safety domains are
+$[0,4/5]$, $[4/5,19/20]$, $[19/20,1]$, and
+$[0,1/100]$, respectively. Continuous ambient extensions are
+obtained by truncating these affine maps to $[-1,2]$, with no
+change on legal paths. The minimum subcover is three and the largest
+two inverse slopes sum to $4/5+3/20=19/20<1$; hence
+$M_1=\log3$ by the scalar special case of the capacity theorem.
+
+\begin{proposition}\label{prop:bridge}
+For $A_2=(0,2,4,\ldots)$, every legal Borel feedback and every
+finite Borel atom refinement has at least $3^n$ actual patterns
+on its first $n$ observations. Consequently
+\[
+ \min_s h_{A_2}(s)=L_1=M_1=\log3.
+\]
+\end{proposition}
+\begin{proof}
+We construct two-step inverse paths whose first controls can be
+chosen freely and whose second control is always $b$. Each path lies
+in regions where safety forces those controls, so the construction
+works for every feedback on the same even sampling sequence.
+
+The full inverse branches are
+$\psi_a(y)=4y/5$, $\psi_b(y)=4/5+3y/20$,
+$\psi_c(y)=19/20+y/20$. Let $J=[1/2,999/1000]$ and
+$\theta_u=\psi_u\psi_b$. They satisfy
+\[
+ \theta_a(y)=16/25+3y/25,\quad
+ \theta_b(y)=23/25+9y/400,\quad
+ \theta_c(y)=99/100+3y/400.
+\]
+Their complete images and the intermediate image are
+\[
+\begin{array}{c|c|c}
+ \text{image}&\text{exact endpoints}&\text{only legal control}\\\hline
+ \psi_b(J)&[7/8,18997/20000]&b\\
+ \theta_a(J)&[7/10,18997/25000]&a\\
+ \theta_b(J)&[149/160,376991/400000]&b\\
+ \theta_c(J)&[159/160,398997/400000]&c.
+\end{array}
+\]
+Each $\theta_u(J)$ lies in $J$. Every displayed closed interval
+is strictly inside the appropriate uniquely legal region; in
+particular $\theta_a(J)$ avoids the extra control $d$.
+
+Given any $u_0\cdots u_{n-1}\in\{a,b,c\}^n$, set
+$x_{2n}=1/2$ and recursively
+$x_{2j+1}=\psi_b(x_{2j+2})$,
+$x_{2j}=\theta_{u_j}(x_{2j+2})$.
+The table shows that at every even state only $u_j$ is legal
+and at every odd state only $b$ is legal. Thus \emph{every}
+feedback must execute the actual period-one prefix
+$u_0,b,\ldots,u_{n-1},b$ from the same constructed initial state.
+The endpoint remains in $Q$ and the globally legal rule continues
+safely forever. There is no added phase or period-two control.
+All three-symbol sampled words are therefore actual patterns.
+Refinement only increases their count.
+
+The Borel selector using $a$ below $4/5$, $b$ from $4/5$ to
+$19/20$, and $c$ at and above $19/20$, is legal at all endpoints
+and uses only three labels. Its upper count is $3^n$ on every
+window. This matches the lower bound, including attainment, and
+$L_1\le M_1$ completes the equalities. The normalization is
+$n\tau=n$, not $2n$.
+\end{proof}
+
+The closed contracting branches $\theta_a,\theta_b,\theta_c$
+have disjoint first-level images in $J$. Their nested images give
+a compact set homeomorphic to the three-symbol full shift, and
+every $T_s^2$ on that set is the same shift under this coding.
+To verify this, a word's image has diameter at most
+$(3/25)^n\operatorname{diam}J$; nested images intersect in one
+point, different first differing letters give disjoint images, and
+the inverse identities used above give the shift relation.
+The union of this set with its $\psi_b$ image is protected under
+every legal feedback. These sets can overlap: the all-$b$ state
+$16/17$ belongs to both and uniquely uses $b$. Hence the proof
+does not introduce an implicit disjoint phase register. This is
+precisely a protected-subsystem mechanism, even if the rest of the
+state space has feedback-dependent successors.
+
+\subsection{A noninteger four-branch system}
+\label{subsec:four-affine}
+Let $Q=[0,6]$ and use, at period one,
+\[
+ g_{A0}(x)=\tfrac32x,\quad g_{A1}(x)=\tfrac32x-3,
+ \quad g_{B0}(x)=\tfrac53x,\quad g_{B1}(x)=\tfrac53x-4.
+\]
+The original safety intervals are
+$[0,4]$, $[2,6]$, $[0,18/5]$, $[12/5,6]$.
+Truncation to the ambient interval $[-1,7]$ retains exactly these
+safe transitions. All legal Borel feedbacks, arbitrary mixtures,
+and finite atom refinements are allowed. Two $A$ domains cover
+$Q$ and no single one does, so $r=2$. The largest scalar
+inverse capacity is $2/3<1$. Thus $M_1=\log2$.
+Every actual length-$N$ control prefix has its fiber inside an
+interval of length at most $6(3/2)^{-N}$; these intervals cover
+$Q$. Its number $D_N(s)$ is therefore at least $(3/2)^N$.
+Appendix~\ref{app:finiteblock} retains the weights and actual
+even--odd compatibility in a refinement of this volume argument.
+This gives
+\begin{equation}\label{eq:four-L}
+ \log(3/2)\le L_1\le\log2.
+\end{equation}
+
+For $A_2=(0,2,\ldots)$ let
+$\ell_2=\inf_s h_{A_2}(s)$, and let $\ell_2^A$ restrict to
+all two-$A$ Borel feedbacks, without restricting their partitions.
+The unrefined two-$A$ rules have the exact description
+\[
+ s_E(x)=A0\text{ on }[0,2)\cup E,
+ \quad s_E(x)=A1\text{ elsewhere},\qquad E\subset[2,4]
+ \text{ Borel}.
+\]
+Indeed the two overlap domains are exactly $[2,4]$.
+Write $N_n(s)=\Patt_s(\{0,2,\ldots,2n-2\})$ for the even
+pattern count. For any feedback, an actual $2n$ prefix is determined
+by its even and odd sampled patterns. Odd patterns occur among the even
+patterns from states $T_sx\in Q$. Hence
+$D_{2n}(s)\le N_n(s)^2$ and the volume lower bound gives
+$N_n(s)\ge(3/2)^n$. Consequently $\ell_2\ge\log(3/2)$.
+
+\begin{proposition}[Density-one samplings]\label{prop:density-one}
+If $A=(a_i)$ satisfies $a_n/n\to1$, then
+$\inf_s h_A(s)=\log(3/2)$ over the full class.
+The greedy feedback $s_g=s_\varnothing$ is an actual minimizer
+for every such $A$.
+\end{proposition}
+\begin{proof}
+The consecutive counts of the greedy rule grow like $(3/2)^n$.
+To establish the sampled statement, we first bound these counts on
+the entire interval, including points that have not yet reached the
+invariant core. A density-one sequence omits only $o(n)$ coordinates
+from its elapsed prefix, and that omission changes the logarithmic
+count by $o(n)$.
+
+Set $\beta=3/2$. On the invariant core $[0,3)$, scale $x=3t$.
+The greedy dynamics becomes $B(t)=\beta t-\lfloor\beta t\rfloor$
+on $[0,1)$. Every nonempty length-$n$ digit cylinder is a
+left-closed right-open interval whose $B^n$ image is $[0,l)$
+for some $0<l\le1$. This is proved by splitting the current
+image at $1/\beta$: it has a single child if $\beta l\le1$,
+and otherwise a full-image child and a nonfull-image child.
+Equality creates no extra singleton at the excluded right endpoint.
+
+Let $F_n$ be the number of full-image cylinders, with $F_0=1$.
+The sum of image lengths is $\beta^n$, since each source length
+is $l/\beta^n$ and the sources partition $[0,1)$. Thus
+$F_n\le\beta^n$. Each nonfull cylinder has a last full-image
+ancestor, and each ancestor has at most one descendant at a given
+later level without another full-image step. The total core count
+$C_n$ consequently satisfies
+\[
+ C_n\le\sum_{j=0}^n F_j\le3\beta^n.
+\]
+For $x\in[3,6)$ the greedy rule uses $A1$ until
+entering the core; while waiting its state is
+$6-\beta^j(6-x)$, so entry is finite. State $6$ uses $A1$
+forever. Therefore the full-space count satisfies
+\[
+ D_n(s_g)\le1+\sum_{j=1}^n C_j\le10\beta^n.
+\]
+This includes all thresholds and the exceptional endpoint.
+
+Let $N=a_n+1$, so $N-n=o(n)$. Each sampled word has at most
+$4^{N-n}$ completions to a consecutive word, giving
+\[
+ \Patt_s(\{a_1,\ldots,a_n\})\ge
+ \frac{D_N(s)}{4^{N-n}}\ge\frac{\beta^N}{4^{N-n}}.
+\]
+For the greedy rule the same count is at most
+$D_N(s_g)\le10\beta^N$. After division by $n$ the two
+rates tend to $\log\beta$. Refinements preserve the lower
+bound and the unrefined rule gives the matching upper bound.
+\end{proof}
+
+Let $\rho>1$ be the unique solution
+\begin{equation}\label{eq:rho}
+ \rho^6=\rho^5+\rho^4+\rho+1,
+ \qquad\log\rho=0.55600938749\ldots.
+\end{equation}
+Appendix~\ref{app:greedy} computes the greedy feedback's exact rate
+$h_{A_2}(s_g)=\log\rho$, with full upper and lower counts.
+Combining these estimates gives
+\begin{equation}\label{eq:four-even}
+ \log(3/2)\le\ell_2\le\ell_2^A\le\log\rho.
+\end{equation}
+Thus we know the greedy rate at this one sequence, but not whether
+it minimizes that rate among two-$A$ rules or among all four-control
+rules. Optimizing the sequence as well gives the separate bounds
+\eqref{eq:four-L}. The consistency obstruction below explains why an
+open-loop language with favorable counts is not enough to improve
+either upper bound.
+
+
+\subsection{An alternating open-loop language with no Borel realization}
+Let $R>0$, $1<a,b<2$, and $\log a/\log b\notin\mathbb Q$.
+On $[0,R]$ take four legal affine branches
+\[
+ g_{Ai}(x)=ax-i(a-1)R,\qquad
+ g_{Bi}(x)=bx-i(b-1)R\quad(i=0,1).
+\]
+Each type's two full inverse intervals cover $Q$. Let
+$\Lambda_{\rm alt}$ be the two-phase language whose $A,B$ types
+alternate strictly and whose digits are otherwise arbitrary. Let
+\[
+ \widehat\Lambda=\Lambda_{\rm alt}\ \cup\
+ \{w c^\infty:w\text{ is a finite alternating-type word},\ c\in U\}.
+\]
+The empty prefix is allowed. This compact shift-invariant language
+includes all constant endpoint tails and their finite alternating
+prehistories. The inverse contractions
+$\psi_{Ci}(y)=(y+i(\lambda_C-1)R)/\lambda_C$, with
+$\lambda_A=a,\lambda_B=b$, define a continuous coding
+$\pi(d)=\lim_n\psi_{d_0}\cdots\psi_{d_{n-1}}(0)$.
+Every state has a coding in $\Lambda_{\rm alt}$: in each prescribed
+type choose a safe digit and repeat. The contraction error is at
+most $R\min(a,b)^{-n}$. This proves full open-loop coverage, not
+feedback consistency.
+
+\begin{proposition}\label{prop:alternation}
+No globally safe Borel period-one feedback has all its control names
+in $\widehat\Lambda$. This remains true with arbitrary Borel
+mixtures and finite atom refinements. Nevertheless for every
+$n$-position window $F$ with $n\ge1$,
+\[
+ 2^{n+1}\le\Patt_{\widehat\Lambda}(F)\le8(n+1)2^n.
+\]
+\end{proposition}
+\begin{proof}
+The alternating part has two distinct type patterns and $2^n$
+independent digits. For a constant-tail member there are at most
+$n+1$ cuts on $F$, two prefix phases, $2^j$ prefix digits, and
+four constant tails. Summing by cuts bounds the count by
+$8(n+1)2^n$ (and also covers the infinite alternating case).
+
+To prove nonrealizability, examine small positive states. There only
+zero-digit controls are safe, so two alternating steps multiply the
+state by $ab$. In logarithmic coordinates, a Borel choice of the first
+type would give a two-coloring of a circle exchanged by an irrational
+rotation. The following argument rules out that coloring.
+
+Let $C$ be the union of all finite affine
+preimages of $\{0,R\}$. This set is countable, and its complement is preserved by every
+legal branch: a successor in $C$ would put the original state in $C$. A constant safe tail under any one
+branch forces its tail state to be the corresponding endpoint,
+by expansion about $0$ or $R$. Thus any hypothetical feedback
+has strictly alternating types forever on $Q\setminus C$.
+Choose
+\[
+ 0<\eta<\min\{R/a,R/b,(a-1)R/a,(b-1)R/b\}.
+\]
+On $(0,\eta)$ only zero-digit controls are legal. For
+$0<x<\eta/(ab)$ outside $C$, the first two steps are
+$x,ax,abx$ if the first type is $A$, and $x,bx,abx$ otherwise.
+The third type is the first type. Put $p=\log a,q=\log b,h=p+q$
+and encode the feedback type at $\eta e^t$, $t<0$, by a Borel
+$c(t)\in\{0,1\}$, with $A$ represented by one. Outside a
+countable exceptional set,
+\[
+ c(t+h)=c(t),\quad
+ c(t)=1\Rightarrow c(t+p)=0,\quad
+ c(t)=0\Rightarrow c(t+q)=1\qquad(t<-h).
+\]
+Translating each negative interval of length $h$ to $[-h,0)$
+gives a measurable circle function, with all countably many
+translated exceptions still null. Apply the last two implications
+at $t=r-h$, $-h\le r<0$. For its set $E$ of type one, circle
+rotations satisfy $R_pE\subset E^c$ and $R_qE^c\subset E$
+modulo null sets. Since $q=-p$ modulo $h$, these imply
+$R_pE=E^c$, measure $1/2$, and $R_{2p}E=E$ modulo null sets.
+The number $2p/h$ is irrational. For
+$G=2\one_E-1$, invariance under that rotation and Fourier
+coefficients give
+$\widehat G(j)=e^{2\pi i j(2p/h)}\widehat G(j)$.
+Every nonzero coefficient vanishes; the mean vanishes as well.
+Completeness of the trigonometric system gives $G=0$ almost
+everywhere, contradicting $|G|=1$. This proves impossibility.
+Refinements project to the same physical control rule and cannot
+avoid the obstruction.
+\end{proof}
+
+The noninteger system in Section~\ref{subsec:four-affine} has
+$a=3/2,b=5/3,R=6$. Its log ratio is irrational by unique prime
+factorization: $(3/2)^j=(5/3)^k$ would imply
+$3^{j+k}=2^j5^k$. None of its nonempty finite affine composites
+has an integer slope. Thus its alternating $A/B$ open-loop language
+cannot be realized by a globally safe Borel feedback. Other feedbacks
+remain available, so this obstruction does not determine the optimized
+sampling rates.
+
+\section{The remaining common-sampling problem}\label{app:scope}
+The unresolved step in the capacity approach is the choice of times.
+The product estimate forces independent coordinates for each
+feedback, but those coordinates may move when the rule changes.
+Does it nevertheless imply $L_\tau=M_\tau$ for the full Borel
+feedback class, or can the two values differ?
+
+The four-branch affine system makes this question concrete:
+\[
+ \log(3/2)\le L_1\le M_1=\log2.
+\]
+At density-one samplings the inner minimum is $\log(3/2)$; at even
+times the greedy rate is $\log\rho$, with $\rho$ given by
+\eqref{eq:rho}. Neither the optimal even-time rate nor $L_1$ is
+determined. The weighted pattern-pair identity in
+Appendix~\ref{app:finiteblock} identifies possible improvements to
+the volume lower bound, but gives no uniform positive improvement.
+A resolution needs additional information about compatible feedback
+fibers, beyond an open-loop covering count.
+
+\appendix
+
+\section{Attainment of the fixed-period infimum}\label{app:minimum}
+
+Integer-logarithm quantization of maximal-pattern entropy is a known
+combinatorial fact. For one-sided subshifts it is stated in
+Huang and Ye \cite[Theorem~5.5]{HuangYe2009}. We record the finite-set
+argument needed here, since it also settles attainment of the feedback
+infimum. This argument does not address the common-sampling problem.
+
+\begin{proposition}\label{prop:quantization}
+Let $\varnothing\ne\Omega\subset E^{\Nzero}$, where $|E|=q<\infty$,
+and fix $\tau>0$. There is an integer $m\in\{1,\ldots,q\}$ such that
+$\hpat(\Omega;\tau)=\log m/\tau$.
+\end{proposition}
+\begin{proof}
+For $H\subset E^n$, let $d_k(H)$ be the largest size of a coordinate
+set $J$ for which $H|_J$ contains $\prod_{j\in J}V_j$, with
+$V_j\subset E$ and $|V_j|=k$. Put $d_k(\varnothing)=-1$.
+The elementary finite bound is
+\[
+ |H|\le B_k(n,d):=
+ \sum_{i=0}^{\min(d,n)}\binom ni(k-1)^{n-i}\binom qk^i
+ \quad\text{if }d_k(H)\le d,\qquad 2\le k\le q.
+\]
+Set $B_k(n,-1)=0$. To prove the bound, write $H_e$ for the
+$(n-1)$-letter prefixes ending in $e$, $V=\bigcup_eH_e$, and
+$V_S=\bigcap_{e\in S}H_e$ for $|S|=k$. Projection gives
+$d_k(V)\le d$, whereas $d_k(V_S)\le d-1$: a shattered set in
+$V_S$ can be extended by the last coordinate. A prefix appearing
+in $t$ of the sets $H_e$ contributes
+$t\le(k-1)+\binom tk$. Hence
+\[
+ |H|\le(k-1)|V|+\sum_{|S|=k}|V_S|
+ \le(k-1)B_k(n-1,d)+\binom qk B_k(n-1,d-1)
+ =B_k(n,d).
+\]
+The empty class and the nonempty class at $n=0$ start the induction.
+
+Let $D_k=\sup_Fd_k(\Omega|_F)$, over finite $F\subset\Nzero$,
+and let $m$ be the largest $k$ with $D_k=\infty$.
+Since $\Omega$ is nonempty, $D_1=\infty$.
+Restricting shattered sets gives $p_\Omega^*(n)\ge m^n$ for every
+$n$. If $m=q$, the alphabet bound gives equality. Otherwise
+$D_{m+1}=d<\infty$, so the preceding bound gives, for a constant $C$,
+\[
+ m^n\le p_\Omega^*(n)
+ \le\sum_{i=0}^{\min(d,n)}\binom ni m^{n-i}\binom q{m+1}^i
+ \le C n^d m^n\qquad(n\ge1).
+\]
+Taking logarithms and dividing by $n\tau$ proves the assertion.
+\end{proof}
+
+\begin{corollary}\label{cor:pattern-minimum}
+For every nonempty class of finite Borel invariant partitions at
+one fixed period $\tau$, the infimum of $\hpat(\C;Q)$ is a minimum.
+At the common attaining schedule of Corollary~\ref{thm:B}, the inner
+sequence-entropy infimum is also a minimum. In particular, for a
+finite control alphabet the quantity $M_\tau$ in
+\eqref{cc-eq:LM} is attained without a countability assumption.
+\end{corollary}
+\begin{proof}
+Apply Proposition~\ref{prop:quantization} to each $\Sigma_\C$.
+The corresponding integers form a nonempty subset of $\N$, which
+has a least member. At the schedule of Corollary~\ref{thm:B}, all
+individual sequence rates equal their pattern rates.
+For the full finite-control class, Lemma~\ref{cc-lem:merge}
+identifies the infimum with that over legal selectors, whose
+nonempty fibers have at most $|U|^\tau$ labels.
+\end{proof}
+
+No attainment assertion for an arbitrary fixed sequence $A$ follows
+from this corollary. The integer quantization applies to maximal-pattern
+entropy, and fixed-sequence entropy need not have that form.
+
+\section{A quantitative single-step estimate}\label{app:weighted}
+Assume the notation of Section~\ref{sec:capacity} and
+$\Theta_k<1$. The proof below gives an explicit lower density of
+independent coordinates without the omitted-letter covering lemma. For nonempty $F\subset W^n$, let $d_k(F)$ be the largest
+$|J|$ for which there are sets $V_j\subset W$, $|V_j|=k$, such that
+$F|_J\supset\prod_{j\in J}V_j$. The sets $V_j$ may differ with $j$.
+Set $d_k(\varnothing)=-1$. Put $\theta=\Theta_k<1$, $C_0=\|\sum_u\rho_u\|_\infty$ and
+$B=C_0\binom qk$. For nonnegative $f$ let
+$\Phi f=\max_{|S|=k-1}\sum_{u\in S}L_uf$ and
+$\mathcal Tf=\sum_uL_uf$. Their norms are bounded by $\theta$
+and $C_0$, respectively.
+
+\begin{proposition}[Weighted shattering estimate]\label{prop:weighted-sauer}
+With $H(n,-1)=0$, for every $F\subset W^n$,
+\begin{equation}\label{eq:cap-weighted}
+ \opnorm{P_F}\le
+ H(n,d_k(F)),\qquad
+ H(n,d)=\sum_{j=0}^{\min(d,n)}\binom nj B^j\theta^{n-j}.
+\end{equation}
+For actual names this gives $d_k(F_n(s))>\alpha n$, uniformly in
+every legal feedback, whenever $0<\alpha<1/2$ satisfies
+\begin{equation}\label{eq:cap-alpha}
+ \log\theta+\mathfrak h(\alpha)+\alpha\log(B/\theta)<0,
+ \qquad\mathfrak h(t)=-t\log t-(1-t)\log(1-t).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Take $H(n,-1)=0$ and treat the empty word at $n=0$ separately.
+Split $F$ at its \emph{first} letter: $F_a=\{v:av\in F\}$,
+$U_0=\bigcup_aF_a$, and $I_S=\bigcap_{a\in S}F_a$ for
+$|S|=k$. If $d=d_k(F)$, then $d_k(U_0)\le d$ and
+$d_k(I_S)\le d-1$: independence of $d$ tail positions in the latter
+would also make the first position independent and give $d+1$.
+For each $v\in U_0$ the set of its permitted first letters has
+either at most $k-1$ members, or contains a $k$-set $S$. Applying
+the positive tail product $L_v$ and summing gives
+\[
+ P_F f\le P_{U_0}\Phi f+\sum_{|S|=k}P_{I_S}\mathcal T f.
+\]
+This respects the order $L_{av}=L_vL_a$; no operators are
+commuted. Induction and Pascal's identity give
+$\theta H(n-1,d)+BH(n-1,d-1)=H(n,d)$. Positive domination
+handles signed $f$ and proves \eqref{eq:cap-weighted}.
+
+By actual-fiber mass, $1\le H(n,d_k(F_n(s)))$.
+The cover property gives $C_0\ge1$, and positivity gives
+$0<\theta\le C_0\le B$. For $d\le\alpha n$, therefore,
+$B/\theta\ge1$ and
+$\sum_{j\le\alpha n}\binom nj\le e^{n\mathfrak h(\alpha)}$
+give
+$H(n,d)\le\exp(n[\log\theta+\mathfrak h(\alpha)+
+\alpha\log(B/\theta)])<1$, a contradiction.
+The binomial bound follows by comparing each term to its probability
+under independent Bernoulli$(\alpha)$ trials; those probabilities
+sum to at most one. Condition~\eqref{eq:cap-alpha} is possible
+because its last two terms tend to zero as $\alpha$ tends to zero.
+\end{proof}
+
+\subsection{A critical boundary of the single-step density condition}
+For $3/2<\lambda\le2$, on $Q=[0,1]$ use
+\[
+ g_a(x)=\lambda x,\quad
+ g_b(x)=\lambda x-(\lambda-1)/2,\quad
+ g_c(x)=3x-2.
+\]
+The safety intervals are
+\[
+ K_a=[0,1/\lambda],\quad
+ K_b=[(\lambda-1)/(2\lambda),(\lambda+1)/(2\lambda)],
+ \quad K_c=[2/3,1].
+\]
+They cover $Q$ and $r=3$. Both $a$ and $c$ are forced into
+every subcover by endpoints $0,1$. Since $1/\lambda<2/3$,
+they leave an open gap, so $b$ is also needed. The inverse
+densities are constants $1/\lambda,1/\lambda,1/3$; therefore
+$\Theta_2=1/\lambda<1$ and $\Theta_3=2/\lambda$.
+
+\begin{proposition}\label{prop:critical}
+For every $3/2<\lambda\le2$, this full Borel class has
+$M_1=\log2<\log3$. Thus the condition $\Theta_3<1$ cannot be
+uniformly replaced by $\Theta_3\le1$ or by
+$\Theta_3<1+\eta$ for any $\eta>0$, while retaining the
+conclusion $M_1=\log3$.
+\end{proposition}
+\begin{proof}
+The $k=2$ single-step criterion gives every feedback
+$h^*\ge\log2$. Put $t=(\lambda-1)/(2\lambda)$ and define
+\[
+ s_\lambda(x)=\begin{cases}
+ a,&0\le x<t,\\ b,&t\le x<2/3,\\ c,&2/3\le x\le1.
+ \end{cases}
+\]
+It is Borel and legal: $t<1/\lambda$ and
+$(\lambda+1)/(2\lambda)\ge3/4>2/3$.
+For $x<t$, $g_a(x)<(\lambda-1)/2\le1/2$.
+For $t\le x\le1/2$,
+$g_b(x)=\lambda x-(\lambda-1)/2\in[0,1/2]$.
+Hence $J=[0,1/2]$ is invariant. Before entering $J$ only
+$b,c$ occur; once in $J$ only $a,b$ occur. This remains true
+for states which never enter and at all thresholds, including the
+fixed points $1/2$ and $1$.
+
+At any $n$ selected times a sampled name has some cut $0\le j\le n$
+between the two groups, each of size two. Thus its pattern count
+is at most $(n+1)2^n$ for \emph{every} window. This actual
+feedback gives $h^*\le\log2$ and completes the equality.
+At $\lambda=2$, $\Theta_3=1$; as $\lambda$ increases to $2$
+from below, $\Theta_3$ decreases to $1$ from above. These values
+give both claimed failures of uniform relaxation. The example
+does not make $\Theta_3<1$ a necessary condition for every
+system, and does not determine $L_1$ for this family.
+\end{proof}
+
+\section{Finite-cylinder representation and a contraction criterion}\label{sec:cylinder}
+
+The matrix calculation in Section~\ref{subsec:product-example} works
+because all iterates of the constant function lie in a finite-dimensional
+space. We give that reduction for cylinder safety domains, then one
+criterion that avoids checking products individually. A common positive
+left weight bounds every list product by the same geometric sequence.
+This is the usual linear copositive Lyapunov argument for positive
+matrices; see \cite{Debauche2022} for the broader framework. The
+condition below specifies when the safety relations supply such a weight.
+
+\subsection{An exact finite representation}
+Let $D$ be a finite alphabet of size $d\ge2$, $Q=D^{\Nzero}$,
+and $\mu$ its fair Bernoulli probability. The finite controls have
+legal maps $g_u=P_u\sigma$, where $p_u$ permutes $D$ and $P_u$
+acts in every coordinate. Suppose
+\[
+ K_u=\bigcup_{\xi\in R_u}[\xi],\qquad R_u\subset D^h,
+ \quad h\ge2,
+\]
+and the $K_u$ cover $Q$. Shorter cylinders can be completed to the
+same length $h$. The continuous cemetery extension used above
+applies to these clopen domains. The control period is always one.
+
+For every bounded Borel function the full operator is
+\begin{equation}\label{eq:cyl-operator}
+ L_uf(y)=\frac1d\sum_{a\in D}
+ \one_{R_u}(a,p_u^{-1}y_0,\ldots,p_u^{-1}y_{h-2})
+ f(aP_u^{-1}y).
+\end{equation}
+Indeed, conditioned on $x_0=a$ the tail of $x$ still has law $\mu$,
+and $P_u$ preserves that law. Substitution in
+\eqref{eq:cap-transfer} gives this formula with the exact safety gate.
+
+Index source and target vectors by $D^{h-1}$. For target $\eta$
+and source $\xi$, set
+\begin{equation}\label{eq:cyl-matrix}
+ T_u(\eta,\xi)=\frac1d\#\left\{a\in D:
+ \begin{array}{l}
+ (a,p_u^{-1}\eta_0,\ldots,p_u^{-1}\eta_{h-2})\in R_u,\\
+ (a,p_u^{-1}\eta_0,\ldots,p_u^{-1}\eta_{h-3})=\xi
+ \end{array}\right\}.
+\end{equation}
+When $h=2$ the second tuple is just $a$.
+Functions of the first $h-1$ coordinates form an invariant subspace
+of every $L_u$, represented by $T_u$. Starting at $\one$, every
+list product stays in this space. Every such cylinder has positive
+measure and a positive product has norm equal to its value on $\one$.
+Therefore, for every length and every history,
+\begin{equation}\label{eq:cyl-fullnorm}
+ \opnorm{A_{S_{n-1}}\cdots A_{S_0}}
+ =\|T_{S_{n-1}}\cdots T_{S_0}\one\|_\infty,
+ \qquad T_S=\sum_{u\in S}T_u.
+\end{equation}
+Only the operator calculation has become finite-dimensional; the
+feedback itself may still depend on the whole state.
+
+For two-letter domains, rows are target letters and columns are
+source letters, with
+\begin{equation}\label{eq:cyl-two}
+ T_u(j,i)=d^{-1}\one_{R_u}(i,p_u^{-1}j),\qquad
+ d(w^\top T_u)_i=\sum_{z:(i,z)\in R_u}w(p_uz).
+\end{equation}
+The structural conditions below use this source-column identity.
+A left budget $w^\top T_S\le\theta w^\top$ is different from
+changing a reference density, which leads instead to a right
+inequality $T_Sa\le\theta a$. They cannot be interchanged.
+
+\subsection{A strict source-weight criterion}
+Partition $D=A\sqcup B\sqcup C$ into nonempty sets of sizes
+$a,b,c$, so $d=a+b+c$. Use three controls with
+\begin{equation}\label{eq:weight-land}
+ p_0(C)\subset D\setminus A,\qquad p_1(B)\subset A,
+ \qquad p_2(A)\subset D\setminus A.
+\end{equation}
+Choose arbitrary relations $E_0\subset A\times C$ and
+$E_1\subset A\times B$, with $E_0\cup E_1\ne\varnothing$,
+and define
+\begin{align}
+ R_0&=((D\setminus A)\times C)\cup E_0,\nonumber\\
+ R_1&=((D\setminus A)\times B)\cup E_1,\label{eq:weight-domains}\\
+ R_2&=(A\times D)\cup(D\times A),\qquad K_u=[R_u].\nonumber
+\end{align}
+If the source letter is in $A$, control $2$ permits every second
+letter, while $E_0$ and $E_1$ specify the extra choices of controls
+$0$ and $1$. Outside $A$, the second letter determines the unique
+legal control. For $i\in A$ and $u=0,1$, write
+\[
+ e_u(i)=|\{z:(i,z)\in E_u\}|,\qquad e=\max_{i\in A}e_1(i).
+\]
+The following inequality will allow a single choice of weights to
+control all two-label lists:
+\begin{equation}\label{eq:weight-count}
+ s_-:=\max\left\{\frac c{b+c},\frac e{b+c-e}\right\}
+ <s_+:=\frac{\min\{a,c\}}b.
+\end{equation}
+Its lower bound limits the extra choices on $A$; its upper bound
+limits the weight transferred from sources outside $A$.
+
+\begin{proposition}[Strict source budget]\label{thm:source-weight}
+For every system satisfying \eqref{eq:weight-land}--\eqref{eq:weight-count},
+$r=3$, all histories of global two-label lists have exponentially
+decaying inverse capacity, and every legal unrefined Borel feedback
+has $h^*(s)=M_1=\log3$. Every finite Borel atom refinement has
+$h^*\ge\log3$. Moreover, no full-support reference probability
+can directly satisfy the joint-density or scalar single-step
+criterion for $k=3$ on these original branches.
+\end{proposition}
+\begin{proof}
+We seek one weighted sum of the source coordinates that contracts
+under every list. Giving the class $A$ a larger weight compensates
+for its extra legal edges. The interval $(s_-,s_+)$ is precisely
+what leaves room to choose that weight.
+
+Let $s>0$ be chosen below, put $\gamma=1+s$, and give weight
+$w_i=\gamma$ to $i\in A$ and weight $w_i=1$ to the other
+letters. The weighted mass of the constant vector is
+$H=\sum_iw_i=d+sa$.
+Before division by $d$, the weighted contributions of controls
+$0,1,2$ in a source column are
+\[
+\begin{array}{c|ccc}
+ &0&1&2\\\hline
+ i\in A&e_0(i)\le c&\gamma e_1(i)\le\gamma e&H\\
+ i\notin A&c&\gamma b&a.
+\end{array}
+\]
+Each entry follows from the original domains and
+\eqref{eq:weight-land}. For example, on $A$ control $2$ permits
+every tail, hence the sum of all weights irrespective of its
+permutation. Off $A$, its permitted tails lie in $A$ and land
+outside $A$, each with weight one.
+
+For a source outside $A$, the two nontrivial requirements that
+each pair in the second row have sum less than $d$ are
+\[
+ c+\gamma b<d,\qquad \gamma b+a<d,
+ \quad\text{or equivalently}\quad sb<\min\{a,c\}.
+\]
+For a source in $A$, compare a pair containing the contribution
+$H$ with the available weight $d\gamma$. Since
+$d\gamma-H=s(b+c)$, it is enough to require
+\[
+ c<s(b+c),\qquad \gamma e<s(b+c).
+\]
+These are exactly $s>s_-$, while the preceding upper restriction
+is $s<s_+$. Condition~\eqref{eq:weight-count} therefore permits
+$s=(s_-+s_+)/2$. With this choice $c<H$ and
+$\gamma e\le\gamma b<H$, so the pair excluding $H$ is also
+bounded by $H+\max\{c,\gamma e\}$. Define
+\[
+ \theta=\max\left\{
+ \frac{H+\max\{c,\gamma e\}}{d\gamma},
+ \frac{c+\gamma b}{d},\frac{c+a}{d},\frac{\gamma b+a}{d}
+ \right\}.
+\]
+The inequalities just established, together with $a+c<d$,
+give $0<\theta<1$ and
+$w^\top T_S\le\theta w^\top$ for every global two-label list.
+Repeatedly applying this single inequality gives
+\[
+ \|T_{S_{n-1}}\cdots T_{S_0}\one\|_\infty
+ \le w^\top T_{S_{n-1}}\cdots T_{S_0}\one
+ \le H\theta^n,
+\]
+since $\min_iw_i=1$. Equation~\eqref{eq:cyl-fullnorm} controls
+the complete capacity for all lengths.
+
+If $x_0\in A$, control $2$ is legal; otherwise its next letter
+in $A,B,C$ requires, respectively, $2,1,0$. Thus the domains
+cover $Q$. Taking $x_0\notin A$ and $x_1$ successively in
+$C,B,A$ gives cylinders on which each of $0,1,2$ alone is legal,
+so $r=3$. A clopen attaining selector chooses $2$ when $x_0\in A$
+or $x_1\in A$, otherwise $1$ when $x_1\in B$, otherwise $0$.
+It is safe, single-valued, and stays in $Q$ at each step; the same
+rule at every successor gives all-time safety. Applying
+Theorem~\ref{thm:capacity-main} proves all pattern conclusions,
+including the lower bound for arbitrary refinements.
+
+Let $O=[E_0\cup E_1]$. It is nonempty and clopen, and safety
+multiplicity is exactly $1+\one_O$. For a full-support probability
+$\nu$, either some branch fails the bounded-density prerequisite,
+or all densities exist. In the latter case the images of controls
+$0$ and $1$ lie, respectively, in $[D\setminus A]$ and $[A]$;
+their supports are disjoint. The largest two densities consequently
+sum to all three almost everywhere. Their integral is
+$\sum_u\nu(K_u)=1+\nu(O)>1$. Thus $\Theta_3(\nu)>1$.
+The scalar condition implies $\Theta_3<1$ and also fails.
+\end{proof}
+
+For instance
+$1\le b\le a\le b+c$ and $c>b$ imply
+\eqref{eq:weight-count} for every possible $e\le b$:
+$e/(b+c-e)\le b/c<1$, $c/(b+c)<1$, while $s_+\ge1$.
+Every allowed overlapping relation and permutation landing pattern
+is covered. Constants can be uniform when these counts have fixed
+bounds.
+
+For a concrete example take
+$D=\{0,1,2,3,4\}$, $A=\{0,1\}$, $B=\{2\}$,
+$C=\{3,4\}$, $E_0=\{(0,3),(1,4)\}$,
+$E_1=\{(0,2)\}$. Let $p_0$ be the identity,
+$p_1=(0\ 2)$, and specify $p_2$ by
+$0\mapsto2$, $1\mapsto3$, $2\mapsto0$, $3\mapsto4$,
+$4\mapsto1$. Here $s=4/3$, $\gamma=7/3$, $H=23/3$,
+$\theta=13/15$, and
+$b_n\le(23/3)(13/15)^n$. The target densities at first letters
+$0,1,2,3,4$ are, respectively,
+\[
+ (0,4/5,2/5),\quad(0,0,2/5),\quad(0,0,1),\quad
+ (4/5,0,1),\quad(4/5,0,2/5).
+\]
+Thus $\Theta_3=9/5$. In $[14]$ the two legal successors have
+first letters $4$ and $1$. No common successor is present. The
+natural $A/B/C$ merging also fails to commute with the listed
+permutations; this observation does not exclude every possible factor.
+
+\section{Exact even-sampling entropy of the greedy feedback}
+\label{app:greedy}
+
+We prove $h_{A_2}(s_g)=\log\rho$ for the system of
+Section~\ref{subsec:four-affine}. The proof counts words in two
+directions. Certain forbidden patterns bound every greedy name from
+above. Parsing the remaining words into three blocks produces a
+recurrence with growth rate $\rho$. For the lower bound we realize
+complete block strings by inverse paths of the same greedy map;
+we do not need every word allowed by the upper bound to occur.
+On $C_0=[0,3)$ the actual map $R=T_{s_g}^2$ is
+\begin{equation}\label{eq:greedy-R}
+ R(x)=\begin{cases}
+ 9x/4,&0\le x<4/3,\\
+ 9x/4-3,&4/3\le x<2,\\
+ 9x/4-9/2,&2\le x<3.
+ \end{cases}
+\end{equation}
+Each branch is a composition of two steps of $s_g$: at the
+intermediate state the same threshold $2$ decides between $A0$
+and $A1$. Let $0,1$ denote the even-time labels $A0,A1$.
+
+If a core even name begins $11$, its second state is in
+$[2,9/4)$, its third in $[0,9/16)$, and the next two images
+are in $[0,81/64)$ and $[0,729/256)$. The first of these
+is below $4/3$. If the last image is at least $2$, its next
+image is smaller than $1953/1024<2$.
+Consequently every core even name avoids
+\begin{equation}\label{eq:greedy-forbidden}
+ 111,\qquad1101,\qquad110011.
+\end{equation}
+All interval upper endpoints in these calculations are excluded by
+the core or its actual branch convention; $4/3$ and $2$ both
+map to zero under $R$.
+
+Every word avoiding \eqref{eq:greedy-forbidden} has a unique
+left-to-right parsing into the prefix-code blocks
+$a=0$, $b=10$, $c=1100$, with no adjacent $cc$, followed by
+one of $\varnothing,1,11,110$. The first two exclusions bound
+one-runs and force two zeros after a full double-one run; the third
+prevents two complete $c$ blocks. Let $H_m$ count complete block
+strings of bit length $m$ with no $cc$, with $H_m=0$ for
+$m<0$. If $X$ and $Z$ count strings ending in $a/b$ and in
+$c$, respectively, their formal generating series satisfy
+\[
+ X=(z+z^2)H,\qquad Z=z^4(1+X),\qquad H=1+X+Z.
+\]
+Thus
+\begin{equation}\label{eq:greedy-H}
+ H(z)=\frac{1+z^4}{1-z-z^2-z^5-z^6},\qquad
+ H_m=H_{m-1}+H_{m-2}+H_{m-5}+H_{m-6}\quad(m\ge5),
+\end{equation}
+with $H_0,\ldots,H_4=1,1,2,3,6$ and $H_5=10$.
+The equation for $\rho$ in \eqref{eq:rho} is equivalent to
+$\rho^{-1}+\rho^{-2}+\rho^{-5}+\rho^{-6}=1$, whose left side
+is strictly decreasing. Its unique root obeys $5/3<\rho<7/4$.
+The initial counts are at most $\rho^m$, and the recurrence
+proves $H_m\le\rho^m$ at all lengths. The incomplete-tail
+count is at most
+$H_m+H_{m-1}+H_{m-2}+H_{m-3}\le D\rho^m$, where
+$D=1+\rho^{-1}+\rho^{-2}+\rho^{-3}$.
+
+For a real full-space even word, either all labels are $1$, or its
+first $0$ occurs at some position $j$. At that moment the state
+is below $2$ and lies in the core; its remaining word is governed
+by \eqref{eq:greedy-forbidden}. This includes arbitrarily long
+waiting outside the core and the fixed endpoint $6$.
+Therefore
+\begin{equation}\label{eq:greedy-upper}
+ N_n(s_g)\le\sum_{m=0}^n D\rho^m
+ \le\frac{D\rho}{\rho-1}\rho^n.
+\end{equation}
+\subsection*{Inverse paths furnishing the matching lower bound}
+The three blocks are $a=0$, $b=10$ and $c=1100$. To realize their
+concatenations, the set of admissible endpoints must change after a
+$c$ block: a second $c$ is forbidden. We use two sets $C,D_0$ to
+keep track of which inverse path is available. They are subsets of
+the original state interval, not extra coordinates of the feedback.
+
+Put $\eta=4/9$, $L=162/65$, $d_0=729/256$, and define
+\[
+ P_0=[0,16/27]\cup[72/65,4/3),\qquad P_1=[L,3),
+\]
+\[
+ C=P_0\cup P_1,\qquad
+ D_0=P_0\cup[2,550/243]\cup[L,d_0).
+\]
+Here $\eta$ is the inverse slope of $R$. The endpoint $L$ satisfies
+$L=2+\eta^2L$, so the $1000$ inverse path preserves the lower
+endpoint of $P_1$. Applying the $a$ inverse to $P_1$ gives
+$[\eta L,4/3)=[72/65,4/3)$, explaining the second component
+of $P_0$. The upper cutoff $d_0$ is chosen so that
+$26/9+\eta^4d_0=3$: the $c$ inverse must stay below the excluded
+endpoint of the core. The checks below verify all other endpoints.
+
+The table gives a source for each target $y$. Its last column records
+all one-step controls, including those between the observed even times.
+For $b=10$ there are two inverse paths, with control words $1000$
+and $1001$. The first works for every target in $C$, but its source
+need not lie in $C$. When the source is required to lie there, we use
+$1000$ for targets in $P_1$ and $1001$ for targets in $P_0$.
+\begin{center}
+\begin{tabular}{cclc}
+\toprule
+Even block&Target $y$&Source state&One-step controls\\
+\midrule
+$a=0$&$y\in C$&$\eta y$&$00$\\
+$b=10$&$y\in C$&$2+\eta^2y$&$1000$\\
+$b=10$&$y\in P_0$&$70/27+\eta^2y$&$1001$\\
+$c=1100$&$y\in D_0$&$26/9+\eta^4y$&$10100000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The $1000$ path has its source in $D_0$ for every $y\in C$,
+and in $C\cap D_0$ when $y\in P_1$. The $1001$ path supplies
+a source in $C$ for every target in $P_0$.
+
+We check the path and its source set in each row. For $a$, the source
+$\eta y$ is in $P_0$, the intermediate state is $2y/3<2$,
+and the endpoint is $y$; both controls are zero.
+For the $1000$ path, the states after its source are
+$8y/27$, $\eta y$, $2y/3$, $y$. If $y\in P_0$, the
+source is in $[2,550/243)$; if $y\in P_1$, it is in
+$[L,70/27)$. Each source is at least $2$, while the three subsequent control states are
+below $2$. This gives $1000$ with the stated source memberships.
+
+For the $1001$ path the states are
+$8/9+8y/27$, $4/3+\eta y$, $2+2y/3$, $y$.
+The source belongs to $[70/27,694/243)\subset P_1$.
+The first two subsequent control states are below $2$.
+The last control state $2+2y/3$ lies in $[2,26/9)$.
+Thus it uses control $1$, proving $1001$ at all included endpoints.
+
+For $c$, its source is in $[26/9,3)\subset P_1$, since
+$26/9+\eta^4d_0=3$ and $d_0$ is excluded from $D_0$.
+Its successive states are
+\[
+\begin{array}{llll}
+4/3+(3/2)\eta^4y<3/2,&2+\eta^3y<9/4,&
+(3/2)\eta^3y<3/8,&\eta^2y<9/16,\\
+(3/2)\eta^2y<27/32,&\eta y<81/64,&
+(3/2)\eta y<243/128<2,&y.
+\end{array}
+\]
+Only its source and its second subsequent state are at least $2$;
+this proves $10100000$ with every intermediate state safe.
+The table now gives the relations
+\[
+ C\xrightarrow{a,b}C,\qquad C\xrightarrow cD_0,
+ \qquad D_0\xrightarrow{a,b}C.
+\]
+Here an arrow $S\xrightarrow{w}T$ means that \emph{every}
+endpoint in $T$ has a source in $S$ whose greedy path follows
+block $w$. It is this inverse coverage of the target, not an
+arbitrary forward choice at each source, that lets us concatenate
+the paths.
+
+Given a complete block string without $cc$, label its initial
+boundary $C$, each boundary after $c$ by $D_0$, and each boundary
+after $a$ or $b$ by $C$. All successive labels then follow one of
+the displayed arrows. Choose the final state to be $0$, which
+belongs to both sets, and construct the earlier states backwards.
+For a $b$ step starting in $D_0$, use the $1000$ path.
+For one starting in $C$, use $1000$ on target set $P_1$
+and $1001$ on $P_0$. The $a$ and $c$ inverses are already
+specified in the table. Each backward step lands in the set
+required by the preceding arrow.
+
+Running the greedy rule forwards from the resulting initial state
+therefore produces the prescribed even word, reaches zero, and
+continues safely forever. Distinct complete block strings give
+distinct even words because $\{0,10,1100\}$ is a prefix code.
+Hence $N_m(s_g)\ge H_m$.
+
+Let $c_* =\min_{0\le j\le5}H_j/\rho^j>0$. The full recurrence
+for $m\ge6$ proves $H_m\ge c_*\rho^m$. This and
+\eqref{eq:greedy-upper} yield
+\begin{equation}\label{eq:greedy-exact}
+ h_{A_2}(s_g)=\log\rho.
+\end{equation}
+\section{Arithmetic sampling and finite-block optimization}
+\label{app:finiteblock}
+For a fixed globally safe Borel rule and arithmetic sampling
+$(0,p,2p,\ldots)$, a length-$n+m$ sampled pattern is determined
+by its first $n$ entries and the length-$m$ pattern starting from
+$T_s^{pn}x\in Q$. Consequently $N_{n+m}(s)\le N_n(s)N_m(s)$.
+The logarithmic rate is a limit and equals
+$\inf_n n^{-1}\log N_n(s)$ (with division by $\tau$ when
+the control period is $\tau$). This uses forward safety, not
+surjectivity or unrestricted concatenation.
+
+For the full four-control class at $A_2$, let $K_n$ be the least
+actual count $N_n(s)$ among unrefined legal Borel feedbacks.
+It exists as a least member of a nonempty subset of
+$\{1,\ldots,4^n\}$. Merging refinements cannot increase counts,
+and unrefined rules are themselves allowed, so
+\begin{equation}\label{eq:finiteblock}
+ \ell_2=\inf_s\inf_n\frac{\log N_n(s)}n
+ =\inf_n\frac{\log K_n}n.
+\end{equation}
+The equality exchanges two infima and yields an asymptotic upper
+bound from any globally implemented finite-block feedback. The
+minimizing feedback may depend on $n$, so it gives no asymptotic
+minimizer. Applying the formula requires actual feedback fibers,
+rather than an open-loop word table.
+
+
+\subsection{Weighted actual pattern pairs}
+The estimate $D_{2n}\le N_n^2$ discards two kinds of information:
+some patterns use the faster $B$ branches, and some even--odd pairs
+never occur on one trajectory. We retain both. The feedback in this
+subsection is an unrefined Borel rule for the original four-branch
+system; all counts refer to its physical labels.
+Set $a=3/2$, $b=5/3$, and $r_1=a/b=9/10$. Let
+\[
+ V_n=\{(s(T_s^{2j}x))_{0\le j<n}:x\in Q\},\qquad N_n=|V_n|,
+\]
+and let $I_n$ consist of the pairs $(\alpha,\gamma)$ of even
+and odd patterns from the \emph{same} initial state. Since
+$T_sx\in Q$, one has $I_n\subset V_n\times V_n$; surjectivity
+of $T_s$ is unnecessary. Let $B(\alpha)$ count the $B0,B1$
+labels of $\alpha$, and define
+\[
+ W_n=\sum_{\alpha\in V_n}r_1^{B(\alpha)},\qquad
+ Z_n=\sum_{(\alpha,\gamma)\in I_n}
+            r_1^{B(\alpha)+B(\gamma)},\qquad
+ \kappa_n=Z_n/W_n^2.
+\]
+A $B$ label contributes the smaller inverse slope, hence the factor
+$r_1$. The ratio $\kappa_n$ measures the weight of realized pairs
+relative to all pairs of realized patterns. Thus
+$0<\kappa_n\le1$ and $W_n\le N_n$.
+
+\begin{proposition}\label{prop:weighted-pairs}
+With the preceding definitions, put
+\[
+ \theta_n=-\frac1n\log\frac{W_n}{N_n},\qquad
+ d_n=-\frac1{2n}\log\kappa_n.
+\]
+Then $\theta_n,d_n\ge0$ and
+\begin{equation}\label{eq:weighted-pairs}
+ \frac{\log N_n}{n}\ge\log a+\theta_n+d_n.
+\end{equation}
+More precisely, if $\Lambda_w$ is the slope of the complete
+affine word $w$ and
+\[
+ \Omega_m=\sum_{w\text{ actual},\ |w|=m}\Lambda_w^{-1},
+ \qquad e_n=\frac{\log\Omega_{2n}}{2n},
+\]
+then $\Omega_m\ge1$, $e_n\ge0$, and
+\begin{equation}\label{eq:weighted-pairs-exact}
+ \frac{\log N_n}{n}-\log a=\theta_n+d_n+e_n.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For each actual complete word $w$, its Borel initial fiber
+$E_w$ has diameter at most $6/\Lambda_w$, because two states
+following the same word separate by the factor $\Lambda_w$
+and their final states lie in $[0,6]$. All these fibers partition
+$Q$. Consequently
+\[
+ 1\le\sum_{w\text{ actual},\ |w|=2n}\Lambda_w^{-1}
+       =a^{-2n}Z_n.
+\]
+The equality uses the bijection between complete words and their
+actual interlaced pairs. Nonempty zero-measure fibers are included.
+Substitution of $Z_n=\kappa_nW_n^2$ proves
+\eqref{eq:weighted-pairs}; the same substitution with
+$\Omega_{2n}=a^{-2n}Z_n$ proves
+\eqref{eq:weighted-pairs-exact}.
+
+Each original inverse branch carries $Q$ into its safety domain.
+Write $G_w=g_{w_{m-1}}\circ\cdots\circ g_{w_0}$ for the affine
+composition associated with a word of length $m$.
+Thus the complete inverse interval $J_w=G_w^{-1}(Q)$ is contained
+in $Q$ and has length $6/\Lambda_w$; every intermediate open-loop
+state is safe. The feedback fiber satisfies $E_w\subset J_w$.
+The intervals $J_w$ for actual words cover $Q$, and, writing
+$\nu_m=\sum_w\one_{J_w}$, one obtains
+\[
+ 6(\Omega_m-1)=\int_Q(\nu_m-1)\,dx
+              =\sum_w\bigl(|J_w|-|E_w|\bigr)\ge0.
+\]
+Here $|E_w|$ denotes Lebesgue measure; no interval or convexity
+assumption is made on a feedback fiber. This also proves the
+claimed nonnegativity at every length.
+\end{proof}
+
+In \eqref{eq:weighted-pairs-exact}, $\theta_n$ is the cost of
+fast-branch weighting, $d_n$ the cost of missing pairs, and $e_n$
+the excess of complete inverse coverage over unit mass. They are
+support-counting quantities, rather than empirical frequencies
+or Shannon entropies. The estimates transfer to arbitrary atom
+refinements by projecting to their physical control labels;
+the equalities themselves refer to those merged labels.
+Splitting an actual trajectory at time $2n$ also gives
+\[
+ N_{n+m}\le N_nN_m,\qquad W_{n+m}\le W_nW_m,
+ \qquad Z_{n+m}\le Z_nZ_m.
+\]
+The weights multiply under this split, and the suffix is realized
+from a state in $Q$. The subadditivity argument at the beginning
+of this appendix therefore gives finite limits
+\[
+ h=\lim_n\frac{\log N_n}{n},\quad
+ p=\lim_n\frac{\log W_n}{n},\quad
+ t=\lim_n\frac{\log Z_n}{2n},\qquad
+ \log a\le t\le p\le h,
+\]
+and the exact limiting decomposition
+$h-\log a=(h-p)+(p-t)+(t-\log a)$.
+
+These formulas do not supply a uniformly positive correction.
+Even the uniformly strict one-step inequality
+$\Omega_1\ge6/5$ does not iterate: controls at $0$ and $6$
+are different and each inverse slope is at least $3/5$, which
+proves that inequality, but the greedy feedback has
+$\Omega_1=4/3$ and
+\[
+ 1\le\Omega_m(s_g)=a^{-m}D_m(s_g)\le10.
+\]
+The last bound is the all-initial-state word estimate in
+Section~\ref{subsec:four-affine}. Hence $e_n(s_g)\to0$.
+The complete inverse intervals overcount the true fibers at one
+step without producing an exponential overcount at later steps.
+
+\begin{example}[Full support from a countable modification]
+\label{ex:periodic-support}
+There is a globally safe two-$A$ Borel feedback for which
+$N_n=2^n$, $I_n=V_n\times V_n$, and $\theta_n=d_n=0$ at
+every length. It agrees with the greedy feedback on the full
+infinite trajectories of all but countably many initial states.
+\end{example}
+\begin{proof}
+For a purely periodic binary sequence $d$, set
+\[
+ \pi(d)=3\sum_{j\ge0}d_ja^{-(j+1)}.
+\]
+This address is injective on all purely periodic sequences.
+Indeed, if two different sequences share a common period $L$
+and the same address, subtracting their periodic-sum formulas
+gives a nonzero integer polynomial $P$ with leading coefficient
+$\pm1$ and $P(3/2)=0$. If its degree is $m$, multiplication by
+$2^m$ leaves an odd leading term $\pm3^m$ and only even
+remaining terms, a contradiction. Degree zero is immediate.
+
+Let $P_i$ be the addresses of the periodic sequences with first
+digit $i$, and $P=P_0\cup P_1$. These sets are countable Borel
+sets, and $P_0\cap P_1=\varnothing$. Define $s_{\mathrm{per}}=Ai$
+on $P_i$ and $s_{\mathrm{per}}=s_g$ on $Q\setminus P$. The identity
+\[
+ a\pi(d)-3d_0=\pi(\sigma d)\in P\subset Q
+\]
+proves safety on $P$, including $0$ and $6$; safety elsewhere
+is that of $s_g$. This one state rule is therefore safe on all
+infinite trajectories. Injectivity and induction show that its
+actual name from $\pi(d)$ is precisely $d$.
+
+Any prescribed binary pattern on a nonempty finite window extends to a
+purely periodic sequence: choose a period larger than its largest
+coordinate and fill the other digits arbitrarily. The empty window has
+one pattern. Thus
+$\Patt_{s_{\mathrm{per}}}(F)=2^{|F|}$ for every finite $F$.
+Applying this to interlaced even and odd patterns gives
+$V_n=\{A0,A1\}^n$, $I_n=V_n^2$, $W_n=2^n$, $Z_n=4^n$,
+and the asserted zero corrections.
+
+Finally $R=\bigcup_{j\ge0}T_g^{-j}P$ is countable: each point
+has at most two one-step greedy preimages. Outside $R$ the
+greedy trajectory never enters $P$, so induction gives identical
+states and controls under the two rules at every time. Nevertheless,
+their consecutive-time counting entropies are respectively
+$\log(3/2)$, by Proposition~\ref{prop:density-one}, and $\log2$.
+Discarding countably many initial states would therefore change
+the counting question. No realization of all infinite nonperiodic
+binary names is needed or claimed.
+\end{proof}
+
+This example excludes an unconditional positive lower bound for
+$\theta_n+d_n$ over the whole feedback class. Its own pattern
+count is already large, so it does not exclude an improved estimate
+restricted to feedbacks with small $N_n$, and it supplies no
+low-entropy feedback or strict full-class minimax gap.
+
+
+\section{The obstruction to pointwise common attainment}
+\label{app:pointwise}
+
+Corollary~\ref{thm:B} attains the rate of every member of a countable
+language family. For uncountable families, pointwise common
+attainment can fail even when the full feedback class has an exact
+common minimum. We first describe the pattern obstruction, then realize the relevant
+distinction in a system with four controls.
+
+\subsection{The combinatorial obstruction}
+
+\begin{example}[A purely combinatorial uncountable obstruction]
+\label{ex:uncountable}
+For every infinite $B\subset\Nzero$, let
+\begin{align*}
+ \Omega_B=\{x\in\{0,1\}^{\Nzero}:\supp(x)\subset B\}.
+\end{align*}
+At scale $\tau=1$,
+\begin{align*}
+ \Patt_{\Omega_B}(F)=2^{\#(F\cap B)},
+ \qquad \hpat(\Omega_B;1)=\log2.
+\end{align*}
+For $A=(a_i)\in\mathscr S$,
+\begin{align*}
+ \hseq^A(\Omega_B;1)
+ =\log2\cdot\limsup_{n\to\infty}
+ \frac{\#(B\cap\{a_1,\ldots,a_n\})}{n}.
+\end{align*}
+If $\Nzero\setminus\{a_i:i\ge1\}$ is infinite, choose an infinite $B$ in that
+complement.  Otherwise choose $B=\{a_{k^2}:k\ge1\}$.  In either case the
+displayed upper density is zero.  Therefore
+\begin{equation}\label{eq:abstract-obstruction}
+ \sup_{A\in\mathscr S}
+ \inf_{\substack{B\subset\Nzero\\B\text{ infinite}}}
+ \hseq^A(\Omega_B;1)=0
+ <\log2
+ =\inf_{\substack{B\subset\Nzero\\B\text{ infinite}}}
+ \hpat(\Omega_B;1).
+\end{equation}
+This proves only that minimax exchange is not a formal consequence of
+pointwise attainment for arbitrary uncountable pattern families.  Every
+invariant-partition name system satisfies
+$\sigma(\Sigma_\C)\subset\Sigma_\C$ by suffix closure.  In contrast,
+$\sigma(\Omega_B)\subset\Omega_B$ forces $k-1\in B$ whenever
+$k\in B\setminus\{0\}$; an infinite such $B$ must equal $\Nzero$.  Hence the
+proper sparse sets producing \eqref{eq:abstract-obstruction} cannot occur as
+these autonomous control name systems.  The equation is not a deterministic
+control counterexample and yields no failure statement for the unrestricted
+Borel invariant-partition class.
+\end{example}
+
+\subsection{A continuous family of sparse hereditary subshifts}
+
+We need an uncountable family of shift-invariant languages with two
+features. Each language must contain full binary patterns on its own
+sparse set of positions, but a fixed sampling sequence should see few
+of those positions for most parameters. We encode a parameter by a
+branch of the binary tree. Powers of four place its nodes so that a
+pair of positions determines their translation uniquely.
+
+Write $\Theta=\{0,1\}^{\N}$, with its fair Bernoulli probability
+$\nu$. Let $\operatorname{val}_2(v)$ be the integer represented by
+the binary word $v$, with value zero for the empty word. Set
+\[
+ j(v)=2^{|v|}+\operatorname{val}_2(v),\qquad
+ b_v=4^{j(v)},\qquad
+ B_\theta=\{b_{\theta|_\ell}:\ell\ge0\}.
+\]
+The index $j$ lists the binary-tree nodes level by level: words of
+length $\ell$ receive indices $2^\ell,\ldots,2^{\ell+1}-1$.
+Thus $B_\theta$ selects one marked position from each level along
+the branch $\theta$.
+
+In $K=\{0,1\}^{\Nzero}$ define
+\[
+ Y_\theta=
+ \operatorname{cl}\bigcup_{t\in\mathbb Z}
+ \{y:\supp(y)\subset(B_\theta+t)\cap\Nzero\}.
+\]
+We allow any subset of each translated support. Consequently these
+sets are hereditary: changing any collection of $1$'s to $0$'s
+keeps a sequence in the set. The closure retains this property.
+
+\begin{lemma}\label{lem:sparse-bundle}
+Each $Y_\theta$ is a nonempty hereditary subshift with
+$\sigma Y_\theta=Y_\theta$ and zero ordinary entropy.
+The map $\theta\mapsto Y_\theta$ is Hausdorff continuous and injective.
+Every $Y_\theta$ has coordinate maximal-pattern entropy $\log2$.
+For each fixed sampling sequence $A=(a_i)$,
+\[
+ \frac1n\log\Patt_{Y_\theta}(\{a_1,\ldots,a_n\})
+ \longrightarrow0
+ \quad\text{for }\nu\text{-almost every }\theta.
+\]
+The exceptional set may depend on $A$.
+\end{lemma}
+\begin{proof}
+Two marked positions will determine at most one translate of the
+support set. This makes finite languages locally constant in the
+parameter and limits how many positions of a fixed sampling window
+can belong to a typical support. We use these two consequences in
+turn.
+
+The positive differences of $D=\{4^j:j\ge1\}$ have unique
+representations. Indeed, the $4$-adic valuation of
+$4^j-4^i$ with $j>i$ is $i$, which determines $i$ and then $j$.
+A finite pattern appears in $Y_\theta$ exactly when its set of
+one-positions is contained in a translate of $B_\theta$;
+cylinders are clopen and prescribed zero-positions impose no
+further restriction. If there are at least two one-positions,
+their difference fixes the candidate nodes and the translation.
+The remaining one-positions either give incompatible nodes, or
+the appearance parameters form the cylinder determined by the
+deepest node. Patterns with at most one one appear for every
+parameter. Thus each finite prefix language is locally constant
+in $\theta$, proving Hausdorff continuity. The pattern $11$ on
+$\{0,b_v-b_\varnothing\}$ detects whether $\theta$ extends a
+nonempty word $v$, proving injectivity.
+
+Setting coordinates to zero preserves the defining supports and
+then their closure. Shifting replaces $t$ by $t-1$, while
+prepending zero replaces it by $t+1$; compactness supplies
+predecessors of limit points. This proves heredity and surjectivity.
+An interval of length $N$ meets any translate of $D$ in at most
+$L_N=2+\lceil\log_4(N+1)\rceil$ points. Consequently
+\[
+ |\mathcal L_N(Y_\theta)|
+ \le (L_N+1)N^{L_N}\qquad(N\ge2),
+\]
+which gives zero ordinary entropy. On any $n$ positions in
+$B_\theta$ all binary patterns occur, so $p_{Y_\theta}^*(n)=2^n$.
+
+It remains to estimate patterns on a fixed sampling sequence.
+For $F_n=\{a_1,\ldots,a_n\}$ put
+$M_\theta(F_n)=\sup_t|F_n\cap(B_\theta+t)|$.
+This is the largest possible number of $1$'s in a pattern on $F_n$.
+A bound on $M_\theta(F_n)$ will therefore bound the number of
+patterns by counting binary words with at most that many $1$'s.
+We first list the possible translations without fixing $\theta$. If a translate meets $F_n$ twice, the two positions
+give a difference $4^j-4^i$. Its unique representation determines
+both marked positions and the translation. There are therefore at
+most $\binom n2$ candidate translations.
+
+We now vary $\theta$ while keeping $F_n$ fixed. For one candidate
+$t$, there are at most $n$ binary-tree nodes $v$ with
+$b_v+t\in F_n$. If a branch contains at least $k$ of them,
+one of these nodes has depth at least $k-1$, since a branch has
+only one node at each depth. The set of parameters extending a
+particular node $v$ has measure $2^{-|v|}$. A union bound, first
+over the nodes and then over the candidate translations, gives
+\[
+ \nu\{M_\theta(F_n)\ge k\}
+ \le \binom n2 n\,2^{-(k-1)}
+ \le n^3 2^{-(k-1)}\qquad(k\ge2).
+\]
+These events are finite unions of parameter cylinders. With
+$k_n=\lceil6\log_2(n+1)\rceil+2$, the probabilities are summable.
+Borel--Cantelli gives $M_\theta(F_n)<k_n$ eventually almost surely.
+Every occurring pattern then has at most $k_n$ one-positions, and
+\[
+ \Patt_{Y_\theta}(F_n)\le(k_n+1)n^{k_n}\qquad(n\ge2).
+\]
+Its normalized logarithm tends to zero.
+\end{proof}
+
+\subsection{Four controls and a positive full-class minimum}
+
+\begin{proposition}\label{prop:finite-pointwise}
+There is a compact system with four distinct continuous control
+maps and a controlled-invariant compact set $Q$ such that
+\[
+ \hinv(Q)=0,\qquad L_1=M_1=\log2,
+\]
+yet no sampling sequence attains $\hpat(\C;Q)$ for every legal
+period-one Borel invariant partition $\C$.
+This already fails for a family of four-label selectors with
+Hausdorff continuous, compact name languages and rate $\log4$.
+\end{proposition}
+\begin{proof}
+The first control component will be forced by a Thue--Morse state;
+this fixes the full-class minimum at $\log2$. A second component
+can record one of the sparse languages above, raising individual
+maximal-pattern rates without permitting one sequence to attain them
+all. A register makes the two choices physically distinct controls.
+
+Let $Z$ be the Thue--Morse subshift of
+Section~\ref{sec:thue-morse}, and let
+\[
+ \mathcal E=\{(\theta,y):y\in Y_\theta\},\qquad
+ Q=Z\times\mathcal E\times\{0,1\},\qquad
+ X=Q\sqcup\{\dagger\},\qquad U=\{0,1\}^2.
+\]
+Hausdorff continuity makes $\mathcal E$ compact.
+For $x=(z,\theta,y,r)$ define
+\[
+ f(x,(a,b))=
+ \begin{cases}
+  (\sigma z,\theta,\sigma y,b),&a=z_0,\\
+  \dagger,&a\ne z_0,
+ \end{cases}
+ \qquad f(\dagger,u)=\dagger.
+\]
+These maps are continuous on clopen matching regions. At each
+state exactly the two controls with $a=z_0$ are safe. Their
+successors differ in the register coordinate $b$, so the four
+control maps are distinct and $Q$ is controlled invariant.
+The register is a state coordinate of this system; the feedback
+has no additional memory or time variable.
+
+For every legal Borel partition, the first control label of
+each atom must equal $z_0$. The first state coordinate always
+shifts, independently of every Borel mixture and atom refinement.
+Label projection therefore gives
+$\Patt_\C(F)\ge\Patt_Z(F)$ for each finite $F$.
+The two-atom clopen feedback $(z_0,0)$ attains equality for
+every $F$. It follows that
+\[
+ \inf_{\C\in\mathfrak C_{\Bor}(Q,1)}\hseq^A(\C;Q)
+ =h_{\rm seq,coord}^A(Z)\quad\text{for every }A,
+ \qquad M_1=\log2.
+\]
+The schedule in Proposition~\ref{prop:thue-morse} gives
+$L_1=\log2$. A control word of length $N$ is safe exactly
+when its first components match the initial $Z$ word.
+Thus $r_{\rm inv}(N,Q)=|\mathcal L_N(Z)|\le8N$ and $\hinv(Q)=0$.
+
+For $\eta\in\Theta$, use the Borel selector
+\[
+ s_\eta(z,\theta,y,r)=(z_0,\one_{\{\theta=\eta\}}y_0).
+\]
+Its four fibers are nonempty, Borel, and assigned different
+controls. Its actual name set is $Z\times Y_\eta$:
+the slice $\theta=\eta$ realizes the full product, and the
+other slices add only the zero second sequence. Hence
+\[
+ \Patt_{s_\eta}(F)=\Patt_Z(F)\Patt_{Y_\eta}(F).
+\]
+The binary-addition argument in Proposition~\ref{prop:thue-morse}
+also gives all patterns on any finite subset of
+$\{4^j:j\ge0\}$: extend the prescribed digits to the largest
+exponent and apply the same parity correction. Thus both factors
+realize $2^n$ patterns on any $n$ positions in $B_\eta$.
+It follows that $p_{s_\eta}^*(n)=4^n$ and $h^*(s_\eta)=\log4$.
+Their ordinary word entropy is zero by the word bounds for
+$Z$ and $Y_\eta$, and their name languages vary Hausdorff
+continuously with $\eta$.
+
+Fix $A$. By Lemma~\ref{lem:sparse-bundle}, the normalized
+logarithm of the second pattern factor tends to zero almost
+surely. Therefore
+\[
+ h_A(s_\eta)=h_{\rm seq,coord}^A(Z)\le\log2<\log4
+ \quad\text{for }\nu\text{-almost every }\eta.
+\]
+This disproves pointwise common attainment. In the designated
+family one also has
+$\max_A\inf_\eta h_A(s_\eta)=\log2<\min_\eta h^*(s_\eta)=\log4$.
+For the full Borel class the lower-rate selector $(z_0,0)$
+is available, and the exact equality $L_1=M_1$ remains valid.
+\end{proof}
+
+The compact family here consists of name languages, in the Hausdorff
+topology; no topology or compactness is imposed on the Borel selectors.
+The example separates attaining every feedback's own rate from
+attaining the minimum over all feedbacks.
+
+
+\section*{Use of AI tools}
+OpenAI ChatGPT/Codex tools assisted the argument exploration,
+candidate proofs, comparison of primary literature, manuscript
+integration, and automated source, compilation, and PDF checks.
+These activities included mathematical work and were not limited
+to language editing. Model versions for the complete earlier
+research history cannot be reliably reconstructed from the record.
+
+\begin{thebibliography}{99}
+
+\bibitem{Debauche2022}
+Debauche, V., Della Rossa, M., \& Jungers, R.~M. (2022).
+Comparison of path-complete Lyapunov functions via template-dependent lifts.
+\emph{Nonlinear Analysis: Hybrid Systems, 46}, 101237.
+\doi{10.1016/j.nahs.2022.101237}.
+Author version: \href{https://arxiv.org/abs/2110.13474v1}{arXiv:2110.13474v1}.
+
+\bibitem{Goodman1974}
+Goodman, T.~N.~T. (1974). Topological sequence entropy.
+\emph{Proceedings of the London Mathematical Society, 29}(2), 331--350.
+\doi{10.1112/plms/s3-29.2.331}.
+
+\bibitem{HuangMaassYe2004}
+Huang, W., Maass, A., \& Ye, X. (2004).
+Sequence entropy pairs and complexity pairs for a measure.
+\emph{Annales de l'Institut Fourier, 54}(4), 1005--1028.
+\doi{10.5802/aif.2041}.
+
+\bibitem{HuangYe2009}
+Huang, W., \& Ye, X. (2009).
+Combinatorial lemmas and applications to dynamics.
+\emph{Advances in Mathematics, 220}(6), 1689--1716.
+\doi{10.1016/j.aim.2008.11.009}.
+
+\bibitem{Hulse1982}
+Hulse, P. (1982). Sequence entropy and subsequence generators.
+\emph{Journal of the London Mathematical Society, 26}(3), 441--450.
+\doi{10.1112/jlms/s2-26.3.441}.
+
+\bibitem{KamaeZamboniSystems2002}
+Kamae, T., \& Zamboni, L. (2002).
+Maximal pattern complexity for discrete systems.
+\emph{Ergodic Theory and Dynamical Systems, 22}(4), 1201--1214.
+\doi{10.1017/S0143385702000585}.
+
+\bibitem{Kawan2013}
+Kawan, C. (2013).
+\emph{Invariance entropy for deterministic control systems:
+An introduction}. Lecture Notes in Mathematics, Vol.~2089.
+Springer. \doi{10.1007/978-3-319-01288-9}.
+
+\bibitem{KL2007}
+Kerr, D., \& Li, H. (2007).
+Independence in topological and C$^*$-dynamics.
+\emph{Mathematische Annalen, 338}, 869--926.
+\doi{10.1007/s00208-007-0097-z}.
+
+\bibitem{KL2009}
+Kerr, D., \& Li, H. (2009).
+Combinatorial independence in measurable dynamics.
+\emph{Journal of Functional Analysis, 256}(5), 1341--1386.
+\doi{10.1016/j.jfa.2008.12.014}.
+
+\bibitem{Romagnoli2007}
+Romagnoli, P.-P. (2007).
+A remark on the topological entropies of covers and partitions.
+\emph{Studia Mathematica, 182}(3), 273--281.
+\doi{10.4064/sm182-3-6}.
+
+\bibitem{TomarKawanZamani2022}
+Tomar, M.~S., Kawan, C., \& Zamani, M. (2022).
+Numerical over-approximation of invariance entropy via finite abstractions.
+\emph{Systems \& Control Letters, 170}, 105395.
+\doi{10.1016/j.sysconle.2022.105395}.
+
+\end{thebibliography}
+
+\end{document}
